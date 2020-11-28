@@ -1,0 +1,31 @@
+" Configure the vim environment
+set relativenumber
+set number
+set incsearch
+ 
+" Active emulated plugins
+set commentary
+set multiple-cursors
+set surround
+set easymotion
+set ideajoin
+
+
+nmap :rc :action ReformatCode
+nmap :fip :action FindInPath
+
+" Remove some fat finger typing mistakes
+nmap :X :x
+nmap :X! :x!
+nmap :W :w
+nmap :W! :w!
+nmap :Q :q
+nmap :Q! :q!
+nmap :Qa :qa
+nmap :Wq! :wq!
+nmap :WQ! :wq!
+
+" NewLine stuff
+nmap <S-Enter> O<Esc>j
+nmap <C-Enter> o<Esc>k
+nmap <Enter>   i<Enter><Esc>
