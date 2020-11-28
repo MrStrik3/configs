@@ -1,0 +1,21 @@
+# Static information about the filesystems.
+# See fstab(5) for details.
+
+# <file system> <dir> <type> <options> <dump> <pass>
+
+# /dev/mapper/vg1-root
+UUID=a99bbcc1-0eb0-4223-bb46-244e6c0e74d0	/         	ext4      	rw,relatime	0 1
+
+# /dev/sda2
+UUID=5F8E-1849      				/boot     	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,utf8,errors=remount-ro	0 2
+
+# /dev/mapper/vg1-swap
+UUID=661a6252-be8e-45c6-b771-ff5261fe9571	none      	swap      	defaults  	0 0
+
+
+# Travail 
+Travail						/mnt/travail	vboxsf  	uid=1000,gid=1000,dmode=777,fmode=666,noauto,x-systemd.automount	0 0
+
+# Temp
+
+Temp						/mnt/temp	vboxsf  	uid=1000,gid=1000,dmode=777,fmode=666,noauto,x-systemd.automount	0 0
