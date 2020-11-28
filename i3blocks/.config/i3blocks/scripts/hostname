@@ -1,0 +1,7 @@
+#!/bin/bash
+#
+
+hostnameStr=`hostname`
+
+echo " $hostnameStr"
+echo " $hostnameStr"

@@ -1,0 +1,7 @@
+#!/bin/bash
+#
+
+meteoString=`curl -s wttr.in/Mont-Joli?format=2`
+
+echo "$meteoString"
+echo "$meteoString"

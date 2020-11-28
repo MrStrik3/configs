@@ -1,0 +1,32 @@
+#the 1st line updates the full_text;
+#the 2nd line updates the short_text;
+#the 3rd line updates the color;
+#the 4th line updates the background.
+
+[separator]
+full_text=' '
+color=#222D31
+
+[hostname]
+command=scripts/hostname
+interval=once
+
+[battery]
+command=scripts/battery.sh
+interval=10
+
+[date]
+command=scripts/date
+interval=1800
+
+[time]
+command=scripts/time
+interval=5
+
+[updates]
+command=scripts/archupdate
+interval=600
+
+[meteo]
+command=scripts/meteo
+interval=30

@@ -1,0 +1,15 @@
+#!/bin/bash
+#
+#
+                  
+currentdate=`date +"%Y-%m-%d"`
+
+case "$BLOCK_BUTTON" in
+  1)
+  i3-msg -q exec /usr/bin/gsimplecal
+esac
+
+echo " $currentdate"
+echo " $currentdate"
+
+

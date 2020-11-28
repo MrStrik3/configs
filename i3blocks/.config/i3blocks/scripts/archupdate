@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+
+
+
+numberUpdates=`yay -Qu | wc -l`
+
+echo " $numberUpdates"
+echo " $numberUpdates"
