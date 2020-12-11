@@ -1,5 +1,5 @@
 set nocompatible              " be iMproved, required
-
+set termguicolors
 filetype off                  " required
 
 "Package manager (minpac)a
@@ -13,7 +13,7 @@ call minpac#add('k-takata/minpac', {'type': 'opt'})
 call minpac#add('vim-jp/syntax-vim-ex')
 
 " List of plugins
-call minpac#add('scrooloose/nerdtree', {'type': 'opt'})
+call minpac#add('scrooloose/nerdtree', { 'on': 'NERDTreeToggle' })
 
 " YAML files Shit
 " https://github.com/mrk21/yaml-vim
@@ -39,6 +39,10 @@ call minpac#add('terryma/vim-multiple-cursors')
 " https://github.com/vim-scripts/ReplaceWithRegister
 "call minpac#add('ReplaceWithRegister')
 
+" Enforce editor settings
+" https://github.com/editorconfig/editorconfig-vim
+call minpac#add('editorconfig/editorconfig-vim')
+
 " https://github.com/christoomey/vim-system-copy
 call minpac#add('christoomey/vim-system-copy', {'type': 'opt'})
 
@@ -59,8 +63,8 @@ call minpac#add('mhinz/vim-startify')
 call minpac#add('tpope/vim-fugitive')
 
 " 
-call minpac#add('junegunn/fzf.vim')
-call minpac#add('junegunn/fzf')
+call minpac#add('junegunn/fzf.vim', {'type': 'opt'})
+call minpac#add('junegunn/fzf', {'type': 'opt'})
 
 call minpac#add('mboughaba/i3config.vim')
 
@@ -69,26 +73,18 @@ call minpac#add('tpope/vim-markdown', {'type': 'opt'})
 call minpac#add('JamshedVesuna/vim-markdown-preview', {'type': 'opt'})
 call minpac#add('plasticboy/vim-markdown', {'type': 'opt'})
 
-call minpac#add('glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } })
-
+" User-defined minpac command
 command! PackUpdate packadd minpac | source $MYVIMRC | call minpac#update('', {'do': 'call minpac#status()'})
 command! PackClean  packadd minpac | source $MYVIMRC | call minpac#clean()
 command! PackStatus packadd minpac | source $MYVIMRC | call minpac#status()
 
 
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-
-filetype indent plugin on
 filetype plugin on
+filetype plugin indent on 
 
 syntax on
 
-set encoding=utf-8
-
-" Theme
+" Themes
 let g:solarized_termcolors=256
 syntax enable
 set background=dark
@@ -102,9 +98,9 @@ let vim_markdown_preview_github=1
 let vim_markdown_preview_use_xdg_open=1
 
 set encoding=utf-8 fileencodings= " use utf8 by default
-set number relativenumber
+set number relativenumber  " Add Margin numbers"
 set nowrap            " by default, dont wrap lines (see <leader>w)
-set hlsearch          " hilight searches by default
+set hlsearch          " highlight searches by default
 set laststatus=2      " always display status line even if only one window is visible.
 set updatetime=1000   " reduce updatetime so current tag in taglist is highlighted faster
 
