@@ -13,7 +13,7 @@ call minpac#add('k-takata/minpac', {'type': 'opt'})
 call minpac#add('vim-jp/syntax-vim-ex')
 
 " List of plugins
-call minpac#add('scrooloose/nerdtree', { 'on': 'NERDTreeToggle' })
+"call minpac#add('scrooloose/nerdtree', { 'on': 'NERDTreeToggle' })
 
 " YAML files Shit
 " https://github.com/mrk21/yaml-vim
@@ -22,12 +22,14 @@ call minpac#add('mrk21/yaml-vim')
 " https://github.com/tpope/vim-surround
 call minpac#add('tpope/vim-surround')
 call minpac#add('tpope/vim-repeat')
-
 " https://github.com/tpope/vim-commentary
 call minpac#add('tpope/vim-commentary')
-call minpac#add('tpope/vim-scriptease')
+"call minpac#add('tpope/vim-scriptease')
+" https://github.com/tpope/vim-speeddating
+"call minpac#add('tpope/vim-speeddating')
 
-call minpac#add('scrooloose/nerdcommenter')
+" 
+"call minpac#add('scrooloose/nerdcommenter')
 "call minpac#add('Valloric/YouCompleteMe')
 " https://github.com/Yggdroot/indentLine
 call minpac#add('Yggdroot/indentLine')
@@ -41,7 +43,7 @@ call minpac#add('terryma/vim-multiple-cursors')
 
 " Enforce editor settings
 " https://github.com/editorconfig/editorconfig-vim
-call minpac#add('editorconfig/editorconfig-vim')
+call minpac#add('editorconfig/editorconfig-vim', {'type': 'opt'})
 
 " https://github.com/christoomey/vim-system-copy
 call minpac#add('christoomey/vim-system-copy', {'type': 'opt'})
@@ -53,7 +55,6 @@ call minpac#add('christoomey/vim-sort-motion', {'type': 'opt'})
 " https://github.com/vim-airline/vim-airline
 call minpac#add('vim-airline/vim-airline')
 call minpac#add('vim-airline/vim-airline-themes')
-"call minpac#add('altercation/vim-colors-solarized')
 
 " https://github.com/mhinz/vim-startify
 call minpac#add('mhinz/vim-startify')
@@ -63,15 +64,15 @@ call minpac#add('mhinz/vim-startify')
 call minpac#add('tpope/vim-fugitive')
 
 " 
-call minpac#add('junegunn/fzf.vim', {'type': 'opt'})
-call minpac#add('junegunn/fzf', {'type': 'opt'})
+"call minpac#add('junegunn/fzf.vim', {'type': 'opt'})
+"call minpac#add('junegunn/fzf', {'type': 'opt'})
 
 call minpac#add('mboughaba/i3config.vim')
 
 " Markdown related plugins
-call minpac#add('tpope/vim-markdown', {'type': 'opt'})
-call minpac#add('JamshedVesuna/vim-markdown-preview', {'type': 'opt'})
-call minpac#add('plasticboy/vim-markdown', {'type': 'opt'})
+"call minpac#add('tpope/vim-markdown', {'type': 'opt'})
+"call minpac#add('JamshedVesuna/vim-markdown-preview', {'type': 'opt'})
+"call minpac#add('plasticboy/vim-markdown', {'type': 'opt'})
 
 " User-defined minpac command
 command! PackUpdate packadd minpac | source $MYVIMRC | call minpac#update('', {'do': 'call minpac#status()'})
@@ -84,15 +85,16 @@ filetype plugin indent on
 
 syntax on
 
-" Themes
+" ------- Themes settings--------
 let g:solarized_termcolors=256
+
 syntax enable
 set background=dark
 " colorscheme solarized
 let g:airline_theme='solarized'
 let g:airline_solarized_bg='dark'
 
-" Markdown grip
+"# -------- Markdown grip
 let vim_markdown_preview_toggle=1
 let vim_markdown_preview_github=1
 let vim_markdown_preview_use_xdg_open=1
@@ -125,7 +127,7 @@ set splitbelow        " when splitting, cursor should stay in bottom window
 "set clipboard=unnamed,unnamedplus
 
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-let g:markdown_fenced_languages = ['ruby', 'vim', 'c', 'css', 'html', 'javascript', 'perl', 'python', 'yaml', 'sh']
+let g:markdown_fenced_languages = [ 'vim', 'c', 'css', 'html', 'javascript', 'perl', 'python', 'yaml', 'sh']
 
 " don't complain on some obvious fat-fingers
 nmap :W :w
@@ -136,7 +138,7 @@ nmap :Qa :qa
 nmap :Wq! :wq!
 nmap :WQ! :wq!
 
-map <C-o> :NERDTreeToggle
+"map <C-o> :NERDTreeToggle
 
 " Add insert new line above or after
 nmap <S-Enter> O<Esc>j
@@ -148,3 +150,6 @@ set textwidth=0
 
 
 set directory=$HOME/.vim/swap/
+
+let mapleader=";"
+nnoremap ; :
