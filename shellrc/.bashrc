@@ -8,7 +8,7 @@
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
-source ~/.bash_aliases
+source ~/.aliases
 
 export CR_RENDER_FORCE_PRESENT_MAIN_THREAD="0 VirtualBox"
 
