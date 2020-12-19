@@ -1,0 +1,17 @@
+
+! URxvt.font:                       9x15,xft:TerminessTTFNerdFontMono
+! URxvt.font:                         xft:TerminessTTF Nerd Font Mono
+! URxvt.font:                         xft:Iosevka Term,Iosevka Nerd Font Mono:style=Regular:size=12
+! URxvt.boldFont:                     xft:Iosevka Term,Iosevka Nerd Font Mono:style=Bold:size=12
+URxvt.font:                           xft:DejaVuSansMono Nerd Font:style=Book:size=10, xft:symbola:size=10:minspace=False, xtf:Icons:size=10
+URxvt.boldFont:                       xft:DejaVuSansMono Nerd Font:style=Bold:size=10, xft:symbola:size=10:minspace=False, xtf:Icons:size=10
+URxvt*letterSpace: 0
+!URxvt*font: xft:Source Code Pro:pixelsize=14:foundry=adobe:weight=normal:width=normal:spacing=100:scalable=true
+!URxvt*boldFont: xft:Source Code Pro:bold:pixelsize=14:foundry=adobe:width=normal:spacing=100:scalable=true
+
+
+! alternative font settings with 'terminus':
+! URxvt.font:      -xos4-terminus-medium-r-normal--16-160-72-72-c-80-iso10646-1
+! URxvt.bold.font: -xos4-terminus-bold-r-normal--16-160-72-72-c-80-iso10646-1
+!! terminus names see end of file!
+
