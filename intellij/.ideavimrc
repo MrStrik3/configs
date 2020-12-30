@@ -1,3 +1,5 @@
+let mapleader = ","
+
 " Configure the vim environment
 set relativenumber
 set number
@@ -8,6 +10,9 @@ set encoding=utf-8 fileencodings= " use utf8 by default
 set history=1000               "store lots of :cmdline history
 set showmode
 
+set visualbell
+set noerrorbells
+
 " Active emulated plugins
 set commentary
 set multiple-cursors
@@ -16,8 +21,8 @@ set easymotion
 set ideajoin
 
 
-nmap :rc :action ReformatCode
-nmap :fip :action FindInPath
+map <leader>rc <Action>(ReformatCode)
+map <leader>fip <Action>(FindInPath)
 
 " Remove some fat finger typing mistakes
 nmap :X :x
@@ -30,8 +35,8 @@ nmap :Qa :qa
 nmap :Wq! :wq!
 nmap :WQ! :wq!
 
-let mapleader=";"
-nnoremap ; :
+" let mapleader=";"
+" nnoremap ; :
 
 " Break the Habit of Reaching for the Arrow Keys
 noremap <Up> <Nop>
