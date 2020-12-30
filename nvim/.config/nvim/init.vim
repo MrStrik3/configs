@@ -1,7 +1,6 @@
 set nocompatible              " be iMproved, required, disabled old vim compatibility
 filetype off                  " required
 
-
 " ####### Plugin manager (minpac) - https://github.com/k-takata/minpac
 packadd minpac
 
@@ -18,10 +17,18 @@ call minpac#add('vim-jp/syntax-vim-ex')
 " YAML files Shit - https://github.com/mrk21/yaml-vim
 call minpac#add('mrk21/yaml-vim')
 
+
+" call minpac#add('Shougo/deoplete.nvim')
+" let g:deoplete#enable_at_startup = 1
+
+" conquer of complete - https://github.com/neoclide/coc.nvim
+call minpac#add('neoclide/coc.nvim')
+
 " Smooth scroll - https://github.com/psliwka/vim-smoothie
 call minpac#add('psliwka/vim-smoothie')
 
 " https://github.com/tpope/
+call minpac#add('tpope/vim-sensible')
 call minpac#add('tpope/vim-surround')
 call minpac#add('tpope/vim-repeat')
 call minpac#add('tpope/vim-commentary')

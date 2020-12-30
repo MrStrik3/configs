@@ -16,5 +16,6 @@ export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 alias vim=/usr/bin/nvim
 alias vi=/usr/bin/nvim
 alias view="/usr/bin/nvim -R"
+alias vimconfig="/usr/bin/nvim ~/.config/nvim/init.vim"
 
 alias dmesg='dmesg --color=always'

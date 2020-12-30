@@ -2,7 +2,12 @@
 set relativenumber
 set number
 set incsearch
- 
+
+set hlsearch          " highlight searches by default
+set encoding=utf-8 fileencodings= " use utf8 by default
+set history=1000               "store lots of :cmdline history
+set showmode
+
 " Active emulated plugins
 set commentary
 set multiple-cursors
@@ -24,6 +29,15 @@ nmap :Q! :q!
 nmap :Qa :qa
 nmap :Wq! :wq!
 nmap :WQ! :wq!
+
+let mapleader=";"
+nnoremap ; :
+
+" Break the Habit of Reaching for the Arrow Keys
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
 
 " NewLine stuff
 nmap <S-Enter> O<Esc>j
