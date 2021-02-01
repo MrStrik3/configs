@@ -79,7 +79,7 @@ bindsym Shift+XF86AudioLowerVolume exec --no-startup-id amixer -c 0 set Master 1
 bindsym XF86AudioMute exec amixer -c 0 -q set Master toggle
 
 # Auto-start applications
-exec firefox
+# exec firefox
 exec /usr/bin/dunst
 
 # Start Applications

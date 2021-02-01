@@ -44,6 +44,10 @@ plugins=(
   helm
   docker
   archlinux
+  npm
+  sudo
+  ng
+  zsh_reload
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -168,8 +172,8 @@ export CR_RENDER_FORCE_PRESENT_MAIN_THREAD="0 VirtualBox"
 
 command_not_found_handler() {
 	local pkgs cmd="$1" files=()
-	printf 'zsh: command not found: %s' "$cmd" # print command not found asap, then search for packages
-	files=(${(f)"$(pacman -F --machinereadable -- "/usr/bin/${cmd}")"})
+	printf 'zsh: command not found: %s\n' "$cmd" # print command not found asap, then search for packages
+	files=(${(f)"$(/usr/bin/yay -F --machinereadable "${cmd}")"})
 	if (( ${#files[@]} )); then
 		printf '\r%s may be found in the following packages:\n' "$cmd"
 		local res=() repo package version file
