@@ -45,8 +45,8 @@ bindsym $mod+Shift+q kill
 # bindsym $mod+d exec --no-startup-id dmenu_recency
 
 # rofi
-bindsym $mod+d exec --no-startup-id "rofi -show drun -font \\"DejaVu 9\\" -run-shell-command '{terminal} -e \\" {cmd}; read -n 1 -s\\"'"
-bindsym Mod1+space exec --no-startup-id "rofi -show drun -font \\"DejaVu 9\\" -run-shell-command '{terminal} -e \\" {cmd}; read -n 1 -s\\"'"
+bindsym $mod+d exec --no-startup-id "rofi -show drun -font \\"DejaVu 9\\" -theme codeDark -run-shell-command '{terminal} -e \\" {cmd}; read -n 1 -s\\"'"
+bindsym Mod1+space exec --no-startup-id "rofi -show drun -font \\"DejaVu 9\\" -theme codeDark -run-shell-command '{terminal} -e \\" {cmd}; read -n 1 -s\\"'"
 #bindsym $mod+d exec rofi -show run -font "inconsolate 9" -fg "#ecedee" -bg "#121212" -hlfg "#95C7AE" -hlbg "#000000" -o 100
 
 # launch categorized menu
