@@ -46,6 +46,7 @@ bindsym $mod+Shift+q kill
 
 # rofi
 bindsym $mod+d exec --no-startup-id "rofi -show drun -font \\"DejaVu 9\\" -theme codeDark -run-shell-command '{terminal} -e \\" {cmd}; read -n 1 -s\\"'"
+# bindsym Mod1+space exec --no-startup-id "rofi -show drun -font \\"DejaVu 9\\" -run-shell-command '{terminal} -e \\" {cmd}; read -n 1 -s\\"'"
 bindsym Mod1+space exec --no-startup-id "rofi -show drun -font \\"DejaVu 9\\" -theme codeDark -run-shell-command '{terminal} -e \\" {cmd}; read -n 1 -s\\"'"
 #bindsym $mod+d exec rofi -show run -font "inconsolate 9" -fg "#ecedee" -bg "#121212" -hlfg "#95C7AE" -hlbg "#000000" -o 100
 
@@ -175,30 +176,35 @@ set $ws1 1:
 set $ws2 2:
 set $ws3 3:⋯
 set $ws4 4:
+set $ws5 5:
 
 # Force workspace to monitor X
-# workspace $ws1 output "VGA-1"
-# workspace $ws2 output "VGA-2"
-# workspace $ws3 output "VGA-2"
-# workspace $ws4 output "VGA-1"
+workspace $ws1 output "Virtual1"
+workspace $ws2 output "Virtual2"
+workspace $ws3 output "Virtual2"
+workspace $ws4 output "Virtual1"
+workspace $ws5 output "Virtual1"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
 
 # Move focused container to workspace
 bindsym $mod+Ctrl+1 move container to workspace $ws1
 bindsym $mod+Ctrl+2 move container to workspace $ws2
 bindsym $mod+Ctrl+3 move container to workspace $ws3
 bindsym $mod+Ctrl+4 move container to workspace $ws4
+bindsym $mod+Ctrl+5 move container to workspace $ws5
 
 # Move to workspace with focused container
 bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2; workspace $ws2
 bindsym $mod+Shift+3 move container to workspace $ws3; workspace $ws3
 bindsym $mod+Shift+4 move container to workspace $ws4; workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
 
 # Open applications on specific workspaces
 # get class name : exec xprop and (click on window)
@@ -282,7 +288,7 @@ mode "resize" {
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # Start variety - wllpaper changer
-exec_always --no-startup-id feh --bg-fill ~/.config/i3/bg.jpg
+exec_always --no-startup-id feh --bg-fill ~/.config/i3/space-stars.jpg
 
 # exec --no-startup-id xautolock -time 10 -locker blurlock
 # exec --no-startup-id xautolock -time 10 -locker asciiquarium-lock
