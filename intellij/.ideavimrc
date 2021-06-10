@@ -10,6 +10,7 @@ set encoding=utf-8 fileencodings= " use utf8 by default
 set history=1000               "store lots of :cmdline history
 set showmode
 
+set scrolloff=5
 set visualbell
 set noerrorbells
 
