@@ -3,7 +3,7 @@
 
 
 
-numberUpdates=`yay -Qu | wc -l`
+numberUpdates=`yay -Quy | wc -l`
 
 echo " $numberUpdates"
 echo " $numberUpdates"

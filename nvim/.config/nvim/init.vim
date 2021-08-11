@@ -1,3 +1,4 @@
+
 set nocompatible              " be iMproved, required, disabled old vim compatibility
 filetype off                  " required
 
@@ -12,7 +13,7 @@ call minpac#add('k-takata/minpac', {'type': 'opt'})
 call minpac#add('vim-jp/syntax-vim-ex')
 
 " Nerd file tree
-"call minpac#add('scrooloose/nerdtree', { 'on': 'NERDTreeToggle' })
+call minpac#add('scrooloose/nerdtree', { 'on': 'NERDTreeToggle' })
 
 " YAML files Shit - https://github.com/mrk21/yaml-vim
 call minpac#add('mrk21/yaml-vim')
@@ -153,8 +154,9 @@ nmap <S-Enter> O<Esc>j
 nmap <C-Enter> o<Esc>k
 nmap <Enter>   i<Enter><Esc>
 
-let mapleader=";"
+let mapleader=' '
 nnoremap ; :
+noremap <Leader>nt :NERDTree
 
 " Break the Habit of Reaching for the Arrow Keys
 noremap <Up> <Nop>

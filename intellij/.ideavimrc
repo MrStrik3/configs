@@ -1,4 +1,4 @@
-let mapleader = ","
+let mapleader = " "
 
 " Configure the vim environment
 set relativenumber
@@ -21,9 +21,14 @@ set surround
 set easymotion
 set ideajoin
 
+set NERDTree
+set ReplaceWithRegister
+set highlightedyank
+
 
 map <leader>rc <Action>(ReformatCode)
 map <leader>fip <Action>(FindInPath)
+map <leader>nt :NERDTree
 
 " Remove some fat finger typing mistakes
 nmap :X :x
