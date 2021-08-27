@@ -18,6 +18,8 @@ call minpac#add('scrooloose/nerdtree', { 'on': 'NERDTreeToggle' })
 " YAML files Shit - https://github.com/mrk21/yaml-vim
 call minpac#add('mrk21/yaml-vim')
 
+" Highlighting plugin
+call minpac#add('nvim-treesitter/nvim-treesitter')
 
 " call minpac#add('Shougo/deoplete.nvim')
 " let g:deoplete#enable_at_startup = 1

@@ -22,3 +22,7 @@ alias dmesg='dmesg --color=always'
 
 alias ssh.lauimlshcv22="ssh -o \"KexAlgorithms diffie-hellman-group-exchange-sha1,diffie-hellman-group1-sha1\" mone@lauimlshcv22.lau.dfo-mpo.ca"
 alias ssh.vsonkenxp163="ssh -o \"KexAlgorithms diffie-hellman-group-exchange-sha1,diffie-hellman-group1-sha1\" mone@vsonkenxp163.ent.dfo-mpo.ca"
+
+alias aps.dev.log.range="curl https://intra-l01-dev.ent.dfo-mpo.ca/logs/tomcat/catalina.out -r "
+alias aps.dev.log.size="curl -L -I https://intra-l01-dev.ent.dfo-mpo.ca/logs/tomcat/catalina.out"
+
