@@ -33,13 +33,11 @@ font xft:DejaVuSansMono Nerd Font:style=Book, Icons 8
 floating_modifier $mod
 
 # start a terminal
-#bindsym $mod+Return exec terminal
-bindsym $mod+Return exec i3-sensible-terminal
 
-
-# kill focused window
-bindsym $mod+Shift+q kill
-
+# bindsym $mod+Return exec /usr/bin/kitty
+bindsym $mod+Return exec i3-sensible-terminal 
+#
+# kill focused window bindsym $mod+Shift+q kill
 # start program launcher
 # dmenu
 # bindsym $mod+d exec --no-startup-id dmenu_recency
