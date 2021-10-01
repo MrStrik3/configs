@@ -1,4 +1,5 @@
 
+
 set nocompatible              " be iMproved, required, disabled old vim compatibility
 filetype off                  " required
 
@@ -59,11 +60,19 @@ call minpac#add('editorconfig/editorconfig-vim', {'type': 'opt'})
 
 call minpac#add('christoomey/vim-sort-motion', {'type': 'opt'})
 
-" Airline (statusbar) - https://github.com/vim-airline/vim-airline
-call minpac#add('vim-airline/vim-airline')
-call minpac#add('vim-airline/vim-airline-themes')
+" Airline (statusbar) - https://github.com/vim-
+" airline/vim-airline
+" call minpac#add('vim-airline/vim-airline')
+" call minpac#add('vim-airline/vim-airline-themes')
+"
+lua require('lualine').setup({ options = { theme = 'gruvbox' } })
 
-"  Startify - https://github.com/mhinz/vim-startify
+
+call minpac#add('hoob3rt/lualine.nvim')
+call minpac#add('kyazdani42/nvim-web-devicons')
+call minpac#add('ryanoasis/vim-devicons')
+
+""  Startify - https://github.com/mhinz/vim-startify
 call minpac#add('mhinz/vim-startify')
 
 " rainbow brackets
@@ -95,8 +104,9 @@ filetype plugin indent on
 syntax enable
 
 " ------- Themes settings--------
-let g:airline_powerline_fonts = 1
-let g:airline_theme='papercolor'
+" let g:airline_powerline_fonts = 1
+" let g:airline_theme='papercolor'
+
 
 " -- Markdown settings
 let vim_markdown_preview_toggle=1
@@ -172,4 +182,5 @@ set textwidth=0
 
 
 set directory=$HOME/.vim/swap/
+
 
