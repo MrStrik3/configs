@@ -14,7 +14,7 @@ call minpac#add('k-takata/minpac', {'type': 'opt'})
 call minpac#add('vim-jp/syntax-vim-ex')
 
 " Nerd file tree
-call minpac#add('scrooloose/nerdtree', { 'on': 'NERDTreeToggle' })
+" call minpac#add('scrooloose/nerdtree', { 'on': 'NERDTreeToggle' })
 
 " YAML files Shit - https://github.com/mrk21/yaml-vim
 call minpac#add('mrk21/yaml-vim')
