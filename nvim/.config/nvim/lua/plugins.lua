@@ -1,0 +1,80 @@
+
+-- This file can be loaded by calling `lua require('plugins')` from your init.vim
+
+local fn = vim.fn
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+if fn.empty(fn.glob(install_path)) > 0 then
+  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+end
+
+-- Only required if you have packer configured as `opt`
+-- vim.cmd [[packadd packer.nvim]]
+-- Only if your version of Neovim doesn't have https://github.com/neovim/neovim/pull/12632 merged
+-- vim._update_package_paths()
+
+return require('packer').startup(function()
+  -- Packer can manage itself
+  use 'wbthomason/packer.nvim'
+
+  -- TPOPE's plugins
+  use 'tpope/vim-sensible'
+  use 'tpope/vim-surround'
+  use 'tpope/vim-repeat'
+  -- use 'tpope/vim-commentary'
+  use 'tpope/vim-fugitive'
+  
+  -- YAML files Shit - https://github.com/mrk21/yaml-vim
+  use 'mrk21/yaml-vim'
+
+  -- https://github.com/terryma/vim-multiple-cursors
+  use 'terryma/vim-multiple-cursors'
+
+  use {
+    'hoob3rt/lualine.nvim',
+    requires = {'kyazdani42/nvim-web-devicons', opt = true }
+  }
+
+  -- Vim syntax highlighting
+  -- use 'vim-jp/syntax-vim-ex'
+  
+  -- Post-install/update hook with neovim command
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+
+  use 'psliwka/vim-smoothie'
+  -- use 'Yggdroot/indentLine'
+
+  use {
+      'lukas-reineke/indent-blankline.nvim',
+      config = function() require 'plugin-configs/indent-blankline' end
+  }
+
+
+  use 'jiangmiao/auto-pairs'
+  use 'frazrepo/vim-rainbow'
+
+  -- Comments management
+  use 'b3nj5m1n/kommentary'
+
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = { 'nvim-lua/plenary.nvim' }
+  }
+
+  -- use {
+    -- 'romgrk/barbar.nvim',
+    -- requires = {'kyazdani42/nvim-web-devicons'}
+  -- }
+   --folke/which-key.nvim
+    
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = { 'kyazdani42/nvim-web-devicons' }
+  }
+
+  if packer_bootstrap then
+    require('packer').sync()
+  end
+
+end)
+
+-- require('kommentary.config').use_extended_mappings()
