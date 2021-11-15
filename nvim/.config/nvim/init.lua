@@ -1,7 +1,7 @@
 require('plugins')
+require('settings')
 
 require('keymappings')
-require('settings')
 
 -- filetype plugin on
 vim.cmd('filetype plugin indent on')
@@ -46,8 +46,6 @@ vim.opt.tabstop = 2
 -- set backup " Backup a file before overriding it
 
 
-vim.g.mapleader = " "
-vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true }) -- Required on windows
 
 -- " ######## End Custom mappings
 -- " some goddamn plugin is messing this up?
