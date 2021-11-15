@@ -43,10 +43,11 @@ return require('packer').startup(function()
   use 'psliwka/vim-smoothie'
   -- use 'Yggdroot/indentLine'
 
-  use {
-      'lukas-reineke/indent-blankline.nvim',
-      config = function() require 'plugin-configs/indent-blankline' end
-  }
+  use 'lukas-reineke/indent-blankline.nvim'
+  -- use {
+      -- 'lukas-reineke/indent-blankline.nvim',
+      -- config = function() require 'plugin-configs/indent-blankline' end
+  -- }
 
 
   use 'jiangmiao/auto-pairs'
@@ -70,6 +71,24 @@ return require('packer').startup(function()
     'kyazdani42/nvim-tree.lua',
     requires = { 'kyazdani42/nvim-web-devicons' }
   }
+
+  use 'hashivim/vim-terraform'
+
+  --[[ #######################
+     Language
+    ####################### ]]
+    --[[ use {
+      'neovim/nvim-lspconfig',
+      config = function() require 'plugin-configs/nvim-lspconfig' end
+    } ]]
+    -- use {
+      -- 'weilbith/nvim-code-action-menu',
+      -- cmd = 'CodeActionMenu',
+    -- }
+    --[[ use {
+      'kabouzeid/nvim-lspinstall'
+    } ]]
+
 
   if packer_bootstrap then
     require('packer').sync()

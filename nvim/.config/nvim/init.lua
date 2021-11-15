@@ -1,4 +1,5 @@
 require('plugins')
+
 require('keymappings')
 require('settings')
 
@@ -46,6 +47,7 @@ vim.opt.tabstop = 2
 
 
 vim.g.mapleader = " "
+vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true }) -- Required on windows
 
 -- " ######## End Custom mappings
 -- " some goddamn plugin is messing this up?
@@ -55,3 +57,11 @@ vim.g.mapleader = " "
 -- vim.g.indentLine_char = '⦙'
 
 vim.cmd('autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab')
+
+local autocmds = {
+	highlight_yank = {
+		{"TextYankPost",     "*",   "silent! lua vim.highlight.on_yank {higroup='Substitute', on_visual=false, timeout=200}"};
+	};
+}
+require'utils'.nvim_create_augroups(autocmds);
+

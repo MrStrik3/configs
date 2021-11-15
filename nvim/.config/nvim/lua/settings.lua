@@ -11,12 +11,19 @@ vim.opt.listchars = {
 require("indent_blankline").setup {
     space_char_blankline = " ",
     char = "⦙",
-    show_current_context = true,
+    show_current_context = true
 }
-
+ --
 require('lualine').setup({
   options = { 
     icons_enabled = true,
     theme = 'gruvbox'
   }
 })
+
+--[[ require'lspinstall'.setup() -- important
+
+local servers = require'lspinstall'.installed_servers()
+for _, server in pairs(servers) do
+  require'lspconfig'[server].setup{}
+end ]]

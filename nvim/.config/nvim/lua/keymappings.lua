@@ -23,3 +23,7 @@ vim.api.nvim_set_keymap('n', '<Down>', '<Nop>', { noremap = true })
 -- Numbers
 vim.api.nvim_set_keymap('n', '<Leader>tn', ':set !number', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>trn', ':set !relativenumber', { noremap = true })
+
+
+-- Telescope mappings
+vim.api.nvim_set_keymap('n', '<Leader>tff', ':Telescope find_files', { noremap = true, silent = true })
