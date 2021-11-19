@@ -20,7 +20,7 @@ return require('packer').startup(function()
   use 'tpope/vim-sensible'
   use 'tpope/vim-surround'
   use 'tpope/vim-repeat'
-  -- use 'tpope/vim-commentary'
+
   use 'tpope/vim-fugitive'
   
   -- YAML files Shit - https://github.com/mrk21/yaml-vim
@@ -41,14 +41,8 @@ return require('packer').startup(function()
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
   use 'psliwka/vim-smoothie'
-  -- use 'Yggdroot/indentLine'
 
   use 'lukas-reineke/indent-blankline.nvim'
-  -- use {
-      -- 'lukas-reineke/indent-blankline.nvim',
-      -- config = function() require 'plugin-configs/indent-blankline' end
-  -- }
-
 
   use 'jiangmiao/auto-pairs'
   use 'frazrepo/vim-rainbow'
@@ -61,10 +55,10 @@ return require('packer').startup(function()
     requires = { 'nvim-lua/plenary.nvim' }
   }
 
-  -- use {
-    -- 'romgrk/barbar.nvim',
-    -- requires = {'kyazdani42/nvim-web-devicons'}
-  -- }
+  use {
+    'romgrk/barbar.nvim',
+    requires = {'kyazdani42/nvim-web-devicons'}
+  }
    --folke/which-key.nvim
     
   use {
@@ -77,18 +71,19 @@ return require('packer').startup(function()
   --[[ #######################
      Language
     ####################### ]]
-    --[[ use {
-      'neovim/nvim-lspconfig',
-      config = function() require 'plugin-configs/nvim-lspconfig' end
-    } ]]
+    use {
+      'neovim/nvim-lspconfig'
+      -- config = function() require 'nvim-lspconfig' end
+    }
     -- use {
       -- 'weilbith/nvim-code-action-menu',
       -- cmd = 'CodeActionMenu',
     -- }
-    --[[ use {
-      'kabouzeid/nvim-lspinstall'
-    } ]]
-
+    use 'williamboman/nvim-lsp-installer'
+    use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
+    use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
+    use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
+    use 'L3MON4D3/LuaSnip' -- Snippets plugin
 
   if packer_bootstrap then
     require('packer').sync()
@@ -96,4 +91,3 @@ return require('packer').startup(function()
 
 end)
 
--- require('kommentary.config').use_extended_mappings()

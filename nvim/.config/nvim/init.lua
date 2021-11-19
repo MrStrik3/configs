@@ -15,7 +15,7 @@ vim.g.vim_markdown_preview_use_xdg_open = 1
 
 vim.opt.number = true
 vim.opt.relativenumber = true
--- vim.opt.nowrap = true      -- dont wrap lines (see <leader>w)
+vim.opt.wrap = false      -- dont wrap lines 
 
 -- Search related
 vim.opt.hlsearch = true    -- highlight searches by default
@@ -45,14 +45,11 @@ vim.opt.tabstop = 2
 
 -- set backup " Backup a file before overriding it
 
-
+-- vim.opt.termguicolors = true
 
 -- " ######## End Custom mappings
 -- " some goddamn plugin is messing this up?
 -- set textwidth=0
-
--- Change the idenline haracter
--- vim.g.indentLine_char = '⦙'
 
 vim.cmd('autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab')
 
