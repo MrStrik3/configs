@@ -1,8 +1,8 @@
 #!/usr/bin/zsh
 #
 # Neovim's installation
-yay -S neovim-git
-git clone https://github.com/k-takata/minpac.git ~/.config/nvim/pack/minpac/opt/minpac
+yay -S neovim-git fzf
+# git clone https://github.com/k-takata/minpac.git ~/.config/nvim/pack/minpac/opt/minpac
 stow nvim
 
 
