@@ -26,8 +26,8 @@ return require('packer').startup(function()
   -- YAML files Shit - https://github.com/mrk21/yaml-vim
   use 'mrk21/yaml-vim'
 
-  -- https://github.com/terryma/vim-multiple-cursors
-  use 'terryma/vim-multiple-cursors'
+  -- Multi cursor shit
+  use 'mg979/vim-visual-multi'
 
   use {
     'hoob3rt/lualine.nvim',
@@ -59,6 +59,9 @@ return require('packer').startup(function()
     'romgrk/barbar.nvim',
     requires = {'kyazdani42/nvim-web-devicons'}
   }
+
+  use 'voldikss/vim-floaterm'
+
    --folke/which-key.nvim
     
   use {
