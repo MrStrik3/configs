@@ -15,6 +15,13 @@ interval=once
 command=scripts/battery.sh
 interval=10
 
+[updates]
+command=scripts/archupdate
+interval=600
+
+# [meteo]
+# command=scripts/meteo
+# interval=30
 [date]
 command=scripts/date
 interval=1800
@@ -23,10 +30,3 @@ interval=1800
 command=scripts/time
 interval=5
 
-[updates]
-command=scripts/archupdate
-interval=600
-
-[meteo]
-command=scripts/meteo
-interval=30

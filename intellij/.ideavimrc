@@ -1,5 +1,7 @@
 let mapleader = " "
 
+sethandler <C-W> a:ide
+
 " Configure the vim environment
 set relativenumber
 set number
