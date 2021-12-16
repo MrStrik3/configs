@@ -49,7 +49,6 @@ plugins=(
   npm
   sudo
   ng
-  zsh_reload
 )
 
 source $ZSH/oh-my-zsh.sh

@@ -35,7 +35,8 @@ floating_modifier $mod
 # start a terminal
 
 # bindsym $mod+Return exec /usr/bin/kitty
-bindsym $mod+Return exec i3-sensible-terminal 
+# bindsym $mod+Return exec i3-sensible-terminal 
+bindsym $mod+Return exec urxvtc
 #
 # kill focused window bindsym $mod+Shift+q kill
 # start program launcher
@@ -45,7 +46,10 @@ bindsym $mod+Return exec i3-sensible-terminal
 # rofi
 bindsym $mod+d exec --no-startup-id "rofi -show drun -font \\"DejaVu 9\\" -theme codeDark -run-shell-command '{terminal} -e \\" {cmd}; read -n 1 -s\\"'"
 # bindsym Mod1+space exec --no-startup-id "rofi -show drun -font \\"DejaVu 9\\" -run-shell-command '{terminal} -e \\" {cmd}; read -n 1 -s\\"'"
-bindsym Mod1+space exec --no-startup-id "rofi -show drun -font \\"DejaVu 9\\" -theme codeDark -run-shell-command '{terminal} -e \\" {cmd}; read -n 1 -s\\"'"
+# bindsym Mod1+space exec --no-startup-id "rofi -show drun -font \\"DejaVu 9\\" -theme codeDark -run-shell-command '{terminal} -e \\" {cmd}; read -n 1 -s\\"'"
+#
+bindsym Mod1+space exec --no-startup-id "rofi -show drun -font \\"DejaVu 9\\" -theme gruvbox-dark-hard -run-shell-command '{terminal} -e \\" {cmd}; read -n 1 -s\\"'"
+#
 #bindsym $mod+d exec rofi -show run -font "inconsolate 9" -fg "#ecedee" -bg "#121212" -hlfg "#95C7AE" -hlbg "#000000" -o 100
 
 # launch categorized menu
@@ -54,6 +58,7 @@ bindsym $mod+z exec --no-startup-id morc_menu
 # https://github.com/jceb/dex
 # Autostart the application of .config/autostart
 exec dex -ae i3
+exec urxvtd -q -o -f
 
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
@@ -278,91 +283,87 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-# Lock screen
-# bindsym $mod+9 exec --no-startup-id blurlock
-# SWITCH TO THIS ONE : betterlockscreen
-
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # Start variety - wllpaper changer
-exec_always --no-startup-id feh --bg-fill ~/.config/i3/space-stars.jpg
+exec_always --no-startup-id feh --bg-fill ~/.config/i3/apocalyptic-hipster.jpg
+# exec_always --no-startup-id feh --bg-fill ~/.config/i3/space-stars.jpg
 
-# exec --no-startup-id xautolock -time 10 -locker blurlock
-# exec --no-startup-id xautolock -time 10 -locker asciiquarium-lock
-#
+# set primary gruvbox colorscheme colors
+set $bg #282828
+set $red #cc241d
+set $green #98971a
+set $yellow #d79921
+set $blue #458588
+set $purple #b16286
+set $aqua #689d68
+set $gray #a89984
+set $darkgray #1d2021
 
-# Color palette used for the terminal ( ~/.Xresources file )
-set_from_resource $term_background background
-set_from_resource $term_foreground foreground
-set_from_resource $term_color0     color0
-set_from_resource $term_color1     color1
-set_from_resource $term_color2     color2
-set_from_resource $term_color3     color3
-set_from_resource $term_color4     color4
-set_from_resource $term_color5     color5
-set_from_resource $term_color6     color6
-set_from_resource $term_color7     color7
-set_from_resource $term_color8     color8
-set_from_resource $term_color9     color9
-set_from_resource $term_color10    color10
-set_from_resource $term_color11    color11
-set_from_resource $term_color12    color12
-set_from_resource $term_color13    color13
-set_from_resource $term_color14    color14
-set_from_resource $term_color15    color15
 
+# font used by i3 for titles and bars
+# font pango:Hack 8
+
+#start of window title bars & borders section
+
+# green gruvbox
+# class                 border|backgr|text|indicator|child_border
+#client.focused          $green $green $darkgray $purple $darkgray
+#client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
+#client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
+#client.urgent           $red $red $white $red $red
+
+# blue gruvbox
+# class                 border|backgr|text|indicator|child_border
+client.focused          $blue $blue $darkgray $purple $aqua
+# client.focused          $blue $blue $darkgray $purple $darkgray
+client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
+client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
+client.urgent           $red $red $white $red $red
+
+#end of window title bars & borders section
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
-        id bar-1
-        # output primary
-        mode hide
-        workspace_buttons yes
-        strip_workspace_numbers yes
+  id bar-1
+
+  # output primary
+  mode hide
+  workspace_buttons yes
+  strip_workspace_numbers yes
 	i3bar_command i3bar
-        status_command i3blocks -c ~/.config/i3blocks/config
+  status_command i3blocks -c ~/.config/i3blocks/config
 	position top
-        separator_symbol " :|: "
+  separator_symbol " :|: "
 
 	bindsym button1 exec /usr/bin/gsimplecal
 	bindsym button4 nop
 	bindsym button5 nop
-       
-        font xft:DejaVuSansMono Nerd Font:style=Book
 
-    colors {
-        background #222D31
-        statusline #F9FAF9
-        separator  #454947
+  # font xft:DejaVuSansMono Nerd Font:style=Book
+  font xft:DejaVuSansMono Nerd Font:style=Book, Noto Color Emoji:style=Regular
 
-#                          border  backgr. text
-        focused_workspace  #F9FAF9 #16a085 #292F34
-        active_workspace   #595B5B #353836 #FDF6E3
-        inactive_workspace #595B5B #222D31 #EEE8D5
-        binding_mode       #16a085 #2C2C2C #F9FAF9
-        urgent_workspace   #16a085 #FDF6E3 #E5201D
-    }
+  colors {
+    # bar background color
+    background $bg
+    # text color used for blocks that do not have a color specified.
+    statusline $yellow
+    # workspaces section            
+    #                    border  backgr. text
+    focused_workspace    $aqua $aqua $darkgray
+    inactive_workspace   $darkgray $darkgray $yellow
+    active_workspace     $darkgray $darkgray $yellow
+    urgent_workspace     $red $red $bg
+  }
  }
-
-
-# Theme colors
-# class                   border  backgr. text    indic.   child_border
-client.focused          #556064 #0000AA #80FFF9 #FDF6E3
-client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
-client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
-client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
-client.placeholder      #000000 #0c0c0c #ffffff #000000 
-
-# hide/unhide i3status bar
-bindsym $mod+m bar mode toggle
 
 #############################
 ### settings for i3-gaps: ###
 #############################
 
 # Set inner/outer gaps
-# gaps inner 14
+# gaps inner 148
 gaps inner 8
 gaps outer -2
 
