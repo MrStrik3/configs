@@ -16,6 +16,10 @@ return require('packer').startup(function()
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
+  -- gruvbox theme
+  use 'eddyekofo94/gruvbox-flat.nvim'
+
+  use 'iamcco/markdown-preview.nvim'
   -- TPOPE's plugins
   use 'tpope/vim-sensible'
   use 'tpope/vim-surround'
@@ -62,7 +66,9 @@ return require('packer').startup(function()
 
   use 'voldikss/vim-floaterm'
 
-   --folke/which-key.nvim
+  use 'folke/which-key.nvim'
+
+  use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
     
   use {
     'kyazdani42/nvim-tree.lua',

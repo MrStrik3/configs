@@ -1,11 +1,12 @@
 require('plugins')
 require('settings')
-
 require('keymappings')
 
 -- filetype plugin on
 vim.cmd('filetype plugin indent on')
 vim.cmd('syntax on')
+
+vim.cmd[[colorscheme gruvbox-flat]]
 
 -- " -- Markdown settings
 vim.g.vim_markdown_preview_toggle = 1

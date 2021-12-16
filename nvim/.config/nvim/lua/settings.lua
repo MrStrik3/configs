@@ -1,7 +1,7 @@
 vim.opt.list = true
 vim.opt.listchars = {
   tab = '→ ',
-  eol = '↲',
+  -- eol = '↲',
   nbsp = '␣',
   -- trail = '•',
   trail = '⋅',
@@ -26,9 +26,14 @@ require("indent_blankline").setup {
 require('lualine').setup({
   options = { 
     icons_enabled = true,
-    theme = 'gruvbox'
+    theme = 'gruvbox-flat'
+    -- theme = 'gruvbox'
   }
 })
+
+
+require('neogit').setup {
+}
 
 -- NVIM-TREE CONFIGS
 --[[ vim.g.nvim_tree_show_icons = {
