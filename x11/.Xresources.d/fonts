@@ -1,5 +1,5 @@
-URxvt.font:                           xft:FiraCode Nerd Font Mono:style=Regular:size=12, xft:symbola:size=12:minspace=False, xtf:Icons:size=12
-URxvt.boldFont:                       xft:FiraCode Nerd Font Mono:style=Bold:size=12, xft:symbola:size=12:minspace=False, xtf:Icons:size=12
+URxvt.font:                           xft:FiraCode Nerd Font Mono:style=Regular:size=12, xft:symbola:size=12:minspace=False, xtf:Icons:size=12, xft:xos4 Terminess Powerline:style=Regular
+URxvt.boldFont:                       xft:FiraCode Nerd Font Mono:style=Bold:size=12, xft:symbola:size=12:minspace=False, xtf:Icons:size=12, xft:xos4 Terminess Powerline:style=Regular
 
 /* URxvt.font:                           xft:DejaVuSansMono Nerd Font:style=Book:size=12, xft:symbola:size=12:minspace=False, xtf:Icons:size=12 */
 /* URxvt.boldFont:                       xft:DejaVuSansMono Nerd Font:style=Bold:size=12, xft:symbola:size=12:minspace=False, xtf:Icons:size=12 */

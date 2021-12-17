@@ -26,3 +26,4 @@ alias ssh.vsonkenxp163="ssh -o \"KexAlgorithms diffie-hellman-group-exchange-sha
 alias aps.dev.log.range="curl https://intra-l01-dev.ent.dfo-mpo.ca/logs/tomcat/catalina.out -r "
 alias aps.dev.log.size="curl -L -I https://intra-l01-dev.ent.dfo-mpo.ca/logs/tomcat/catalina.out"
 
+alias nvim.cfg="nvim ~/.config/nvim"

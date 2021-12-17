@@ -116,7 +116,7 @@ export FZF_BASE=/usr/bin
 # Azure cli autocomplete#
 autoload -U +X bashcompinit && bashcompinit
 export PATH=$PATH:/home/lefrancoisc/bin
-source '/home/lefrancoisc/lib/azure-cli/az.completion'
+# source '/home/lefrancoisc/lib/azure-cli/az.completion'
 
 alias zshUpdatePlugins="antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh"
 source ~/.zsh_plugins.sh
