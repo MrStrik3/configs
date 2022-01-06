@@ -14,6 +14,18 @@ vim.g.vim_markdown_preview_github = 1
 vim.g.vim_markdown_preview_use_xdg_open = 1
 
 
+-- Disable built-in plugins
+vim.g.loaded_gzip         = 1
+vim.g.loaded_tar          = 1
+vim.g.loaded_tarPlugin    = 1
+vim.g.loaded_zipPlugin    = 1
+vim.g.loaded_2html_plugin = 1
+vim.g.loaded_netrw        = 1
+vim.g.loaded_netrwPlugin  = 1
+vim.g.loaded_matchit      = 1
+vim.g.loaded_matchparen   = 1
+vim.g.loaded_spec         = 1
+
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.wrap = false      -- dont wrap lines 
@@ -33,10 +45,6 @@ vim.opt.history = 1000               -- store lots of :cmdline history
 
 -- let g:is_posix = 1  " vim's default is archaic bourne shell, bring it up to the 90s.
 
--- set visualbell      " don't beep constantly, it's annoying.
--- set t_vb=           " and don't flash the screen either (terminal anyway...
--- set guioptions-=T   " hide gvim's toolbar by default
-
 vim.opt.expandtab = true     -- use spaces instead of tabs
 vim.opt.smarttab = true       -- use shiftwidth when hitting tab instead of sts (?) 
 vim.opt.autoindent = true    -- try to put the right amount of space at the beginning of a new line
@@ -44,12 +52,13 @@ vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
 vim.opt.tabstop = 2
 
--- set backup " Backup a file before overriding it
+-- Backup a file before overriding it
+vim.opt.backup = false 
 
 -- vim.opt.termguicolors = true
 
--- " ######## End Custom mappings
--- " some goddamn plugin is messing this up?
+-- ######## End Custom mappings
+-- some goddamn plugin is messing this up?
 -- set textwidth=0
 
 vim.cmd('autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab')

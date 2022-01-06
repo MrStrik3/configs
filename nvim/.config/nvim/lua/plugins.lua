@@ -16,10 +16,14 @@ return require('packer').startup(function()
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
+  use 'tweekmonster/startuptime.vim'
+
   -- gruvbox theme
   use 'eddyekofo94/gruvbox-flat.nvim'
 
-  use 'iamcco/markdown-preview.nvim'
+  -- use 'iamcco/markdown-preview.nvim'
+  use 'davidgranstrom/nvim-markdown-preview'
+
   -- TPOPE's plugins
   use 'tpope/vim-sensible'
   use 'tpope/vim-surround'
@@ -38,11 +42,8 @@ return require('packer').startup(function()
     requires = {'kyazdani42/nvim-web-devicons', opt = true }
   }
 
-  -- Vim syntax highlighting
-  -- use 'vim-jp/syntax-vim-ex'
-  
   -- Post-install/update hook with neovim command
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  -- use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
   use 'psliwka/vim-smoothie'
 
@@ -75,24 +76,22 @@ return require('packer').startup(function()
     requires = { 'kyazdani42/nvim-web-devicons' }
   }
 
-  use 'hashivim/vim-terraform'
+  -- use 'hashivim/vim-terraform'
 
   --[[ #######################
-     Language
+     Languages
     ####################### ]]
-    use {
-      'neovim/nvim-lspconfig'
-      -- config = function() require 'nvim-lspconfig' end
-    }
-    -- use {
-      -- 'weilbith/nvim-code-action-menu',
-      -- cmd = 'CodeActionMenu',
-    -- }
-    use 'williamboman/nvim-lsp-installer'
-    use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
-    use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
-    use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
-    use 'L3MON4D3/LuaSnip' -- Snippets plugin
+  use 'neovim/nvim-lspconfig'
+  use 'williamboman/nvim-lsp-installer'
+  use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
+  use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
+  use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
+  use 'L3MON4D3/LuaSnip' -- Snippets plugin
+
+-- use {
+  -- 'weilbith/nvim-code-action-menu',
+  -- cmd = 'CodeActionMenu',
+  -- }
 
   if packer_bootstrap then
     require('packer').sync()

@@ -153,15 +153,8 @@ wk.register({
   ["<leader>f"] = {
     name = "+file",
     f = { "<cmd>Telescope find_files<cr>", "Find File" },
-    e = { "<cmd>NvimTreeOpen<cr>", "File Explorer" },
-    r = { "<cmd>Telescope oldfiles<cr>", "Open Recent Files" },
+    e = { ":NvimTreeOpen<cr>", "File Explorer" },
+    r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
     n = { "<cmd>enew<cr>", "New File" }
-  },
-  ["<leader>t"] = {
-    name = "+terminal",
-    n = {"<cmd>:FloatermNew<cr>", "Create New Terminal"},
-    t = {"<cmd>:FloatermToggle<cr>", "Toggle Terminal"},
-    h = {"<cmd>:FloatermHide<cr>", "Hide Terminal"},
-    k = {"<cmd>:FloaterKill<cr>", "kill Terminal"},
   }
 })
