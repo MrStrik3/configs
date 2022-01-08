@@ -1,13 +1,3 @@
-vim.opt.list = true
-vim.opt.listchars = {
-  tab = '→ ',
-  -- eol = '↲',
-  nbsp = '␣',
-  -- trail = '•',
-  trail = '⋅',
-  extends = '⟩',
-  precedes = '⟨',
-}
 
 require("indent_blankline").setup {
     space_char_blankline = " ",
@@ -31,61 +21,11 @@ require('lualine').setup({
   }
 })
 
+require('nvim-autopairs').setup {}
+
+require('Comment').setup()
 
 require('neogit').setup {
-}
-
--- NVIM-TREE CONFIGS
---[[ vim.g.nvim_tree_show_icons = {
-   git: 1,
-   folders: 1,
-   files: 1,
-   folder_arrows: 1,
-}
-vim.g.nvim_tree_icons = {
-  default: '',
-  symlink: '',
-  git: {
-    unstaged: "✗",
-    staged: "✓",
-    unmerged: "",
-    renamed: "➜",
-    untracked: "★",
-    deleted: "",
-    ignored: "◌"
-  },
-  folder: {
-     arrow_open: "",
-     arrow_closed: "",
-     default: "",
-     open: "",
-     empty: "",
-     empty_open: "",
-     symlink: "",
-     symlink_open: "",
-  }
-} ]]
-require'nvim-tree'.setup {
-
-}
-
--- TERRAFORM
-vim.g.terraform_fmt_on_save = 0
-
--- KOMMENTARY CONFIGS - https://github.com/b3nj5m1n/kommentary
-local kommentary_cfg = require('kommentary.config')
-kommentary_cfg.use_extended_mappings()
-kommentary_cfg.configure_language("default", {
-    prefer_single_line_comments = true,
-    use_consistent_indentation = true
-})
-
--- BARBAR CONFIGS
-vim.g.bufferline = {
-  closable = false,
-  icons = true,
-  icon_custom_colors = true
-
 }
 
 

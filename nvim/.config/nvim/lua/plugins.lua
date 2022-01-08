@@ -17,15 +17,15 @@ return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
 
   use 'tweekmonster/startuptime.vim'
+  use 'lewis6991/impatient.nvim' -- Speed up start time
 
   -- gruvbox theme
   use 'eddyekofo94/gruvbox-flat.nvim'
 
-  -- use 'iamcco/markdown-preview.nvim'
   use 'davidgranstrom/nvim-markdown-preview'
 
   -- TPOPE's plugins
-  use 'tpope/vim-sensible'
+-- use 'tpope/vim-sensible' <-- to be convert to manual sets
   use 'tpope/vim-surround'
   use 'tpope/vim-repeat'
 
@@ -49,11 +49,12 @@ return require('packer').startup(function()
 
   use 'lukas-reineke/indent-blankline.nvim'
 
-  use 'jiangmiao/auto-pairs'
+  -- use 'jiangmiao/auto-pairs'
+  use 'windwp/nvim-autopairs'
   use 'frazrepo/vim-rainbow'
 
   -- Comments management
-  use 'b3nj5m1n/kommentary'
+  use 'numToStr/Comment.nvim'
 
   use {
     'nvim-telescope/telescope.nvim',
