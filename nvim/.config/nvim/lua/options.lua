@@ -1,3 +1,8 @@
+
+vim.cmd('set complete-=i')
+vim.cmd('set nrformats-=octal')
+vim.cmd('set formatoptions+=j') -- Delete comment character when joining commented lines
+
 local options = {
   number = true,
   relativenumber = true,
@@ -5,18 +10,25 @@ local options = {
 
   -- Search related
   hlsearch = true,    -- highlight searches by default
+  incsearch = true,
   ignorecase = true,
   smartcase = true,
 
   inccommand = 'nosplit', -- Incremental live completion
   laststatus = 2,      -- always display status line even if only one window is visible.
   updatetime = 1000,   -- reduce updatetime so current tag in taglist is highlighted faster
+  ttimeout = true,
+  ttimeoutlen = 100,
 
   wildignore= '*.o,*.obj,*/tmp/*,u.so,*~',  -- stuff to ignore when tab completing
   backspace= 'indent,eol,start', -- allow backspacing over everything in insert mode
   history = 1000,               -- store lots of :cmdline history
 
   -- let g:is_posix = 1  " vim's default is archaic bourne shell, bring it up to the 90s.
+
+  ruler = true,
+  wildmenu = true,
+  autoread = true,
 
   expandtab = true,     -- use spaces instead of tabs
   smarttab = true,       -- use shiftwidth when hitting tab instead of sts (?) 
@@ -38,7 +50,7 @@ local options = {
   -- Backup a file before overriding it
   backup = false, 
 
-  -- termguicolors = true
+  termguicolors = true,
 
   -- some goddamn plugin is messing this up?
   -- set textwidth=0

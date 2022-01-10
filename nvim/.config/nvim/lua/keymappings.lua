@@ -18,67 +18,49 @@ map('n', ':Wq!', ':wq!', {})
 map('n', ':WQ!', ':wq!', {})
 map('n', ':W', ':w', { })
 
--- " Add insert new line above or after
+-- Add insert new line above or after
 map('n', '<S-Enter>', 'O<Esc>j', { })
 map('n', '<C-Enter>', 'o<Esc>k', { })
 map('n', '<Enter>', 'i<Enter><Esc>', { })
 
--- " Break the Habit of Reaching for the Arrow Keys
+-- Break the Habit of Reaching for the Arrow Keys
 map('n', '<Up>', '<Nop>', opts)
 map('n', '<Right>', '<Nop>', opts)
 map('n', '<Left>', '<Nop>', opts)
 map('n', '<Down>', '<Nop>', opts)
 
+-- Window movement
+map('n', '<c-h>', '<c-w>h', {})
+map('n', '<c-j>', '<c-w>j', {})
+map('n', '<c-k>', '<c-w>k', {})
+map('n', '<c-l>', '<c-w>l', {})
 
--- Numbers
-map('n', '<Leader>tn', ':set !number', opts)
-map('n', '<Leader>trn', ':set !relativenumber', opts)
-
-
--- Telescope mappings
--- map('n', '<Leader>ff', ':Telescope find_files<cr>', opts)
--- map('n', '<Leader>fe', ':NvimTreeOpen<cr>', opts)
-
-
-
-
--- Terraform 
--- map('n', ':tfp', ':Terraform plan<cr>', {})
--- map('n', ':tff', ':Terraform fmt<cr>', {})
--- map('n', ':tfv', ':Terraform validate<cr>', {})
-
--- Barbar tab manager
+-- Bufferline
 -- Move to previous/next
-map('n', '<A-,>', ':BufferPrevious<CR>', opts)
-map('n', '<A-.>', ':BufferNext<CR>', opts)
+map('n', '<A-,>', ':BufferLineCyclePrev<CR>', opts)
+map('n', '<A-.>', ':BufferLineCycleNext<CR>', opts)
 -- Re-order to previous/next
 map('n', '<A-<>', ':BufferMovePrevious<CR>', opts)
 map('n', '<A->>', ' :BufferMoveNext<CR>', opts)
 -- Goto buffer in position...
-map('n', '<A-1>', ':BufferGoto 1<CR>', opts)
-map('n', '<A-2>', ':BufferGoto 2<CR>', opts)
-map('n', '<A-3>', ':BufferGoto 3<CR>', opts)
-map('n', '<A-4>', ':BufferGoto 4<CR>', opts)
-map('n', '<A-5>', ':BufferGoto 5<CR>', opts)
-map('n', '<A-6>', ':BufferGoto 6<CR>', opts)
-map('n', '<A-7>', ':BufferGoto 7<CR>', opts)
-map('n', '<A-8>', ':BufferGoto 8<CR>', opts)
-map('n', '<A-9>', ':BufferGoto 9<CR>', opts)
-map('n', '<A-0>', ':BufferLast<CR>', opts)
+map('n', '<A-1>', ':BufferLineGoToBuffer 1<CR>', opts)
+map('n', '<A-2>', ':BufferLineGoToBuffer 2<CR>', opts)
+map('n', '<A-3>', ':BufferLineGoToBuffer 3<CR>', opts)
+map('n', '<A-4>', ':BufferLineGoToBuffer 4<CR>', opts)
+map('n', '<A-5>', ':BufferLineGoToBuffer 5<CR>', opts)
+map('n', '<A-6>', ':BufferLineGoToBuffer 6<CR>', opts)
+map('n', '<A-7>', ':BufferLineGoToBuffer 7<CR>', opts)
+map('n', '<A-8>', ':BufferLineGoToBuffer 8<CR>', opts)
+map('n', '<A-9>', ':BufferLineGoToBuffer 9<CR>', opts)
+-- map('n', '<A-0>', ':BufferLast<CR>', opts)
 -- Close buffer
-map('n', '<A-c>', ':BufferClose<CR>', opts)
--- Wipeout buffer
---                 :BufferWipeout<CR>
+map('n', '<A-c>', ':BufferLineClose<CR>', opts)
 -- Close commands
 --                 :BufferCloseAllButCurrent<CR>
 --                 :BufferCloseBuffersLeft<CR>
 --                 :BufferCloseBuffersRight<CR>
 -- Magic buffer-picking mode
-map('n', '<C-p>', ':BufferPick<CR>', opts)
--- Sort automatically by...
-map('n', '<Leader>bb', ':BufferOrderByBufferNumber<CR>', opts)
-map('n', '<Leader>bd', ':BufferOrderByDirectory<CR>', opts)
-map('n', '<Leader>bl', ':BufferOrderByLanguage<CR>', opts)
+map('n', '<C-p>', ':BufferLinePick<CR>', opts)
 
 -- Which-key configs
 
@@ -153,8 +135,15 @@ wk.register({
   ["<leader>f"] = {
     name = "+file",
     f = { "<cmd>Telescope find_files<cr>", "Find File" },
-    e = { ":NvimTreeOpen<cr>", "File Explorer" },
+    e = { "<cmd>NvimTreeOpen<cr>", "File Explorer" },
     r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
     n = { "<cmd>enew<cr>", "New File" }
+  },
+
+  ["<leader>o"] = {
+    n = { "<cmd>set number! <cr><cmd>set relativenumber!<cr>", "Toggle numbers"},
+  },
+  ["<leader>p"] = {
+    m = { ":PackerLoad vim-visual-multi" }
   }
 })
