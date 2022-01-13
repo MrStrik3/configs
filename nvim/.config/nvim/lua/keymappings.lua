@@ -35,32 +35,46 @@ map('n', '<c-j>', '<c-w>j', {})
 map('n', '<c-k>', '<c-w>k', {})
 map('n', '<c-l>', '<c-w>l', {})
 
--- Bufferline
--- Move to previous/next
-map('n', '<A-,>', ':BufferLineCyclePrev<CR>', opts)
-map('n', '<A-.>', ':BufferLineCycleNext<CR>', opts)
--- Re-order to previous/next
-map('n', '<A-<>', ':BufferMovePrevious<CR>', opts)
-map('n', '<A->>', ' :BufferMoveNext<CR>', opts)
--- Goto buffer in position...
-map('n', '<A-1>', ':BufferLineGoToBuffer 1<CR>', opts)
-map('n', '<A-2>', ':BufferLineGoToBuffer 2<CR>', opts)
-map('n', '<A-3>', ':BufferLineGoToBuffer 3<CR>', opts)
-map('n', '<A-4>', ':BufferLineGoToBuffer 4<CR>', opts)
-map('n', '<A-5>', ':BufferLineGoToBuffer 5<CR>', opts)
-map('n', '<A-6>', ':BufferLineGoToBuffer 6<CR>', opts)
-map('n', '<A-7>', ':BufferLineGoToBuffer 7<CR>', opts)
-map('n', '<A-8>', ':BufferLineGoToBuffer 8<CR>', opts)
-map('n', '<A-9>', ':BufferLineGoToBuffer 9<CR>', opts)
--- map('n', '<A-0>', ':BufferLast<CR>', opts)
--- Close buffer
-map('n', '<A-c>', ':BufferLineClose<CR>', opts)
--- Close commands
---                 :BufferCloseAllButCurrent<CR>
---                 :BufferCloseBuffersLeft<CR>
---                 :BufferCloseBuffersRight<CR>
--- Magic buffer-picking mode
-map('n', '<C-p>', ':BufferLinePick<CR>', opts)
+-- -- Bufferline
+-- -- Move to previous/next
+-- map('n', '<A-,>', ':BufferLineCyclePrev<CR>', opts)
+-- map('n', '<A-.>', ':BufferLineCycleNext<CR>', opts)
+-- -- Re-order to previous/next
+-- map('n', '<A-<>', ':BufferMovePrevious<CR>', opts)
+-- map('n', '<A->>', ' :BufferMoveNext<CR>', opts)
+-- -- Goto buffer in position...
+-- map('n', '<A-1>', ':BufferLineGoToBuffer 1<CR>', opts)
+-- map('n', '<A-2>', ':BufferLineGoToBuffer 2<CR>', opts)
+-- map('n', '<A-3>', ':BufferLineGoToBuffer 3<CR>', opts)
+-- map('n', '<A-4>', ':BufferLineGoToBuffer 4<CR>', opts)
+-- map('n', '<A-5>', ':BufferLineGoToBuffer 5<CR>', opts)
+-- map('n', '<A-6>', ':BufferLineGoToBuffer 6<CR>', opts)
+-- map('n', '<A-7>', ':BufferLineGoToBuffer 7<CR>', opts)
+-- map('n', '<A-8>', ':BufferLineGoToBuffer 8<CR>', opts)
+-- map('n', '<A-9>', ':BufferLineGoToBuffer 9<CR>', opts)
+-- -- map('n', '<A-0>', ':BufferLast<CR>', opts)
+-- -- Close buffer
+-- map('n', '<A-c>', ':BufferLineClose<CR>', opts)
+-- -- Close commands
+-- --                 :BufferCloseAllButCurrent<CR>
+-- --                 :BufferCloseBuffersLeft<CR>
+-- --                 :BufferCloseBuffersRight<CR>
+-- -- Magic buffer-picking mode
+-- map('n', '<C-p>', ':BufferLinePick<CR>', opts)
+
+-- Cokeline
+-- -- Move to previous/next
+map('n', '<A-,>', '<plug>(cokeline-focus-prev)', { silent = true })
+map('n', '<A-.>', '<plug>(cokeline-focus-next)', { silent = true })
+-- -- Re-order to previous/next
+map('n', '<A-<>', '<plug>(cokeline-switch-prev)', { silent = true })
+map('n', '<A->>', '<plug>(cokeline-switch-prev)', { silent = true })
+
+-- -- Goto buffer in position...
+for i = 1,9 do
+  map('n', ('<A-%s>').format(i), ('<plug>(cokeline-focus-%s)'):format(i), { silent = true })
+end
+
 
 -- Which-key configs
 
@@ -135,15 +149,19 @@ wk.register({
   ["<leader>f"] = {
     name = "+file",
     f = { "<cmd>Telescope find_files<cr>", "Find File" },
-    e = { "<cmd>NvimTreeOpen<cr>", "File Explorer" },
+    e = { "<cmd>NvimTreeToggle<cr>", "File Explorer" },
     r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
     n = { "<cmd>enew<cr>", "New File" }
   },
 
+  ["<leader>g"] = {
+    a = { "<cmd>Git add .<cr>", "Add changes to next commit"},
+  },
   ["<leader>o"] = {
-    n = { "<cmd>set number! <cr><cmd>set relativenumber!<cr>", "Toggle numbers"},
+    n = { "<cmd>set number! <cr><cmd>set relativenumber!<cr>", "Toggle numbers"}
   },
   ["<leader>p"] = {
-    m = { ":PackerLoad vim-visual-multi" }
+    m = { "<cmd>PackerLoad vim-visual-multi<cr>", "Activate multi-cursor" },
+    l = { "<cmd>PackerLoad nvim-lspconfig<cr>", "Activate nvim-lspconfig" }
   }
 })

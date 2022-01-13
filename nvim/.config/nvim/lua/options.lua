@@ -4,6 +4,8 @@ vim.cmd('set nrformats-=octal')
 vim.cmd('set formatoptions+=j') -- Delete comment character when joining commented lines
 
 local options = {
+  completeopt= "menu,menuone,noselect",
+
   number = true,
   relativenumber = true,
   wrap = false,      -- dont wrap lines 

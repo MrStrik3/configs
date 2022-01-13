@@ -12,7 +12,7 @@ end
 -- vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup({function()
-  -- Packer can manage itself
+
   use 'wbthomason/packer.nvim'
 
   use 'nathom/filetype.nvim' 
@@ -50,7 +50,11 @@ return require('packer').startup({function()
 
   -- Post-install/update hook with neovim command
   -- use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-  use { 'nvim-treesitter/nvim-treesitter' }
+  use { 
+    'nvim-treesitter/nvim-treesitter', 
+    requires = 'p00f/nvim-ts-rainbow', 
+    config = [[require('config.tree_sitter')]] 
+  }
 
   use 'psliwka/vim-smoothie'
 
@@ -81,11 +85,17 @@ return require('packer').startup({function()
   --   requires = {'kyazdani42/nvim-web-devicons'}
   -- }
   -- Buffer management
+  -- use {
+  --   'akinsho/nvim-bufferline.lua',
+  --   requires = 'kyazdani42/nvim-web-devicons',
+  --   config = [[require('config.bufferline')]]
+  --   -- event = 'User ActuallyEditing',
+  -- }
+
   use {
-    'akinsho/nvim-bufferline.lua',
-    requires = 'kyazdani42/nvim-web-devicons',
-    config = [[require('config.bufferline')]]
-    -- event = 'User ActuallyEditing',
+    'noib3/nvim-cokeline',
+    requires = 'kyazdani42/nvim-web-devicons', -- If you want devicons
+    config = [[require('config.nvimcokeline')]]
   }
  
   use { 'voldikss/vim-floaterm', opt = true }
@@ -93,6 +103,7 @@ return require('packer').startup({function()
   use 'folke/which-key.nvim'
 
   use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim', 
+    opt = true,
     config = function() require('neogit').setup() end
   }
     
@@ -107,16 +118,17 @@ return require('packer').startup({function()
   --[[ #######################
      Languages
     ####################### ]]
+  use { 'hrsh7th/nvim-cmp' } -- Autocompletion plugin
+  use { 'hrsh7th/cmp-nvim-lsp' }  -- LSP source for nvim-cmp
+  use { 'saadparwaiz1/cmp_luasnip' } -- Snippets source for nvim-cmp
+  use { 'L3MON4D3/LuaSnip' } -- Snippets plugin
   use { 
     'neovim/nvim-lspconfig',
     opt = true,
     requires = { 
-      {'williamboman/nvim-lsp-installer' },
-      { 'hrsh7th/nvim-cmp' }, -- Autocompletion plugin
-      { 'hrsh7th/cmp-nvim-lsp' },  -- LSP source for nvim-cmp
-      { 'saadparwaiz1/cmp_luasnip' }, -- Snippets source for nvim-cmp
-      { 'L3MON4D3/LuaSnip' } -- Snippets plugin
-    }
+      {'williamboman/nvim-lsp-installer', config = [[require('config.lspinstaller')]] },
+    },
+    config = [[require('config.lspconfig')]]
   }
 -- use {
   -- 'weilbith/nvim-code-action-menu',
@@ -131,6 +143,10 @@ end,
 config = {
   display = {
     open_fn = require('packer.util').float,
+  },
+  profile = {
+    enable = true,
+    threshold = 1 -- the amount in ms that a plugins load time must be over for it to be included in the profile
   }
 }})
 
