@@ -7,7 +7,6 @@ require('keymappings')
 vim.cmd('filetype plugin indent on')
 vim.cmd('syntax on')
 
--- vim.cmd[[colorscheme gruvbox-flat]]
 vim.cmd('colorscheme gruvbox-flat')
 
 -- " -- Markdown settings

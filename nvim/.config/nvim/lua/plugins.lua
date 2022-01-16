@@ -45,16 +45,19 @@ return require('packer').startup({function()
   }
 
   -- Post-install/update hook with neovim command
+
+  use { 'p00f/nvim-ts-rainbow', after = 'nvim-treesitter' }
+
   use {
     'nvim-treesitter/nvim-treesitter',
-    -- config    = [[require('config.tree_sitter')]],
+     config    = [[require('config.tree_sitter')]],
     cmd       =  ':TSUpdate'
   }
-  use 'p00f/nvim-ts-rainbow'
-  -- use {
-  --   'nvim-treesitter/nvim-treesitter-textobjects',
-  --   -- config = function() require'nvim-treesitter.configs'.setup {} end
-  -- }
+  use {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    after = 'nvim-treesitter'
+    -- config = function() require'nvim-treesitter.configs'.setup {} end
+  }
 
   use 'psliwka/vim-smoothie'
 
