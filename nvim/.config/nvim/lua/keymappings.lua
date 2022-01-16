@@ -1,7 +1,7 @@
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 local wk = require('which-key')
-
+--
 map('n', '<Space>', '<Nop>', { noremap = true }) -- Required on windows
 vim.g.mapleader = ' '
 
@@ -74,10 +74,7 @@ map('n', '<A->>', '<plug>(cokeline-switch-prev)', { silent = true })
 for i = 1,9 do
   map('n', ('<A-%s>').format(i), ('<plug>(cokeline-focus-%s)'):format(i), { silent = true })
 end
-
-
 -- Which-key configs
-
 wk.setup {
   plugins = {
     marks = true, -- shows a list of your marks on ' and `

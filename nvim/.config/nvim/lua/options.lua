@@ -1,4 +1,3 @@
-
 vim.cmd('set complete-=i')
 vim.cmd('set nrformats-=octal')
 vim.cmd('set formatoptions+=j') -- Delete comment character when joining commented lines
@@ -8,7 +7,7 @@ local options = {
 
   number = true,
   relativenumber = true,
-  wrap = false,      -- dont wrap lines 
+  wrap = false,      -- dont wrap lines
 
   -- Search related
   hlsearch = true,    -- highlight searches by default
@@ -26,14 +25,12 @@ local options = {
   backspace= 'indent,eol,start', -- allow backspacing over everything in insert mode
   history = 1000,               -- store lots of :cmdline history
 
-  -- let g:is_posix = 1  " vim's default is archaic bourne shell, bring it up to the 90s.
-
   ruler = true,
   wildmenu = true,
   autoread = true,
 
   expandtab = true,     -- use spaces instead of tabs
-  smarttab = true,       -- use shiftwidth when hitting tab instead of sts (?) 
+  smarttab = true,       -- use shiftwidth when hitting tab instead of sts (?)
   autoindent = true,    -- try to put the right amount of space at the beginning of a new line
   smartindent = true,
   shiftwidth = 2,
@@ -43,14 +40,15 @@ local options = {
   swapfile = false,
   cursorline = true,                       -- highlight the current line
 
-  scrolloff = 8,                          
+  scrolloff = 8,
   sidescrolloff = 8,
 
-  showmode = false,                        -- we don't need to see things like -- INSERT -- anymore
- 
-  mouse = "a",                             -- allow the mouse to be used in neovim
+  showmode = false,                        -- we dont need to see things like -- INSERT -- anymore
+
+  -- mouse = "a",                             -- allow the mouse to be used in neovim
+
   -- Backup a file before overriding it
-  backup = false, 
+  backup = false,
 
   termguicolors = true,
 
@@ -73,4 +71,3 @@ local options = {
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
-

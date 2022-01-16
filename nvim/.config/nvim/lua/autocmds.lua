@@ -32,4 +32,8 @@ vim.cmd [[
     autocmd BufWritePost plugins.lua source <afile> | PackerCompile
   augroup end
 
+  augroup _remove_trailing_whitespaces
+    autocmd!
+    autocmd BufWritePre * :%s/\s\+$//e
+  augroup end
 ]]

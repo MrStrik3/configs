@@ -1,6 +1,3 @@
-
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
-
 local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -15,7 +12,7 @@ return require('packer').startup({function()
 
   use 'wbthomason/packer.nvim'
 
-  use 'nathom/filetype.nvim' 
+  use 'nathom/filetype.nvim'
 
   use 'tweekmonster/startuptime.vim'
   use 'lewis6991/impatient.nvim' -- Speed up start time
@@ -29,16 +26,15 @@ return require('packer').startup({function()
   use 'tpope/vim-surround'
   use 'tpope/vim-repeat'
 
-  -- Git 
-  use 'tpope/vim-fugitive' 
-  
+  -- Git
+  use 'tpope/vim-fugitive'
+
   -- YAML files Shit - https://github.com/mrk21/yaml-vim
   use { 'mrk21/yaml-vim', opt = true }
 
   -- Multi cursor shit
   use {
     'mg979/vim-visual-multi',
-    opt = true
   }
 
   -- Status line
@@ -49,25 +45,28 @@ return require('packer').startup({function()
   }
 
   -- Post-install/update hook with neovim command
-  -- use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-  use { 
-    'nvim-treesitter/nvim-treesitter', 
-    requires = 'p00f/nvim-ts-rainbow', 
-    config = [[require('config.tree_sitter')]] 
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    -- config    = [[require('config.tree_sitter')]],
+    cmd       =  ':TSUpdate'
   }
+  use 'p00f/nvim-ts-rainbow'
+  -- use {
+  --   'nvim-treesitter/nvim-treesitter-textobjects',
+  --   -- config = function() require'nvim-treesitter.configs'.setup {} end
+  -- }
 
   use 'psliwka/vim-smoothie'
 
-  use { 
+  use {
     'lukas-reineke/indent-blankline.nvim',
     config = [[require('config.indent_blankline')]]
   }
 
-  use { 
-    'windwp/nvim-autopairs', 
-    config = function() require('nvim-autopairs').setup() end 
-  }
-  use 'frazrepo/vim-rainbow'
+  use {
+    'windwp/nvim-autopairs',
+    config = function() require('nvim-autopairs').setup() end }
+  -- use 'frazrepo/vim-rainbow'
 
   -- Comments management
   use {
@@ -80,10 +79,6 @@ return require('packer').startup({function()
     requires = { 'nvim-lua/plenary.nvim' }
   }
 
-  -- use {
-  --   'romgrk/barbar.nvim',
-  --   requires = {'kyazdani42/nvim-web-devicons'}
-  -- }
   -- Buffer management
   -- use {
   --   'akinsho/nvim-bufferline.lua',
@@ -97,47 +92,48 @@ return require('packer').startup({function()
     requires = 'kyazdani42/nvim-web-devicons', -- If you want devicons
     config = [[require('config.nvimcokeline')]]
   }
- 
+
   use { 'voldikss/vim-floaterm', opt = true }
 
   use 'folke/which-key.nvim'
 
-  use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim', 
-    opt = true,
-    config = function() require('neogit').setup() end
-  }
-    
-  use {
-    'kyazdani42/nvim-tree.lua',
-    requires = { 'kyazdani42/nvim-web-devicons' },
-    config = [[require('config.nvim_tree')]]
-  }
+  use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim',
+  opt = true,
+  config = function() require('neogit').setup() end
+}
 
-  -- use 'hashivim/vim-terraform'
+use {
+  'kyazdani42/nvim-tree.lua',
+  requires = { 'kyazdani42/nvim-web-devicons' },
+  config = [[require('config.nvim_tree')]]
+}
 
-  --[[ #######################
-     Languages
-    ####################### ]]
-  use { 'hrsh7th/nvim-cmp' } -- Autocompletion plugin
-  use { 'hrsh7th/cmp-nvim-lsp' }  -- LSP source for nvim-cmp
-  use { 'saadparwaiz1/cmp_luasnip' } -- Snippets source for nvim-cmp
-  use { 'L3MON4D3/LuaSnip' } -- Snippets plugin
-  use { 
-    'neovim/nvim-lspconfig',
-    opt = true,
-    requires = { 
-      {'williamboman/nvim-lsp-installer', config = [[require('config.lspinstaller')]] },
-    },
-    config = [[require('config.lspconfig')]]
-  }
+-- use 'hashivim/vim-terraform'
+
+use { 'norcalli/nvim-colorizer.lua', opt = true, config = function() require'colorizer'.setup() end }
+
+--[[ #######################
+LSP -Languages
+####################### ]]
+use { 'williamboman/nvim-lsp-installer', config = [[require('config.lspinstaller')]] }
+use { 'hrsh7th/nvim-cmp' } -- Autocompletion plugin
+use { 'hrsh7th/cmp-nvim-lsp' }  -- LSP source for nvim-cmp
+-- use { 'saadparwaiz1/cmp_luasnip' } -- Snippets source for nvim-cmp
+-- use { 'L3MON4D3/LuaSnip' } -- Snippets plugin
+use {
+  'neovim/nvim-lspconfig',
+  opt = true,
+  config = [[require('config.lspconfig')]]
+}
+
 -- use {
-  -- 'weilbith/nvim-code-action-menu',
-  -- cmd = 'CodeActionMenu',
-  -- }
+-- 'weilbith/nvim-code-action-menu',
+-- cmd = 'CodeActionMenu',
+-- }
 
-  if packer_bootstrap then
-    require('packer').sync()
-  end
+if packer_bootstrap then
+  require('packer').sync()
+end
 
 end,
 config = {
