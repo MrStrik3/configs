@@ -96,7 +96,7 @@ return require('packer').startup({function()
     config = [[require('config.nvimcokeline')]]
   }
 
-  use { 'voldikss/vim-floaterm', opt = true }
+  -- use { 'voldikss/vim-floaterm', opt = true }
 
   use 'folke/which-key.nvim'
 
@@ -145,7 +145,7 @@ config = {
   },
   profile = {
     enable = true,
-    threshold = 1 -- the amount in ms that a plugins load time must be over for it to be included in the profile
+    threshold = 0 -- the amount in ms that a plugins load time must be over for it to be included in the profile
   }
 }})
 

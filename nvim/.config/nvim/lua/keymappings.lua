@@ -74,6 +74,7 @@ map('n', '<A->>', '<plug>(cokeline-switch-prev)', { silent = true })
 for i = 1,9 do
   map('n', ('<A-%s>').format(i), ('<plug>(cokeline-focus-%s)'):format(i), { silent = true })
 end
+
 -- Which-key configs
 wk.setup {
   plugins = {

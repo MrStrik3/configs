@@ -1,6 +1,8 @@
-vim.cmd('set complete-=i')
-vim.cmd('set nrformats-=octal')
-vim.cmd('set formatoptions+=j') -- Delete comment character when joining commented lines
+vim.cmd[[
+  set complete-=i
+  set nrformats-=octal
+  set formatoptions+=j
+]]
 
 local options = {
   completeopt= "menu,menuone,noselect",
