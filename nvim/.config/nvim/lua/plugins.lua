@@ -21,6 +21,9 @@ return require('packer').startup({function()
   use 'eddyekofo94/gruvbox-flat.nvim'
 
   use { 'davidgranstrom/nvim-markdown-preview', opt = true }
+  -- TODO fart!
+  -- FIX huhu
+  -- WARN huhu
 
   -- TPOPE's plugins
   use 'tpope/vim-surround'
@@ -50,7 +53,7 @@ return require('packer').startup({function()
 
   use {
     'nvim-treesitter/nvim-treesitter',
-     config    = [[require('config.tree_sitter')]],
+    config    = [[require('config.tree_sitter')]],
     cmd       =  ':TSUpdate'
   }
   use {
@@ -69,74 +72,85 @@ return require('packer').startup({function()
   use {
     'windwp/nvim-autopairs',
     config = function() require('nvim-autopairs').setup() end }
-  -- use 'frazrepo/vim-rainbow'
+    -- use 'frazrepo/vim-rainbow'
 
-  -- Comments management
-  use {
-    'numToStr/Comment.nvim',
-    config = function() require('Comment').setup() end
+    -- Comments management
+    use {
+      'numToStr/Comment.nvim',
+      config = function() require('Comment').setup() end
+    }
+
+    use {
+      'nvim-telescope/telescope.nvim',
+      requires = { 'nvim-lua/plenary.nvim' }
+    }
+
+    -- Buffer management
+    -- use {
+    --   'akinsho/nvim-bufferline.lua',
+    --   requires = 'kyazdani42/nvim-web-devicons',
+    --   config = [[require('config.bufferline')]]
+    --   -- event = 'User ActuallyEditing',
+    -- }
+
+    use {
+      "folke/todo-comments.nvim",
+      requires = "nvim-lua/plenary.nvim",
+      config = [[ require('config.todo-comments')]]
+    }
+
+    use {
+      'noib3/nvim-cokeline',
+      requires = 'kyazdani42/nvim-web-devicons', -- If you want devicons
+      config = [[require('config.nvimcokeline')]]
+    }
+
+    -- use { 'voldikss/vim-floaterm', opt = true }
+
+    use 'folke/which-key.nvim'
+
+    use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim',
+    opt = true,
+    config = function() require('neogit').setup() end
   }
 
   use {
-    'nvim-telescope/telescope.nvim',
-    requires = { 'nvim-lua/plenary.nvim' }
+    'kyazdani42/nvim-tree.lua',
+    requires = { 'kyazdani42/nvim-web-devicons' },
+    config = [[require('config.nvim_tree')]]
   }
 
-  -- Buffer management
+  -- use 'hashivim/vim-terraform'
+
+  use { 'norcalli/nvim-colorizer.lua', opt = true, config = function() require'colorizer'.setup() end }
+
+  --[[ #######################
+  LSP -Languages
+  ####################### ]]
+  use { 'williamboman/nvim-lsp-installer', config = [[require('config.lspinstaller')]] }
+  use { 'hrsh7th/nvim-cmp' } -- Autocompletion plugin
+  use { 'hrsh7th/cmp-nvim-lsp' }  -- LSP source for nvim-cmp
+  -- luasnip
+  -- use { 'saadparwaiz1/cmp_luasnip' } -- Snippets source for nvim-cmp
+  -- use { 'L3MON4D3/LuaSnip' } -- Snippets plugin
+  -- For vsnip users.
+  use 'hrsh7th/cmp-vsnip'
+  use 'hrsh7th/vim-vsnip'
+
+  use {
+    'neovim/nvim-lspconfig',
+    -- opt = true,
+    config = [[require('config.lspconfig')]]
+  }
+
   -- use {
-  --   'akinsho/nvim-bufferline.lua',
-  --   requires = 'kyazdani42/nvim-web-devicons',
-  --   config = [[require('config.bufferline')]]
-  --   -- event = 'User ActuallyEditing',
+  -- 'weilbith/nvim-code-action-menu',
+  -- cmd = 'CodeActionMenu',
   -- }
 
-  use {
-    'noib3/nvim-cokeline',
-    requires = 'kyazdani42/nvim-web-devicons', -- If you want devicons
-    config = [[require('config.nvimcokeline')]]
-  }
-
-  -- use { 'voldikss/vim-floaterm', opt = true }
-
-  use 'folke/which-key.nvim'
-
-  use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim',
-  opt = true,
-  config = function() require('neogit').setup() end
-}
-
-use {
-  'kyazdani42/nvim-tree.lua',
-  requires = { 'kyazdani42/nvim-web-devicons' },
-  config = [[require('config.nvim_tree')]]
-}
-
--- use 'hashivim/vim-terraform'
-
-use { 'norcalli/nvim-colorizer.lua', opt = true, config = function() require'colorizer'.setup() end }
-
---[[ #######################
-LSP -Languages
-####################### ]]
-use { 'williamboman/nvim-lsp-installer', config = [[require('config.lspinstaller')]] }
-use { 'hrsh7th/nvim-cmp' } -- Autocompletion plugin
-use { 'hrsh7th/cmp-nvim-lsp' }  -- LSP source for nvim-cmp
--- use { 'saadparwaiz1/cmp_luasnip' } -- Snippets source for nvim-cmp
--- use { 'L3MON4D3/LuaSnip' } -- Snippets plugin
-use {
-  'neovim/nvim-lspconfig',
-  opt = true,
-  config = [[require('config.lspconfig')]]
-}
-
--- use {
--- 'weilbith/nvim-code-action-menu',
--- cmd = 'CodeActionMenu',
--- }
-
-if packer_bootstrap then
-  require('packer').sync()
-end
+  if packer_bootstrap then
+    require('packer').sync()
+  end
 
 end,
 config = {
