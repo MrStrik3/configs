@@ -1,9 +1,3 @@
-
--- local autocmds = {
--- 	highlight_yank = {
--- 		{"TextYankPost",     "*",   "silent! lua vim.highlight.on_yank {higroup='Substitute', on_visual=false, timeout=200}"};
--- 	};
-
 vim.cmd [[
 
   augroup _general_settings
@@ -24,7 +18,7 @@ vim.cmd [[
   augroup end
   augroup _auto_resize
     autocmd!
-    autocmd VimResized * tabdo wincmd = 
+    autocmd VimResized * tabdo wincmd =
   augroup end
 
   augroup packer_user_config

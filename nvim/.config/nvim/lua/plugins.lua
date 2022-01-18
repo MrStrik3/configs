@@ -10,6 +10,9 @@ end
 
 return require('packer').startup({function()
 
+  use 'folke/lsp-colors.nvim'
+  -- use 'folke/trouble.nvim'
+
   use 'wbthomason/packer.nvim'
 
   use 'nathom/filetype.nvim'
@@ -20,6 +23,7 @@ return require('packer').startup({function()
   -- gruvbox theme
   use 'eddyekofo94/gruvbox-flat.nvim'
 
+  use 'arcticicestudio/nord-vim'
   use { 'davidgranstrom/nvim-markdown-preview', opt = true }
   -- TODO fart!
   -- FIX huhu
@@ -59,7 +63,6 @@ return require('packer').startup({function()
   use {
     'nvim-treesitter/nvim-treesitter-textobjects',
     after = 'nvim-treesitter'
-    -- config = function() require'nvim-treesitter.configs'.setup {} end
   }
 
   use 'psliwka/vim-smoothie'
