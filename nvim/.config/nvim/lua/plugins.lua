@@ -25,9 +25,6 @@ return require('packer').startup({function()
 
   use 'arcticicestudio/nord-vim'
   use { 'davidgranstrom/nvim-markdown-preview', opt = true }
-  -- TODO fart!
-  -- FIX huhu
-  -- WARN huhu
 
   -- TPOPE's plugins
   use 'tpope/vim-surround'
@@ -53,7 +50,6 @@ return require('packer').startup({function()
 
   -- Post-install/update hook with neovim command
 
-  use { 'p00f/nvim-ts-rainbow', after = 'nvim-treesitter' }
 
   use {
     'nvim-treesitter/nvim-treesitter',
@@ -64,12 +60,13 @@ return require('packer').startup({function()
     'nvim-treesitter/nvim-treesitter-textobjects',
     after = 'nvim-treesitter'
   }
+  use { 'p00f/nvim-ts-rainbow', after = 'nvim-treesitter' }
 
   use 'psliwka/vim-smoothie'
 
   use {
     'lukas-reineke/indent-blankline.nvim',
-    config = [[require('config.indent_blankline')]]
+    config = [[ require('config.indent_blankline') ]]
   }
 
   use {
@@ -125,26 +122,18 @@ return require('packer').startup({function()
 
   -- use 'hashivim/vim-terraform'
 
-  use { 'norcalli/nvim-colorizer.lua', opt = true, config = function() require'colorizer'.setup() end }
+ use { 'norcalli/nvim-colorizer.lua', opt = true, config = function() require'colorizer'.setup() end }
 
-  --[[ #######################
-  LSP -Languages
-  ####################### ]]
-  use { 'williamboman/nvim-lsp-installer', config = [[require('config.lspinstaller')]] }
-  use { 'hrsh7th/nvim-cmp' } -- Autocompletion plugin
-  use { 'hrsh7th/cmp-nvim-lsp' }  -- LSP source for nvim-cmp
-  -- luasnip
-  -- use { 'saadparwaiz1/cmp_luasnip' } -- Snippets source for nvim-cmp
-  -- use { 'L3MON4D3/LuaSnip' } -- Snippets plugin
-  -- For vsnip users.
-  use 'hrsh7th/cmp-vsnip'
-  use 'hrsh7th/vim-vsnip'
-
+  -- LSP - LANGUAGES
   use {
-    'neovim/nvim-lspconfig',
-    -- opt = true,
-    config = [[require('config.lspconfig')]]
+    { 'neovim/nvim-lspconfig', config = [[require('config.lspconfig')]] },
+    'hrsh7th/nvim-cmp',  -- Autocompletion plugin
+    'hrsh7th/cmp-nvim-lsp',   -- LSP source for nvim-cmp
+    'hrsh7th/cmp-vsnip', -- Link nvimcmp to Vsnip
+    'hrsh7th/vim-vsnip', -- Vsnip
+    { 'williamboman/nvim-lsp-installer', config = [[require('config.lspinstaller')]] }
   }
+
 
   -- use {
   -- 'weilbith/nvim-code-action-menu',

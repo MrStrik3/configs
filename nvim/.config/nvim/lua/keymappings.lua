@@ -146,6 +146,7 @@ wk.register({
   -- Files
   ["<leader>f"] = {
     name = "+file",
+    c = { "<cmd>Telescope colorscheme<cr>", "Find colorscheme" },
     f = { "<cmd>Telescope find_files<cr>", "Find File" },
     e = { "<cmd>NvimTreeToggle<cr>", "File Explorer" },
     r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
@@ -159,7 +160,6 @@ wk.register({
     n = { "<cmd>set number! <cr><cmd>set relativenumber!<cr>", "Toggle numbers"}
   },
   ["<leader>p"] = {
-    m = { "<cmd>PackerLoad vim-visual-multi<cr>", "Activate multi-cursor" },
-    l = { "<cmd>PackerLoad nvim-lspconfig<cr>", "Activate nvim-lspconfig" }
+    m = { "<cmd>PackerLoad vim-visual-multi<cr>", "Activate multi-cursor" }
   }
 })
