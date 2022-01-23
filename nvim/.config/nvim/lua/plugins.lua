@@ -5,19 +5,14 @@ if fn.empty(fn.glob(install_path)) > 0 then
   print "Installing packer close and reopen Neovim"
 end
 
--- Only required if you have packer configured as `opt`
--- vim.cmd [[packadd packer.nvim]]
-
 return require('packer').startup({function()
 
-  use 'folke/lsp-colors.nvim'
-  -- use 'folke/trouble.nvim'
 
-  use 'wbthomason/packer.nvim'
+  use 'wbthomason/packer.nvim' -- Package manager
 
-  use 'nathom/filetype.nvim'
+  use 'nathom/filetype.nvim' -- Define the neovim's filetypes list (load quicker)
 
-  use 'tweekmonster/startuptime.vim'
+  use { 'tweekmonster/startuptime.vim', opt = true }
   use 'lewis6991/impatient.nvim' -- Speed up start time
 
   -- gruvbox theme
@@ -48,9 +43,6 @@ return require('packer').startup({function()
     requires = { 'kyazdani42/nvim-web-devicons' }
   }
 
-  -- Post-install/update hook with neovim command
-
-
   use {
     'nvim-treesitter/nvim-treesitter',
     config    = [[require('config.tree_sitter')]],
@@ -71,7 +63,7 @@ return require('packer').startup({function()
 
   use {
     'windwp/nvim-autopairs',
-    config = function() require('nvim-autopairs').setup() end }
+    config = function() require('nvim-autopairs').setup( { disable_filetypes = { "TelescopePrompt", "NvimTree" } } ) end }
     -- use 'frazrepo/vim-rainbow'
 
     -- Comments management
@@ -120,9 +112,11 @@ return require('packer').startup({function()
     config = [[require('config.nvim_tree')]]
   }
 
-  -- use 'hashivim/vim-terraform'
-
- use { 'norcalli/nvim-colorizer.lua', opt = true, config = function() require'colorizer'.setup() end }
+  use {
+    'norcalli/nvim-colorizer.lua',
+    opt = true,
+    config = function() require'colorizer'.setup() end
+  }
 
   -- LSP - LANGUAGES
   use {
@@ -134,6 +128,15 @@ return require('packer').startup({function()
     { 'williamboman/nvim-lsp-installer', config = [[require('config.lspinstaller')]] }
   }
 
+  use 'folke/lsp-colors.nvim'
+  use {
+    'folke/trouble.nvim',
+    requires = 'kyazdani42/nvim-web-devicons',
+    opt = true,
+    config = function()
+      require("trouble").setup { }
+    end
+  }
 
   -- use {
   -- 'weilbith/nvim-code-action-menu',
@@ -149,6 +152,7 @@ config = {
   display = {
     open_fn = require('packer.util').float,
   },
+  compile_path = vim.fn.stdpath('config')..'/lua/packer_compiled.lua',
   profile = {
     enable = true,
     threshold = 0 -- the amount in ms that a plugins load time must be over for it to be included in the profile

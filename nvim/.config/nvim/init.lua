@@ -1,5 +1,8 @@
 require('autocmds')
 require('options')
+require('impatient')
+require('impatient').enable_profile()
+require('packer_compiled')
 require('plugins')
 require('keymappings')
 
@@ -21,7 +24,7 @@ vim.g.rainbow_active = 1
 -- ######## End Custom mappings
 
 -- Skip some remote provider loading
-vim.g.loaded_python_provider = 0
+vim.g.loaded_python_provider = 1 -- Disable default filetypes loading (slow loading)
 vim.g.python_host_prog = '/usr/bin/python2'
 vim.g.python3_host_prog = '/usr/bin/python'
 vim.g.node_host_prog = '/usr/bin/neovim-node-host'

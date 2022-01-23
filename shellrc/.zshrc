@@ -10,7 +10,7 @@ export ZSH="/home/lefrancoisc/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster"
+ZSH_THEME="spaceship"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -30,7 +30,7 @@ DISABLE_AUTO_TITLE="true"
 HIST_STAMPS="yyyy-mm-dd"
 
 
-# Plugins 
+# Plugins
 plugins=(
   git
   kubectl

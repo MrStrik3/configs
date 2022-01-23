@@ -27,3 +27,6 @@ alias aps.dev.log.range="curl https://intra-l01-dev.ent.dfo-mpo.ca/logs/tomcat/c
 alias aps.dev.log.size="curl -L -I https://intra-l01-dev.ent.dfo-mpo.ca/logs/tomcat/catalina.out"
 
 alias nvim.cfg="nvim ~/.config/nvim"
+
+alias kb.gp="kubectl -n dmp get pods"
+alias kb.dev.geo.console="kubectl -n dmp exec -it geoserver-dev-geoserver-chart-0  -- bash"
