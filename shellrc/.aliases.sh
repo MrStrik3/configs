@@ -1,5 +1,8 @@
-alias ll="ls -al"
-alias ls='ls --color=auto'
+# alias ll="ls -al"
+# alias ls='ls --color=auto'
+alias ll="exa -l -g --icons"
+alias ls="exa --icons"
+alias lt="exa --tree --icons -a -I '.git|__pycache__|.mypy_cache|.ipynb_checkpoints'"
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 export GREP_COLOR="1;32"
@@ -30,3 +33,22 @@ alias nvim.cfg="nvim ~/.config/nvim"
 
 alias kb.gp="kubectl -n dmp get pods"
 alias kb.dev.geo.console="kubectl -n dmp exec -it geoserver-dev-geoserver-chart-0  -- bash"
+
+
+alias kb="kubectl -n dmp"
+alias kb.gp="kubectl -n dmp get pods"
+alias kb.set.dev="kubectl config set-context aksdev"
+alias kb.set.test="kubectl config set-context akstest"
+
+alias docker.start="sudo -b dockerd > /dev/null 2>&1 &"
+alias docker="sudo docker"
+
+
+# Git cmds
+alias git.s="git status"
+alias git.add="git add"
+alias git.p="git push"
+alias git.log="git log --oneline | bat --file-name='Git log' --theme=Nord"
+function git.c () {
+  git commit -m "$@"
+}

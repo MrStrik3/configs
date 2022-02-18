@@ -1,4 +1,4 @@
-# If you come from bash you might have to change your $PATH.
+# If you come from bash you might have to change your $PAT
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
@@ -10,7 +10,7 @@ export ZSH="/home/lefrancoisc/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="spaceship"
+ZSH_THEME="arrow"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -29,6 +29,7 @@ DISABLE_AUTO_TITLE="true"
 # see 'man strftime' for details.
 HIST_STAMPS="yyyy-mm-dd"
 
+DISABLE_LS_COLORS="true"
 
 # Plugins
 plugins=(
@@ -36,19 +37,16 @@ plugins=(
   kubectl
   systemd
   gradle
-  git
   safe-paste
   colored-man-pages
-  vscode
-  taskwarrior
   python
   history
-  helm
   docker
   archlinux
   npm
   sudo
   ng
+  fzf
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -123,6 +121,7 @@ source ~/.zsh_plugins.sh
 
 # Spaceship options https://denysdovhan.com/spaceship-prompt/
 SPACESHIP_PROMPT_ORDER=(
+  env_var
   time          # Time stamps section
   user          # Username section
   dir           # Current directory section
@@ -172,22 +171,25 @@ man() {
 export CR_RENDER_FORCE_PRESENT_MAIN_THREAD="0 VirtualBox"
 
 command_not_found_handler() {
-	local pkgs cmd="$1" files=()
-	printf 'zsh: command not found: %s\n' "$cmd" # print command not found asap, then search for packages
-	files=(${(f)"$(/usr/bin/yay -F --machinereadable "${cmd}")"})
-	if (( ${#files[@]} )); then
-		printf '\r%s may be found in the following packages:\n' "$cmd"
-		local res=() repo package version file
-		for file in "$files[@]"; do
-			res=("${(0)file}")
-			repo="$res[1]"
-			package="$res[2]"
-			version="$res[3]"
-			file="$res[4]"
-			printf '  %s/%s %s: /%s\n' "$repo" "$package" "$version" "$file"
-		done
-	else
-		printf '\n'
-	fi
-	return 127
+  local pkgs cmd="$1" files=()
+  printf 'zsh: command not found: %s\n' "$cmd" # print command not found asap, then search for packages
+  files=(${(f)"$(/usr/bin/yay -F --machinereadable "${cmd}")"})
+  if (( ${#files[@]} )); then
+    printf '\r%s may be found in the following packages:\n' "$cmd"
+    local res=() repo package version file
+    for file in "$files[@]"; do
+      res=("${(0)file}")
+      repo="$res[1]"
+      package="$res[2]"
+      version="$res[3]"
+      file="$res[4]"
+      printf '  %s/%s %s: /%s\n' "$repo" "$package" "$version" "$file"
+    done
+  else
+    printf '\n'
+  fi
+  return 127
 }
+
+eval "$(starship init zsh)"
+

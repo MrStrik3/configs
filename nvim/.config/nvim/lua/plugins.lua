@@ -45,7 +45,7 @@ return require('packer').startup({function()
 
   use {
     'nvim-treesitter/nvim-treesitter',
-    config    = [[require('config.tree_sitter')]],
+    config    = [[ require('config.tree_sitter') ]],
     cmd       =  ':TSUpdate'
   }
   use {
@@ -63,47 +63,61 @@ return require('packer').startup({function()
 
   use {
     'windwp/nvim-autopairs',
-    config = function() require('nvim-autopairs').setup( { disable_filetypes = { "TelescopePrompt", "NvimTree" } } ) end }
-    -- use 'frazrepo/vim-rainbow'
+    config = function()
+      require('nvim-autopairs').setup({
+        disable_filetypes = { "TelescopePrompt", "NvimTree" },
+      })
+    end
+  }
+  -- use 'frazrepo/vim-rainbow'
 
-    -- Comments management
-    use {
-      'numToStr/Comment.nvim',
-      config = function() require('Comment').setup() end
-    }
+  -- Comments management
+  use {
+    'numToStr/Comment.nvim',
+    config = function() require('Comment').setup() end
+  }
 
-    use {
-      'nvim-telescope/telescope.nvim',
-      requires = { 'nvim-lua/plenary.nvim' }
-    }
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = { 'nvim-lua/plenary.nvim' }
+  }
 
-    -- Buffer management
-    -- use {
-    --   'akinsho/nvim-bufferline.lua',
-    --   requires = 'kyazdani42/nvim-web-devicons',
-    --   config = [[require('config.bufferline')]]
-    --   -- event = 'User ActuallyEditing',
-    -- }
+  -- Buffer management
+  -- use {
+  --   'akinsho/nvim-bufferline.lua',
+  --   requires = 'kyazdani42/nvim-web-devicons',
+  --   config = [[require('config.bufferline')]]
+  --   -- event = 'User ActuallyEditing',
+  -- }
 
-    use {
-      "folke/todo-comments.nvim",
-      requires = "nvim-lua/plenary.nvim",
-      config = [[ require('config.todo-comments')]]
-    }
+  use {
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = [[require('config.todo-comments')]]
+  }
 
-    use {
-      'noib3/nvim-cokeline',
-      requires = 'kyazdani42/nvim-web-devicons', -- If you want devicons
-      config = [[require('config.nvimcokeline')]]
-    }
+  use {
+    'noib3/nvim-cokeline',
+    requires = 'kyazdani42/nvim-web-devicons', -- If you want devicons
+    config = [[require('config.nvimcokeline')]]
+  }
 
-    -- use { 'voldikss/vim-floaterm', opt = true }
+  use { 'voldikss/vim-floaterm', opt = true }
 
-    use 'folke/which-key.nvim'
+  use {'folke/which-key.nvim'}
 
-    use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim',
-    opt = true,
-    config = function() require('neogit').setup() end
+--  use {
+--    'TimUntersberger/neogit',
+--    requires = 'nvim-lua/plenary.nvim',
+--    config = function()
+--      require('neogit').setup({})
+--    end
+--  }
+
+  use {
+    'lewis6991/gitsigns.nvim',
+    requires = { 'nvim-lua/plenary.nvim' },
+    config = function() require('gitsigns').setup() end
   }
 
   use {
@@ -115,47 +129,48 @@ return require('packer').startup({function()
   use {
     'norcalli/nvim-colorizer.lua',
     opt = true,
-    config = function() require'colorizer'.setup() end
+    config = function() require('colorizer').setup() end
   }
 
   -- LSP - LANGUAGES
   use {
-    { 'neovim/nvim-lspconfig', config = [[require('config.lspconfig')]] },
-    'hrsh7th/nvim-cmp',  -- Autocompletion plugin
-    'hrsh7th/cmp-nvim-lsp',   -- LSP source for nvim-cmp
-    'hrsh7th/cmp-vsnip', -- Link nvimcmp to Vsnip
-    'hrsh7th/vim-vsnip', -- Vsnip
-    { 'williamboman/nvim-lsp-installer', config = [[require('config.lspinstaller')]] }
-  }
+    {
+      'neovim/nvim-lspconfig', config = [[require('config.lspconfig')]] },
+      'hrsh7th/nvim-cmp',  -- Autocompletion plugin
+      'hrsh7th/cmp-nvim-lsp',   -- LSP source for nvim-cmp
+      'hrsh7th/cmp-vsnip', -- Link nvimcmp to Vsnip
+      'hrsh7th/vim-vsnip', -- Vsnip
+      { 'williamboman/nvim-lsp-installer', config = [[require('config.lspinstaller')]] }
+    }
 
-  use 'folke/lsp-colors.nvim'
-  use {
-    'folke/trouble.nvim',
-    requires = 'kyazdani42/nvim-web-devicons',
-    opt = true,
-    config = function()
-      require("trouble").setup { }
+    use 'folke/lsp-colors.nvim'
+    use {
+      'folke/trouble.nvim',
+      requires = 'kyazdani42/nvim-web-devicons',
+      opt = true,
+      config = function()
+        require("trouble").setup { }
+      end
+    }
+
+    -- use {
+    -- 'weilbith/nvim-code-action-menu',
+    -- cmd = 'CodeActionMenu',
+    -- }
+
+    if packer_bootstrap then
+      require('packer').sync()
     end
-  }
 
-  -- use {
-  -- 'weilbith/nvim-code-action-menu',
-  -- cmd = 'CodeActionMenu',
-  -- }
-
-  if packer_bootstrap then
-    require('packer').sync()
-  end
-
-end,
-config = {
-  display = {
-    open_fn = require('packer.util').float,
-  },
-  compile_path = vim.fn.stdpath('config')..'/lua/packer_compiled.lua',
-  profile = {
-    enable = true,
-    threshold = 0 -- the amount in ms that a plugins load time must be over for it to be included in the profile
-  }
-}})
+  end,
+  config = {
+    display = {
+      open_fn = require('packer.util').float,
+    },
+    compile_path = vim.fn.stdpath('config')..'/lua/packer_compiled.lua',
+    profile = {
+      enable = true,
+      threshold = 0 -- the amount in ms that a plugins load time must be over for it to be included in the profile
+    }
+  }})
 
