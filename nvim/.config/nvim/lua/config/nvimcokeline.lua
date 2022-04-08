@@ -2,30 +2,22 @@ local get_hex = require('cokeline/utils').get_hex
 
 require('cokeline').setup({
   default_hl = {
-    focused = {
-      fg = get_hex('Normal', 'fg'),
-      bg = 'NONE',
-    },
-    unfocused = {
-      fg = get_hex('Comment', 'fg'),
-      bg = 'NONE',
-    },
+    fg = function(buffer) return buffer.is_focused and get_hex('Normal', 'fg') or get_hex('Comment', 'bg') end,
+    -- bg = get_hex('Normal', 'bg'),
+    bg = 'NONE',
+    style = function(buffer) return buffer.is_focused and 'bold,italic' or 'italic' end,
   },
 
-  rendering = {
-    left_sidebar = {
-      filetype = 'NvimTree',
-      components = {
-        {
-          text = '  File Explorer',
-          hl = {
-            fg = yellow,
-            bg = get_hex('NvimTreeNormal', 'bg'),
-            style = 'bold'
-          }
-        },
-      }
-    },
+  sidebar = {
+    filetype = 'NvimTree',
+    components = {
+      {
+        text = '  NvimTree',
+        fg = yellow,
+        bg = get_hex('NvimTreeNormal', 'bg'),
+        style = 'bold',
+      },
+    }
   },
 
   components = {

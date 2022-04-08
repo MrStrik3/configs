@@ -61,20 +61,21 @@ return require('packer').startup({function()
     config = [[ require('config.indent_blankline') ]]
   }
 
-  use {
-    'windwp/nvim-autopairs',
-    config = function()
-      require('nvim-autopairs').setup({
-        disable_filetypes = { "TelescopePrompt", "NvimTree" },
-      })
-    end
-  }
+ use {
+   'windwp/nvim-autopairs',
+   config = function()
+     require('nvim-autopairs').setup({
+       disable_filetypes = { "TelescopePrompt", "NvimTree" },
+     })
+   end
+ }
+
   -- use 'frazrepo/vim-rainbow'
 
   -- Comments management
   use {
-    'numToStr/Comment.nvim',
-    config = function() require('Comment').setup() end
+   'numToStr/Comment.nvim',
+   config = function() require('Comment').setup() end
   }
 
   use {

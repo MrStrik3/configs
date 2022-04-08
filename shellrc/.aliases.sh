@@ -48,7 +48,7 @@ alias docker="sudo docker"
 alias git.s="git status"
 alias git.add="git add"
 alias git.p="git push"
-alias git.log="git log --oneline | bat --file-name='Git log' --theme=Nord"
+alias git.log="git log --graph --abbrev-commit --pretty=oneline | bat --file-name='Git log' --theme=Nord"
 function git.c () {
   git commit -m "$@"
 }
