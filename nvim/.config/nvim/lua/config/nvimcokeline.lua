@@ -9,7 +9,7 @@ require('cokeline').setup({
   },
 
   sidebar = {
-    filetype = 'NvimTree',
+    filetype = 'NvimTree_1',
     components = {
       {
         text = '  NvimTree',
@@ -17,7 +17,7 @@ require('cokeline').setup({
         bg = get_hex('NvimTreeNormal', 'bg'),
         style = 'bold',
       },
-    }
+    },
   },
 
   components = {
