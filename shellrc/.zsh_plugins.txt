@@ -6,3 +6,4 @@ zsh-users/zsh-syntax-highlighting
 # spaceship-prompt/spaceship-prompt
 
 desyncr/auto-ls
+wfxr/forgit

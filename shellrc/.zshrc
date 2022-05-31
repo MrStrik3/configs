@@ -191,5 +191,7 @@ command_not_found_handler() {
   return 127
 }
 
+wsl.exe -d wsl-vpnkit service wsl-vpnkit start
+
 eval "$(starship init zsh)"
 

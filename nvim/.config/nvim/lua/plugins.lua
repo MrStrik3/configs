@@ -18,7 +18,7 @@ return require('packer').startup({function()
   -- gruvbox theme
   use 'eddyekofo94/gruvbox-flat.nvim'
 
-  use 'arcticicestudio/nord-vim'
+  use { 'arcticicestudio/nord-vim', branch = 'main' }
   use { 'davidgranstrom/nvim-markdown-preview', opt = true }
 
   -- TPOPE's plugins

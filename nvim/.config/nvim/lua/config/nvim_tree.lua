@@ -1,34 +1,4 @@
 -- NVIM-TREE CONFIGS
-vim.g.nvim_tree_show_icons = {
-   git = 1,
-   folders = 1,
-   files = 1,
-   folder_arrows = 1
-}
-
-vim.g.nvim_tree_icons = {
-  default = "",
-  symlink = "",
-  git = {
-    unstaged = "✗",
-    staged = "✓",
-    unmerged = "",
-    renamed = "➜",
-    untracked = "★",
-    deleted = "",
-    ignored = "◌"
-  },
-  folder= {
-     arrow_open = "",
-     arrow_closed = "",
-     default = "",
-     open = "",
-     empty = "",
-     empty_open = "",
-     symlink = "",
-     symlink_open = "",
-  }
-}
 
 require('nvim-tree').setup({
   disable_netrw       = true,
@@ -59,5 +29,40 @@ require('nvim-tree').setup({
     number = false,
     relativenumber = false,
     signcolumn = "yes"
+  },
+
+  renderer = {
+    icons = {
+      show = {
+        git = true,
+        folder = true,
+        file = true,
+        folder_arrow = true
+      },
+
+      glyphs = {
+        default = "",
+        symlink = "",
+        git = {
+          unstaged = "✗",
+          staged = "✓",
+          unmerged = "",
+          renamed = "➜",
+          untracked = "★",
+          deleted = "",
+          ignored = "◌"
+        },
+        folder= {
+          arrow_open = "",
+          arrow_closed = "",
+          default = "",
+          open = "",
+          empty = "",
+          empty_open = "",
+          symlink = "",
+          symlink_open = "",
+        }
+      }
+    }
   }
 })
