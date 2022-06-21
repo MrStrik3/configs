@@ -44,21 +44,44 @@ set multiple-cursors
 set surround
 set easymotion
 set ideajoin
-
 set NERDTree
 set ReplaceWithRegister
 set highlightedyank
 
 
 map <leader>rc <Action>(ReformatCode)
-map <leader>fp <Action>(FindInPath)
 map <leader>tb <Action>(ToggleLineBreakpoint)
-" map <C-q> <Action>(QuickJavaDoc)
-map <leader>fe :NERDTree<cr>
-nnoremap \e :e C:/Users/LefrancoisC/.ideavimrc<CR>
-nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
-nnoremap <c-z> :action ToggleDistractionFreeMode<CR>
 
+" map <C-q> <Action>(QuickJavaDoc)
+nnoremap \e :e C:/Users/LefrancoisC/.ideavimrc<CR>
+nnoremap \r :action IdeaVim.ReloadVimRc.reload<cr>
+map \b <Action>(ToggleLineBreakpoint)
+map <c-z> <Action>(ToggleDistractionFreeMode)<CR>
+
+nnoremap <leader>ff :action GotoFile<CR>
+map <leader>fe :NERDTree<cr>
+nnoremap <leader>fp :action FindInPath<CR>
+map gcl <Action>(GotoClass)<CR>
+map gi <Action>(GotoImplementation)<CR>
+
+map gd <Action>(GotoDeclaration)<CR>
+map gp <Action>(GotoSuperMethod)<CR>
+map gt <Action>(GotoTest)<CR>
+map gb <Action>(Back)<CR>
+map gf <Action>(Forward)<CR>
+map ge <Action>(ShowErrorDescription)
+map oi <Action>(OptimizeImports)
+
+" Window management
+map <c-h> <c-w>h
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <a-,> <Action>(PreviousTab)
+map <a-.> <Action>(NextTab)
+
+" Git
+nmap <Leader>gc <Action>(Git.Commit.Stage)<CR>
 " Remove some fat finger typing mistakes
 nmap :X :x
 nmap :X! :x!
@@ -70,6 +93,8 @@ nmap :Qa :qa
 nmap :Wq! :wq!
 nmap :WQ! :wq!
 nnoremap E $
+
+nnoremap Y y$
 
 " Break the Habit of Reaching for the Arrow Keys
 noremap <Up> <Nop>
@@ -83,3 +108,7 @@ nmap <C-Enter> o<Esc>k
 nmap <Enter>   i<Enter><Esc>
 
 sethandler <C-q> a:ide
+sethandler <C-h> a:vim
+sethandler <C-j> a:vim
+sethandler <C-k> a:vim
+sethandler <C-l> a:vim
