@@ -19,6 +19,7 @@ return require('packer').startup({function()
   use 'eddyekofo94/gruvbox-flat.nvim'
 
   use { 'arcticicestudio/nord-vim', branch = 'main' }
+  use { 'olimorris/onedarkpro.nvim' }
   use { 'davidgranstrom/nvim-markdown-preview', opt = true }
 
   -- TPOPE's plugins
