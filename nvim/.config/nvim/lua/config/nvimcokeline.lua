@@ -9,10 +9,11 @@ require('cokeline').setup({
   },
 
   sidebar = {
-    filetype = 'NvimTree_1',
+    filetype = 'NvimTree',
     components = {
       {
-        text = '  NvimTree',
+        text = '  File Explorer',
+        -- text = '',
         fg = yellow,
         bg = get_hex('NvimTreeNormal', 'bg'),
         style = 'bold',
