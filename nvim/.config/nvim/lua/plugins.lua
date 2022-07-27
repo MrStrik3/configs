@@ -7,43 +7,35 @@ end
 
 return require('packer').startup({function()
 
-
+  -- Package manager
   use 'wbthomason/packer.nvim' -- Package manager
 
+  --Nvim optimizations
   use 'nathom/filetype.nvim' -- Define the neovim's filetypes list (load quicker)
-
-  use { 'tweekmonster/startuptime.vim', opt = true }
   use 'lewis6991/impatient.nvim' -- Speed up start time
 
-  -- gruvbox theme
-  use 'eddyekofo94/gruvbox-flat.nvim'
-
-  use { 'arcticicestudio/nord-vim', branch = 'main' }
-  use { 'olimorris/onedarkpro.nvim' }
-  use { 'davidgranstrom/nvim-markdown-preview', opt = true }
+  -- THEMES
+  use 'eddyekofo94/gruvbox-flat.nvim'  -- gruvbox theme
+  use { 'arcticicestudio/nord-vim', branch = 'main' } -- Nord theme
+  use 'olimorris/onedarkpro.nvim'
 
   -- TPOPE's plugins
-  use 'tpope/vim-surround'
-  use 'tpope/vim-repeat'
+  use 'tpope/vim-surround' -- surround management ( parenthesis,  quote, etc.)
+  use 'tpope/vim-repeat'   -- Add special repeat commands
+  use 'tpope/vim-fugitive' -- Git
 
-  -- Git
-  use 'tpope/vim-fugitive'
+  use 'mg979/vim-visual-multi'  -- Multi cursor shit
 
-  -- YAML files Shit - https://github.com/mrk21/yaml-vim
-  use { 'mrk21/yaml-vim', opt = true }
+  use 'editorconfig/editorconfig-vim'
 
-  -- Multi cursor shit
-  use {
-    'mg979/vim-visual-multi',
-  }
-
-  -- Status line
+  -- Status line extension
   use {
     'hoob3rt/lualine.nvim',
     config = [[require('config.lualine')]],
     requires = { 'kyazdani42/nvim-web-devicons' }
   }
 
+  -- TREESITTER EXTENSIONS
   use {
     'nvim-treesitter/nvim-treesitter',
     config    = [[ require('config.tree_sitter') ]],
@@ -57,13 +49,15 @@ return require('packer').startup({function()
   }
   use { 'p00f/nvim-ts-rainbow', after = 'nvim-treesitter' }
 
-  use 'psliwka/vim-smoothie'
+  use 'psliwka/vim-smoothie' -- Make scrolling smooth
 
+  -- show Indentation lines
   use {
     'lukas-reineke/indent-blankline.nvim',
     config = [[ require('config.indent_blankline') ]]
   }
 
+  -- Auto-pair, highlights the separators ((),{}, "", ''))
  use {
    'windwp/nvim-autopairs',
    config = function()
@@ -81,6 +75,7 @@ return require('packer').startup({function()
    config = function() require('Comment').setup() end
   }
 
+  -- File picker
   use {
     'nvim-telescope/telescope.nvim',
     requires = { 'nvim-lua/plenary.nvim' }
@@ -94,11 +89,11 @@ return require('packer').startup({function()
   --   -- event = 'User ActuallyEditing',
   -- }
 
-  use {
-    "folke/todo-comments.nvim",
-    requires = "nvim-lua/plenary.nvim",
-    config = [[require('config.todo-comments')]]
-  }
+  -- use {
+  --   "folke/todo-comments.nvim",
+  --   requires = "nvim-lua/plenary.nvim",
+  --   config = [[require('config.todo-comments')]]
+  -- }
 
   use {
     'noib3/nvim-cokeline',
@@ -106,17 +101,15 @@ return require('packer').startup({function()
     config = [[require('config.nvimcokeline')]]
   }
 
-  use { 'voldikss/vim-floaterm', opt = true }
+  use 'folke/which-key.nvim'  -- graphical interface showing key mappings
 
-  use {'folke/which-key.nvim'}
-
---  use {
---    'TimUntersberger/neogit',
---    requires = 'nvim-lua/plenary.nvim',
---    config = function()
---      require('neogit').setup({})
---    end
---  }
+  use {
+    'TimUntersberger/neogit',
+    requires = 'nvim-lua/plenary.nvim',
+    -- config = function()
+    --   require('neogit').setup({})
+    -- end
+  }
 
   use {
     'lewis6991/gitsigns.nvim',
@@ -128,12 +121,6 @@ return require('packer').startup({function()
     'kyazdani42/nvim-tree.lua',
     requires = { 'kyazdani42/nvim-web-devicons' },
     config = [[require('config.nvim_tree')]]
-  }
-
-  use {
-    'norcalli/nvim-colorizer.lua',
-    opt = true,
-    config = function() require('colorizer').setup() end
   }
 
   -- LSP - LANGUAGES
@@ -161,6 +148,21 @@ return require('packer').startup({function()
     -- 'weilbith/nvim-code-action-menu',
     -- cmd = 'CodeActionMenu',
     -- }
+
+    -- Optional extensions
+    use { 'tweekmonster/startuptime.vim', opt = true }
+    use { 'davidgranstrom/nvim-markdown-preview', opt = true }
+
+    use { 'mrk21/yaml-vim', opt = true }  -- YAML files Shit - https://github.com/mrk21/yaml-vim
+
+    use {
+      'norcalli/nvim-colorizer.lua',
+      opt = true,
+      config = function() require('colorizer').setup() end
+    }
+
+    use { 'voldikss/vim-floaterm', opt = true }
+
 
     if packer_bootstrap then
       require('packer').sync()

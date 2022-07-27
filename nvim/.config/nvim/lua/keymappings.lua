@@ -160,6 +160,8 @@ wk.register({
     n = { "<cmd>set number! <cr><cmd>set relativenumber!<cr>", "Toggle numbers"}
   },
   ["<leader>p"] = {
-    m = { "<cmd>PackerLoad vim-visual-multi<cr>", "Activate multi-cursor" }
+    m = { "<cmd>PackerLoad vim-visual-multi<cr>", "Activate multi-cursor" },
+    c = { "<cmd>PackerLoad nvim-colorizer.lua<cr>", "Activate Nvim colorizer"}
+
   }
 })
