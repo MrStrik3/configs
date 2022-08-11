@@ -20,7 +20,8 @@ return require('packer').startup({function()
   use 'olimorris/onedarkpro.nvim'
 
   -- TPOPE's plugins
-  use 'tpope/vim-surround' -- surround management ( parenthesis,  quote, etc.)
+  -- use 'tpope/vim-surround' -- surround management ( parenthesis,  quote, etc.)
+  use { 'kylechui/nvim-surround', config = function() require("nvim-surround").setup({}) end } -- surround management ( parenthesis,  quote, etc.) IN LUA -- Up for testing
   use 'tpope/vim-repeat'   -- Add special repeat commands
   use 'tpope/vim-fugitive' -- Git
 
@@ -130,9 +131,8 @@ return require('packer').startup({function()
       'hrsh7th/cmp-nvim-lsp',   -- LSP source for nvim-cmp
       'hrsh7th/cmp-vsnip', -- Link nvimcmp to Vsnip
       'hrsh7th/vim-vsnip', -- Vsnip
-      -- { 'williamboman/mason.nvim', config = function() require('mason').setup() end },
-      { 'williamboman/mason.nvim', config = [[require('config.mason')]] },
-      { 'williamboman/mason-lspconfig.nvim', config = function() require('mason-lspconfig').setup() end }
+      { 'williamboman/mason.nvim', config = [[require('config.mason')]] }, -- Lint, Lsp, Dsp install manager
+      { 'williamboman/mason-lspconfig.nvim', config = function() require('mason-lspconfig').setup() end } -- Link mason with lspconfig
     -- { 'williamboman/nvim-lsp-installer', config = [[require('config.lspinstaller')]] }
 
     }
