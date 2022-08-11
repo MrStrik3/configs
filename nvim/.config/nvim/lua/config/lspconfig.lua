@@ -46,37 +46,42 @@ cmp.setup.cmdline(':', {
 
 -- autopairs related shit
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } }))
+-- cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } }))
 -- cmp_autopairs.lisp[#cmp_autopairs.lisp+1] = "racket"
 
+local cmp = require('cmp')
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done()
+)
 
 -- LINKING LSPCONFIG WITH LSPINSTALLER
-local lsp_installer = require("nvim-lsp-installer")
-
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
--- Register a handler that will be called for all installed servers.
--- Alternatively, you may also register handlers on specific server instances instead (see example below).
-lsp_installer.on_server_ready(function(server)
-  local opts = {}
-  opts.capabilities = capabilities
-  -- (optional) Customize the options passed to the server
-  -- if server.name == "tsserver" then
-  --     opts.root_dir = function() ... end
-  -- end
-
-  if server.name == "sumneko_lua" then
-    opts.settings = {
-      Lua = {
-        diagnostics = {
-          globals = { 'vim', 'use' }
-        }
-      }
-    }
-  end
-
-  -- This setup() function is exactly the same as lspconfig's setup function.
-  -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-  server:setup(opts)
-end)
+-- local lsp_installer = require("nvim-lsp-installer")
+--
+-- local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- -- Register a handler that will be called for all installed servers.
+-- -- Alternatively, you may also register handlers on specific server instances instead (see example below).
+-- lsp_installer.on_server_ready(function(server)
+--   local opts = {}
+--   opts.capabilities = capabilities
+--   -- (optional) Customize the options passed to the server
+--   -- if server.name == "tsserver" then
+--   --     opts.root_dir = function() ... end
+--   -- end
+--
+--   if server.name == "sumneko_lua" then
+--     opts.settings = {
+--       Lua = {
+--         diagnostics = {
+--           globals = { 'vim', 'use' }
+--         }
+--       }
+--     }
+--   end
+--
+--   -- This setup() function is exactly the same as lspconfig's setup function.
+--   -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+--   server:setup(opts)
+-- end)
 
 

@@ -125,13 +125,16 @@ return require('packer').startup({function()
 
   -- LSP - LANGUAGES
   use {
-    {
-      'neovim/nvim-lspconfig', config = [[require('config.lspconfig')]] },
+    { 'neovim/nvim-lspconfig', config = [[require('config.lspconfig')]] },
       'hrsh7th/nvim-cmp',  -- Autocompletion plugin
       'hrsh7th/cmp-nvim-lsp',   -- LSP source for nvim-cmp
       'hrsh7th/cmp-vsnip', -- Link nvimcmp to Vsnip
       'hrsh7th/vim-vsnip', -- Vsnip
-      { 'williamboman/nvim-lsp-installer', config = [[require('config.lspinstaller')]] }
+      -- { 'williamboman/mason.nvim', config = function() require('mason').setup() end },
+      { 'williamboman/mason.nvim', config = [[require('config.mason')]] },
+      { 'williamboman/mason-lspconfig.nvim', config = function() require('mason-lspconfig').setup() end }
+    -- { 'williamboman/nvim-lsp-installer', config = [[require('config.lspinstaller')]] }
+
     }
 
     use 'folke/lsp-colors.nvim'
