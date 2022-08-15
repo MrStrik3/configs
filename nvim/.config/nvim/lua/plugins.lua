@@ -5,6 +5,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
   print "Installing packer close and reopen Neovim"
 end
 
+
 return require('packer').startup({function()
 
   -- Package manager
@@ -132,7 +133,8 @@ return require('packer').startup({function()
     'hrsh7th/cmp-vsnip', -- Link nvimcmp to Vsnip
     'hrsh7th/vim-vsnip', -- Vsnip
     { 'williamboman/mason.nvim', config = [[require('config.mason')]] }, -- Lint, Lsp, Dsp install manager
-    { 'williamboman/mason-lspconfig.nvim', config = [[require('config.mason_lspconfig')]] } -- Link mason with lspconfig
+    { 'williamboman/mason-lspconfig.nvim', config = [[require('config.mason_lspconfig')]] }, -- Link mason with lspconfig
+    'rcarriga/nvim-notify',
     -- { 'williamboman/nvim-lsp-installer', config = [[require('config.lspinstaller')]] }
 
   }

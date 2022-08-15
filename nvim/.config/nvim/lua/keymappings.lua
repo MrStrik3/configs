@@ -161,7 +161,8 @@ wk.register({
   },
   ["<leader>p"] = {
     m = { "<cmd>PackerLoad vim-visual-multi<cr>", "Activate multi-cursor" },
-    c = { "<cmd>PackerLoad nvim-colorizer.lua<cr>", "Activate Nvim colorizer"}
+    c = { "<cmd>PackerLoad nvim-colorizer.lua<cr>", "Activate Nvim colorizer"},
+    u = { "<cmd>PackerUpdate<cr>", "Update the installed plugins"}
 
   }
 })
