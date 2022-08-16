@@ -70,6 +70,8 @@ map('n', '<A-.>', '<plug>(cokeline-focus-next)', { silent = true })
 map('n', '<A-<>', '<plug>(cokeline-switch-prev)', { silent = true })
 map('n', '<A->>', '<plug>(cokeline-switch-prev)', { silent = true })
 
+
+
 -- -- Goto buffer in position...
 -- for i = 1,9 do
 --   map('n', ('<A-%s>').format(i), ('<plug>(cokeline-focus-%s)'):format(i), { silent = true })

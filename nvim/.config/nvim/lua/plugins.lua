@@ -24,7 +24,8 @@ return require('packer').startup({function()
   -- use 'tpope/vim-surround' -- surround management ( parenthesis,  quote, etc.)
   use { 'kylechui/nvim-surround', config = function() require("nvim-surround").setup({}) end } -- surround management ( parenthesis,  quote, etc.) IN LUA -- Up for testing
   use 'tpope/vim-repeat'   -- Add special repeat commands
-  use 'tpope/vim-fugitive' -- Git
+  -- use 'tpope/vim-fugitive' -- Git
+  use { 'dinhhuy258/git.nvim', config = function () require("git").setup({}) end } -- rewrite of vim-fugitive in lua
 
   use 'mg979/vim-visual-multi'  -- Multi cursor shit
 
@@ -132,8 +133,11 @@ return require('packer').startup({function()
     'hrsh7th/cmp-nvim-lsp',   -- LSP source for nvim-cmp
     'hrsh7th/cmp-vsnip', -- Link nvimcmp to Vsnip
     'hrsh7th/vim-vsnip', -- Vsnip
+    'hrsh7th/cmp-buffer', -- autocompletion for buffer
+    'jose-elias-alvarez/null-ls.nvim',
     { 'williamboman/mason.nvim', config = [[require('config.mason')]] }, -- Lint, Lsp, Dsp install manager
     { 'williamboman/mason-lspconfig.nvim', config = [[require('config.mason_lspconfig')]] }, -- Link mason with lspconfig
+    'onsails/lspkind-nvim',
     'rcarriga/nvim-notify',
     -- { 'williamboman/nvim-lsp-installer', config = [[require('config.lspinstaller')]] }
 
