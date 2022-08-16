@@ -170,7 +170,7 @@ return require('packer').startup({function()
       config = function() require('colorizer').setup() end
     }
 
-    use { 'voldikss/vim-floaterm', opt = true }
+    use { 'voldikss/vim-floaterm' }
 
 
     if packer_bootstrap then

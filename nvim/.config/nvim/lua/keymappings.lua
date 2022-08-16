@@ -35,6 +35,19 @@ map('n', '<c-j>', '<c-w>j', {})
 map('n', '<c-k>', '<c-w>k', {})
 map('n', '<c-l>', '<c-w>l', {})
 
+-- Terminal management
+vim.api.nvim_set_keymap('n', '<F7>', ':FloatermNew<CR>', opts)
+vim.api.nvim_set_keymap('t', '<F7>', '<C-\\><C-n>:FloatermNew<CR>', opts)
+
+vim.api.nvim_set_keymap('n', '<F8>', ':FloatermPrev<CR>', opts)
+vim.api.nvim_set_keymap('t', '<F8>', '<C-\\><C-n>:FloatermPrev<CR>', opts)
+
+vim.api.nvim_set_keymap('n', '<F9>', ':FloatermNext<CR>', opts)
+vim.api.nvim_set_keymap('t', '<F9>', '<C-\\><C-n>:FloatermNext<CR>', opts)
+
+vim.api.nvim_set_keymap('n', '<F12>', ':FloatermToggle<CR>', opts)
+vim.api.nvim_set_keymap('t', '<F12>', '<C-\\><C-n>:FloatermToggle<CR>', opts)
+
 -- -- Bufferline
 -- -- Move to previous/next
 -- map('n', '<A-,>', ':BufferLineCyclePrev<CR>', opts)
