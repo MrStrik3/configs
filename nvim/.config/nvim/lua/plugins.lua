@@ -1,7 +1,7 @@
 local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  PACKER_BOOTSTRAP = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
   print "Installing packer close and reopen Neovim"
 end
 
@@ -53,7 +53,14 @@ return require('packer').startup({function(use)
 
   use { 'p00f/nvim-ts-rainbow', after = 'nvim-treesitter' }
 
-  use 'psliwka/vim-smoothie' -- Make scrolling smooth
+  -- use 'psliwka/vim-smoothie' -- Make scrolling smooth
+  use {
+    'karb94/neoscroll.nvim',
+    config = function()
+      require('neoscroll').setup({})
+      vim.g.mkdp_theme = 'light'
+    end
+  }
 
   -- show Indentation lines
   use {
@@ -168,14 +175,13 @@ return require('packer').startup({function(use)
 
     use {
       'norcalli/nvim-colorizer.lua',
-      opt = true,
       config = function() require('colorizer').setup() end
     }
 
     use { 'voldikss/vim-floaterm' }
 
 
-    if packer_bootstrap then
+    if PACKER_BOOTSTRAP then
       require('packer').sync()
     end
 
