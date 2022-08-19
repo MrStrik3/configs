@@ -6,8 +6,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 
-return require('packer').startup({function()
-
+return require('packer').startup({function(use)
   -- Package manager
   use 'wbthomason/packer.nvim' -- Package manager
 
@@ -131,23 +130,23 @@ return require('packer').startup({function()
     { 'neovim/nvim-lspconfig', config = [[require('config.lspconfig')]] },
     'hrsh7th/nvim-cmp',  -- Autocompletion plugin
     'hrsh7th/cmp-nvim-lsp',   -- LSP source for nvim-cmp
-    'hrsh7th/cmp-vsnip', -- Link nvimcmp to Vsnip
-    'hrsh7th/vim-vsnip', -- Vsnip
-    'hrsh7th/cmp-buffer', -- autocompletion for buffer
+    -- 'hrsh7th/cmp-vsnip', -- Link nvimcmp to Vsnip
+    -- 'hrsh7th/vim-vsnip', -- Vsnip
+  'L3MON4D3/LuaSnip',
+  'saadparwaiz1/cmp_luasnip',
+  'hrsh7th/cmp-buffer', -- autocompletion for buffer
     'jose-elias-alvarez/null-ls.nvim',
     { 'williamboman/mason.nvim', config = [[require('config.mason')]] }, -- Lint, Lsp, Dsp install manager
     { 'williamboman/mason-lspconfig.nvim', config = [[require('config.mason_lspconfig')]] }, -- Link mason with lspconfig
     'onsails/lspkind-nvim',
     'rcarriga/nvim-notify',
-    -- { 'williamboman/nvim-lsp-installer', config = [[require('config.lspinstaller')]] }
-
   }
 
     use 'folke/lsp-colors.nvim'
     use {
       'folke/trouble.nvim',
       requires = 'kyazdani42/nvim-web-devicons',
-      opt = true,
+      -- opt = true,
       config = function()
         require("trouble").setup { }
       end

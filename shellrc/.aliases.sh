@@ -46,9 +46,10 @@ alias docker="sudo docker"
 
 # Git cmds
 alias git.s="git status"
-alias git.add="git add"
+alias git.a="git ls-files -m -o --exclude-standard | fzf -m --print0 | xargs -0 -o -t git add"
 alias git.p="git push"
-alias git.log="git log --graph --abbrev-commit --pretty=oneline | bat --file-name='Git log' --theme=Nord"
+# alias git.log="git log --graph --abbrev-commit --pretty=oneline | bat --file-name='Git log' --theme=Nord"
+alias git.log="git log --graph --abbrev-commit --pretty=oneline | bat --file-name='Git log' --theme=OneHalfDark"
 function git.c () {
   git commit -m "$@"
 }
