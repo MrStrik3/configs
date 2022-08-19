@@ -49,6 +49,8 @@ return require('packer').startup({function(use)
     after = 'nvim-treesitter',
     opt = false
   }
+  use 'windwp/nvim-ts-autotag'
+
   use { 'p00f/nvim-ts-rainbow', after = 'nvim-treesitter' }
 
   use 'psliwka/vim-smoothie' -- Make scrolling smooth
@@ -122,7 +124,7 @@ return require('packer').startup({function(use)
   use {
     'kyazdani42/nvim-tree.lua',
     requires = { 'kyazdani42/nvim-web-devicons' },
-    tag = 'nightly',
+    -- tag = 'nightly',
     config = [[require('config.nvim_tree')]]
   }
 
@@ -158,8 +160,9 @@ return require('packer').startup({function(use)
     -- }
 
     -- Optional extensions
-    use { 'tweekmonster/startuptime.vim', opt = true }
-    use { 'davidgranstrom/nvim-markdown-preview', opt = true }
+    use { 'tweekmonster/startuptime.vim' }
+    -- use { 'davidgranstrom/nvim-markdown-preview'}
+  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 
     use { 'mrk21/yaml-vim', opt = true }  -- YAML files Shit - https://github.com/mrk21/yaml-vim
 
