@@ -1,5 +1,4 @@
 -- NVIM-TREE CONFIGS
-
 require('nvim-tree').setup({
   disable_netrw       = true,
   hijack_netrw        = true,
@@ -8,6 +7,7 @@ require('nvim-tree').setup({
   open_on_tab         = false,
   hijack_cursor       = false,
   update_cwd          = false,
+  sort_by = "case_sensitive",
   diagnostics         = {
     enable = false,
     show_on_dirs = false,
@@ -19,7 +19,7 @@ require('nvim-tree').setup({
     }
   },
   git = {
-    enable = true,
+    enable = false,
     ignore = true,
   },
   view = {

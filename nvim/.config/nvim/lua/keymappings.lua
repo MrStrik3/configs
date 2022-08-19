@@ -159,7 +159,8 @@ wk.setup {
 
 wk.register({
   ["<leader>c"] = {
-    f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format code (Prettier)"}
+    f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format code (Prettier)"} ,
+    d = { "<cmd>TroubleToggle document_diagnostics<cr>", "Toggle document diagnostics list" }
   },
   -- Files
   ["<leader>f"] = {
@@ -170,9 +171,8 @@ wk.register({
     r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
     n = { "<cmd>enew<cr>", "New File" }
   },
-
   ["<leader>g"] = {
-    a = { "<cmd>Git add .<cr>", "Add changes to next commit"},
+    a = { "<cmd>Git add .<cr>", "Git - Add changes to next commit"},
   },
   ["<leader>o"] = {
     n = { "<cmd>set number! <cr><cmd>set relativenumber!<cr>", "Toggle numbers"}

@@ -122,6 +122,7 @@ return require('packer').startup({function(use)
   use {
     'kyazdani42/nvim-tree.lua',
     requires = { 'kyazdani42/nvim-web-devicons' },
+    tag = 'nightly',
     config = [[require('config.nvim_tree')]]
   }
 
