@@ -158,6 +158,9 @@ wk.setup {
 }
 
 wk.register({
+  ["<leader>c"] = {
+    f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format code (Prettier)"}
+  },
   -- Files
   ["<leader>f"] = {
     name = "+file",

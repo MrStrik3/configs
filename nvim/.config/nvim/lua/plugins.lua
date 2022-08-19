@@ -130,12 +130,11 @@ return require('packer').startup({function(use)
     { 'neovim/nvim-lspconfig', config = [[require('config.lspconfig')]] },
     'hrsh7th/nvim-cmp',  -- Autocompletion plugin
     'hrsh7th/cmp-nvim-lsp',   -- LSP source for nvim-cmp
-    -- 'hrsh7th/cmp-vsnip', -- Link nvimcmp to Vsnip
-    -- 'hrsh7th/vim-vsnip', -- Vsnip
-  'L3MON4D3/LuaSnip',
-  'saadparwaiz1/cmp_luasnip',
-  'hrsh7th/cmp-buffer', -- autocompletion for buffer
+    'L3MON4D3/LuaSnip',
+    'saadparwaiz1/cmp_luasnip',
+    'hrsh7th/cmp-buffer', -- autocompletion for buffer
     'jose-elias-alvarez/null-ls.nvim',
+    { 'MunifTanjim/prettier.nvim', config = [[require('config.prettier')]] },
     { 'williamboman/mason.nvim', config = [[require('config.mason')]] }, -- Lint, Lsp, Dsp install manager
     { 'williamboman/mason-lspconfig.nvim', config = [[require('config.mason_lspconfig')]] }, -- Link mason with lspconfig
     'onsails/lspkind-nvim',
