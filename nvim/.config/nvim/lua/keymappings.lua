@@ -35,45 +35,22 @@ map('n', '<c-j>', '<c-w>j', {})
 map('n', '<c-k>', '<c-w>k', {})
 map('n', '<c-l>', '<c-w>l', {})
 
+-- Buffer motions
+map('n', 'H', '^', {}) -- Move to beginning of line
+map('n', 'L', '$', {}) -- Move end of line
+
 -- Terminal management
-vim.api.nvim_set_keymap('n', '<F7>', ':FloatermNew<CR>', opts)
-vim.api.nvim_set_keymap('t', '<F7>', '<C-\\><C-n>:FloatermNew<CR>', opts)
+map('n', '<F7>', ':FloatermNew<CR>', opts)
+map('t', '<F7>', '<C-\\><C-n>:FloatermNew<CR>', opts)
 
-vim.api.nvim_set_keymap('n', '<F8>', ':FloatermPrev<CR>', opts)
-vim.api.nvim_set_keymap('t', '<F8>', '<C-\\><C-n>:FloatermPrev<CR>', opts)
+map('n', '<F8>', ':FloatermPrev<CR>', opts)
+map('t', '<F8>', '<C-\\><C-n>:FloatermPrev<CR>', opts)
 
-vim.api.nvim_set_keymap('n', '<F9>', ':FloatermNext<CR>', opts)
-vim.api.nvim_set_keymap('t', '<F9>', '<C-\\><C-n>:FloatermNext<CR>', opts)
+map('n', '<F9>', ':FloatermNext<CR>', opts)
+map('t', '<F9>', '<C-\\><C-n>:FloatermNext<CR>', opts)
 
-vim.api.nvim_set_keymap('n', '<F12>', ':FloatermToggle<CR>', opts)
-vim.api.nvim_set_keymap('t', '<F12>', '<C-\\><C-n>:FloatermToggle<CR>', opts)
-
--- -- Bufferline
--- -- Move to previous/next
--- map('n', '<A-,>', ':BufferLineCyclePrev<CR>', opts)
--- map('n', '<A-.>', ':BufferLineCycleNext<CR>', opts)
--- -- Re-order to previous/next
--- map('n', '<A-<>', ':BufferMovePrevious<CR>', opts)
--- map('n', '<A->>', ' :BufferMoveNext<CR>', opts)
--- -- Goto buffer in position...
--- map('n', '<A-1>', ':BufferLineGoToBuffer 1<CR>', opts)
--- map('n', '<A-2>', ':BufferLineGoToBuffer 2<CR>', opts)
--- map('n', '<A-3>', ':BufferLineGoToBuffer 3<CR>', opts)
--- map('n', '<A-4>', ':BufferLineGoToBuffer 4<CR>', opts)
--- map('n', '<A-5>', ':BufferLineGoToBuffer 5<CR>', opts)
--- map('n', '<A-6>', ':BufferLineGoToBuffer 6<CR>', opts)
--- map('n', '<A-7>', ':BufferLineGoToBuffer 7<CR>', opts)
--- map('n', '<A-8>', ':BufferLineGoToBuffer 8<CR>', opts)
--- map('n', '<A-9>', ':BufferLineGoToBuffer 9<CR>', opts)
--- -- map('n', '<A-0>', ':BufferLast<CR>', opts)
--- -- Close buffer
--- map('n', '<A-c>', ':BufferLineClose<CR>', opts)
--- -- Close commands
--- --                 :BufferCloseAllButCurrent<CR>
--- --                 :BufferCloseBuffersLeft<CR>
--- --                 :BufferCloseBuffersRight<CR>
--- -- Magic buffer-picking mode
--- map('n', '<C-p>', ':BufferLinePick<CR>', opts)
+map('n', '<F12>', ':FloatermToggle<CR>', opts)
+map('t', '<F12>', '<C-\\><C-n>:FloatermToggle<CR>', opts)
 
 -- Cokeline
 -- -- Move to previous/next
@@ -82,13 +59,6 @@ map('n', '<A-.>', '<plug>(cokeline-focus-next)', { silent = true })
 -- -- Re-order to previous/next
 map('n', '<A-<>', '<plug>(cokeline-switch-prev)', { silent = true })
 map('n', '<A->>', '<plug>(cokeline-switch-prev)', { silent = true })
-
-
-
--- -- Goto buffer in position...
--- for i = 1,9 do
---   map('n', ('<A-%s>').format(i), ('<plug>(cokeline-focus-%s)'):format(i), { silent = true })
--- end
 
 -- Which-key configs
 wk.setup {

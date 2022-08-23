@@ -149,6 +149,7 @@ return require('packer').startup({function(use)
     { 'williamboman/mason-lspconfig.nvim', config = [[require('config.mason_lspconfig')]] }, -- Link mason with lspconfig
     'onsails/lspkind-nvim',
     'rcarriga/nvim-notify',
+    {'ray-x/lsp_signature.nvim', config = function() require("lsp_signature").setup({}) end },
   }
 
     use 'folke/lsp-colors.nvim'
