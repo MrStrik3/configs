@@ -28,6 +28,17 @@ return require('packer').startup({function(use)
 
   use 'mg979/vim-visual-multi'  -- Multi cursor shit
 
+  -- FIX Fart hard!!!
+
+  use {
+    'phaazon/hop.nvim',
+    branch = 'v2', -- optional but strongly recommended
+    config = function()
+      -- you can configure Hop the way you like here; see :h hop-config
+      require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+    end
+  }
+
   use 'editorconfig/editorconfig-vim'
 
   -- Status line extension
@@ -53,12 +64,10 @@ return require('packer').startup({function(use)
 
   use { 'p00f/nvim-ts-rainbow', after = 'nvim-treesitter' }
 
-  -- use 'psliwka/vim-smoothie' -- Make scrolling smooth
   use {
     'karb94/neoscroll.nvim',
     config = function()
       require('neoscroll').setup({})
-      vim.g.mkdp_theme = 'light'
     end
   }
 
@@ -100,11 +109,12 @@ return require('packer').startup({function(use)
   --   -- event = 'User ActuallyEditing',
   -- }
 
-  -- use {
-  --   "folke/todo-comments.nvim",
-  --   requires = "nvim-lua/plenary.nvim",
-  --   config = [[require('config.todo-comments')]]
-  -- }
+  -- TODO cnfigure this thing
+  use {
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = [[require('config.todo_comments')]]
+  }
 
   use {
     'noib3/nvim-cokeline',
@@ -170,7 +180,13 @@ return require('packer').startup({function(use)
     -- Optional extensions
     use { 'tweekmonster/startuptime.vim' }
     -- use { 'davidgranstrom/nvim-markdown-preview'}
-  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+  use({
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    setup = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+      vim.g.mkdp_theme = "light"
+    end, ft = { "markdown" }, })
 
     use { 'mrk21/yaml-vim', opt = true }  -- YAML files Shit - https://github.com/mrk21/yaml-vim
 

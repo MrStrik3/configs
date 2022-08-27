@@ -128,29 +128,39 @@ wk.setup {
 }
 
 wk.register({
+  ["<leader><leader>"] = {
+    name = "Fast motions",
+    w = { ":HopWord<cr>", "Move to word (Hop.nvim)" },
+    l = { ":HopLineStart<cr>", "Move to line (Hop.nvim)" },
+    p = { ":HopPattern<cr>", "Move to a search pattern (Hop.nvim)" },
+  },
   ["<leader>c"] = {
+    name = "Code",
     f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format code (Prettier)"} ,
-    d = { "<cmd>TroubleToggle document_diagnostics<cr>", "Toggle document diagnostics list" }
+    d = { "<cmd>TroubleToggle document_diagnostics<cr>", "Toggle document diagnostics list" },
+    t = { "<cmd>TodoTrouble", "Show TODO list" },
   },
   -- Files
   ["<leader>f"] = {
-    name = "+file",
-    c = { "<cmd>Telescope colorscheme<cr>", "Find colorscheme" },
+    name = "File",
     f = { "<cmd>Telescope find_files<cr>", "Find File" },
     e = { "<cmd>NvimTreeToggle<cr>", "File Explorer" },
     r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+    c = { "<cmd>Telescope colorscheme<cr>", "Find colorscheme" },
     n = { "<cmd>enew<cr>", "New File" }
   },
   ["<leader>g"] = {
+    name = "Git",
     a = { "<cmd>Git add .<cr>", "Git - Add changes to next commit"},
   },
   ["<leader>o"] = {
+    name = "Options",
     n = { "<cmd>set number! <cr><cmd>set relativenumber!<cr>", "Toggle numbers"}
   },
   ["<leader>p"] = {
-    m = { "<cmd>PackerLoad vim-visual-multi<cr>", "Activate multi-cursor" },
-    c = { "<cmd>PackerLoad nvim-colorizer.lua<cr>", "Activate Nvim colorizer"},
-    u = { "<cmd>PackerUpdate<cr>", "Update the installed plugins"}
+    name = "Plugins",
+    u = { "<cmd>PackerUpdate<cr>", "Update all plugins (Packer)" },
+    c = { "<cmd>PackerCompile<cr>", "Compile all plugins (Packer)"},
 
   }
 })
