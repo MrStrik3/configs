@@ -1,3 +1,31 @@
+-- Mappings.
+local opts = { noremap=true, silent=true }
+local vim = vim
+
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+    local bufopts = { noremap=true, silent=true, buffer=bufnr }
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+    vim.keymap.set('n', '<space>K', vim.lsp.buf.signature_help, bufopts)
+    vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, bufopts)
+    vim.keymap.set('n', '<S-F6>', vim.lsp.buf.rename, bufopts)
+    -- vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
+    vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+    vim.keymap.set('n', '<space>cf', vim.lsp.buf.formatting, bufopts)
+    vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
+    -- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+    -- vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+end
+
+
 require("mason-lspconfig").setup({
     ensure_installed = { "sumneko_lua", "yamlls", "cssls", "bashls", "jdtls", "html", "pyright", "terraformls", "tsserver", "lemminx" }
 })
@@ -7,7 +35,12 @@ require("mason-lspconfig").setup_handlers({
   -- and will be called for each installed server that doesn't have
   -- a dedicated handler.
   function (server_name) -- default handler (optional)
-    require("lspconfig")[server_name].setup {}
+    require("lspconfig")[server_name].setup {
+      on_attach = on_attach, -- Add keymappings to the lsp
+      flags = {
+        debounce_text_changes = 150,
+      }
+    }
   end,
   -- Next, you can provide targeted overrides for specific servers.
   -- ["rust_analyzer"] = function ()
@@ -20,6 +53,10 @@ require("mason-lspconfig").setup_handlers({
           diagnostics = {
             globals = { "vim" }
           }                                                                                                                                                                                                                                                       }
+      },
+      on_attach = on_attach,
+      flags = {
+        debounce_text_changes = 150,
       }
     }
   end,

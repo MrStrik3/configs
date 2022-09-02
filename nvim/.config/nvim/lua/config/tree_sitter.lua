@@ -6,7 +6,7 @@ require("nvim-treesitter.configs").setup {
   sync_install = false,
 
   -- List of parsers to ignore installing
-  ignore_install = { "javascript" },
+  ignore_install = { "javascript", "rst", "ruby", "solidity", "pug" },
 
   highlight = {
     enable = true, -- `false` will disable the whole extension

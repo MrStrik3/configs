@@ -153,6 +153,9 @@ wk.register({
     name = "Git",
     a = { "<cmd>Git add .<cr>", "Git - Add changes to next commit"},
   },
+  ["<leader>h"] = {
+    s = { "<cmd>help nvim-surround.usage<cr>", "Help Nvim-Surround.usage" }
+  },
   ["<leader>o"] = {
     name = "Options",
     n = { "<cmd>set number! <cr><cmd>set relativenumber!<cr>", "Toggle numbers"}

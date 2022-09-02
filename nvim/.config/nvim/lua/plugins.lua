@@ -5,7 +5,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
   print "Installing packer close and reopen Neovim"
 end
 
-
 return require('packer').startup({function(use)
   -- Package manager
   use 'wbthomason/packer.nvim' -- Package manager
@@ -67,7 +66,7 @@ return require('packer').startup({function(use)
   use {
     'karb94/neoscroll.nvim',
     config = function()
-      require('neoscroll').setup({})
+      require('neoscroll').setup({ easing_function = "circular" }) -- quadratic, cubic, quartic, quintic, circular, sine
     end
   }
 
@@ -159,7 +158,18 @@ return require('packer').startup({function(use)
     { 'williamboman/mason-lspconfig.nvim', config = [[require('config.mason_lspconfig')]] }, -- Link mason with lspconfig
     'onsails/lspkind-nvim',
     'rcarriga/nvim-notify',
-    {'ray-x/lsp_signature.nvim', config = function() require("lsp_signature").setup({}) end },
+    -- 'ray-x/lsp_signature.nvim',
+    {
+      'ray-x/lsp_signature.nvim',
+      config = function() require("lsp_signature").setup({
+
+        bind = true, -- This is mandatory, otherwise border config won't get registered.
+        handler_opts = {
+          border = "rounded",
+        }
+      }) end
+    },
+    -- {'ray-x/lsp_signature.nvim', config = function() require("lsp_signature").setup({}) end },
   }
 
     use 'folke/lsp-colors.nvim'
