@@ -20,14 +20,12 @@ return require('packer').startup({function(use)
 
   -- TPOPE's plugins
   -- use 'tpope/vim-surround' -- surround management ( parenthesis,  quote, etc.)
-  use { 'kylechui/nvim-surround', config = function() require("nvim-surround").setup({}) end } -- surround management ( parenthesis,  quote, etc.) IN LUA -- Up for testing
+  use { 'kylechui/nvim-surround', tag = "*", config = function() require("nvim-surround").setup({}) end } -- surround management ( parenthesis,  quote, etc.) IN LUA -- Up for testing
   use 'tpope/vim-repeat'   -- Add special repeat commands
   -- use 'tpope/vim-fugitive' -- Git
   use { 'dinhhuy258/git.nvim', config = function () require("git").setup({}) end } -- rewrite of vim-fugitive in lua
 
   use 'mg979/vim-visual-multi'  -- Multi cursor shit
-
-  -- FIX Fart hard!!!
 
   use {
     'phaazon/hop.nvim',
@@ -50,18 +48,17 @@ return require('packer').startup({function(use)
   -- TREESITTER EXTENSIONS
   use {
     'nvim-treesitter/nvim-treesitter',
+    {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+      'windwp/nvim-ts-autotag',
+      'p00f/nvim-ts-rainbow',
+      'JoosepAlviste/nvim-ts-context-commentstring',
+      opt = false
+    },
     config    = [[ require('config.tree_sitter') ]],
     run       =  ':TSUpdate',
     opt = false
   }
-  use {
-    'nvim-treesitter/nvim-treesitter-textobjects',
-    after = 'nvim-treesitter',
-    opt = false
-  }
-  use 'windwp/nvim-ts-autotag'
-
-  use { 'p00f/nvim-ts-rainbow', after = 'nvim-treesitter' }
 
   use {
     'karb94/neoscroll.nvim',
@@ -97,24 +94,17 @@ return require('packer').startup({function(use)
   -- File picker
   use {
     'nvim-telescope/telescope.nvim',
+    config = [[require('config.telescope')]],
     requires = { 'nvim-lua/plenary.nvim' }
   }
 
-  -- Buffer management
-  -- use {
-  --   'akinsho/nvim-bufferline.lua',
-  --   requires = 'kyazdani42/nvim-web-devicons',
-  --   config = [[require('config.bufferline')]]
-  --   -- event = 'User ActuallyEditing',
-  -- }
-
-  -- TODO cnfigure this thing
   use {
     "folke/todo-comments.nvim",
     requires = "nvim-lua/plenary.nvim",
     config = [[require('config.todo_comments')]]
   }
 
+  -- Buffer management
   use {
     'noib3/nvim-cokeline',
     requires = 'kyazdani42/nvim-web-devicons', -- If you want devicons
@@ -147,7 +137,10 @@ return require('packer').startup({function(use)
   -- LSP - LANGUAGES
   use {
     { 'neovim/nvim-lspconfig', config = [[require('config.lspconfig')]] },
+    { "glepnir/lspsaga.nvim", branch = "main" },
     'hrsh7th/nvim-cmp',  -- Autocompletion plugin
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-cmdline',
     'hrsh7th/cmp-nvim-lsp',   -- LSP source for nvim-cmp
     'L3MON4D3/LuaSnip',
     'saadparwaiz1/cmp_luasnip',
@@ -205,8 +198,19 @@ return require('packer').startup({function(use)
       config = function() require('colorizer').setup() end
     }
 
-    use { 'voldikss/vim-floaterm' }
-
+    -- terminal management
+    use {
+      "akinsho/toggleterm.nvim",
+      tag = '*',
+      config = function()
+        require("toggleterm").setup({
+          direction = 'float',
+          float_opts = {
+            border = 'double'
+          }
+        })
+      end
+    }
 
     if PACKER_BOOTSTRAP then
       require('packer').sync()

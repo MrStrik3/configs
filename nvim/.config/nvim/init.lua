@@ -31,7 +31,7 @@ vim.g.python3_host_prog = '/usr/bin/python'
 vim.g.node_host_prog = '/usr/bin/neovim-node-host'
 
 -- Add logging level to LSP
-vim.lsp.set_log_level("debug")
+-- vim.lsp.set_log_level("debug")
 
 -- Disable some built-in plugins we don't want
 local disabled_built_ins = {

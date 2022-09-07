@@ -19,13 +19,14 @@ local palette = {
 
 
 require('cokeline').setup({
+  -- Only show the bufferline when there are at least this many visible buffers.
+  -- default: `1`.
+  show_if_buffers_are_at_least = 2,
+
   default_hl = {
     fg = function(buffer) return buffer.is_focused and palette.blue or palette.gray end,
-    -- fg = function(buffer) return buffer.is_focused and get_hex('Normal', 'fg') or get_hex('Comment', 'bg') end,
-    -- bg = get_hex('Normal', 'bg'),
     bg = 'NONE',
     style = function(buffer) return buffer.is_focused and 'bold' or nil end,
-    -- style = function(buffer) return buffer.is_focused and 'bold,italic' or 'italic' end,
   },
 
   sidebar = {
@@ -33,12 +34,8 @@ require('cokeline').setup({
     components = {
       {
         text = '   File Explorer',
-        -- text = '',
-        -- bg = get_hex('Normal', 'bg'),
         bg = get_hex('WildMenu', 'bg'),
         fg = get_hex('WildMenu', 'fg'),
-        -- fg = palette.yellow,
-        -- bg = get_hex('NvimTreeNormal', 'bg'),
         style = 'bold,underline',
       },
     },
@@ -57,13 +54,11 @@ require('cokeline').setup({
     -- buffer icon
     {
       text = function(buffer) return ' ' .. buffer.devicon.icon end,
-      -- fg = function(buffer) return buffer.devicon.color end,
       bg = get_hex('ColorColumn', 'bg'),
       fg = function(buffer) return buffer.is_modified and get_hex('Error', 'fg') or get_hex('Special','fg') end,
     },
     -- Is modified
     {
-      -- text = function(buffer) return buffer.is_modified and ' ● ' or '  ' end,
       text = function(buffer) return buffer.is_modified and ' ' or ' ' end,
       fg = get_hex('ErrorMsg', 'fg'),
       bg = get_hex('ColorColumn', 'bg'),

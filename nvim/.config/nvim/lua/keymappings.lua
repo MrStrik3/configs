@@ -40,17 +40,8 @@ map('n', 'H', '^', {}) -- Move to beginning of line
 map('n', 'L', '$', {}) -- Move end of line
 
 -- Terminal management
-map('n', '<F7>', ':FloatermNew<CR>', opts)
-map('t', '<F7>', '<C-\\><C-n>:FloatermNew<CR>', opts)
-
-map('n', '<F8>', ':FloatermPrev<CR>', opts)
-map('t', '<F8>', '<C-\\><C-n>:FloatermPrev<CR>', opts)
-
-map('n', '<F9>', ':FloatermNext<CR>', opts)
-map('t', '<F9>', '<C-\\><C-n>:FloatermNext<CR>', opts)
-
-map('n', '<F12>', ':FloatermToggle<CR>', opts)
-map('t', '<F12>', '<C-\\><C-n>:FloatermToggle<CR>', opts)
+map('n', '<F12>', ':ToggleTerm<CR>', opts)
+map('t', '<F12>', '<C-\\><C-n>:ToggleTerm<CR>', opts)
 
 -- Cokeline
 -- -- Move to previous/next
@@ -101,7 +92,7 @@ wk.setup {
     scroll_up = '<c-u>', -- binding to scroll up inside the popup
   },
   window = {
-    border = "none", -- none, single, double, shadow
+    border = "double", -- none, single, double, shadow
     position = "bottom", -- bottom, top
     margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
     padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
@@ -164,6 +155,5 @@ wk.register({
     name = "Plugins",
     u = { "<cmd>PackerUpdate<cr>", "Update all plugins (Packer)" },
     c = { "<cmd>PackerCompile<cr>", "Compile all plugins (Packer)"},
-
   }
 })

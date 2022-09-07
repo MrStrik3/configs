@@ -1,11 +1,15 @@
 local vim = vim
+local keymap = vim.keymap.set
 
--- LSP config setup
+require('luasnip.loaders.from_vscode').lazy_load()
+
+-- LSP keymappings
 local opts = { noremap=true, silent=true }
-vim.keymap.set('n', '<space>x', vim.diagnostic.open_float, opts)
-vim.keymap.set('n', 'xn', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', 'xp', vim.diagnostic.goto_next, opts)
-vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+keymap('n', '<space>x', vim.diagnostic.open_float, opts)
+-- keymap('n', 'xn', vim.diagnostic.goto_prev, opts)
+-- keymap('n', 'xp', vim.diagnostic.goto_next, opts)
+keymap('n', '<space>q', vim.diagnostic.setloclist, opts)
+
 
 -- Setup nvim-cmp.
 local cmp = require'cmp'
@@ -49,8 +53,9 @@ cmp.setup({
     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
   },
   sources = cmp.config.sources({
+    { name = 'path' },
     { name = 'nvim_lsp' },
-    { name = 'luasnip'}, -- For Luasnip users,
+    { name = 'luasnip'},
   }, {
     { name = 'buffer' },
   })
@@ -109,3 +114,11 @@ for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type
     vim.fn.sign_define(hl, { text = icon, texthl= hl, numhl = hl })
 end
+
+
+-- LSP SAGA  configs
+require("lspsaga").init_lsp_saga({
+  border_style = "rounded"   -- your configuration
+})
+
+
