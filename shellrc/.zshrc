@@ -6,6 +6,7 @@ export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 # Path to your oh-my-zsh installation.
 export ZSH="/home/lefrancoisc/.oh-my-zsh"
 
+export FZF_BASE=/usr/bin
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -108,7 +109,6 @@ export YAOURT_COLORS="nb=1:pkg=1:ver=1;32:lver=1;45:installed=1;42:grp=1;34:od=1
 export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
 
-export FZF_BASE=/usr/bin
 
 #
 # Azure cli autocomplete#
@@ -145,6 +145,7 @@ SPACESHIP_EXIT_CODE_SHOW=true
 
 export FZF_DEFAULT_OPTS="--exact"
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
+. /etc/profile.d/fzf.zsh
 
 
 # bindkey -v

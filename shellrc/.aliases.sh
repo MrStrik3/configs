@@ -1,3 +1,5 @@
+alias cd.wk="cd /mnt/c/Users/LefrancoisC/Desktop/Travail"
+alias cd.temp="cd /mnt/c/Users/LefrancoisC/Desktop/Temp"
 # alias ll="ls -al"
 # alias ls='ls --color=auto'
 alias ll="exa -l -g --icons"

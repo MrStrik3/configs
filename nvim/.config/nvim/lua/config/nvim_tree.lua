@@ -19,13 +19,13 @@ require('nvim-tree').setup({
     }
   },
   git = {
-    enable = false,
+    enable = true,
     ignore = true,
   },
   view = {
     width = 30,
     height = 30,
-    side = "left",
+    side = "right",
     number = false,
     relativenumber = false,
     signcolumn = "yes"
