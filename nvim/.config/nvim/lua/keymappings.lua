@@ -147,7 +147,7 @@ wk.register({
     name = "File",
     f = { "<cmd>Telescope find_files<cr>", "Find File" },
     -- e = { "<cmd>NvimTreeToggle<cr>", "File Explorer" },
-    e = { "<cmd>Neotree reveal<cr>", "File Explorer" },
+    e = { "<cmd>Neotree toggle<cr>", "File Explorer" },
     r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
     c = { "<cmd>Telescope colorscheme<cr>", "Find colorscheme" },
     n = { "<cmd>enew<cr>", "New File" }
