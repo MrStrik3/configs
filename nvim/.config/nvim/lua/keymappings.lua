@@ -39,6 +39,17 @@ map('n', '<c-l>', '<c-w>l', {})
 map('n', 'H', '^', {}) -- Move to beginning of line
 map('n', 'L', '$', {}) -- Move end of line
 
+-- Substitute mapping
+vim.keymap.set("n", "s", "<cmd>lua require('substitute').operator()<cr>", { noremap = true })
+vim.keymap.set("n", "ss", "<cmd>lua require('substitute').line()<cr>", { noremap = true })
+vim.keymap.set("n", "S", "<cmd>lua require('substitute').eol()<cr>", { noremap = true })
+vim.keymap.set("x", "s", "<cmd>lua require('substitute').visual()<cr>", { noremap = true })
+--Exchange
+vim.keymap.set("n", "sx", "<cmd>lua require('substitute.exchange').operator()<cr>", { noremap = true })
+vim.keymap.set("n", "sxx", "<cmd>lua require('substitute.exchange').line()<cr>", { noremap = true })
+vim.keymap.set("x", "X", "<cmd>lua require('substitute.exchange').visual()<cr>", { noremap = true })
+vim.keymap.set("n", "sxc", "<cmd>lua require('substitute.exchange').cancel()<cr>", { noremap = true })
+
 -- Terminal management
 map('n', '<F12>', ':ToggleTerm<CR>', opts)
 map('t', '<F12>', '<C-\\><C-n>:ToggleTerm<CR>', opts)
@@ -135,7 +146,8 @@ wk.register({
   ["<leader>f"] = {
     name = "File",
     f = { "<cmd>Telescope find_files<cr>", "Find File" },
-    e = { "<cmd>NvimTreeToggle<cr>", "File Explorer" },
+    -- e = { "<cmd>NvimTreeToggle<cr>", "File Explorer" },
+    e = { "<cmd>Neotree reveal<cr>", "File Explorer" },
     r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
     c = { "<cmd>Telescope colorscheme<cr>", "Find colorscheme" },
     n = { "<cmd>enew<cr>", "New File" }

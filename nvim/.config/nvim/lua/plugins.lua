@@ -1,3 +1,7 @@
+
+-- https://github.com/danymat/neogen (Annotation documentaiton)
+
+
 local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -12,6 +16,9 @@ return require('packer').startup({function(use)
   --Nvim optimizations
   use 'nathom/filetype.nvim' -- Define the neovim's filetypes list (load quicker)
   use 'lewis6991/impatient.nvim' -- Speed up start time
+
+  --Nvim optimizations
+  use {'edluffy/specs.nvim', config = function() require("specs").setup({}) end }
 
   -- THEMES
   use 'eddyekofo94/gruvbox-flat.nvim'  -- gruvbox theme
@@ -45,6 +52,41 @@ return require('packer').startup({function(use)
     requires = { 'kyazdani42/nvim-web-devicons' }
   }
 
+  -- NEO-Tree
+  use {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v2.x",
+    config = [[require("config.neo_tree")]],
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+      -- {
+      --   -- only needed if you want to use the commands with "_with_window_picker" suffix
+      --   's1n7ax/nvim-window-picker',
+      --   tag = "v1.*",
+      --   config = function()
+      --     require'window-picker'.setup({
+      --       autoselect_one = true,
+      --       include_current = false,
+      --       filter_rules = {
+      --         -- filter using buffer options
+      --         bo = {
+      --           -- if the file type is one of following, the window will be ignored
+      --           filetype = { 'neo-tree', "neo-tree-popup", "notify", "quickfix" },
+      --
+      --           -- if the buffer type is one of following, the window will be ignored
+      --           buftype = { 'terminal' },
+      --         },
+      --       },
+      --       other_win_hl_color = '#e35e4f',
+      --     })
+      --   end,
+      -- }
+    },
+  }
+
+
   -- TREESITTER EXTENSIONS
   use {
     'nvim-treesitter/nvim-treesitter',
@@ -60,11 +102,18 @@ return require('packer').startup({function(use)
     opt = false
   }
 
+  -- smoothen the scolling
   use {
     'karb94/neoscroll.nvim',
     config = function()
       require('neoscroll').setup({ easing_function = "circular" }) -- quadratic, cubic, quartic, quintic, circular, sine
     end
+  }
+
+  -- Substitution plugin
+  use {
+    "gbprod/substitute.nvim",
+    config = function () require("substitute").setup({}) end
   }
 
   -- show Indentation lines
@@ -127,12 +176,12 @@ return require('packer').startup({function(use)
     config = function() require('gitsigns').setup() end
   }
 
-  use {
-    'kyazdani42/nvim-tree.lua',
-    requires = { 'kyazdani42/nvim-web-devicons' },
-    -- tag = 'nightly',
-    config = [[require('config.nvim_tree')]]
-  }
+  -- use {
+  --   'kyazdani42/nvim-tree.lua',
+  --   requires = { 'kyazdani42/nvim-web-devicons' },
+  --   -- tag = 'nightly',
+  --   config = [[require('config.nvim_tree')]]
+  -- }
 
   -- LSP - LANGUAGES
   use {

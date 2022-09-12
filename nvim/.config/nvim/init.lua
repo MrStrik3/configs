@@ -1,9 +1,25 @@
-require('config/onedarkpro')
+local fn = vim.fn
+
+local exists = function (filepath)
+  if (fn.empty(fn.glob(filepath)) == 0) then
+    return true
+  else
+    return false
+  end
+end
+
+-- Make sure the theme exists before loading it
+if exists(fn.stdpath('data')..'/site/pack/packer/start/onedarkpro.nvim') then
+  require('config/onedarkpro')
+end
 require('autocmds')
 require('options')
 require('impatient')
-require('impatient').enable_profile()
-require('packer_compiled')
+-- require('impatient').enable_profile()
+
+if exists(fn.stdpath('config')..'/lua/packer_compiled.lua') then
+  require('packer_compiled')
+end
 require('plugins')
 require('keymappings')
 
