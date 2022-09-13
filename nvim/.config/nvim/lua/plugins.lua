@@ -1,13 +1,18 @@
 
 -- https://github.com/danymat/neogen (Annotation documentaiton)
 
-
-local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-  PACKER_BOOTSTRAP = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-  print "Installing packer close and reopen Neovim"
+local ensure_packer = function()
+  local fn = vim.fn
+  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    vim.cmd [[packadd packer.nvim]]
+    return true
+  end
+  return false
 end
+
+local packer_bootstrap = ensure_packer()
 
 return require('packer').startup({function(use)
   -- Package manager
@@ -260,9 +265,11 @@ return require('packer').startup({function(use)
       end
     }
 
-    if PACKER_BOOTSTRAP then
-      require('packer').sync()
-    end
+-- Automatically set up your configuration after cloning packer.nvim
+  -- Put this at the end after all plugins
+  if packer_bootstrap then
+    require('packer').sync()
+  end
 
   end,
   config = {
@@ -272,7 +279,9 @@ return require('packer').startup({function(use)
     compile_path = vim.fn.stdpath('config')..'/lua/packer_compiled.lua',
     profile = {
       enable = true,
-      threshold = 0 -- the amount in ms that a plugins load time must be over for it to be included in the profile
-    }
+      threshold = 1 -- the amount in ms that a plugins load time must be over for it to be included in the profile
+    },
+    autoremove = false,
+    max_jobs = 10
   }})
 

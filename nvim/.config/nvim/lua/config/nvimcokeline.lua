@@ -30,7 +30,8 @@ require('cokeline').setup({
   },
 
   sidebar = {
-    filetype = 'NvimTree',
+    -- filetype = 'NvimTree',
+    filetype = 'neo-tree',
     components = {
       {
         text = '   File Explorer',
