@@ -22,6 +22,7 @@ return require('packer').startup({function(use)
   use 'nathom/filetype.nvim' -- Define the neovim's filetypes list (load quicker)
   use 'lewis6991/impatient.nvim' -- Speed up start time
 
+  use 'sheerun/vim-polyglot'
   --Nvim optimizations
   use {'edluffy/specs.nvim', config = function() require("specs").setup({}) end }
 
@@ -258,6 +259,7 @@ return require('packer').startup({function(use)
       config = function()
         require("toggleterm").setup({
           direction = 'float',
+          shade_terminal = true,
           float_opts = {
             border = 'double'
           }

@@ -17,22 +17,20 @@ vim.fn.sign_define("DiagnosticSignHint",
 
 require("neo-tree").setup({
   event_handlers = {
-
     {
       event = "file_opened",
       handler = function(file_path)
         require("neo-tree").close_all()
       end,
-      id = "blahblahblah"
+      id = "closeNeotree_on_openfile"
     }
-
   },
+
   close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
-  popup_border_style = "rounded",
+  popup_border_style = "double",
   enable_git_status = true,
-  enable_diagnostics = true,
+  enable_diagnostics = false,
   sort_case_insensitive = false, -- used when sorting files and directories in the tree
-  sort_function = nil , -- use a custom function for sorting files and directories in the tree
   default_component_configs = {
     container = {
       enable_character_fade = true
@@ -66,14 +64,14 @@ require("neo-tree").setup({
     },
     name = {
       trailing_slash = false,
-      use_git_status_colors = true,
+      use_git_status_colors = false,
       highlight = "NeoTreeFileName",
     },
     git_status = {
       symbols = {
         -- Change type
-        added     = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
-        modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
+        added     = "✚", -- or "✚", but this is redundant info if you use git_status_colors on the name
+        modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
         deleted   = "✖",-- this can only be used in the git_status source
         renamed   = "",-- this can only be used in the git_status source
         -- Status type
@@ -98,7 +96,8 @@ require("neo-tree").setup({
         nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
       },
       ["o"] = "open",
-      ["<esc>"] = "revert_preview",
+      -- ["<esc>"] = "revert_preview",
+      ["<esc>"] = "close_window",
       ["P"] = { "toggle_preview", config = { use_float = true } },
       ["S"] = "open_split",
       ["s"] = "open_vsplit",
@@ -108,7 +107,7 @@ require("neo-tree").setup({
       -- ["<cr>"] = "open_drop",
       -- ["t"] = "open_tab_drop",
       ["w"] = "open_with_window_picker",
-      --["P"] = "toggle_preview", -- enter preview mode, which shows the current node without focusing
+      ["P"] = "toggle_preview", -- enter preview mode, which shows the current node without focusing
       ["C"] = "close_node",
       ["z"] = "close_all_nodes",
       --["Z"] = "expand_all_nodes",
@@ -144,9 +143,9 @@ require("neo-tree").setup({
   filesystem = {
     filtered_items = {
       visible = false, -- when true, they will just be displayed differently than normal items
-      hide_dotfiles = true,
+      hide_dotfiles = false,
       hide_gitignored = true,
-      hide_hidden = true, -- only works on Windows for hidden files/directories
+      hide_hidden = false, -- only works on Windows for hidden files/directories
       hide_by_name = {
         --"node_modules"
       },
