@@ -23,6 +23,7 @@ return require('packer').startup({function(use)
   use 'lewis6991/impatient.nvim' -- Speed up start time
 
   use 'sheerun/vim-polyglot'
+
   --Nvim optimizations
   use {'edluffy/specs.nvim', config = function() require("specs").setup({}) end }
 
@@ -133,7 +134,7 @@ return require('packer').startup({function(use)
    'windwp/nvim-autopairs',
    config = function()
      require('nvim-autopairs').setup({
-       disable_filetypes = { "TelescopePrompt", "NvimTree" },
+       disable_filetypes = { "TelescopePrompt", "NvimTree", "neo-tree" },
      })
    end
  }
@@ -256,15 +257,7 @@ return require('packer').startup({function(use)
     use {
       "akinsho/toggleterm.nvim",
       tag = '*',
-      config = function()
-        require("toggleterm").setup({
-          direction = 'float',
-          shade_terminal = true,
-          float_opts = {
-            border = 'double'
-          }
-        })
-      end
+      config = [[require('config.toggleterm')]]
     }
 
 -- Automatically set up your configuration after cloning packer.nvim

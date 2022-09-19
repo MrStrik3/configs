@@ -54,6 +54,9 @@ vim.keymap.set("n", "sxc", "<cmd>lua require('substitute.exchange').cancel()<cr>
 map('n', '<F12>', ':ToggleTerm<CR>', opts)
 map('t', '<F12>', '<C-\\><C-n>:ToggleTerm<CR>', opts)
 
+map('n', '<F11>', '<cmd>lua _terminal_lazygit_toggle()<CR>', opts)
+map('t', '<F11>', '<cmd>lua _terminal_lazygit_toggle()<CR>', opts)
+
 -- Cokeline
 -- -- Move to previous/next
 map('n', '<A-,>', '<plug>(cokeline-focus-prev)', { silent = true })

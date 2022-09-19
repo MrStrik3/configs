@@ -7,11 +7,10 @@ require('lualine').setup({
       -- theme = 'gruvbox-flat'
       -- theme = 'nord'
       theme = 'codedark',
-      -- theme = 'onedarkpro'
-      -- disabled_filetypes = {
-      --   statusline = { "neo-tree"},
-      --   winbar = {"neo-tree"},
-      -- },
+      disabled_filetypes = {
+        statusline = { "neo-tree"},
+        winbar = {"neo-tree"},
+      },
     },
     extensions = {'neo-tree'},
     inactive_sections = {
