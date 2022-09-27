@@ -11,6 +11,19 @@ vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 -- vim.fn.sign_define("DiagnosticSignHint",
 -- {text = "", texthl = "DiagnosticSignHint"})
 
+local copy_relative_path = function(state)
+  local node = state.tree:get_node()
+  local full_path = node.path
+  local relative_path = full_path:sub(#state.path + 2)
+  print(relative_path)
+  vim.fn.setreg('"', relative_path, 'c')
+end
+
+local print_me = function(state)
+  local node = state.tree:get_node()
+  print(node)
+end
+
 require("neo-tree").setup({
   event_handlers = {
     {
@@ -103,7 +116,7 @@ require("neo-tree").setup({
       -- ["<cr>"] = "open_drop",
       -- ["t"] = "open_tab_drop",
       ["w"] = "open_with_window_picker",
-      ["P"] = "toggle_preview", -- enter preview mode, which shows the current node without focusing
+      -- ["P"] = "toggle_preview", -- enter preview mode, which shows the current node without focusing
       ["C"] = "close_node",
       ["z"] = "close_all_nodes",
       --["Z"] = "expand_all_nodes",
@@ -118,6 +131,7 @@ require("neo-tree").setup({
       ["d"] = "delete",
       ["r"] = "rename",
       ["y"] = "copy_to_clipboard",
+      ["Y"] = copy_relative_path,
       ["x"] = "cut_to_clipboard",
       ["p"] = "paste_from_clipboard",
       ["c"] = "copy", -- takes text input for destination, also accepts the optional config.show_path option like "add":
@@ -143,8 +157,9 @@ require("neo-tree").setup({
       hide_gitignored = true,
       hide_hidden = false, -- only works on Windows for hidden files/directories
       hide_by_name = {
-        --"node_modules"
+        ".git"
       },
+      always_show = { "node_modules" }
     },
     follow_current_file = false, -- This will find and focus the file in the active buffer every
     -- time the current file is changed while the tree is open.

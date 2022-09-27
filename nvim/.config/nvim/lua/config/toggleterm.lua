@@ -11,6 +11,8 @@ if vim.fn.has('win32')  == 1 then
   for option, value in pairs(powershell_options) do                                                                                                                                                                                                                                         vim.opt[option] = value
     vim.opt[option] = value
   end
+else
+  vim.opt.shell = 'zsh'
 end
 
 require("toggleterm").setup({

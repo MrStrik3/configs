@@ -102,6 +102,7 @@ return require('packer').startup({function(use)
       'windwp/nvim-ts-autotag',
       'p00f/nvim-ts-rainbow',
       'JoosepAlviste/nvim-ts-context-commentstring',
+      'nvim-treesitter/nvim-treesitter-angular',
       opt = false
     },
     config    = [[ require('config.tree_sitter') ]],
