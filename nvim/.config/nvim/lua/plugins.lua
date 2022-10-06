@@ -1,5 +1,7 @@
 
+-- Plugins to look int
 -- https://github.com/danymat/neogen (Annotation documentaiton)
+-- https://github.com/Pocco81/true-zen.nvim
 
 local ensure_packer = function()
   local fn = vim.fn
@@ -31,6 +33,11 @@ return require('packer').startup({function(use)
   use 'eddyekofo94/gruvbox-flat.nvim'  -- gruvbox theme
   use { 'arcticicestudio/nord-vim', branch = 'main' } -- Nord theme
   use 'olimorris/onedarkpro.nvim'
+  -- use {
+  --   "catppuccin/nvim",
+  --   as = "catppuccin",
+  --   run = ":CatppuccinCompile"
+  -- }
 
   -- TPOPE's plugins
   -- use 'tpope/vim-surround' -- surround management ( parenthesis,  quote, etc.)
@@ -278,6 +285,7 @@ return require('packer').startup({function(use)
       threshold = 1 -- the amount in ms that a plugins load time must be over for it to be included in the profile
     },
     autoremove = false,
-    max_jobs = 10
+    max_jobs = 10,
+
   }})
 
