@@ -29,3 +29,9 @@ local lazygit_term = Terminal:new({ cmd = "lazygit", direction = 'float', hidden
 function _terminal_lazygit_toggle()
   lazygit_term:toggle()
 end
+
+local taskwarrior_term = Terminal:new({ cmd = "taskwarrior-tui", direction = 'float', hidden = true })
+
+function _terminal_taskwarrior_toggle()
+  taskwarrior_term:toggle()
+end

@@ -56,3 +56,5 @@ alias git.log="git log --graph --abbrev-commit --pretty=oneline | bat --file-nam
 function git.c () {
   git commit -m "$@"
 }
+
+alias nvim.cfg.copy2win="cp -Rf ~/.config/nvim/{init.lua,lua} /mnt/c/Users/LefrancoisC/AppData/Local/nvim/"

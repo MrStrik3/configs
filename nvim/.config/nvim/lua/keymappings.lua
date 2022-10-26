@@ -54,6 +54,8 @@ vim.keymap.set("n", "sxc", "<cmd>lua require('substitute.exchange').cancel()<cr>
 map('n', '<F12>', ':ToggleTerm<CR>', opts)
 map('t', '<F12>', '<C-\\><C-n>:ToggleTerm<CR>', opts)
 
+map('n', '<F10>', '<cmd>lua _terminal_taskwarrior_toggle()<CR>', opts)
+map('t', '<F10>', '<cmd>lua _terminal_taskwarrior_toggle()<CR>', opts)
 map('n', '<F11>', '<cmd>lua _terminal_lazygit_toggle()<CR>', opts)
 map('t', '<F11>', '<cmd>lua _terminal_lazygit_toggle()<CR>', opts)
 
@@ -122,7 +124,6 @@ wk.setup {
   hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ "}, -- hide mapping boilerplate
   show_help = true, -- show help message on the command line when the popup is visible
   triggers = "auto", -- automatically setup triggers
-  -- triggers = {"<leader>"} -- or specify a list manually
   triggers_blacklist = {
     -- list of mode / prefixes that should never be hooked by WhichKey
     -- this is mostly relevant for key maps that start with a native binding
@@ -149,22 +150,19 @@ wk.register({
   ["<leader>f"] = {
     name = "File",
     f = { "<cmd>Telescope find_files<cr>", "Find File" },
-    -- e = { "<cmd>NvimTreeToggle<cr>", "File Explorer" },
     e = { "<cmd>Neotree toggle<cr>", "File Explorer" },
     r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
     c = { "<cmd>Telescope colorscheme<cr>", "Find colorscheme" },
     n = { "<cmd>enew<cr>", "New File" }
   },
-  ["<leader>g"] = {
-    name = "Git",
-    a = { "<cmd>Git add .<cr>", "Git - Add changes to next commit"},
-  },
   ["<leader>h"] = {
-    s = { "<cmd>help nvim-surround.usage<cr>", "Help Nvim-Surround.usage" }
+    s = { "<cmd>help nvim-surround.usage<cr>", "Help Nvim-Surround.usage" },
+    c = { "<cmd>help visual-multi", "Help multi cursors"}
   },
   ["<leader>o"] = {
     name = "Options",
-    n = { "<cmd>set number! <cr><cmd>set relativenumber!<cr>", "Toggle numbers"}
+    n = { "<cmd>set number! <cr><cmd>set relativenumber!<cr>", "Toggle numbers" },
+    i = { "<cmd>IndentBlanklineToggle<cr>", "Toggle indent lines"}
   },
   ["<leader>p"] = {
     name = "Plugins",
