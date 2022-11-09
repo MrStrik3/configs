@@ -32,12 +32,20 @@ return require('packer').startup({function(use)
   -- THEMES
   -- use 'eddyekofo94/gruvbox-flat.nvim'  -- gruvbox theme
   -- use { 'arcticicestudio/nord-vim', branch = 'main' } -- Nord theme
+  -- use 'rmehri01/onenord.nvim'
   use 'olimorris/onedarkpro.nvim'
+
   -- use {
   --   "catppuccin/nvim",
   --   as = "catppuccin",
   --   run = ":CatppuccinCompile"
   -- }
+
+  use {
+    "SmiteshP/nvim-navic",
+    requires = "neovim/nvim-lspconfig",
+    config = function() require("nvim-navic").setup({}) end
+  }
 
   -- TPOPE's plugins
   use { 'kylechui/nvim-surround', tag = "*", config = function() require("nvim-surround").setup({}) end } -- surround management ( parenthesis,  quote, etc.)
@@ -238,9 +246,9 @@ return require('packer').startup({function(use)
       config = [[require('config.toggleterm')]]
     }
 
-    use {
-      'vimwiki/vimwiki'
-    }
+    -- use {
+    --   'vimwiki/vimwiki'
+    -- }
 
 -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

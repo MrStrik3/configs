@@ -1,6 +1,7 @@
 
 vim.cmd("colorscheme onedarkpro")
 -- vim.cmd("colorscheme catppuccin")
+-- vim.cmd("colorscheme onenord")
 
 -- LUALINE CONFIGS
 require('lualine').setup({
@@ -8,6 +9,7 @@ require('lualine').setup({
       icons_enabled = true,
       -- theme = 'gruvbox-flat'
       -- theme = 'nord'
+      theme = 'onenord',
       -- theme = 'codedark',
       -- theme = 'catppuccin',
       disabled_filetypes = {

@@ -58,3 +58,4 @@ function git.c () {
 }
 
 alias nvim.cfg.copy2win="cp -Rf ~/.config/nvim/{init.lua,lua} /mnt/c/Users/LefrancoisC/AppData/Local/nvim/"
+alias notes="nvim /mnt/c/Users/LefrancoisC/Desktop/Travail/2022-23/notes"
