@@ -9,7 +9,6 @@ require('lualine').setup({
       icons_enabled = true,
       -- theme = 'gruvbox-flat'
       -- theme = 'nord'
-      theme = 'onenord',
       -- theme = 'codedark',
       -- theme = 'catppuccin',
       disabled_filetypes = {
