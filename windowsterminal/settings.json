@@ -1,14 +1,14 @@
 {
     "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions": 
+    "actions":
     [
         {
             "command": "paste",
             "keys": "ctrl+v"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "copy",
                 "singleLine": false
@@ -19,7 +19,7 @@
             "keys": "ctrl+shift+f"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "splitPane",
                 "split": "auto",
@@ -44,19 +44,19 @@
     "copyOnSelect": false,
     "defaultProfile": "{a5a97cb8-8961-5535-816d-772efe0c6a3f}",
     "language": "en-US",
-    "profiles": 
+    "profiles":
     {
-        "defaults": 
+        "defaults":
         {
             "colorScheme": "One Half Dark",
             "cursorShape": "filledBox",
-            "font": 
+            "font":
             {
                 "face": "FiraCode Nerd Font Mono",
                 "size": 9.0
             }
         },
-        "list": 
+        "list":
         [
             {
                 "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
@@ -66,7 +66,7 @@
             },
             {
                 "commandline": "%SystemRoot%\\System32\\cmd.exe",
-                "font": 
+                "font":
                 {
                     "face": "FiraCode Nerd Font"
                 },
@@ -112,7 +112,7 @@
             }
         ]
     },
-    "schemes": 
+    "schemes":
     [
         {
             "background": "#0C0C0C",
@@ -692,76 +692,76 @@
     ],
     "startOnUserLogin": true,
     "theme": "dark",
-    "themes": 
+    "themes":
     [
         {
             "name": "Catppuccin Frappe",
-            "tab": 
+            "tab":
             {
                 "background": "#414559FF",
                 "showCloseButton": "always",
                 "unfocusedBackground": null
             },
-            "tabRow": 
+            "tabRow":
             {
                 "background": "#303446FF",
                 "unfocusedBackground": "#292C3CFF"
             },
-            "window": 
+            "window":
             {
                 "applicationTheme": "dark"
             }
         },
         {
             "name": "Catppuccin Latte",
-            "tab": 
+            "tab":
             {
                 "background": "#CCD0DAFF",
                 "showCloseButton": "always",
                 "unfocusedBackground": null
             },
-            "tabRow": 
+            "tabRow":
             {
                 "background": "#EFF1F5FF",
                 "unfocusedBackground": "#E6E9EFFF"
             },
-            "window": 
+            "window":
             {
                 "applicationTheme": "light"
             }
         },
         {
             "name": "Catppuccin Machiatto",
-            "tab": 
+            "tab":
             {
                 "background": "#363A4FFF",
                 "showCloseButton": "always",
                 "unfocusedBackground": null
             },
-            "tabRow": 
+            "tabRow":
             {
                 "background": "#24273AFF",
                 "unfocusedBackground": "#181926FF"
             },
-            "window": 
+            "window":
             {
                 "applicationTheme": "dark"
             }
         },
         {
             "name": "Catppuccin Mocha",
-            "tab": 
+            "tab":
             {
                 "background": "#313244FF",
                 "showCloseButton": "always",
                 "unfocusedBackground": null
             },
-            "tabRow": 
+            "tabRow":
             {
                 "background": "#1E1E2EFF",
                 "unfocusedBackground": "#181825FF"
             },
-            "window": 
+            "window":
             {
                 "applicationTheme": "dark"
             }
