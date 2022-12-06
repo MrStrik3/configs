@@ -57,9 +57,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
  if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='vim'
+   export EDITOR='nvim'
  else
-   export EDITOR='vim'
+   export EDITOR='nvim'
  fi
 
 
@@ -146,7 +146,7 @@ SPACESHIP_EXIT_CODE_SHOW=true
 
 export FZF_DEFAULT_OPTS="--exact"
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
-. /etc/profile.d/fzf.zsh
+# . /etc/profile.d/fzf.zsh
 
 
 # bindkey -v
@@ -167,31 +167,29 @@ man() {
 }
 
 
-[ -f /usr/share/doc/pkgfile/command-not-found.zsh ] && source /usr/share/doc/pkgfile/command-not-found.zsh
+# [ -f /usr/share/doc/pkgfile/command-not-found.zsh ] && source /usr/share/doc/pkgfile/command-not-found.zsh
 
 
-export CR_RENDER_FORCE_PRESENT_MAIN_THREAD="0 VirtualBox"
-
-command_not_found_handler() {
-  local pkgs cmd="$1" files=()
-  printf 'zsh: command not found: %s\n' "$cmd" # print command not found asap, then search for packages
-  files=(${(f)"$(/usr/bin/yay -F --machinereadable "${cmd}")"})
-  if (( ${#files[@]} )); then
-    printf '\r%s may be found in the following packages:\n' "$cmd"
-    local res=() repo package version file
-    for file in "$files[@]"; do
-      res=("${(0)file}")
-      repo="$res[1]"
-      package="$res[2]"
-      version="$res[3]"
-      file="$res[4]"
-      printf '  %s/%s %s: /%s\n' "$repo" "$package" "$version" "$file"
-    done
-  else
-    printf '\n'
-  fi
-  return 127
-}
+# command_not_found_handler() {
+#   local pkgs cmd="$1" files=()
+#   printf 'zsh: command not found: %s\n' "$cmd" # print command not found asap, then search for packages
+#   files=(${(f)"$(/usr/bin/yay -F --machinereadable "${cmd}")"})
+#   if (( ${#files[@]} )); then
+#     printf '\r%s may be found in the following packages:\n' "$cmd"
+#     local res=() repo package version file
+#     for file in "$files[@]"; do
+#       res=("${(0)file}")
+#       repo="$res[1]"
+#       package="$res[2]"
+#       version="$res[3]"
+#       file="$res[4]"
+#       printf '  %s/%s %s: /%s\n' "$repo" "$package" "$version" "$file"
+#     done
+#   else
+#     printf '\n'
+#   fi
+#   return 127
+# }
 
 wsl.exe -d wsl-vpnkit service wsl-vpnkit start
 

@@ -40,8 +40,9 @@ alias kb.dev.geo.console="kubectl -n dmp exec -it geoserver-dev-geoserver-chart-
 
 alias kb="kubectl -n dmp"
 alias kb.gp="kubectl -n dmp get pods"
-alias kb.set.dev="kubectl config set-context aksdev"
-alias kb.set.test="kubectl config set-context akstest"
+alias kb.sc.dev="kubectl config set-context aksdev"
+alias kb.sc.test="kubectl config set-context akstest"
+alias kb.sc.prod="kubectl config set-context aksprod-b"
 
 alias docker.start="sudo -b dockerd > /dev/null 2>&1 &"
 alias docker="sudo docker"
