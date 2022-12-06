@@ -1,3 +1,7 @@
+
+nnoremap <space> <Nop>
+let mapleader = " "
+
 "" -- Suggested options --
 " Show a few lines of context around the cursor. Note that this makes the
 " text scroll if you mouse-click near the start or end of the window.
@@ -6,13 +10,7 @@ set scrolloff=5
 " Do incremental searching.
 set incsearch
 
-" Don't use Ex mode, use Q for formatting.
-map Q gq
 
-
-"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
-"" Map \r to the Reformat Code action
-"map \r <Action>(ReformatCode)
 
 "" Map <leader>d to start debug
 "map <leader>d <Action>(Debug)
@@ -22,12 +20,19 @@ map Q gq
 
 
 " Find more examples here: https://jb.gg/share-ideavimrc
-let mapleader = " "
+
+
+"Intellij environment variables
+set ideastatusicon=gray
+set ideawrite=file
+set ideaput
+set ideajoin
 
 " Configure the vim environment
 set relativenumber
 set number
 set incsearch
+
 
 set hlsearch          " highlight searches by default
 set encoding=utf-8 fileencodings= " use utf8 by default
@@ -39,38 +44,35 @@ set visualbell
 set noerrorbells
 
 " Active emulated plugins
-set commentary
-set multiple-cursors
-set surround
-set easymotion
-set ideajoin
-set NERDTree
-set ReplaceWithRegister
-set highlightedyank
+"set commentary
+Plug 'tpope/vim-commentary'
+"set multiple-cursors
+Plug 'terryma/vim-multiple-cursors'
+"set surround
+Plug 'tpope/vim-surround'
+"set easymotion
+Plug 'easymotion/vim-easymotion'
+"set NERDTree
+Plug 'preservim/nerdtree'
+"set highlightedyank
+Plug 'machakann/vim-highlightedyank'
+" set ReplaceWithRegister
 
+" KEYMAPPINGS!
+nnoremap <leader>ie :e C:/Users/LefrancoisC/.ideavimrc<cr>
+nnoremap <leader>ir :action IdeaVim.ReloadVimRc.reload<cr>
 
-map <leader>rc <Action>(ReformatCode)
-map <leader>tb <Action>(ToggleLineBreakpoint)
-
-" map <C-q> <Action>(QuickJavaDoc)
-nnoremap \e :e C:/Users/LefrancoisC/.ideavimrc<CR>
-nnoremap \r :action IdeaVim.ReloadVimRc.reload<cr>
-map \b <Action>(ToggleLineBreakpoint)
+" map \b <Action>(ToggleLineBreakpoint)
 map <c-z> <Action>(ToggleDistractionFreeMode)<CR>
 
-nnoremap <leader>ff :action GotoFile<CR>
-map <leader>fe :NERDTree<cr>
-nnoremap <leader>fp :action FindInPath<CR>
-map gcl <Action>(GotoClass)<CR>
-map gi <Action>(GotoImplementation)<CR>
 
-map gd <Action>(GotoDeclaration)<CR>
-map gp <Action>(GotoSuperMethod)<CR>
-map gt <Action>(GotoTest)<CR>
-map gb <Action>(Back)<CR>
-map gf <Action>(Forward)<CR>
-map ge <Action>(ShowErrorDescription)
-map oi <Action>(OptimizeImports)
+"New file management
+map <leader>fc <Action>(NewClass)
+map <leader>fe :NERDTree<cr>
+nnoremap <leader>ff :action GotoFile<CR>
+map <leader>fn <Action>(NewFile)
+nnoremap <leader>fp :action FindInPath<CR>
+nnoremap <leader>fs :action SelectInProjectView<CR>
 
 " Window management
 map <c-h> <c-w>h
@@ -80,8 +82,12 @@ map <c-l> <c-w>l
 map <a-,> <Action>(PreviousTab)
 map <a-.> <Action>(NextTab)
 
-" Git
-nmap <Leader>gc <Action>(Git.Commit.Stage)<CR>
+" Motion key mappings
+map L $
+map H ^
+nnoremap Y y$
+
+
 " Remove some fat finger typing mistakes
 nmap :X :x
 nmap :X! :x!
@@ -92,9 +98,6 @@ nmap :Q! :q!
 nmap :Qa :qa
 nmap :Wq! :wq!
 nmap :WQ! :wq!
-nnoremap E $
-
-nnoremap Y y$
 
 " Break the Habit of Reaching for the Arrow Keys
 noremap <Up> <Nop>
@@ -105,10 +108,52 @@ noremap <Right> <Nop>
 " NewLine stuff
 nmap <S-Enter> O<Esc>j
 nmap <C-Enter> o<Esc>k
-nmap <Enter>   i<Enter><Esc>
+nmap <Enter> i<Enter><Esc>
 
-sethandler <C-q> a:ide
-sethandler <C-h> a:vim
-sethandler <C-j> a:vim
-sethandler <C-k> a:vim
-sethandler <C-l> a:vim
+" Map IDE keymapping to VIM or IDE"
+sethandler <C-q> a:ide " Open function documentation popup
+sethandler <C-w> a:ide " Open function documentation popup
+sethandler <C-h> a:vim " Window management
+sethandler <C-j> a:vim " Window management
+sethandler <C-k> a:vim " Window management
+sethandler <C-l> a:vim " Window management
+
+" Git
+" map <Leader>Gc <Action>(Git.Commit.Stage)
+
+" Gradle
+" map <Leader>Gr <Action>(Gradle.RefreshDependencies)
+
+" Code
+map <Leader>ci <Action>(OptimizeImports)
+map <leader>cf <Action>(ReformatCode)
+
+" Troubleshooting
+map gC <Action>(GotoClass)
+map gi <Action>(GotoImplementation)
+map gd <Action>(GotoDeclaration)
+map gp <Action>(GotoSuperMethod)
+map gt <Action>(GotoTest)
+map ge <Action>(GotoNextError)
+map gE <Action>(GotoPreviousError)
+map gf <Action>(Forward)
+map gk <Action>(ShowErrorDescription)
+map gs <Action>(FileStructurePopup)
+map gu <Action>(FindUsages)
+map gr <Action>(ExternalSystem.RefreshAllProjects)
+
+map <leader>rd <Action>(Debug)
+map <leader>rr <Action>(Run)
+map <leader>db <Action>(ToggleLineBreakpoint)
+map K <Action>(QuickJavaDoc)
+""    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+""    vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+""    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+""    vim.keymap.set('n', '<space>K', vim.lsp.buf.signature_help, bufopts)
+""    vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, bufopts)
+""    vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, bufopts)
+""    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
+""    vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+""    vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
+""    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+""    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
