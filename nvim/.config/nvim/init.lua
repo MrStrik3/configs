@@ -18,7 +18,7 @@ end
 require('autocmds')
 require('options')
 require('impatient')
-require('impatient').enable_profile()
+-- require('impatient').enable_profile()
 
 if exists(fn.stdpath('config')..'/lua/packer_compiled.lua') then
   require('packer_compiled')

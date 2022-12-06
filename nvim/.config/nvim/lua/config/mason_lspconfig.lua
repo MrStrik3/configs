@@ -7,7 +7,10 @@ local navic = require("nvim-navic")
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-  navic.attach(client, bufnr)
+
+  if client.server_capabilities.documentSymbolProvider then
+    navic.attach(client, bufnr)
+  end
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -31,36 +34,32 @@ end
 
 require("mason-lspconfig").setup({
     ensure_installed = { "sumneko_lua", "yamlls", "cssls", "bashls", "jdtls", "html", "pyright", "terraformls", "tsserver", "lemminx" }
-})
+  })
 
 require("mason-lspconfig").setup_handlers({
-  -- The first entry (without a key) will be the default handler
-  -- and will be called for each installed server that doesn't have
-  -- a dedicated handler.
-  function (server_name) -- default handler (optional)
-    require("lspconfig")[server_name].setup {
-      on_attach = on_attach, -- Add keymappings to the lsp
-      flags = {
-        debounce_text_changes = 150,
+    -- The first entry (without a key) will be the default handler
+    -- and will be called for each installed server that doesn't have
+    -- a dedicated handler.
+    function (server_name) -- default handler (optional)
+      require("lspconfig")[server_name].setup {
+        on_attach = on_attach, -- Add keymappings to the lsp
+        flags = {
+          debounce_text_changes = 150,
+        }
       }
-    }
-  end,
-  -- Next, you can provide targeted overrides for specific servers.
-  -- ["rust_analyzer"] = function ()
-  --   require("rust-tools").setup {}
-  -- end,
-  ["sumneko_lua"] = function ()
-    require("lspconfig").sumneko_lua.setup {
-      settings = {
-        Lua = {
-          diagnostics = {
-            globals = { "vim" }
+    end,
+    ["sumneko_lua"] = function ()
+      require("lspconfig").sumneko_lua.setup {
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = { "vim" }
           }                                                                                                                                                                                                                                                       }
-      },
-      on_attach = on_attach,
-      flags = {
-        debounce_text_changes = 150,
+        },
+        on_attach = on_attach,
+        flags = {
+          debounce_text_changes = 150,
+        }
       }
-    }
-  end,
-})
+    end,
+  })

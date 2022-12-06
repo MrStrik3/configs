@@ -1,5 +1,6 @@
 
 vim.cmd("colorscheme onedarkpro")
+-- vim.cmd("colorscheme gruvbox-baby")
 -- vim.cmd("colorscheme catppuccin")
 -- vim.cmd("colorscheme onenord")
 

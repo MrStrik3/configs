@@ -48,12 +48,16 @@ local options = {
   showmode = false,                        -- we dont need to see things like -- INSERT -- anymore
 
   -- mouse = "a",                             -- allow the mouse to be used in neovim
+  mouse = "",
 
   -- Backup a file before overriding it
   backup = false,
 
   termguicolors = true,
 
+  errorbells = false,
+  visualbell = false,
+  t_vb = nil,
   -- some goddamn plugin is messing this up?
   -- set textwidth=0
 

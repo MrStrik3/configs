@@ -34,7 +34,7 @@ return require('packer').startup({function(use)
   -- use { 'arcticicestudio/nord-vim', branch = 'main' } -- Nord theme
   -- use 'rmehri01/onenord.nvim'
   use 'olimorris/onedarkpro.nvim'
-
+  -- use 'luisiacc/gruvbox-baby'
   -- use {
   --   "catppuccin/nvim",
   --   as = "catppuccin",
@@ -45,6 +45,18 @@ return require('packer').startup({function(use)
     "SmiteshP/nvim-navic",
     requires = "neovim/nvim-lspconfig",
     config = function() require("nvim-navic").setup({}) end
+  }
+
+  use {
+    "utilyre/barbecue.nvim",
+    requires = {
+      "neovim/nvim-lspconfig",
+      "smiteshp/nvim-navic",
+      "kyazdani42/nvim-web-devicons", -- optional
+    },
+    config = function()
+      require("barbecue").setup()
+    end,
   }
 
   -- TPOPE's plugins
