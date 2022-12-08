@@ -1,4 +1,3 @@
-
 -- Plugins to look int
 -- https://github.com/danymat/neogen (Annotation documentaiton)
 -- https://github.com/Pocco81/true-zen.nvim
@@ -57,6 +56,12 @@ return require('packer').startup({function(use)
     config = function()
       require("barbecue").setup()
     end,
+  }
+
+  -- DAP
+  use {
+    { 'mfussenegger/nvim-dap', config = [[require('config.dapconfig')]] },
+    { "rcarriga/nvim-dap-ui", config = [[require('config.dapui')]] }
   }
 
   -- TPOPE's plugins
