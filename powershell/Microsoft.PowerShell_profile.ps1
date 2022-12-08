@@ -187,8 +187,5 @@ $ENV:MyPAT = "huo3tuanqhseq2fmosjdrxzidp6s3cf7snezr6q4rd54xohxorga"
 $ENV:STARSHIP_CONFIG = "$HOME\.starship\config.toml"
 Invoke-Expression (&starship init powershell)
 
-
-
-
-
 Import-Module posh-git
+
