@@ -17,21 +17,22 @@ end
 -- end
 require('autocmds')
 require('options')
-require('impatient')
--- require('impatient').enable_profile()
+
+if exists(fn.stdpath('data')..'/site/pack/packer/start/impatient.nvim') then
+  require('impatient')
+  require('impatient').enable_profile()
+end
 
 if exists(fn.stdpath('config')..'/lua/packer_compiled.lua') then
   require('packer_compiled')
 end
+
 require('plugins')
 require('keymappings')
 
 -- filetype plugin on
 vim.cmd('filetype plugin indent on')
 vim.cmd('syntax on')
-
--- vim.cmd('colorscheme gruvbox-flat')
--- vim.cmd('colorscheme nord')
 
 -- " -- Markdown settings
 vim.g.vim_markdown_preview_toggle = 1

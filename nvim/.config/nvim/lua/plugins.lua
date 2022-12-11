@@ -40,6 +40,7 @@ return require('packer').startup({function(use)
   --   run = ":CatppuccinCompile"
   -- }
 
+  use { "ellisonleao/glow.nvim", config = function() require('glow').setup({}) end }
   use {
     "SmiteshP/nvim-navic",
     requires = "neovim/nvim-lspconfig",
@@ -59,10 +60,10 @@ return require('packer').startup({function(use)
   }
 
   -- DAP
-  use {
-    { 'mfussenegger/nvim-dap', config = [[require('config.dapconfig')]] },
-    { "rcarriga/nvim-dap-ui", config = [[require('config.dapui')]] }
-  }
+  -- use {
+  --   { 'mfussenegger/nvim-dap', config = [[require('config.dapconfig')]] },
+  --   { "rcarriga/nvim-dap-ui", config = [[require('config.dapui')]] }
+  -- }
 
   -- TPOPE's plugins
   use { 'kylechui/nvim-surround', tag = "*", config = function() require("nvim-surround").setup({}) end } -- surround management ( parenthesis,  quote, etc.)
@@ -112,6 +113,7 @@ return require('packer').startup({function(use)
       'p00f/nvim-ts-rainbow',
       'JoosepAlviste/nvim-ts-context-commentstring',
       'nvim-treesitter/nvim-treesitter-angular',
+      'nvim-treesitter/playground',
       opt = false
     },
     config    = [[ require('config.tree_sitter') ]],
