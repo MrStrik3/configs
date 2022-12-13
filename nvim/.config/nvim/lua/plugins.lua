@@ -6,8 +6,10 @@ local ensure_packer = function()
   local fn = vim.fn
   local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
   if fn.empty(fn.glob(install_path)) > 0 then
+    vim.notify("Downloading packer.nvim...", nil, { title = "Packer" })
     fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
     vim.cmd [[packadd packer.nvim]]
+    vim.notify("packer.nvim downloaded and loaded!!!", nil, { title = "Packer" })
     return true
   end
   return false
@@ -90,6 +92,11 @@ return require('packer').startup({function(use)
     config = [[require('config.lualine')]],
     requires = { 'kyazdani42/nvim-web-devicons' }
   }
+
+  -- use {
+  --   "rebelot/heirline.nvim",
+  --   config = [[require('config.heirline')]]
+  -- }
 
   -- NEO-Tree
   use {

@@ -62,8 +62,10 @@ map('t', '<F11>', '<cmd>lua _terminal_lazygit_toggle()<CR>', opts)
 
 -- Cokeline
 -- -- Move to previous/next
-map('n', '<A-,>', '<plug>(cokeline-focus-prev)', { silent = true })
-map('n', '<A-.>', '<plug>(cokeline-focus-next)', { silent = true })
+-- map('n', '<A-,>', '<plug>(cokeline-focus-prev)', { silent = true })
+-- map('n', '<A-.>', '<plug>(cokeline-focus-next)', { silent = true })
+map('n', '<S-Tab>', '<plug>(cokeline-focus-prev)', { silent = true })
+map('n', '<Tab>', '<plug>(cokeline-focus-next)', { silent = true })
 -- -- Re-order to previous/next
 map('n', '<A-<>', '<plug>(cokeline-switch-prev)', { silent = true })
 map('n', '<A->>', '<plug>(cokeline-switch-prev)', { silent = true })

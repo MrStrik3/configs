@@ -12,9 +12,7 @@ end
 if exists(fn.stdpath('data')..'/site/pack/packer/start/onedarkpro.nvim') then
   require('config/onedarkpro')
 end
--- if exists(fn.stdpath('data')..'/site/pack/packer/start/catppuccin') then
---   require('config/catppuccin')
--- end
+
 require('autocmds')
 require('options')
 
