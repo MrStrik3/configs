@@ -1,6 +1,6 @@
 # If you come from bash you might have to change your $PAT
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-
+export KUBECONFIG=/mnt/c/Users/LefrancoisC/.kube/config
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 
 # Path to your oh-my-zsh installation.
