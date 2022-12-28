@@ -49,7 +49,8 @@ local components = {
   },
 
   buffer_name = {
-      text = function(buffer) return buffer.filename .. ' ' end
+      text = function(buffer) return buffer.filename .. ' ' end,
+      fg = function(buffer) return buffer.is_focused and get_hex('Directory', 'fg') or nil end
   }
 }
 

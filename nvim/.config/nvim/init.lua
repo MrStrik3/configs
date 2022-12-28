@@ -28,6 +28,7 @@ end
 require('plugins')
 require('keymappings')
 
+
 -- filetype plugin on
 vim.cmd('filetype plugin indent on')
 vim.cmd('syntax on')

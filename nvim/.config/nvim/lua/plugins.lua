@@ -1,6 +1,8 @@
 -- Plugins to look int
 -- https://github.com/danymat/neogen (Annotation documentaiton)
 -- https://github.com/Pocco81/true-zen.nvim
+-- https://github.com/mrjones2014/legendary.nvim
+-- dressing.nvim
 
 local ensure_packer = function()
   local fn = vim.fn
@@ -42,6 +44,7 @@ return require('packer').startup({function(use)
   --   run = ":CatppuccinCompile"
   -- }
 
+  use { 'ThePrimeagen/harpoon', requires = { "nvim-lua/plenary.nvim" } }
   use { "ellisonleao/glow.nvim", config = function() require('glow').setup({}) end }
   use {
     "SmiteshP/nvim-navic",
@@ -85,18 +88,19 @@ return require('packer').startup({function(use)
   }
 
   -- use 'editorconfig/editorconfig-vim'
+  -- use 'gpanders/editorconfig.nvim' -- LUA + Fennel
 
   -- Status line extension
-  use {
-    'hoob3rt/lualine.nvim',
-    config = [[require('config.lualine')]],
-    requires = { 'kyazdani42/nvim-web-devicons' }
-  }
-
   -- use {
-  --   "rebelot/heirline.nvim",
-  --   config = [[require('config.heirline')]]
+  --   'hoob3rt/lualine.nvim',
+  --   config = [[require('config.lualine')]],
+  --   requires = { 'kyazdani42/nvim-web-devicons' }
   -- }
+
+  use {
+    "rebelot/heirline.nvim",
+    config = [[require('config.heirline')]]
+  }
 
   -- NEO-Tree
   use {
@@ -111,7 +115,7 @@ return require('packer').startup({function(use)
   }
 
 
-  -- TREESITTER EXTENSIONS
+  -- Treesitter extensions
   use {
     'nvim-treesitter/nvim-treesitter',
     {
@@ -149,21 +153,21 @@ return require('packer').startup({function(use)
   }
 
   -- Auto-pair, highlights the separators ((),{}, "", ''))
- use {
-   'windwp/nvim-autopairs',
-   config = function()
-     require('nvim-autopairs').setup({
-       disable_filetypes = { "TelescopePrompt", "NvimTree", "neo-tree" },
-     })
-   end
- }
+  use {
+    'windwp/nvim-autopairs',
+    config = function()
+      require('nvim-autopairs').setup({
+          disable_filetypes = { "TelescopePrompt", "NvimTree", "neo-tree" },
+        })
+    end
+  }
 
   -- use 'frazrepo/vim-rainbow'
 
   -- Comments management
   use {
-   'numToStr/Comment.nvim',
-   config = function() require('Comment').setup() end
+    'numToStr/Comment.nvim',
+    config = function() require('Comment').setup() end
   }
 
   -- File picker
@@ -218,82 +222,81 @@ return require('packer').startup({function(use)
     { 'williamboman/mason-lspconfig.nvim', config = [[require('config.mason_lspconfig')]] }, -- Link mason with lspconfig
     'onsails/lspkind-nvim',
     'rcarriga/nvim-notify',
-    -- 'ray-x/lsp_signature.nvim',
     {
       'ray-x/lsp_signature.nvim',
       config = function() require("lsp_signature").setup({
 
-        bind = true, -- This is mandatory, otherwise border config won't get registered.
-        handler_opts = {
-          border = "rounded",
-        }
-      }) end
+            bind = true, -- This is mandatory, otherwise border config won't get registered.
+            handler_opts = {
+              border = "rounded",
+            }
+        }) end
     },
     -- {'ray-x/lsp_signature.nvim', config = function() require("lsp_signature").setup({}) end },
   }
 
-    use 'folke/lsp-colors.nvim'
-    use {
-      'folke/trouble.nvim',
-      requires = 'kyazdani42/nvim-web-devicons',
-      -- opt = true,
-      config = function()
-        require("trouble").setup { }
-      end
-    }
+  use 'folke/lsp-colors.nvim'
+  use {
+    'folke/trouble.nvim',
+    requires = 'kyazdani42/nvim-web-devicons',
+    -- opt = true,
+    config = function()
+      require("trouble").setup { }
+    end
+  }
 
-    -- use {
-    -- 'weilbith/nvim-code-action-menu',
-    -- cmd = 'CodeActionMenu',
-    -- }
+  -- use {
+  -- 'weilbith/nvim-code-action-menu',
+  -- cmd = 'CodeActionMenu',
+  -- }
 
-    -- Optional extensions
-    use { 'tweekmonster/startuptime.vim' }
-    -- use { 'davidgranstrom/nvim-markdown-preview'}
+  -- Optional extensions
+  use { 'tweekmonster/startuptime.vim' }
+  -- use { 'davidgranstrom/nvim-markdown-preview'}
   use({
-    "iamcco/markdown-preview.nvim",
-    run = "cd app && npm install",
-    setup = function()
-      vim.g.mkdp_filetypes = { "markdown" }
-      vim.g.mkdp_theme = "light"
+      "iamcco/markdown-preview.nvim",
+      run = "cd app && npm install",
+      setup = function()
+        vim.g.mkdp_filetypes = { "markdown" }
+        vim.g.mkdp_theme = "light"
     end, ft = { "markdown" }, })
 
-    use { 'mrk21/yaml-vim', opt = true }  -- YAML files Shit - https://github.com/mrk21/yaml-vim
+  use { 'mrk21/yaml-vim', opt = true }  -- YAML files Shit - https://github.com/mrk21/yaml-vim
 
-    use {
-      'NvChad/nvim-colorizer.lua',
-      config = function() require('colorizer').setup() end
+  use {
+    'NvChad/nvim-colorizer.lua',
+    config = function() require('colorizer').setup() end
+  }
+
+  -- terminal management
+  use {
+    "akinsho/toggleterm.nvim",
+    tag = '*',
+    config = [[require('config.toggleterm')]]
     }
 
-    -- terminal management
-    use {
-      "akinsho/toggleterm.nvim",
-      tag = '*',
-      config = [[require('config.toggleterm')]]
-    }
+  -- use {
+  --   'vimwiki/vimwiki'
+  -- }
 
-    -- use {
-    --   'vimwiki/vimwiki'
-    -- }
-
--- Automatically set up your configuration after cloning packer.nvim
+  -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
     require('packer').sync()
   end
 
-  end,
-  config = {
-    display = {
-      open_fn = require('packer.util').float,
-    },
-    compile_path = vim.fn.stdpath('config')..'/lua/packer_compiled.lua',
-    profile = {
-      enable = true,
-      threshold = 1 -- the amount in ms that a plugins load time must be over for it to be included in the profile
-    },
-    autoremove = false,
-    max_jobs = 10,
+end,
+config = {
+  display = {
+    open_fn = require('packer.util').float,
+  },
+  compile_path = vim.fn.stdpath('config')..'/lua/packer_compiled.lua',
+  profile = {
+    enable = true,
+    threshold = 1 -- the amount in ms that a plugins load time must be over for it to be included in the profile
+  },
+  autoremove = false,
+  max_jobs = 10,
 
   }})
 

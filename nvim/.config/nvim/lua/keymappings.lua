@@ -137,11 +137,10 @@ wk.setup {
 }
 
 wk.register({
-
-   [""] = {
-    s = { ":HopChar2AC<cr>", ""},
-    S = { ":HopChar2BC<cr>" , ""},
-     },
+  [""] = {
+    s = { ":HopChar2AC<cr>", "Search for 2 characters after the cursor"},
+    S = { ":HopChar2BC<cr>" , "Search for 2 characters before the cursor"},
+  },
   ["<leader><leader>"] = {
     name = "Fast motions",
     w = { ":HopWord<cr>", "Move to word (Hop.nvim)" },
@@ -152,7 +151,7 @@ wk.register({
     name = "Code",
     f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format code (Prettier)"} ,
     d = { "<cmd>TroubleToggle document_diagnostics<cr>", "Toggle document diagnostics list" },
-    t = { "<cmd>TodoTrouble", "Show TODO list" },
+    t = { "<cmd>TodoTrouble<cr>", "Show TODO list" },
   },
   -- Files
   ["<leader>f"] = {
@@ -176,5 +175,11 @@ wk.register({
     name = "Plugins",
     u = { "<cmd>PackerUpdate<cr>", "Update all plugins (Packer)" },
     c = { "<cmd>PackerCompile<cr>", "Compile all plugins (Packer)"},
+  },
+  ["<leader>m"] = {
+    a = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "Harpoon, Add file" },
+    l = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", "Harpoon, List marked files" },
+    p = { "<cmd>lua require('harpoon.ui').nav_prev()<cr>", "Harpoon, Navigate to previous marked file" },
+    n = { "<cmd>lua require('harpoon.ui').nav_next()<cr>", "Harpoon, Navigate to next marked file" },
   }
 })
