@@ -1,9 +1,7 @@
+
 local map = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
 local wk = require('which-key')
---
-map('n', '<Space>', '<Nop>', { noremap = true }) -- Required on windows
-vim.g.mapleader = ' '
+local opts = { noremap = true, silent = true }
 
 vim.api.nvim_set_keymap('n', 'Y', 'y$', { noremap = true })
 
@@ -55,10 +53,10 @@ map('n', 'L', '$', {}) -- Move end of line
 map('n', '<F12>', ':ToggleTerm<CR>', opts)
 map('t', '<F12>', '<C-\\><C-n>:ToggleTerm<CR>', opts)
 
-map('n', '<F10>', '<cmd>lua _terminal_taskwarrior_toggle()<CR>', opts)
-map('t', '<F10>', '<cmd>lua _terminal_taskwarrior_toggle()<CR>', opts)
-map('n', '<F11>', '<cmd>lua _terminal_lazygit_toggle()<CR>', opts)
-map('t', '<F11>', '<cmd>lua _terminal_lazygit_toggle()<CR>', opts)
+map('n', '<F10>', "<cmd>lua require('config.plugins.terminal').toggle_taskwarrior_term()<CR>", opts)
+map('t', '<F10>', "<cmd>lua require('config.plugins.terminal').toggle_taskwarrior_term()<CR>", opts)
+map('n', '<F11>', "<cmd>lua require('config.plugins.terminal').toggle_lazygit_term()<CR>", opts)
+map('t', '<F11>', "<cmd>lua require('config.plugins.terminal').toggle_lazygit_term()<CR>", opts)
 
 -- Cokeline
 -- -- Move to previous/next
@@ -173,8 +171,9 @@ wk.register({
   },
   ["<leader>p"] = {
     name = "Plugins",
-    u = { "<cmd>PackerUpdate<cr>", "Update all plugins (Packer)" },
-    c = { "<cmd>PackerCompile<cr>", "Compile all plugins (Packer)"},
+    l = { "<cmd>Lazy<cr>", "List plugins"},
+    u = { "<cmd>Lazy update<cr>", "Update all plugins" },
+    s = { "<cmd>Lazy sync<cr>", "Sync all plugins"},
   },
   ["<leader>m"] = {
     a = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "Harpoon, Add file" },

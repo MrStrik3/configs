@@ -1,8 +1,5 @@
 
 vim.cmd("colorscheme onedark_vivid")
--- vim.cmd("colorscheme gruvbox-baby")
--- vim.cmd("colorscheme catppuccin")
--- vim.cmd("colorscheme onenord")
 
 -- LUALINE CONFIGS
 require('lualine').setup({

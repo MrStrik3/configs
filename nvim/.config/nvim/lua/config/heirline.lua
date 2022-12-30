@@ -1,9 +1,42 @@
+  require("nvim-navic").setup({
+    highlight = true,
+    separator = "  ",
+    icons = {
+      File = " ",
+      Module = " ",
+      Namespace = " ",
+      Package = " ",
+      Class = " ",
+      Method = " ",
+      Property = " ",
+      Field = " ",
+      Constructor = " ",
+      Enum = " ",
+      Interface = " ",
+      Function = " ",
+      Variable = " ",
+      Constant = " ",
+      String = " ",
+      Number = " ",
+      Boolean = " ",
+      Array = " ",
+      Object = " ",
+      Key = " ",
+      Null = " ",
+      EnumMember = " ",
+      Struct = " ",
+      Event = " ",
+      Operator = " ",
+      TypeParameter = " ",
+    },
+  })
+
 local heirline = require('heirline')
 local conditions = require("heirline.conditions")
 local utils = require("heirline.utils")
 
 -- Load the current theme colors
-local colors = require("onedarkpro").get_colors()
+local colors = require('onedarkpro.helpers').get_colors()
 heirline.load_colors(colors)
 
 -- ICONS
@@ -259,6 +292,18 @@ local Git = {
     { provider = "", hl = { bg = "bg", fg = "color_column" }},
 }
 
+-- Show plugin updates available from lazy.nvim
+local Lazy = {
+  condition = require("lazy.status").has_updates,
+  update = { "User", pattern = "LazyUpdate" },
+  provider = function() return "  " .. require("lazy.status").updates() .. " " end,
+  on_click = {
+    callback = function() require("lazy").update() end,
+    name = "update_plugins",
+  },
+  hl = { fg = "gray" },
+}
+
 local statusline = {
     condition = function()
         return conditions.buffer_matches({
@@ -270,10 +315,26 @@ local statusline = {
     Git,
     FileNameBlock,
     alignment,
+    Lazy,
     FileEncoding,
     FileFormatBlock,
     FileTypeBlock,
     -- FileType,
 RulerBlock }
 
-heirline.setup(statusline, nil, nil)
+
+
+-- The easy way.
+local Navic = {
+    condition = require("nvim-navic").is_available,
+    provider = function()
+        return require("nvim-navic").get_location({highlight=true})
+    end,
+    update = 'CursorMoved',
+    -- hl = { fg = 'fg', bg = 'bg' }
+}
+
+
+
+
+heirline.setup(statusline, Navic, nil)
