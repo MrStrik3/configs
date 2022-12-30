@@ -8,7 +8,7 @@ alias ls="exa --icons"
 alias lt="exa --tree --icons -a -I '.git|__pycache__|.mypy_cache|.ipynb_checkpoints'"
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
-export GREP_COLOR="1;32"
+export GREP_COLORS="mt=1;32"
 export LESS=-R
 export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
 export LESS_TERMCAP_md=$'\E[1;36m'     # begin bold
