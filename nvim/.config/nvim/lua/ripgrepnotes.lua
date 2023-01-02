@@ -26,7 +26,7 @@ function M.asyncGrep(term)
     local count = #results
     for i=0, count do results[i]=nil end -- clear the table for the next search
   end
-  handle = vim.loop.spawn('rg', {
+  local handle = vim.loop.spawn('rg', {
     args = {term, '--vimgrep', '--smart-case'},
     stdio = {nil,stdout,stderr}
   },

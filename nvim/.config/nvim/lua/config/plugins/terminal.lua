@@ -4,13 +4,12 @@ local M = {
   version = '*'
 }
 
-
 function M.toggle_lazygit_term()
-  M.lazygit_term:toggle()
+  _G.customTerminals.lazygit_term:toggle()
 end
 
 function M.toggle_taskwarrior_term()
-  M.taskwarrior_term:toggle()
+  _G.customTerminals.taskwarrior_term:toggle()
 end
 
 function M.config()
@@ -22,8 +21,11 @@ function M.config()
       }
     })
   local Terminal  = require('toggleterm.terminal').Terminal
-  M.lazygit_term = Terminal:new({ cmd = "lazygit", direction = 'float', hidden = true })
-  M.taskwarrior_term = Terminal:new({ cmd = "taskwarrior-tui", direction = 'float', hidden = true })
+
+  local customTerminals = {}
+  customTerminals.lazygit_term = Terminal:new({ cmd = "lazygit", direction = 'float', hidden = true })
+  customTerminals.taskwarrior_term = Terminal:new({ cmd = "taskwarrior-tui", direction = 'float', hidden = true })
+  _G.customTerminals = customTerminals -- Store custom terminals in Global variables
 end
 
 return M

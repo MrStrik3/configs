@@ -167,9 +167,7 @@ function M.config()
           hide_dotfiles = false,
           hide_gitignored = true,
           hide_hidden = false, -- only works on Windows for hidden files/directories
-          hide_by_name = {
-            ".git"
-          },
+          hide_by_name = { ".git" },
           always_show = { "node_modules" }
         },
         follow_current_file = false, -- This will find and focus the file in the active buffer every

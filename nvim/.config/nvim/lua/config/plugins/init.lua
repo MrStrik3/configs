@@ -1,21 +1,12 @@
 return {
-  'folke/which-key.nvim',  -- graphical interface showing key mappings
+  -- 'folke/which-key.nvim',  -- graphical interface showing key mappings
 
   -- Nvim optimizations
   'nathom/filetype.nvim', -- Define the neovim's filetypes list (load quicker)
   'lewis6991/impatient.nvim', -- Speed up start time
   'sheerun/vim-polyglot',
   'edluffy/specs.nvim',
-
-  -- USER INTERFACE
-
-  -- status line
-  {
-    "rebelot/heirline.nvim",
-    dependencies = { "smiteshp/nvim-navic" },
-    config = function() require('config.heirline') end
-  },
-  -- { 'hoob3rt/lualine.nvim', config = [[require('config.lualine')]], dependencies = { 'kyazdani42/nvim-web-devicons' } }
+  -- 'tweekmonster/startuptime.vim', -- :StartupTIme
 
   -- File picker
    {
@@ -23,7 +14,7 @@ return {
      dependencies = { 'nvim-lua/plenary.nvim' }
    },
 
-   -- smoothen the scolling
+   -- smoothen the scrolling
   {
     "karb94/neoscroll.nvim",
     config = { easing_function = "circular" } -- quadratic, cubic, quartic, quintic, circular, sine
@@ -61,8 +52,22 @@ return {
 
   {
     "folke/trouble.nvim",
-    requires = "kyazdani42/nvim-web-devicons"
-  }
+    dependencies = "kyazdani42/nvim-web-devicons"
+  },
+
+  {
+    'lewis6991/gitsigns.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+  },
+  {
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    config = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+      vim.g.mkdp_theme = "light"
+    end,
+  ft = { "markdown" }
+},
 
   --     { 'mrk21/yaml-vim', opt = true },  -- YAML files Shit - https://github.com/mrk21/yaml-vim
 }

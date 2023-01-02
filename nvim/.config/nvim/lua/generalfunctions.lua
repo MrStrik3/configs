@@ -74,4 +74,16 @@ end
 --   selection:
 --     text: CellForeground
 --     background: "#3e4452" -- selection
+
+function M.isFileExists(filepath)
+  local fn = vim.fn
+
+  if (fn.empty(fn.glob(filepath)) == 0) then
+    return true
+  else
+    return false
+  end
+end
+
+
 return M

@@ -1,3 +1,10 @@
+local M = {
+    "rebelot/heirline.nvim",
+    dependencies = { "smiteshp/nvim-navic" },
+  -- { 'hoob3rt/lualine.nvim', config = [[require('config.lualine')]], dependencies = { 'kyazdani42/nvim-web-devicons' } }
+}
+
+function M.config()
   require("nvim-navic").setup({
     highlight = true,
     separator = "  ",
@@ -338,3 +345,6 @@ local Navic = {
 
 
 heirline.setup(statusline, Navic, nil)
+end
+
+return M
