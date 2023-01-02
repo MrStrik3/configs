@@ -94,6 +94,7 @@ function M.config()
             modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
             deleted   = "✖",-- this can only be used in the git_status source
             renamed   = "",-- this can only be used in the git_status source
+
             -- Status type
             untracked = "",
             ignored   = "",
@@ -104,7 +105,7 @@ function M.config()
         },
       },
       window = {
-        position = "left",
+        position = "float",
         width = 40,
         mapping_options = {
           noremap = true,
@@ -173,13 +174,8 @@ function M.config()
         follow_current_file = false, -- This will find and focus the file in the active buffer every
         -- time the current file is changed while the tree is open.
         group_empty_dirs = false, -- when true, empty folders will be grouped together
-        hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
-        -- in whatever position is specified in window.position
-        -- "open_current",  -- netrw disabled, opening a directory opens within the
-        -- window like netrw would, regardless of window.position
-        -- "disabled",    -- netrw left alone, neo-tree does not handle opening dirs
-        use_libuv_file_watcher = false, -- This will use the OS level file watchers to detect changes
-        -- instead of relying on nvim autocmd events.
+        hijack_netrw_behavior = "disabled",
+        use_libuv_file_watcher = false,
         window = {
           mappings = {
             ["<bs>"] = "navigate_up",
