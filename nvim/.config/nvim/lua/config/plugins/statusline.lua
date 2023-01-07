@@ -1,9 +1,49 @@
+local M = {
+    "rebelot/heirline.nvim",
+    dependencies = { "smiteshp/nvim-navic" },
+  -- { 'hoob3rt/lualine.nvim', config = [[require('config.lualine')]], dependencies = { 'kyazdani42/nvim-web-devicons' } }
+}
+
+function M.config()
+  require("nvim-navic").setup({
+    highlight = true,
+    separator = "  ",
+    icons = {
+      File = " ",
+      Module = " ",
+      Namespace = " ",
+      Package = " ",
+      Class = " ",
+      Method = " ",
+      Property = " ",
+      Field = " ",
+      Constructor = " ",
+      Enum = " ",
+      Interface = " ",
+      Function = " ",
+      Variable = " ",
+      Constant = " ",
+      String = " ",
+      Number = " ",
+      Boolean = " ",
+      Array = " ",
+      Object = " ",
+      Key = " ",
+      Null = " ",
+      EnumMember = " ",
+      Struct = " ",
+      Event = " ",
+      Operator = " ",
+      TypeParameter = " ",
+    },
+  })
+
 local heirline = require('heirline')
 local conditions = require("heirline.conditions")
 local utils = require("heirline.utils")
 
 -- Load the current theme colors
-local colors = require("onedarkpro").get_colors()
+local colors = require('onedarkpro.helpers').get_colors()
 heirline.load_colors(colors)
 
 -- ICONS
@@ -14,18 +54,18 @@ local icons = {
     left_soft_divider = '',
 }
 
-local function wrapInSlanterLean(component, isLeaningLeft, bg, fg)
+local function wrapInSlanterLean(component, isLeaningLeft, bg_color, fg_color)
     if isLeaningLeft then
       return {
-          { provider = "", hl = { bg = fg, fg = bg }},
+          { provider = "", hl = { bg = fg_color, fg = bg_color } },
           component,
-          { provider = "", hl = { bg = bg, fg = fg }},
+          { provider = "", hl = { bg = bg_color, fg = fg_color } },
       }
     else
       return {
-          { provider = "", hl = { bg = bg, fg = fg }},
+          { provider = "", hl = { bg = bg_color, fg = fg_color } },
           component,
-          { provider = "", hl = { bg = bg, fg = fg }},
+          { provider = "", hl = { bg = fg_color, fg = bg_color } },
       }
     end
 end
@@ -112,9 +152,6 @@ local nvimMode = {
             local mode = self.mode:sub(1, 1) -- get only the first mode character
             return { bg = self.mode_colors[mode], fg = "bg", bold = true, }
         end,
-        -- Re-evaluate the component only on ModeChanged event!
-        -- This is not required in any way, but it's there, and it's a small
-        -- performance improvement.
         update = {
             "ModeChanged",
         },
@@ -142,33 +179,33 @@ local FileName = {
         if not conditions.width_percent_below(#filename, 0.25) then
             filename = vim.fn.pathshorten(filename)
         end
-        return " %2(".. filename .." %2)"
+        return " ".. filename .." "
     end,
-    hl = { fg = "gray", bg = "color_column"}
+    hl = { fg = "white", bg = "color_column"}
 }
 local FileNameBlock = wrapInSlanterLean(FileName, true, "bg", "color_column")
 
 
-local FileIcon = {
+local FileType = {
     init = function(self)
         local filename = self.filename
         local extension = vim.fn.fnamemodify(filename, ":e")
         self.icon, self.icon_color = require("nvim-web-devicons").get_icon_color(filename, extension, { default = true })
     end,
     provider = function(self)
-        return self.icon and (self.icon .. " " .. string.lower(vim.bo.filetype))
+        return self.icon and ( " ".. self.icon .. " " .. string.lower(vim.bo.filetype) .. " ")
     end,
-    hl = function(self)
-        return { fg = self.icon_color }
-    end
+    hl = { fg = "bg", bg = "comment" }
 }
 
-local FileType = {
-    provider = function()
-        return string.lower(vim.bo.filetype)
-    end,
-    hl = { fg = "selection", bold = true },
-}
+local FileTypeBlock = wrapInSlanterLean(FileType, false, "bg", "comment")
+
+-- local FileType = {
+--     provider = function()
+--         return string.lower(vim.bo.filetype)
+--     end,
+--     hl = { fg = "selection", bold = true },
+-- }
 
 local FileEncoding = {
     provider = function()
@@ -187,10 +224,13 @@ local FileFormat = {
     },
     provider = function(self)
         local fmt = vim.bo.fileformat -- dos unix mac
-        return self.file_format_icons[fmt]
+        return self.file_format_icons[fmt] .. " " .. fmt
     end,
+    hl = {  bg = "color_column", fg = "gray" }
+
 }
 
+local FileFormatBlock = wrapInSlanterLean(FileFormat, false, "bg", "color_column")
 
 -- OTHERS COMPONENTS
 local Ruler = {
@@ -198,8 +238,11 @@ local Ruler = {
     -- %L = number of lines in the buffer
     -- %c = column number
     -- %P = percentage through file of displayed window
-    provider = "%7(%l:%3L%):%2c %P",
+    -- provider = "%7(%l:%3L%):%2c %P",
+    provider = "%7(%3l:%2c%) ",
+    hl = { bg = "comment", fg = "bg" }
 }
+local RulerBlock = wrapInSlanterLean(Ruler, false, "bg", "comment")
 
 local Git = {
     condition = conditions.is_git_repo,
@@ -215,45 +258,57 @@ local Git = {
     { provider = "", hl = { bg = "color_column", fg = "bg" }},
     {   -- git branch name
         provider = function(self)
-            return "  " .. self.status_dict.head
+            return "  " .. self.status_dict.head .. " "
         end,
         hl = { bold = true }
     },
     -- You could handle delimiters, icons and counts similar to Diagnostics
-    {
-        condition = function(self)
-            return self.has_changes
-        end,
-        provider = "("
-    },
-    {
-        provider = function(self)
-            local count = self.status_dict.added or 0
-            return count > 0 and ("+" .. count)
-        end,
-        hl = { fg = "green" },
-    },
-    {
-        provider = function(self)
-            local count = self.status_dict.removed or 0
-            return count > 0 and ("-" .. count)
-        end,
-        hl = { fg = "red" },
-    },
-    {
-        provider = function(self)
-            local count = self.status_dict.changed or 0
-            return count > 0 and ("~" .. count)
-        end,
-        hl = { fg = "yellow" },
-    },
-    {
-        condition = function(self)
-            return self.has_changes
-        end,
-        provider = ")",
-    },
+    -- {
+    --     condition = function(self)
+    --         return self.has_changes
+    --     end,
+    --     provider = "("
+    -- },
+    -- {
+    --     provider = function(self)
+    --         local count = self.status_dict.added or 0
+    --         return count > 0 and ("+" .. count)
+    --     end,
+    --     hl = { fg = "green" },
+    -- },
+    -- {
+    --     provider = function(self)
+    --         local count = self.status_dict.removed or 0
+    --         return count > 0 and ("-" .. count)
+    --     end,
+    --     hl = { fg = "red" },
+    -- },
+    -- {
+    --     provider = function(self)
+    --         local count = self.status_dict.changed or 0
+    --         return count > 0 and ("~" .. count)
+    --     end,
+    --     hl = { fg = "yellow" },
+    -- },
+    -- {
+    --     condition = function(self)
+    --         return self.has_changes
+    --     end,
+    --     provider = ")",
+    -- },
     { provider = "", hl = { bg = "bg", fg = "color_column" }},
+}
+
+-- Show plugin updates available from lazy.nvim
+local Lazy = {
+  condition = require("lazy.status").has_updates,
+  update = { "User", pattern = "LazyUpdate" },
+  provider = function() return "  " .. require("lazy.status").updates() .. " " end,
+  on_click = {
+    callback = function() require("lazy").update() end,
+    name = "update_plugins",
+  },
+  hl = { fg = "gray" },
 }
 
 local statusline = {
@@ -263,8 +318,33 @@ local statusline = {
                 filetype = { "^git.*", "fugitive", "neo-tree" },
             }) == false
     end,
-nvimMode, Git , FileNameBlock, alignment, FileEncoding, FileFormat, FileIcon, FileType, Ruler }
+    nvimMode,
+    Git,
+    FileNameBlock,
+    alignment,
+    Lazy,
+    FileEncoding,
+    FileFormatBlock,
+    FileTypeBlock,
+    -- FileType,
+RulerBlock }
 
-heirline.setup(statusline, nil, nil)
 
 
+-- The easy way.
+local Navic = {
+    condition = require("nvim-navic").is_available,
+    provider = function()
+        return require("nvim-navic").get_location({highlight=true})
+    end,
+    update = 'CursorMoved',
+    -- hl = { fg = 'fg', bg = 'bg' }
+}
+
+
+
+
+heirline.setup(statusline, Navic, nil)
+end
+
+return M

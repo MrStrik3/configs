@@ -70,9 +70,20 @@ local options = {
     trail = '⋅',
     extends = '⟩',
     precedes = '⟨',
-  }
+  },
+  signcolumn = 'yes', -- Reserve space for diagnostic icons
+  -- terminal-related
+  shell = 'zsh',
 }
 
+if vim.fn.has('win32')  == 1 then
+  options.shell = "pwsh"
+  options.shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;"
+  options.shellredir = "-RedirectStandardOutput %s -NoNewWindow -Wait"
+  options.shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
+  options.shellquote = ""
+  options.shellxquote = ""
+end
 
 for k, v in pairs(options) do
   vim.opt[k] = v

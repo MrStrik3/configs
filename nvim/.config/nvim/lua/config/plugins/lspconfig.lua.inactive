@@ -22,7 +22,7 @@ keymap('n', '<space>q', vim.diagnostic.setloclist, opts)
 
 
 -- Setup nvim-cmp.
-local cmp = require 'cmp'
+local cmp = require('cmp')
 local lspkind = require('lspkind')
 
 cmp.setup({
@@ -49,21 +49,23 @@ cmp.setup({
 
   },
   mapping = {
-    ['<Up>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
-    ['<Down>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+    -- ['<Up>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+    -- ['<Down>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+    -- ['<S-Tab>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+    -- ['<Tab>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+    ['<C-k>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+    ['<C-j>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+    ['<C-l>'] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
 
     ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4)),
     ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4)),
     -- ['<C-Space>'] = cmp.mapping(cmp.mapping.complete()),
-    -- ['<C-b>'] =  cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-    -- ['<C-f>'] =  cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-    -- ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
     ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
     ['<C-e>'] = cmp.mapping({
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     }),
-    -- ['<CR>'] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     ['C-<CR>'] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
   },
   sources = cmp.config.sources({
