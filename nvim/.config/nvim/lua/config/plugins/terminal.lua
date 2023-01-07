@@ -1,7 +1,9 @@
 local M = {
   -- terminal management
   "akinsho/toggleterm.nvim",
-  version = '*'
+  version = '*',
+  lazy = false,
+  -- keys = { "<F10>", "<F11>", "<F12>" }
 }
 
 function M.toggle_lazygit_term()

@@ -1,5 +1,6 @@
 local M = {
     "rebelot/heirline.nvim",
+    lazy = false,
     dependencies = { "smiteshp/nvim-navic" },
   -- { 'hoob3rt/lualine.nvim', config = [[require('config.lualine')]], dependencies = { 'kyazdani42/nvim-web-devicons' } }
 }
@@ -65,6 +66,7 @@ local function wrapInSlanterLean(component, isLeaningLeft, bg_color, fg_color)
       return {
           { provider = "", hl = { bg = bg_color, fg = fg_color } },
           component,
+-- mrjones2014/legendary.nvim
           { provider = "", hl = { bg = fg_color, fg = bg_color } },
       }
     end
@@ -199,13 +201,7 @@ local FileType = {
 }
 
 local FileTypeBlock = wrapInSlanterLean(FileType, false, "bg", "comment")
-
--- local FileType = {
---     provider = function()
---         return string.lower(vim.bo.filetype)
---     end,
---     hl = { fg = "selection", bold = true },
--- }
+-- FileTypeBlock.condition = conditions.buffer_matches({ filetype = { '' } })
 
 local FileEncoding = {
     provider = function()
@@ -308,8 +304,11 @@ local Lazy = {
     callback = function() require("lazy").update() end,
     name = "update_plugins",
   },
-  hl = { fg = "gray" },
+  hl = {  bg = "color_column", fg = "gray" }
+
 }
+local LazyBlock = wrapInSlanterLean(Lazy, false, "bg", "color_column")
+LazyBlock.condition = require("lazy.status").has_updates
 
 local statusline = {
     condition = function()
@@ -322,7 +321,7 @@ local statusline = {
     Git,
     FileNameBlock,
     alignment,
-    Lazy,
+    LazyBlock,
     FileEncoding,
     FileFormatBlock,
     FileTypeBlock,

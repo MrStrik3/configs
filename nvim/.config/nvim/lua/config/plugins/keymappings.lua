@@ -1,8 +1,9 @@
 local M = {
   "mrjones2014/legendary.nvim",
+  lazy = false,
   -- sqlite is only needed if you want to use frecency sorting
   -- requires = 'kkharji/sqlite.lua'
-  dependencies = "stevearc/dressing.nvim",
+  dependencies = { "stevearc/dressing.nvim", event = "VeryLazy" }
 }
 
 function M.config()

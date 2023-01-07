@@ -1,11 +1,13 @@
 -- Mason stuff
 local M = {
   'VonHeikemen/lsp-zero.nvim', -- plugin to link lsp autocompletion plugins together
+  event = "BufReadPre",
   dependencies = {
     -- LSP Support
     {'neovim/nvim-lspconfig'},
     {'williamboman/mason.nvim'},
     {'williamboman/mason-lspconfig.nvim'},
+    {'smjonas/inc-rename.nvim', cmd = "IncRename", config = true },
 
     -- Autocompletion
     {'hrsh7th/nvim-cmp'},

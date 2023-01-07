@@ -1,6 +1,10 @@
 local M = {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
+    keys = {
+      { "<leader>fe" }
+    },
+    cmd = { "Neotree" },
     dependencies = {
       "nvim-lua/plenary.nvim",
       "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
@@ -105,7 +109,7 @@ function M.config()
         },
       },
       window = {
-        position = "float",
+        position = "left",
         width = 40,
         mapping_options = {
           noremap = true,
@@ -174,7 +178,7 @@ function M.config()
         follow_current_file = false, -- This will find and focus the file in the active buffer every
         -- time the current file is changed while the tree is open.
         group_empty_dirs = false, -- when true, empty folders will be grouped together
-        hijack_netrw_behavior = "disabled",
+        hijack_netrw_behavior = "open_default",
         use_libuv_file_watcher = false,
         window = {
           mappings = {

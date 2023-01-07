@@ -1,5 +1,6 @@
 local M = {
   'noib3/nvim-cokeline',
+  event = "BufReadPre",
   dependencies = 'kyazdani42/nvim-web-devicons'
 }
 
@@ -20,7 +21,7 @@ function M.config()
     },
 
     right_half_circle = {
-      text = '',
+      text = ' ',
       bg = get_hex('Normal', 'bg'),
       fg = get_hex('ColorColumn', 'bg'),
     },
@@ -39,8 +40,9 @@ function M.config()
     },
 
     buffer_name = {
-      text = function(buffer) return buffer.filename .. ' ' end,
-      fg = function(buffer) return buffer.is_focused and get_hex('Directory', 'fg') or nil end
+      text = function(buffer) return buffer.filename .. '' end,
+      fg = function(buffer) return buffer.is_focused and get_hex('Directory', 'fg') or nil end,
+      style = function(buffer) return buffer.is_focused and 'underline' or nil end
     }
   }
 

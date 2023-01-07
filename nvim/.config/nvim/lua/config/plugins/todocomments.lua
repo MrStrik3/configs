@@ -1,6 +1,7 @@
 local M = {
   "folke/todo-comments.nvim",
-  dependencies = "nvim-lua/plenary.nvim"
+  dependencies = "nvim-lua/plenary.nvim",
+  cmd = { "TodoTrouble" }
 }
 
 function M.config()
