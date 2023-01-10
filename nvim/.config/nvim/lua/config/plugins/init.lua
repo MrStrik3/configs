@@ -36,9 +36,9 @@ return {
 	-- Mark files
 	{
 		"ThePrimeagen/harpoon",
-		-- lazy = false,
+		lazy = false,
 		dependencies = { "nvim-lua/plenary.nvim" },
-		keys = { "<leader>ml", "<leader>ma", "<leader>mn", "<leader>mp" },
+		-- keys = { "<leader>ml", "<leader>ma", "<leader>mn", "<leader>mp" },
 	},
 
 	{ "ellisonleao/glow.nvim", cmd = { "Glow" }, config = true },
@@ -91,6 +91,7 @@ return {
 		end,
 		ft = { "markdown" },
 	},
+	{ 'toppair/peek.nvim', run = 'deno task --quiet build:fast', ft = { "markdown" } },
 
 	{ "mrk21/yaml-vim", fmt = { "yaml" } }, -- YAML files Shit - https://github.com/mrk21/yaml-vim
 

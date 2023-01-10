@@ -13,6 +13,11 @@ function M.config()
       text = ' ',
       bg = get_hex('Normal', 'bg')
     },
+    space = {
+      text = ' ',
+      fg = get_hex('Normal', 'bg'),
+      bg = get_hex('ColorColumn', 'bg'),
+    },
 
     left_half_circle = {
       text = '',
@@ -21,7 +26,7 @@ function M.config()
     },
 
     right_half_circle = {
-      text = ' ',
+      text = '',
       bg = get_hex('Normal', 'bg'),
       fg = get_hex('ColorColumn', 'bg'),
     },
@@ -40,7 +45,7 @@ function M.config()
     },
 
     buffer_name = {
-      text = function(buffer) return buffer.filename .. '' end,
+      text = function(buffer) return buffer.filename end,
       fg = function(buffer) return buffer.is_focused and get_hex('Directory', 'fg') or nil end,
       style = function(buffer) return buffer.is_focused and 'underline' or nil end
     }
@@ -63,6 +68,7 @@ function M.config()
         components.buffer_read_only,
         components.buffer_is_modified,
         components.buffer_name,
+        components.space,
         components.right_half_circle
       },
 
