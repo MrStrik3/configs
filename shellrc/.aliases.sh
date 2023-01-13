@@ -37,6 +37,7 @@ alias kb.gp="kubectl -n iwls get pods"
 
 alias kb="kubectl -n iwls"
 alias kb.gp="kubectl -n iwls get pods"
+alias kb.logs="kubectl -n iwls get pods | cut -d ' ' -f 1 | grep -v --no-ignore-case 'NAME' | sort | fzf --reverse | xargs kubectl -n iwls logs"
 alias kb.sc.dev="kubectl config set-context aksdev"
 alias kb.sc.test="kubectl config set-context akstest"
 alias kb.sc.prod="kubectl config set-context aksprod-b"
@@ -49,4 +50,8 @@ alias docker="sudo docker"
 alias git.log="git log --graph --abbrev-commit --pretty=oneline | bat --file-name='Git log' --theme=OneHalfDark"
 
 alias nvim.cfg.copy2win="cp -Rf ~/.config/nvim/{init.lua,lua} /mnt/c/Users/LefrancoisC/AppData/Local/nvim/"
-alias notes="nvim /mnt/c/Users/LefrancoisC/Desktop/Travail/2022-23/notes"
+
+# AZ CLI stuffs
+alias az.sub.show="az account show --output table"
+alias az.sub.list="az account list --output table"
+alias az.sub.switch="az account list | jq '.[].name' | fzf | xargs az account set --subscription"

@@ -153,6 +153,14 @@ function M.config()
           { "<leader>ps", "<cmd>Lazy sync<cr>", description = "Sync all plugins" },
         },
       },
+      {
+        itemgroup = "projects",
+        description = "Projects",
+        icon = "ﮧ",
+        keymaps = {
+          { "<leader>Pl", function() require'telescope'.extensions.projects.projects{} end , description = "List projects" },
+        },
+      },
 
       {
         itemgroup = "harpoon",
