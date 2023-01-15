@@ -108,7 +108,9 @@ return {
 		"ahmedkhalf/project.nvim",
 		lazy = false,
 		config = function()
-			require("project_nvim").setup({})
+			require("project_nvim").setup({
+					ignore_lsp ={ "null-ls" }
+				})
 			require('telescope').load_extension('projects')
 		end
 	}

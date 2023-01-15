@@ -5,7 +5,7 @@ local M = {
   dependencies = {
     -- LSP Support
     {'neovim/nvim-lspconfig'},
-    {'williamboman/mason.nvim'},
+    {'williamboman/mason.nvim', cmd = "Mason" },
     {'williamboman/mason-lspconfig.nvim'},
     {'smjonas/inc-rename.nvim', cmd = "IncRename", config = true },
 

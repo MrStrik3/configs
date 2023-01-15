@@ -193,7 +193,7 @@ man() {
 #   return 127
 # }
 
-wsl.exe -d wsl-vpnkit service wsl-vpnkit start
+wsl.exe -d wsl-vpnkit --cd /app service wsl-vpnkit start
 eval "$(mcfly init zsh)"
 eval "$(starship init zsh)"
 

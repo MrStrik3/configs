@@ -20,6 +20,7 @@ function M.config()
   map("n", ":Wq!", ":wq!", {})
   map("n", ":WQ!", ":wq!", {})
   map("n", ":W", ":w", {})
+  map("n", "<c-c>", ":bdelete<cr>", {})
 
   -- Add insert new line above or after
   map("n", "<S-Enter>", "O<Esc>j", {})
@@ -66,10 +67,12 @@ function M.config()
         icon = "裡",
         keymaps = {
           --Bufferline
-          { "<S-Tab>", { n = "<plug>(cokeline-focus-prev)" }, description = "Switch to previous buffer" },
-          { "<Tab>", { n = "<plug>(cokeline-focus-next)" }, description = "Switch to next buffer" },
-          { "<A-<>", { n = "<plug>(cokeline-switch-prev)" }, description = "Move before previous buffer" },
-          { "<A->>", { n = "<plug>(cokeline-switch-next)" }, description = "Move after next buffer" },
+          -- { "<S-Tab>", { n = "<plug>(cokeline-focus-prev)" }, description = "Switch to previous buffer" },
+          -- { "<Tab>", { n = "<plug>(cokeline-focus-next)" }, description = "Switch to next buffer" },
+          -- { "<A-<>", { n = "<plug>(cokeline-switch-prev)" }, description = "Move before previous buffer" },
+          -- { "<A->>", { n = "<plug>(cokeline-switch-next)" }, description = "Move after next buffer" },
+          { "<S-Tab>", { n = "<cmd>bprevious<cr>" }, description = "Switch to previous buffer" },
+          { "<Tab>", { n = "<cmd>bnext<cr>" }, description = "Switch to next buffer" },
         },
       },
 
@@ -102,6 +105,8 @@ function M.config()
             description = "Toggle document diagnostics list",
           },
           { "<leader>ct", "<cmd>TodoTrouble<cr>", description = "Show TODO list" },
+          { "ge", function() vim.diagnostic.goto_next() end, description = "Goto next diagnostic" },
+          { "gE", function() vim.diagnostic.goto_prev() end, description = "Goto previous diagnostic" },
         },
       },
 
@@ -110,11 +115,12 @@ function M.config()
         description = "Files",
         icon = "",
         keymaps = {
-          { "<leader>ff", "<cmd>Telescope find_files<cr>", description = "Find File" },
-          { "<leader>fe", "<cmd>Neotree toggle<cr>", description = "File Explorer" },
-          { "<leader>fr", "<cmd>Telescope oldfiles<cr>", description = "Open Recent File" },
           { "<leader>fc", "<cmd>Telescope colorscheme<cr>", description = "Find colorscheme" },
+          { "<leader>fe", "<cmd>Neotree toggle<cr>", description = "File Explorer" },
+          { "<leader>ff", "<cmd>Telescope find_files<cr>", description = "Find File" },
           { "<leader>fn", "<cmd>enew<cr>", description = "New File" },
+          { "<leader>fp", "<cmd>:Telescope find_files find_command=rg,--ignore,--hidden,--files<cr>", description = "Live grep using ripgrep" },
+          { "<leader>fr", "<cmd>Telescope oldfiles<cr>", description = "Open Recent File" },
         },
       },
 

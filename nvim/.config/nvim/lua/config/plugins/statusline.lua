@@ -48,12 +48,12 @@ function M.config()
 	heirline.load_colors(colors)
 
 	-- ICONS
-	local icons = {
-		left_hard_divider = "",
-		right_hard_divider = "",
-		right_soft_divider = "",
-		left_soft_divider = "",
-	}
+	-- local icons = {
+	-- 	left_hard_divider = "",
+	-- 	right_hard_divider = "",
+	-- 	right_soft_divider = "",
+	-- 	left_soft_divider = "",
+	-- }
 
 	local function wrapInSlanterLean(component, isLeaningLeft, bg_color, fg_color)
 		if isLeaningLeft then
@@ -267,7 +267,7 @@ function M.config()
 		{ provider = "", hl = { bg = "bg", fg = "color_column" } },
 	}
 
-  local Diagnostics = {
+	local Diagnostics = {
 		condition = conditions.has_diagnostics,
 		init = function(self)
 			self.errors = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
@@ -358,6 +358,20 @@ function M.config()
 		-- },
 	}
 
+	local WorkDir = {
+		provider = function()
+			local icon = (vim.fn.haslocaldir(0) == 1 and "l" or "g") .. " " .. " "
+			local cwd = vim.fn.getcwd(0)
+			cwd = vim.fn.fnamemodify(cwd, ":~")
+			if not conditions.width_percent_below(#cwd, 0.25) then
+				cwd = vim.fn.pathshorten(cwd)
+			end
+			local trail = cwd:sub(-1) == "/" and "" or "/"
+			return icon .. cwd .. trail
+		end,
+		hl = { fg = "blue", bold = true },
+	}
+
 	-- Show plugin updates available from lazy.nvim
 	local Lazy = {
 		condition = require("lazy.status").has_updates,
@@ -376,7 +390,7 @@ function M.config()
 	local LazyBlock = wrapInSlanterLean(Lazy, false, "bg", "color_column")
 	LazyBlock.condition = require("lazy.status").has_updates
 
-	local statusline = {
+	local StatusLine = {
 		condition = function()
 			return conditions.buffer_matches({
 				buftype = { "nofile", "prompt", "help", "quickfix" },
@@ -386,8 +400,8 @@ function M.config()
 		nvimMode,
 		Git,
 		FileNameBlock,
-		alignment,
 		Diagnostics,
+		alignment,
 		LazyBlock,
 		FileEncoding,
 		FileFormatBlock,
@@ -396,8 +410,8 @@ function M.config()
 		RulerBlock,
 	}
 
-	-- The easy way.
-	local Navic = {
+	-- WinBar
+	local WinBar = {
 		condition = require("nvim-navic").is_available,
 		provider = function()
 			return require("nvim-navic").get_location({ highlight = true })
@@ -405,7 +419,13 @@ function M.config()
 		update = "CursorMoved",
 	}
 
-	heirline.setup(statusline, Navic, nil)
+	-- tabline
+	heirline.setup({
+		statusline = StatusLine,
+		winbar = WinBar,
+		tabline = nil,
+		-- statuscolumn = nil,
+	})
 end
 
 return M

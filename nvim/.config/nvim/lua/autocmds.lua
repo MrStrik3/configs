@@ -6,7 +6,7 @@
 --     end
 -- end
 
-vim.cmd [[
+vim.cmd([[
 
   augroup _general_settings
     autocmd!
@@ -30,14 +30,38 @@ vim.cmd [[
     autocmd VimResized * tabdo wincmd =
   augroup end
 
+  augroup _onopennvim_isdirectory_openfilexplorer
+    autocmd StdinReadPre * let s:std_in=1
+    autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') | execute 'cd '.argv()[0] | execute 'Telescope find_files' | endif
+  augroup end
 
   augroup _remove_trailing_whitespaces
     autocmd!
     autocmd BufWritePre * :%s/\s\+$//e
   augroup end
 
-]]
-  -- augroup TelescopeOnEnter
-  --   autocmd!
-  --   autocmd VimEnter * lua open_telescope()
-  -- augroup END
+]])
+-- autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') | execute 'Neotree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
+
+-- augroup TelescopeOnEnter
+--   autocmd!
+--   autocmd VimEnter * lua open_telescope()
+-- augroup END
+
+-- local api = vim.api
+-- local nvim_onOpen_isDir_TelescopePromptGrp =
+-- 	api.nvim_create_augroup("_onopennvim_isdirectory_openfilexplorer", { clear = true })
+-- api.nvim_create_autocmd("StdinReadPre", {
+-- 	command = "let s:std_in=1",
+-- 	group = nvim_onOpen_isDir_TelescopePromptGrp,
+-- })
+-- api.nvim_create_autocmd("VimEnter", {
+-- 	pattern = "*",
+-- 	callback = function()
+-- 		if vim.fn.argc() == 1 and vim.fn.isdirectory(vim.fn.argv()[0]) and not vim.fn.exists("s:std_in") then
+-- 			-- vim.cmd("execute cd " .. vim.fn.argv()[0])
+-- 			require("telescope.builtin").find_files()
+-- 		end
+-- 	end,
+-- })
+-- augroup end
