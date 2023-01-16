@@ -1,5 +1,6 @@
 vim.api.nvim_set_keymap('n', '<Space>', '<Nop>', { noremap = true }) -- Required on windows
 vim.g.mapleader = ' '
+vim.g.maplocalleader = ','
 
 -- Bootstrap lazy.nvim package manager
 require('options')

@@ -32,7 +32,7 @@ vim.cmd([[
 
   augroup _onopennvim_isdirectory_openfilexplorer
     autocmd StdinReadPre * let s:std_in=1
-    autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') | execute 'cd '.argv()[0] | execute 'Telescope find_files' | endif
+    autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') | execute 'cd '.argv()[0] | execute 'Telescope find_files' | enew | endif
   augroup end
 
   augroup _remove_trailing_whitespaces
