@@ -1,5 +1,11 @@
 local M = {
-  'MunifTanjim/prettier.nvim'
+  'MunifTanjim/prettier.nvim',
+  dependencies = {
+    'neovim/nvim-lspconfig',
+    'jose-elias-alvarez/null-ls.nvim'
+  },
+  cmd = { "Prettier" },
+
 }
 
 function M.config()
@@ -20,6 +26,23 @@ function M.config()
         "yaml",
       },
     })
+  local null_ls = require("null-ls")
+
+  null_ls.setup({
+      on_attach = function(client, bufnr)
+        if client.supports_method("textDocument/formatting") then
+          vim.keymap.set("n", "<Leader>cf", function()
+            vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
+          end, { buffer = bufnr, desc = "[lsp] format" })
+      end
+
+      if client.supports_method("textDocument/rangeFormatting") then
+        vim.keymap.set("x", "<Leader>cf", function()
+          vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
+        end, { buffer = bufnr, desc = "[lsp] format" })
+    end
+  end,
+})
 end
 
 return M

@@ -13,6 +13,9 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 
 require("lazy").setup("config.plugins", {
+    defaults = {
+      lazy = true,
+    },
     checker = {
       enabled = true,
       notify = false,
@@ -25,6 +28,13 @@ require("lazy").setup("config.plugins", {
       icons = {
         plugin = "",
       },
+    },
+    concurrency = 10, ---@type number limit the maximum amount of concurrent tasks
+    git = {
+      log = { "-10" }, -- show the last 10 commits
+      -- log = { "--since=3 days ago" }, -- show commits from the last 3 days
+      timeout = 120, -- kill processes that take more than 2 minutes
+      url_format = "https://github.com/%s.git",
     },
     performance = {
       rtp = {

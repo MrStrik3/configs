@@ -1,41 +1,34 @@
+# DEBUG MODE
+# zmodload zsh/zprof
+
 # If you come from bash you might have to change your $PAT
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+
 export KUBECONFIG=/mnt/c/Users/LefrancoisC/.kube/config
-export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+export JAVA_HOME=/usr/lib/jvm/java-11-temurin
+export STARSHIP_CONFIG=~/configs/starship.toml
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/lefrancoisc/.oh-my-zsh"
 
-export FZF_BASE=/usr/bin
-export DISABLE_FZF_KEY_BINDINGS=true
+# export FZF_BASE=/usr/bin
+export FZF_BASE=/usr/share/fzf
+export DISABLE_FZF_KEY_BINDINGS=false
 
 export HISTFILE=/home/lefrancoisc/.zsh_history
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="arrow"
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+### ZSh-related aliases
+alias zshUpdatePlugins="antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh"
 
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
+# ZSH_THEME="arrow"
 
-# Disable auto-setting terminal title.
 DISABLE_AUTO_TITLE="true"
 
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
 HIST_STAMPS="yyyy-mm-dd"
 
 DISABLE_LS_COLORS="true"
 
-# Plugins
+# Loaded Plugins
 plugins=(
   git
   kubectl
@@ -112,35 +105,14 @@ export YAOURT_COLORS="nb=1:pkg=1:ver=1;32:lver=1;45:installed=1;42:grp=1;34:od=1
 export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
 
-
 #
 # Azure cli autocomplete#
 autoload -U +X bashcompinit && bashcompinit
 export PATH=$PATH:/home/lefrancoisc/bin
 # source '/home/lefrancoisc/lib/azure-cli/az.completion'
 
-alias zshUpdatePlugins="antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh"
+# source < (antibody init)
 source ~/.zsh_plugins.sh
-
-# Spaceship options https://denysdovhan.com/spaceship-prompt/
-SPACESHIP_PROMPT_ORDER=(
-  env_var
-  time          # Time stamps section
-  user          # Username section
-  dir           # Current directory section
-  host          # Hostname section
-  git           # Git section (git_branch + git_status)
-  docker        # Docker section
-  kubectl       # Kubectl context section
-  exec_time     # Execution time
-  line_sep      # Line break
-  jobs          # Background jobs indicator
-  exit_code     # Exit code section
-  char          # Prompt character
-)
-SPACESHIP_TIME_SHOW=true
-SPACESHIP_EXIT_CODE_SHOW=true
-
 
 #########
 #  FZF  #
@@ -193,10 +165,14 @@ man() {
 #   return 127
 # }
 
-wsl.exe -d wsl-vpnkit service wsl-vpnkit start
+wsl.exe -d wsl-vpnkit --cd /app service wsl-vpnkit start
 eval "$(mcfly init zsh)"
 eval "$(starship init zsh)"
 
+[[ -s /etc/profile.d/autojump.zsh ]] && source /etc/profile.d/autojump.zsh
 
 # Load Angular CLI autocompletion.
 source <(ng completion script)
+
+# DEBUG MODE
+# zprof

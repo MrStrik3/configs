@@ -1,5 +1,6 @@
 local M = {
   'noib3/nvim-cokeline',
+  event = "BufReadPre",
   dependencies = 'kyazdani42/nvim-web-devicons'
 }
 
@@ -11,6 +12,11 @@ function M.config()
     separator = {
       text = ' ',
       bg = get_hex('Normal', 'bg')
+    },
+    space = {
+      text = ' ',
+      fg = get_hex('Normal', 'bg'),
+      bg = get_hex('ColorColumn', 'bg'),
     },
 
     left_half_circle = {
@@ -39,8 +45,9 @@ function M.config()
     },
 
     buffer_name = {
-      text = function(buffer) return buffer.filename .. ' ' end,
-      fg = function(buffer) return buffer.is_focused and get_hex('Directory', 'fg') or nil end
+      text = function(buffer) return buffer.filename end,
+      fg = function(buffer) return buffer.is_focused and get_hex('Directory', 'fg') or nil end,
+      style = function(buffer) return buffer.is_focused and 'underline' or nil end
     }
   }
 
@@ -61,6 +68,7 @@ function M.config()
         components.buffer_read_only,
         components.buffer_is_modified,
         components.buffer_name,
+        components.space,
         components.right_half_circle
       },
 

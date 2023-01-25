@@ -7,15 +7,15 @@ local M = {
     'p00f/nvim-ts-rainbow',
     'JoosepAlviste/nvim-ts-context-commentstring',
     'nvim-treesitter/nvim-treesitter-angular',
-    'nvim-treesitter/playground',
+    { 'nvim-treesitter/playground', cmd = { "TSPlayground" } },
   },
+  event = "BufReadPre",
 }
 
 function M.config()
   require("nvim-treesitter.configs").setup {
     -- One of "all", "maintained" (parsers with maintainers), or a list of languages
-    ensure_installed = { "bash", "c", "cmake", "cpp", "css", "dockerfile", "dot", "elm", "gitignore", "go", "help", "html", "http", "java", "javascript", "json", "json5", "jsonc", "jsonnet", "lua", "make", "markdown", "markdown_inline", "perl", "python", "regex", "ruby", "rust", "scheme", "scss", "sql", "tsx", "typescript", "vim", "yaml" },
-    -- ensure_installed = "all",
+    ensure_installed = { "bash", "c", "cmake", "cpp", "css", "dockerfile", "dot", "elm", "gitignore", "go", "help", "html", "http", "java", "javascript", "json", "json5", "jsonc", "jsonnet", "lua", "make", "markdown", "markdown_inline", "perl", "python", "regex", "ruby", "rust", "scheme", "scss", "sql", "tsx", "typescript", "vim", "yaml" }, -- ensure_installed = "all",
 
     -- Install languages synchronously (only applied to `ensure_installed`)
     sync_install = false,
