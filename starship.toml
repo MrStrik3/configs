@@ -4,13 +4,14 @@ add_newline = true
 command_timeout=1500
 # | [Git](fg:green)  | $git_branch $git_commit $git_state $git_metrics $git_status
 format = """
-$time $username $fill \
-$java$lua$golang$rust$nodejs$elm$golang$helm$lua$nodejs$perl$python$red$rust$shell$git_branch$docker_context$kubernetes$azure$terraform$hostname \
+$os$time $fill \
+$java$lua$golang$rust$nodejs$elm$golang$helm$lua$nodejs$perl$python$red$rust$shell$git_branch$docker_context$kubernetes$azure$terraform$hostname$username\
 $line_break\
 $directory\
 $cmd_duration\
 $status\
 $character"""
+right_format="$cmd_duration"
 # 
 # format = """
 # $time\
@@ -56,7 +57,7 @@ $character"""
 # style='bg:green fg:black'
 format='[  $path ]($style)'
 style='fg:green'
-
+home_symbol='~'
 
 [username]
 format='[ ](fg:blue) $user'
@@ -65,10 +66,10 @@ show_always=true
 [hostname]
 format='[](fg:blue) $hostname'
 ssh_only=false
+disabled=true
 
 [fill]
 symbol = ' '
-style = 'bold green'
 
 [line_break]
 disabled=false
@@ -111,10 +112,21 @@ symbol='  '
 
 [character]
 # format="[ ](bg:#2e333c)[](bold fg:#2e333c bg:black)$symbol "
-format="[➤](fg:green) "
+format='[$symbol]($style) '
+error_symbol='[➤](fg:red)'
+success_symbol='[➤](fg:green)'
 
 [azure]
 disabled = false
 format = ' [$symbol]($style) $subscription '
 symbol = 'ﴃ'
 style = 'blue bold'
+
+[os]
+disabled=false
+format='[ $symbol ]($style)[](fg:white bg:black)'
+style='bg:white fg:black'
+
+[os.symbols]
+Arch=''
+Windows=''
