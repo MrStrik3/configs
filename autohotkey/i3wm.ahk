@@ -1,4 +1,4 @@
-; AutoHotkey v2 script
+; Thanks to https://github.com/yalibian/i3-windows
 
 SetWorkingDir(A_ScriptDir)
 
