@@ -1,4 +1,4 @@
-; AutoHotkey v2 script
+; Thanks to https://github.com/yalibian/i3-windows
 
 SetWorkingDir(A_ScriptDir)
 
@@ -108,6 +108,20 @@ RemoveDesktop(remove_desktop_number, fallback_desktop_number) {
 
 ; SetDesktopName(0, "It works! 🐱")
 
+quitCurrentWindow(){
+    ;Close current window
+    WinClose("A")
+}
+
+toggleMaximizeCurrentWindow() {
+    minMax := WinGetMinMax("A")
+    if (minMax = 1) {
+        WinRestore("A")
+    } else {
+        WinMaximize("A")
+    }
+}
+
 #^j:: GoToDesktopNumber(0)
 #^k:: GoToDesktopNumber(1)
 #^l:: GoToDesktopNumber(2)
@@ -116,3 +130,6 @@ RemoveDesktop(remove_desktop_number, fallback_desktop_number) {
 #+k:: MoveCurrentWindowToDesktop(1)
 #+l:: MoveCurrentWindowToDesktop(2)
 #+;:: MoveCurrentWindowToDesktop(3)
+
+#f::toggleMaximizeCurrentWindow()
+#q::quitCurrentWindow()
