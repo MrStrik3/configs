@@ -86,12 +86,13 @@ return {
 	{
 		"iamcco/markdown-preview.nvim",
 		build = "cd app && npm install",
-		opts = function()
+		config = function()
 			vim.g.mkdp_filetypes = { "markdown" }
 			vim.g.mkdp_theme = "light"
 		end,
 		ft = { "markdown" },
 	},
+
 	{ 'toppair/peek.nvim', build = 'deno task --quiet build:fast', ft = { "markdown" } },
 
 	{ "mrk21/yaml-vim", ft = { "yaml" } }, -- YAML files Shit - https://github.com/mrk21/yaml-vim
