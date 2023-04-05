@@ -24,11 +24,14 @@ require("lazy").setup("config.plugins", {
     install = {
       colorscheme = { "onedark_vivid" },
     },
-    ui = {
-      icons = {
-        plugin = "",
-      },
-    },
+    -- ui = {
+    --   icons = {
+    --     plugin = "",
+    --   },
+    -- },
+    -- dev = {
+    --   path = '~/repositories',
+    -- },
     concurrency = 10, ---@type number limit the maximum amount of concurrent tasks
     git = {
       log = { "-10" }, -- show the last 10 commits

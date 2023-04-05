@@ -8,6 +8,7 @@ local M = {
     {'williamboman/mason.nvim', cmd = "Mason" },
     {'williamboman/mason-lspconfig.nvim'},
     {'smjonas/inc-rename.nvim', cmd = "IncRename", config = true },
+    {"folke/neodev.nvim", opts = true },
 
     -- Autocompletion
     {'hrsh7th/nvim-cmp'},
@@ -20,7 +21,7 @@ local M = {
     -- Snippets
     {'L3MON4D3/LuaSnip'},
     {'rafamadriz/friendly-snippets'},
-    'rcarriga/nvim-notify',
+    {'rcarriga/nvim-notify'},
     "jose-elias-alvarez/null-ls.nvim"
   }
 }
@@ -35,7 +36,7 @@ function M.config()
   lsp.set_preferences({
       suggest_lsp_servers = true,
       setup_servers_on_start = true,
-      set_lsp_keymaps = true,
+      set_lsp_keymaps = false,
       configure_diagnostics = true,
       cmp_capabilities = true,
       manage_nvim_cmp = true,
@@ -48,7 +49,48 @@ function M.config()
       }
     })
 
-  lsp.ensure_installed({ "sumneko_lua", "yamlls", "cssls", "bashls", "jdtls", "html", "pyright", "terraformls", "tsserver", "lemminx" })
+  local opts = { noremap = true, silent = true, buffer=bufnr }
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover , opts)
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+  vim.keymap.set('n', 'go', vim.lsp.buf.type_definition, opts)
+  vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+  vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, opts)
+  vim.keymap.set('n', '<F4>', vim.lsp.buf.code_action, opts)
+  vim.keymap.set('x', '<F4>', vim.lsp.buf.range_code_action, opts)
+
+  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+
+  vim.keymap.set('n', 'gl', vim.diagnostic.open_float, opts)
+  vim.keymap.set('n', 'gE', vim.diagnostic.goto_prev, opts)
+  vim.keymap.set('n', 'ge', vim.diagnostic.goto_next, opts)
+  -- vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
+  -- vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
+  -- vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
+  -- vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
+  -- vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
+  -- vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
+  -- vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
+  -- vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+  -- vim.keymap.set('x', '<F4>', '<cmd>lua vim.lsp.buf.range_code_action()<cr>', opts)
+  --
+  -- vim.keymap.set('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
+  --
+  -- vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
+  -- vim.keymap.set('n', 'gE', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts)
+  -- vim.keymap.set('n', 'ge', '<cmd>lua vim.diagnostic.goto_next()<cr>', opts)
+
+-- local cmp = require('cmp')
+
+-- lsp.setup_nvim_cmp({
+--   mapping = lsp.defaults.cmp_mappings({
+--     ['<C-Space>'] = cmp.mapping.complete(),
+--     ['<C-e>'] = cmp.mapping.abort(),
+--   })
+-- })
+
+  lsp.ensure_installed({ "lua_ls", "yamlls", "cssls", "bashls", "jdtls", "html", "pyright", "terraformls", "tsserver", "lemminx" })
 
   lsp.on_attach(function(client, bufnr)
     if vim.b.lsp_attached then return  end

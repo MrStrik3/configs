@@ -19,7 +19,7 @@ return {
 	{
 		"karb94/neoscroll.nvim",
 		keys = { " <C-u>", "<C-d>", "<C-b>", "<C-f>", "<C-y>", "<C-e>" },
-		config = { easing_function = "circular" }, -- quadratic, cubic, quartic, quintic, circular, sine
+		opts = { easing_function = "circular" }, -- quadratic, cubic, quartic, quintic, circular, sine
 	},
 
 	-- Comment management
@@ -47,6 +47,7 @@ return {
 		"phaazon/hop.nvim",
 		keys = { "s", "S", "<leader><leader>w", "<leader><leader>p", "<leader><leader>l" },
 		branch = "v2", -- optional but strongly recommended
+    lazy = false,
 		config = function()
 			require("hop").setup({ keys = "etovxqpdygfblzhckisuran" }) -- you can configure Hop the way you like here; see :h hop-config
 		end,
@@ -70,7 +71,7 @@ return {
 		"folke/trouble.nvim",
 		cmd = { "TroubleToggle", "Trouble" },
 		dependencies = "kyazdani42/nvim-web-devicons",
-		config = {
+		opts = {
 			auto_open = false,
 			use_diagnostic_signs = true,
 		},
@@ -84,21 +85,21 @@ return {
 
 	{
 		"iamcco/markdown-preview.nvim",
-		run = "cd app && npm install",
-		config = function()
+		build = "cd app && npm install",
+		opts = function()
 			vim.g.mkdp_filetypes = { "markdown" }
 			vim.g.mkdp_theme = "light"
 		end,
 		ft = { "markdown" },
 	},
-	{ 'toppair/peek.nvim', run = 'deno task --quiet build:fast', ft = { "markdown" } },
+	{ 'toppair/peek.nvim', build = 'deno task --quiet build:fast', ft = { "markdown" } },
 
-	{ "mrk21/yaml-vim", fmt = { "yaml" } }, -- YAML files Shit - https://github.com/mrk21/yaml-vim
+	{ "mrk21/yaml-vim", ft = { "yaml" } }, -- YAML files Shit - https://github.com/mrk21/yaml-vim
 
 	{
 		"folke/zen-mode.nvim",
 		cmd = "ZenMode",
-		config = {
+		opts = {
 			plugins = {
 				gitsigns = true,
 			},
@@ -127,6 +128,7 @@ return {
 -- https://github.com/toppair/peek.nvim
 
 -- statusline rice : https://repository-images.githubusercontent.com/345368765/648e8f00-cdae-11eb-87c9-cd2dbf074eda
+-- Reddit linux Rice : https://i.redd.it/8cbtmudmyzca1.png
 -- folke dotFiles : https://github.com/folke/dot/blob/master/config/nvim/lua/config/plugins/init.lua
 
 -- Themes

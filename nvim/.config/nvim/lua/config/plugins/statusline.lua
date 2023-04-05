@@ -1,7 +1,7 @@
 local M = {
 	"rebelot/heirline.nvim",
 	lazy = false,
-	dependencies = { "smiteshp/nvim-navic" },
+	dependencies = { { "smiteshp/nvim-navic", commit="11e0839" } },
 	-- { 'hoob3rt/lualine.nvim', config = [[require('config.lualine')]], dependencies = { 'kyazdani42/nvim-web-devicons' } }
 }
 
@@ -422,7 +422,7 @@ function M.config()
 	-- tabline
 	heirline.setup({
 		statusline = StatusLine,
-		winbar = WinBar,
+    winbar = WinBar,
 		tabline = nil,
 		-- statuscolumn = nil,
 	})

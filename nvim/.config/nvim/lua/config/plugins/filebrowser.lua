@@ -1,10 +1,11 @@
 local M = {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
-    keys = {
-      { "<leader>fe" }
-    },
-    cmd = { "Neotree" },
+    lazy = false,
+    -- keys = {
+    --   { "<leader>fe" }
+    -- },
+    -- cmd = { "NeoTree" },
     dependencies = {
       "nvim-lua/plenary.nvim",
       "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
