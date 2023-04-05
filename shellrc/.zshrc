@@ -108,11 +108,10 @@ export VISUAL=/usr/bin/nvim
 #
 # Azure cli autocomplete#
 autoload -U +X bashcompinit && bashcompinit
-export PATH=$PATH:/home/lefrancoisc/bin
-# source '/home/lefrancoisc/lib/azure-cli/az.completion'
+[[ -s $HOME/lib/azure-cli/az.completion ]] && source $HOME/lib/azure-cli/az.completion
 
 # source < (antibody init)
-source ~/.zsh_plugins.sh
+[[ -s $HOME/.zsh_plugins.sh ]] && source $HOME/.zsh_plugins.sh
 
 #########
 #  FZF  #

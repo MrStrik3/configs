@@ -1,6 +1,11 @@
+alias ap='apropos -s 1 . | fzf --preview='\''man {1}'\'' --preview-window=up | awk '\''{print $1}'\'' | xargs man'
+alias ap.ex='apropos -s 1 . | fzf --preview='\''man {1}'\'' --preview-window=up | awk '\''{print $1}'\'' | xargs tldr'
+
+alias cfg.aliases="nvim ~/.aliases"
 alias cfg.zsh="$EDITOR ~/.zshrc"
 alias cfg.ohmyzsh="$EDITOR ~/.oh-my-zsh"
 alias cfg.nvim="fd --search-path ~/.config/nvim --type f | fzf  --preview 'bat -n --color=always {}' --multi --print0 | xargs -0 nvim"
+alias cfg.glazewm="nvim /mnt/c/Users/$USER/.glaze-wm/config.yaml"
 
 alias cd.wk="cd /mnt/c/Users/LefrancoisC/Desktop/Travail"
 alias cd.temp="cd /mnt/c/Users/LefrancoisC/Desktop/Temp"
@@ -8,7 +13,7 @@ alias cd.iwls="cd /mnt/c/Users/LefrancoisC/Desktop/Travail/CodeSource/Intellij/i
 
 alias ll="exa --long --icons --group-directories-first --time-style=long-iso"
 alias lla="exa -a --long --icons --group-directories-first --time-style=long-iso"
-alias ls="exa --icons --time-style=long-iso"
+alias ls="exa --icons --time-style=long-iso --group-directories-first"
 alias lt="exa --tree --icons -a -I '.git|__pycache__|.mypy_cache|.ipynb_checkpoints' --time-style=long-iso"
 
 alias diff='diff --color=auto'
@@ -44,9 +49,9 @@ alias kb="kubectl -n iwls"
 alias kb.gp="kubectl -n iwls get pods"
 alias kb.logs="kubectl -n iwls get pods | cut -d ' ' -f 1 | grep -v --no-ignore-case 'NAME' | sort | fzf --reverse | xargs kubectl -n iwls logs"
 alias kb.sc="kubectl config get-contexts -o name | fzf --height 10% --reverse --inline-info --bind 'tab:down' --bind 'shift-tab:up' --delimiter=' ' --nth=2.. | cut -d ' ' -f 1 | xargs kubectl config use-context"
-alias kb.sc.dev="kubectl config set-context aksdev"
-alias kb.sc.test="kubectl config set-context akstest"
-alias kb.sc.prod="kubectl config set-context aksprod-b"
+alias kb.sc.dev="kubectl config use-context aksdev"
+alias kb.sc.test="kubectl config use-context akstest"
+alias kb.sc.prod="kubectl config use-context aksprod-b"
 
 alias docker.start="sudo -b dockerd > /dev/null 2>&1 &"
 alias docker="sudo docker"
@@ -59,3 +64,12 @@ alias git.log="git log --graph --abbrev-commit --pretty=oneline | bat --file-nam
 alias az.sub.show="az account show --output table"
 alias az.sub.list="az account list --output table"
 alias az.sub.switch="az account list | jq '.[].name' | fzf | xargs az account set --subscription"
+az.git.clone() {
+  project="$(az devops project list --organization="$AZ_ORGANIZATION" | jp --unquoted 'join(`"\n"`, value[].name)' | sort | fzf --tac )"
+  selectedRepo=$(az repos list --organization="$AZ_ORGANIZATION" --project "$project" --query="[].{Name:name, ssh:sshUrl}" -o table | tail -n +3 | sort |  fzf --tac | awk '{$1=$1};1')
+  currentRepoName=$(echo "$selectedRepo" | cut -d' ' -f 1 )
+  currentRepoSsh=$(echo "$selectedRepo" | cut -d' ' -f 2 )
+
+  git clone $currentRepoSsh
+  cd "$currentRepoName"
+}
