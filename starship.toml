@@ -87,7 +87,7 @@ style = 'blue bold'
 [os]
 disabled=false
 format='[ $symbol ]($style)'
-style='bg:#FFFFFF fg:black'
+style='bg:#FFFFFF fg:blue'
 
 [os.symbols]
 Arch=''
