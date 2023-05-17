@@ -1,7 +1,7 @@
 return {
 
 	-- Nvim optimizations
-	{ "nathom/filetype.nvim", lazy = false }, -- Define the neovim's filetypes list (load quicker)
+	{ "nathom/filetype.nvim", lazy = false, opts = { overrides = { sh = "sh" } } }, -- Define the neovim's filetypes list (load quicker)
 	{ "lewis6991/impatient.nvim", lazy = false }, -- Speed up start time
 	-- { "sheerun/vim-polyglot", lazy = false },
 	{ "edluffy/specs.nvim", lazy = false },
