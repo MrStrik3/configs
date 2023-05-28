@@ -15,8 +15,13 @@ vim.g.loaded_ruby_provider = 0
 require('options')
 require('autocmds')
 require('config/lazy')
-require('impatient')
+
+-- Neovim < 9.0
+-- require('impatient')
 -- require('impatient').enable_profile()
+
+-- Neovim > 9.0
+vim.loader.enable()
 
 -- filetype plugin on
 vim.cmd('filetype plugin indent on')
