@@ -36,7 +36,7 @@ symbol = ' '
 disabled=false
 
 [cmd_duration]
-format=' [祥$duration]($style) '
+format=' [ 󱎫 $duration]($style) '
 # style='fg:#3a404c'
 style='fg:#7f848e'
 
@@ -60,7 +60,7 @@ format='[$symbol](fg:blue) $branch(:$remote_branch) '
 [time]
 disabled = false
 style='fg:blue'
-format = '[  ]($style)$time'
+format = '[  ]($style)$time'
 time_format = "%T"
 utc_time_offset = "local"
 
