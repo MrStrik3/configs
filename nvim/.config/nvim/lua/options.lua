@@ -67,6 +67,7 @@ local options = {
     -- eol = '↲',
     nbsp = '␣',
     -- trail = '•',
+    -- space = '⋅',
     trail = '⋅',
     extends = '⟩',
     precedes = '⟨',

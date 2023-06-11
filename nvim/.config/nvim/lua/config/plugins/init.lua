@@ -6,6 +6,7 @@ return {
 	-- { "sheerun/vim-polyglot", lazy = false },
 	{ "edluffy/specs.nvim", lazy = false },
 	{ "tweekmonster/startuptime.vim", cmd = { "StartupTime" } },
+	{ "j-hui/fidget.nvim", lazy = false },
 
 	-- File picker
 	{
@@ -47,7 +48,7 @@ return {
 		"phaazon/hop.nvim",
 		keys = { "s", "S", "<leader><leader>w", "<leader><leader>p", "<leader><leader>l" },
 		branch = "v2", -- optional but strongly recommended
-    lazy = false,
+		lazy = false,
 		config = function()
 			require("hop").setup({ keys = "etovxqpdygfblzhckisuran" }) -- you can configure Hop the way you like here; see :h hop-config
 		end,
@@ -65,7 +66,13 @@ return {
 	},
 
 	{ "mg979/vim-visual-multi", keys = { { "<C-n>" } } }, -- Multi cursor shit
-	{ "NvChad/nvim-colorizer.lua", cmd = "ColorizerToggle" },
+	{
+    "NvChad/nvim-colorizer.lua",
+    cmd = { "ColorizerToggle", "ColorizerAttachToBuffer" },
+    config = function()
+      require('colorizer').setup({ filetypes = { "html", "css", "lua", "kdl" } })
+    end
+    },
 
 	{
 		"folke/trouble.nvim",
@@ -93,8 +100,7 @@ return {
 		ft = { "markdown" },
 	},
 
-	{ 'toppair/peek.nvim', build = 'deno task --quiet build:fast', ft = { "markdown" } },
-
+	{ "toppair/peek.nvim", build = "deno task --quiet build:fast", ft = { "markdown" } },
 	{ "mrk21/yaml-vim", ft = { "yaml" } }, -- YAML files Shit - https://github.com/mrk21/yaml-vim
 
 	{
@@ -111,11 +117,11 @@ return {
 		lazy = false,
 		config = function()
 			require("project_nvim").setup({
-					ignore_lsp ={ "null-ls" }
-				})
-			require('telescope').load_extension('projects')
-		end
-	}
+				ignore_lsp = { "null-ls" },
+			})
+			require("telescope").load_extension("projects")
+		end,
+	},
 }
 
 -- Plugins to look int

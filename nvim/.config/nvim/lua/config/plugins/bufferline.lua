@@ -1,7 +1,7 @@
 local M = {
-  'noib3/nvim-cokeline',
+  "willothy/nvim-cokeline",
   event = "BufReadPre",
-  dependencies = 'kyazdani42/nvim-web-devicons'
+  dependencies = { 'kyazdani42/nvim-web-devicons' }
 }
 
 function M.config()
@@ -40,7 +40,7 @@ function M.config()
     },
 
     buffer_is_modified = {
-      text = function(buffer) return buffer.is_modified and ' ' or ' ' end,
+      text = function(buffer) return buffer.is_modified and '󰆓 ' or ' ' end,
       fg = get_hex('ErrorMsg', 'fg'),
     },
 
