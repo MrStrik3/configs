@@ -2,7 +2,7 @@
 # zmodload zsh/zprof
 
 # If you come from bash you might have to change your $PAT
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:/home/$HOME/.pulumi/bin:$PATH
 
 export KUBECONFIG=/mnt/c/Users/LefrancoisC/.kube/config
 export JAVA_HOME=/usr/lib/jvm/java-11-temurin
@@ -164,7 +164,7 @@ man() {
 #   return 127
 # }
 
-wsl.exe -d wsl-vpnkit --cd /app service wsl-vpnkit start
+# wsl.exe -d wsl-vpnkit --cd /app service wsl-vpnkit start
 eval "$(mcfly init zsh)"
 eval "$(starship init zsh)"
 
@@ -175,3 +175,6 @@ source <(ng completion script)
 
 # DEBUG MODE
 # zprof
+
+# add Pulumi to the PATH
+export PATH=$PATH:$HOME/.pulumi/bin
