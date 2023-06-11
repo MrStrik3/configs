@@ -81,7 +81,7 @@ success_symbol='[➤](fg:green)'
 [azure]
 disabled = false
 format = ' [$symbol]($style) $subscription '
-symbol = 'ﴃ'
+symbol = '󰠅'
 style = 'blue bold'
 
 [os]
