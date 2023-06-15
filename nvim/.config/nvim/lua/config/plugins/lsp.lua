@@ -30,7 +30,7 @@ local M = {
 function M.config()
 	require("luasnip.loaders.from_vscode").lazy_load()
 
-	local signs = { Error = "", Warn = "", Hint = "", Info = "" }
+	local signs = { Error = "", Warn = "", Hint = "󰛨", Info = "" }
 
 	local lsp = require("lsp-zero")
 	-- lsp.preset('recommended')
