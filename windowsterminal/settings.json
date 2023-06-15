@@ -19,6 +19,15 @@
             "keys": "ctrl+shift+f"
         },
         {
+            "command": 
+            {
+                "action": "splitPane",
+                "split": "auto",
+                "splitMode": "duplicate"
+            },
+            "keys": "alt+shift+d"
+        },
+        {
             "command": "unbound",
             "keys": "ctrl+c"
         },
@@ -29,15 +38,6 @@
         {
             "command": "unbound",
             "keys": "f11"
-        },
-        {
-            "command": 
-            {
-                "action": "splitPane",
-                "split": "auto",
-                "splitMode": "duplicate"
-            },
-            "keys": "alt+shift+d"
         }
     ],
     "copyFormatting": "none",
@@ -59,7 +59,7 @@
             "cursorShape": "filledBox",
             "font": 
             {
-                "face": "CaskaydiaCove NFM",
+                "face": "CaskaydiaCove Nerd Font Mono",
                 "features": 
                 {
                     "calt": 1,
@@ -109,15 +109,15 @@
                 "source": "Windows.Terminal.Azure"
             },
             {
-                "guid": "{e636fd95-8db6-56fc-969f-5647553fa92b}",
-                "hidden": false,
-                "name": "wsl-vpnkit",
-                "source": "Windows.Terminal.Wsl"
-            },
-            {
                 "guid": "{a5a97cb8-8961-5535-816d-772efe0c6a3f}",
                 "hidden": false,
                 "name": "Arch",
+                "source": "Windows.Terminal.Wsl"
+            },
+            {
+                "guid": "{e636fd95-8db6-56fc-969f-5647553fa92b}",
+                "hidden": false,
+                "name": "wsl-vpnkit",
                 "source": "Windows.Terminal.Wsl"
             }
         ]
@@ -848,6 +848,48 @@
             {
                 "background": "#E9E9E9FF",
                 "unfocusedBackground": "#6A6A6AFF"
+            }
+        },
+        {
+            "name": "legacyDark",
+            "tab": 
+            {
+                "background": null,
+                "showCloseButton": "always",
+                "unfocusedBackground": null
+            },
+            "window": 
+            {
+                "applicationTheme": "dark",
+                "useMica": false
+            }
+        },
+        {
+            "name": "legacyLight",
+            "tab": 
+            {
+                "background": null,
+                "showCloseButton": "always",
+                "unfocusedBackground": null
+            },
+            "window": 
+            {
+                "applicationTheme": "light",
+                "useMica": false
+            }
+        },
+        {
+            "name": "legacySystem",
+            "tab": 
+            {
+                "background": null,
+                "showCloseButton": "always",
+                "unfocusedBackground": null
+            },
+            "window": 
+            {
+                "applicationTheme": "system",
+                "useMica": false
             }
         }
     ]
