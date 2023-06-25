@@ -20,7 +20,14 @@ local M = {
 		{ "hrsh7th/cmp-nvim-lua" },
 
 		-- Snippets
-		{ "L3MON4D3/LuaSnip" },
+		-- { "L3MON4D3/LuaSnip" },
+		{
+			"L3MON4D3/LuaSnip",
+			-- follow latest release.
+			version = "1.*",
+			-- install jsregexp (optional!).
+			build = "make install_jsregexp",
+		},
 		{ "rafamadriz/friendly-snippets" },
 		{ "rcarriga/nvim-notify" },
 		{ "jose-elias-alvarez/null-ls.nvim" },

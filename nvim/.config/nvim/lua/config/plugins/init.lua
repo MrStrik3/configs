@@ -24,7 +24,13 @@ return {
 	},
 
 	-- Comment management
-	{ "numToStr/Comment.nvim", event = "BufReadPost", config = true },
+	{
+    "numToStr/Comment.nvim",
+    event = "BufReadPost",
+    config = function()
+      require('Comment').setup({})
+      require('Comment.ft').set('terraform', '#%s').set('ft', '#%s')
+    end },
 
 	-- Surrounding management
 	{
