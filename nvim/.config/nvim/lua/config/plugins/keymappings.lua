@@ -120,6 +120,7 @@ function M.config()
 					{ "<leader>fe", "<cmd>Neotree toggle<cr>", description = "File Explorer" },
 					{ "<leader>ff", "<cmd>Telescope find_files<cr>", description = "Find File" },
 					{ "<leader>fn", "<cmd>enew<cr>", description = "New File" },
+          { "<leader>fs", "<cmd>Neotree float reveal reveal_force_cwd<cr>", description = "Show the current file in the filesystem tree" },
 					{
 						"<leader>fp",
 						"<cmd>:Telescope find_files find_command=rg,--ignore,--hidden,--files<cr>",

@@ -13,11 +13,17 @@ local M = {
 
 		-- Autocompletion
 		{ "hrsh7th/nvim-cmp" },
+		{ "onsails/lspkind.nvim" },
 		{ "hrsh7th/cmp-buffer" },
 		{ "hrsh7th/cmp-path" },
 		{ "saadparwaiz1/cmp_luasnip" },
 		{ "hrsh7th/cmp-nvim-lsp" },
 		{ "hrsh7th/cmp-nvim-lua" },
+		{
+			"tzachar/cmp-tabnine",
+			build = "./install.sh",
+			dependencies = "hrsh7th/nvim-cmp",
+		},
 
 		-- Snippets
 		-- { "L3MON4D3/LuaSnip" },
@@ -35,11 +41,15 @@ local M = {
 }
 
 function M.config()
+
+  vim.notify = require("notify")
+
 	require("luasnip.loaders.from_vscode").lazy_load()
 
 	local signs = { Error = "", Warn = "", Hint = "󰛨", Info = "" }
 
 	local lsp = require("lsp-zero")
+
 	-- lsp.preset('recommended')
 	lsp.set_sign_icons({
 		error = signs.Error,
@@ -57,7 +67,8 @@ function M.config()
 		call_servers = "local",
 	})
 
-	local opts = { noremap = true, silent = true, buffer = bufnr }
+	-- local opts = { noremap = true, silent = true, buffer = bufnr }
+	local opts = { noremap = true, silent = true, buffer = true }
 	vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 	vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
@@ -134,6 +145,62 @@ function M.config()
 	cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 	cmp.setup({
+		sources = {
+			{ name = "nvim_lsp" },
+			{ name = "path" },
+			{ name = "cmp_tabnine" },
+			{ name = "nvim_lua" },
+			{ name = "buffer", keyword_length = 3 },
+			{ name = "luasnip", keyword_length = 2 },
+		},
+
+		formatting = {
+			fields = { "kind", "abbr", "menu" },
+			format = require("lspkind").cmp_format({
+				-- mode = "symbol_text", -- show only symbol annotations
+				mode = "text_symbol", -- show only symbol annotations
+				menu = {
+					buffer = "[Buffer]",
+          path = "[Path]",
+					nvim_lsp = "[LSP]",
+					luasnip = "[LuaSnip]",
+					nvim_lua = "[Lua]",
+          cmp_tabnine = "[T9]"
+				},
+				maxwidth = 80, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+				ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+
+				-- The function below will be called before any actual modifications from lspkind
+				-- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
+				before = function(entry, vim_item)
+					vim_item.kind = require("lspkind").symbolic(vim_item.kind, { mode = "symbol_text" })
+					return vim_item
+				end,
+			}),
+		},
+
+		--   formatting = {
+		-- 	format = function(entry, vim_item)
+		--
+		--       vim_item.kind = require('lspkind').symbolic(vim_item.kind, { mode = "symbol" })
+		-- 		  vim_item.menu = source_mapping[entry.source.name]
+		--
+		--       if entry.source.name == "cmp_tabnine" then
+		-- 			local detail = (entry.completion_item.labelDetails or {}).detail
+		-- 			vim_item.kind = ""
+		-- 			if detail and detail:find(".*%%.*") then
+		-- 				vim_item.kind = vim_item.kind .. " " .. detail
+		-- 			end
+		--
+		-- 			if (entry.completion_item.data or {}).multiline then
+		-- 				vim_item.kind = vim_item.kind .. " " .. "[ML]"
+		-- 			end
+		-- 		end
+		-- 		local maxwidth = 80
+		-- 		vim_item.abbr = string.sub(vim_item.abbr, 1, maxwidth)
+		-- 		return vim_item
+		-- 	end,
+		-- },
 		mapping = cmp.mapping.preset.insert({
 			-- ["<C-space>"] = cmp.mapping.complete(),
 			["<C-space>"] = cmp.mapping({
@@ -185,8 +252,9 @@ function M.config()
 	require("null-ls").setup({
 		sources = {
 			require("null-ls").builtins.formatting.stylua,
+			require("null-ls").builtins.formatting.terraform_fmt,
 			require("null-ls").builtins.diagnostics.eslint,
-			require("null-ls").builtins.completion.spell,
+			-- require("null-ls").builtins.completion.spell,
 			require("null-ls").builtins.code_actions.gitsigns,
 		},
 	})
@@ -199,10 +267,6 @@ return M
 --'hrsh7th/nvim-cmp',  -- Autocompletion plugin
 --'hrsh7th/cmp-cmdline',
 --'hrsh7th/cmp-nvim-lsp',   -- LSP source for nvim-cmp
---'L3MON4D3/LuaSnip',
---'saadparwaiz1/cmp_luasnip',
---'hrsh7th/cmp-buffer', -- autocompletion for buffer
 --'onsails/lspkind-nvim',
---'rcarriga/nvim-notify',
 -- 'ray-x/lsp_signature.nvim
 -- 'weilbith/nvim-code-action-menu',

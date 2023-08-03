@@ -1,49 +1,49 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 # RICE : https://i.redd.it/8cbtmudmyzca1.png
 add_newline = true
-command_timeout=1500
+command_timeout = 1500
 # | [Git](fg:green)  | $git_branch $git_commit $git_state $git_metrics $git_status
 format = """
 $os[](fg:#FFFFFF bg:black)$time $fill \
 $java$golang$helm$lua$nodejs$perl$python$red$rust\
-$shell$git_branch$docker_context$kubernetes$azure$terraform$hostname$username[](fg:#FFFFFF bg:black)$os\
+$git_branch$docker_context$kubernetes$azure$terraform$shell$hostname$username[](fg:#FFFFFF bg:black)$os \
 $line_break\
 $directory\
 $status\
 $character"""
-right_format="$cmd_duration"
+right_format = "$cmd_duration"
 
 [directory]
 # format='[  $path ]($style)[](fg:green bg:#2e333c)'
 # style='bg:green fg:black'
-format='[  $path ]($style)'
-style='fg:blue'
-home_symbol='~'
+format = '[  $path ]($style)'
+style = 'fg:blue'
+home_symbol = '~'
 
 [username]
-format='[ ](fg:blue) $user '
-show_always=true
+format = '[ ](fg:blue) $user '
+show_always = true
 
 [hostname]
-format='[](fg:blue) $hostname'
-ssh_only=false
-disabled=true
+format = '[](fg:blue) $hostname'
+ssh_only = false
+disabled = true
 
 [fill]
 symbol = ' '
 
 [line_break]
-disabled=false
+disabled = false
 
 [cmd_duration]
-format=' [ 󱎫 $duration]($style) '
+format = ' [ 󱎫 $duration]($style) '
 # style='fg:#3a404c'
-style='fg:#7f848e'
+style = 'fg:#7f848e'
 
 [kubernetes]
 disabled = false
-symbol=""
-format='[$symbol](fg:blue) $context( \($namespace\))'
+symbol = ""
+format = '[$symbol](fg:blue) $context( \($namespace\))'
 
 [terraform]
 disabled = false
@@ -52,31 +52,31 @@ disabled = false
 disabled = false
 
 [git_branch]
-symbol= " "
+symbol = " "
 # #3d434f
 # #2e333c fg:#7f848e
-format='[$symbol](fg:blue) $branch(:$remote_branch) '
+format = '[$symbol](fg:blue) $branch(:$remote_branch)'
 
 [time]
 disabled = false
-style='fg:blue'
+style = 'fg:blue'
 format = '[  ]($style)$time'
 time_format = "%T"
 utc_time_offset = "local"
 
 [golang]
-format='[$symbol](bold)'
-symbol= '  '
+format = '[$symbol](bold)'
+symbol = '  '
 
 [java]
-format='[$symbol](fg:blue)'
-symbol='  '
+format = '[$symbol](fg:blue)'
+symbol = '  '
 
 [character]
 # format="[ ](bg:#2e333c)[](bold fg:#2e333c bg:black)$symbol "
-format='[$symbol]($style) '
-error_symbol='[➤](fg:red)'
-success_symbol='[➤](fg:green)'
+format = '[$symbol]($style) '
+error_symbol = '[➤](fg:red)'
+success_symbol = '[➤](fg:green)'
 
 [azure]
 disabled = false
@@ -85,15 +85,23 @@ symbol = '󰠅'
 style = 'blue bold'
 
 [os]
-disabled=false
-format='[ $symbol ]($style)'
-style='bg:#FFFFFF fg:blue'
+disabled = false
+format = '[ $symbol ]($style)'
+style = 'bg:#FFFFFF fg:blue'
 
 [os.symbols]
-Arch=''
-Windows=''
+Arch = ''
+Windows = ''
 
 [lua]
-format='[$symbol]($style) [lua](fg:white)'
-symbol='󰢱'
-style='fg:blue'
+format = '[$symbol]($style) [lua](fg:white)'
+symbol = '󰢱'
+style = 'fg:blue'
+
+[shell]
+fish_indicator = 'fsh '
+powershell_indicator = 'pwsh '
+unknown_indicator = 'mystery shell'
+style = 'fg:blue bold'
+disabled = false
+format = '[󰆍]($style) $indicator'
