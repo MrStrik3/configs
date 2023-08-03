@@ -377,7 +377,7 @@ function M.config()
 		condition = require("lazy.status").has_updates,
 		update = { "User", pattern = "LazyUpdate" },
 		provider = function()
-			return "  " .. require("lazy.status").updates() .. " "
+			return " 󰚰 " .. require("lazy.status").updates() .. " "
 		end,
 		on_click = {
 			callback = function()
@@ -399,6 +399,7 @@ function M.config()
 		end,
 		nvimMode,
 		Git,
+    -- WorkDir,
 		FileNameBlock,
 		Diagnostics,
 		alignment,
