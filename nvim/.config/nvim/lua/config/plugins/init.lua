@@ -1,12 +1,30 @@
 return {
 
 	-- Nvim optimizations
+
 	-- { "nathom/filetype.nvim", lazy = false, opts = { overrides = { sh = "sh" } } }, -- Define the neovim's filetypes list (load quicker)
 	-- { "lewis6991/impatient.nvim", lazy = false }, -- Speed up start time
 	-- { "sheerun/vim-polyglot", lazy = false },
 	{ "edluffy/specs.nvim", lazy = false },
 	{ "tweekmonster/startuptime.vim", cmd = { "StartupTime" } },
 	{ "j-hui/fidget.nvim", lazy = false },
+
+	{
+		"codota/tabnine-nvim",
+		lazy = false,
+		build = "./dl_binaries.sh",
+		config = function()
+			require("tabnine").setup({
+				disable_auto_comment = true,
+				accept_keymap = "|",
+				dismiss_keymap = "<C-]>",
+				debounce_ms = 800,
+				suggestion_color = { gui = "#808080", cterm = 244 },
+				exclude_filetypes = { "TelescopePrompt" },
+				log_file_path = nil, -- absolute path to Tabnine log file
+			})
+		end,
+	},
 
 	-- File picker
 	{
@@ -25,12 +43,13 @@ return {
 
 	-- Comment management
 	{
-    "numToStr/Comment.nvim",
-    event = "BufReadPost",
-    config = function()
-      require('Comment').setup({})
-      require('Comment.ft').set('terraform', '#%s').set('ft', '#%s')
-    end },
+		"numToStr/Comment.nvim",
+		event = "BufReadPost",
+		config = function()
+			require("Comment").setup({})
+			require("Comment.ft").set("terraform", "#%s").set("ft", "#%s")
+		end,
+	},
 
 	-- Surrounding management
 	{
@@ -73,12 +92,12 @@ return {
 
 	{ "mg979/vim-visual-multi", keys = { { "<C-n>" } } }, -- Multi cursor shit
 	{
-    "NvChad/nvim-colorizer.lua",
-    cmd = { "ColorizerToggle", "ColorizerAttachToBuffer" },
-    config = function()
-      require('colorizer').setup({ filetypes = { "html", "css", "lua", "kdl" } })
-    end
-    },
+		"NvChad/nvim-colorizer.lua",
+		cmd = { "ColorizerToggle", "ColorizerAttachToBuffer" },
+		config = function()
+			require("colorizer").setup({ filetypes = { "html", "css", "lua", "kdl" } })
+		end,
+	},
 
 	{
 		"folke/trouble.nvim",
@@ -133,7 +152,6 @@ return {
 -- Plugins to look int
 -- danymat/neogen (Annotation documentaiton)
 -- Pocco81/true-zen.nvim
--- dressing.nvim
 -- j-hui/fidget.nvim
 -- https://github.com/rebelot/heirline.nvim/blob/master/cookbook.md#win bar     ( heirline + winbar)
 -- yanky
@@ -147,7 +165,6 @@ return {
 -- Themes
 -- 'eddyekofo94/gruvbox-flat.nvim'  -- gruvbox theme
 -- { 'arcticicestudio/nord-vim', branch = 'main' } -- Nord theme
--- 'rmehri01/onenord.nvim'
 -- 'luisiacc/gruvbox-baby'
 -- { "catppuccin/nvim", as = "catppuccin", run = ":CatppuccinCompile" }
 
