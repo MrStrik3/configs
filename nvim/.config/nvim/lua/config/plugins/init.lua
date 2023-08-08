@@ -11,6 +11,12 @@ return {
 
 	{
 		"codota/tabnine-nvim",
+		enabled = function()
+			if vim.fn.has("win32") == 1 then
+				return false
+			end
+			return true
+		end,
 		lazy = false,
 		build = "./dl_binaries.sh",
 		config = function()
