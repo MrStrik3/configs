@@ -12,6 +12,6 @@ source ~/.aliases
 
 export CR_RENDER_FORCE_PRESENT_MAIN_THREAD="0 VirtualBox"
 
-export PATH=$PATH:/home/lefrancoisc/bin
+export PATH=$PATH:~/bin
 
-source '/home/lefrancoisc/lib/azure-cli/az.completion'
+source '~/lib/azure-cli/az.completion'
