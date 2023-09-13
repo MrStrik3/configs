@@ -76,12 +76,12 @@ return {
 	{ "ellisonleao/glow.nvim", cmd = { "Glow" }, config = true },
 
 	{
-		"phaazon/hop.nvim",
+		"smoka7/hop.nvim",
 		keys = { "s", "S", "<leader><leader>w", "<leader><leader>p", "<leader><leader>l" },
 		branch = "v2", -- optional but strongly recommended
 		lazy = false,
 		config = function()
-			require("hop").setup({ keys = "etovxqpdygfblzhckisuran" }) -- you can configure Hop the way you like here; see :h hop-config
+			require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
 		end,
 	},
 
