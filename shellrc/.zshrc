@@ -4,8 +4,10 @@
 # If you come from bash you might have to change your $PAT
 export PATH=$HOME/bin:/usr/local/bin:/home/$HOME/.pulumi/bin:$PATH
 
-export KUBECONFIG=/mnt/c/Users/LefrancoisC/.kube/config
-export JAVA_HOME=/usr/lib/jvm/java-11-temurin
+export KUBECONFIG=/mnt/c/Users/$WINDOWSUSER/.kube/config
+
+export JAVA_HOME=/usr/lib/jvm/java-17-temurin
+
 export STARSHIP_CONFIG=~/configs/starship.toml
 
 # Path to your oh-my-zsh installation.
@@ -19,8 +21,6 @@ export HISTFILE=/home/lefrancoisc/.zsh_history
 
 ### ZSh-related aliases
 alias zshUpdatePlugins="antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh"
-
-# ZSH_THEME="arrow"
 
 DISABLE_AUTO_TITLE="true"
 
@@ -171,10 +171,7 @@ eval "$(starship init zsh)"
 [[ -s /etc/profile.d/autojump.zsh ]] && source /etc/profile.d/autojump.zsh
 
 # Load Angular CLI autocompletion.
-source <(ng completion script)
+# source <(ng completion script)
 
-# DEBUG MODE
+# ZSH DEBUG MODE
 # zprof
-
-# add Pulumi to the PATH
-export PATH=$PATH:$HOME/.pulumi/bin

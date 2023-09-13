@@ -12,10 +12,10 @@ alias cd.wk="cd /mnt/c/Users/$USER/Desktop/Travail"
 alias cd.temp="cd /mnt/c/Users/$USER/Desktop/Temp"
 alias cd.iwls="cd /mnt/c/Users/$USER/Desktop/Travail/CodeSource/Intellij/iwls"
 
-alias ll="exa --long --icons --group-directories-first --time-style=long-iso"
-alias lla="exa -a --long --icons --group-directories-first --time-style=long-iso"
-alias ls="exa --icons --time-style=long-iso --group-directories-first"
-alias lt="exa --tree --icons -a -I '.git|__pycache__|.mypy_cache|.ipynb_checkpoints' --time-style=long-iso"
+alias ll="eza --long --icons --group-directories-first --time-style=long-iso"
+alias lla="eza -a --long --icons --group-directories-first --time-style=long-iso"
+alias ls="eza --icons --time-style=long-iso --group-directories-first"
+alias lt="eza --tree --icons -a -I '.git|__pycache__|.mypy_cache|.ipynb_checkpoints' --time-style=long-iso"
 
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
@@ -62,6 +62,7 @@ az.git.clone() {
   currentRepoName=$(echo "$selectedRepo" | cut -d' ' -f 1 )
   currentRepoSsh=$(echo "$selectedRepo" | cut -d' ' -f 2 )
 
+  echo $currentRepoSsh
   git clone $currentRepoSsh
   cd "$currentRepoName"
 }
