@@ -258,6 +258,15 @@ function M.config()
 			require("null-ls").builtins.code_actions.gitsigns,
 		},
 	})
+
+  -- terraformls
+  require'lspconfig'.terraformls.setup{}
+  vim.api.nvim_create_autocmd({"BufWritePre"}, {
+    pattern = {"*.tf", "*.tfvars", "*.hcl" },
+    callback = function()
+      vim.lsp.buf.format()
+    end,
+  })
 end
 
 return M

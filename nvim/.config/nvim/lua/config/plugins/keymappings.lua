@@ -77,18 +77,18 @@ function M.config()
 				},
 			},
 
-			{
-				itemgroup = "motions",
-				description = "Fast motions",
-				icon = "省",
-				keymaps = {
-					{ "s", ":HopChar2AC<cr>", description = "Search for 2 characters after the cursor" },
-					{ "S", ":HopChar2BC<cr>", description = "Search for 2 characters before the cursor" },
-					{ "<leader><leader>w", ":HopWord<cr>", description = "Move to word (Hop.nvim)" },
-					{ "<leader><leader>l", ":HopLineStart<cr>", description = "Move to line (Hop.nvim)" },
-					{ "<leader><leader>p", ":HopPattern<cr>", description = "Move to a search pattern (Hop.nvim)" },
-				},
-			},
+			-- {
+			-- 	itemgroup = "motions",
+			-- 	description = "Fast motions",
+			-- 	icon = "省",
+			-- 	keymaps = {
+			-- 		{ "s", ":HopChar2AC<cr>", description = "Search for 2 characters after the cursor" },
+			-- 		{ "S", ":HopChar2BC<cr>", description = "Search for 2 characters before the cursor" },
+			-- 		{ "<leader><leader>w", ":HopWord<cr>", description = "Move to word (Hop.nvim)" },
+			-- 		{ "<leader><leader>l", ":HopLineStart<cr>", description = "Move to line (Hop.nvim)" },
+			-- 		{ "<leader><leader>p", ":HopPattern<cr>", description = "Move to a search pattern (Hop.nvim)" },
+			-- 	},
+			-- },
 
 			{
 				itemgroup = "code",

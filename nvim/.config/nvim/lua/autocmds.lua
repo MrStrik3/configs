@@ -25,6 +25,11 @@ vim.cmd([[
     autocmd FileType markdown setlocal spell
   augroup end
 
+  augroup _hcl
+    autocmd!
+    autocmd BufWinEnter *.hcl :set filetype=tf
+  augroup end
+
   augroup _auto_resize
     autocmd!
     autocmd VimResized * tabdo wincmd =
