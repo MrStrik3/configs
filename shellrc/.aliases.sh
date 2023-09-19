@@ -44,7 +44,6 @@ alias kb.sc.dev="kubectl config use-context aksdev"
 alias kb.sc.test="kubectl config use-context akstest"
 alias kb.sc.prod="kubectl config use-context aksprod-b"
 
-alias docker.start="sudo -b dockerd > /dev/null 2>&1 &"
 alias docker="sudo docker"
 
 
@@ -54,7 +53,9 @@ alias git.log="git log --graph --abbrev-commit --pretty=oneline | bat --file-nam
 # AZ CLI stuffs
 alias az.sub.show="az account show --output table"
 alias az.sub.list="az account list --output table"
-alias az.sub.switch="az account list | jq '.[].name' | fzf | xargs az account set --subscription"
+alias az.sub.switch="az account list | jq -r '.[].name' | fzf | xargs --replace=\"{}\" az account set --subscription  \"{}\" && az.sub.show"
+# alias az.sub.switch="az account list | jq '.[].name' | fzf | xargs az account set --subscription"
+# alias az.sub.switch="az account list | jq -r '.[].name' | sort  | gum filter --limit 1 | xargs --replace=\"{}\" az account set --subscription  \"{}\" && az.sub.show"
 az.git.clone() {
   project="$(az devops project list --organization="$AZ_ORGANIZATION" | jp --unquoted 'join(`"\n"`, value[].name)' | sort | fzf --tac )"
   echo "Project : $project"
