@@ -12,6 +12,7 @@ SetWindow(this, Id) {
 Harpoon.SetWindow := SetWindow
 
 ActivateWindow(this, Id) {
-  WinActivate( Format( "ahk_id {1}", this.WindowList[Id]) )
+  SearchWindow := Format( "ahk_id {1}", this.WindowList[Id])
+  WinActivate( SearchWindow )
 }
 Harpoon.ActivateWindow := ActivateWindow
