@@ -18,7 +18,13 @@ return {
       return true
     end,
     lazy = false,
-    build = "./dl_binaries.sh",
+    build = function()
+      if vim.fn.has("win32") == 1 then
+        return "./install.ps1"
+      else
+        return "./dl_binaries.sh"
+      end
+    end,
     config = function()
       require("tabnine").setup({
         disable_auto_comment = true,
@@ -87,9 +93,7 @@ return {
   {
     "folke/flash.nvim",
     event = "VeryLazy",
-    -- @type Flash.Config
     opts = {},
-    -- stylua: ignore
     keys = {
       { "s",     mode = { "n", "o", "x" }, function() require("flash").jump() end,              desc = "Flash" },
       { "S",     mode = { "n", "o", "x" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },

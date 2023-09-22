@@ -5,30 +5,31 @@ local M = {
 }
 
 function M.config()
-  local get_hex = require('cokeline/utils').get_hex
+  -- local get_hl_attr = require('cokeline/utils').get_hl_attr
+  local get_hl_attr = require('cokeline/hlgroups').get_hl_attr
 
   local components = {
 
     separator = {
       text = ' ',
-      bg = get_hex('Normal', 'bg')
+      bg = get_hl_attr('Normal', 'bg')
     },
     space = {
       text = ' ',
-      fg = get_hex('Normal', 'bg'),
-      bg = get_hex('ColorColumn', 'bg'),
+      fg = get_hl_attr('Normal', 'bg'),
+      bg = get_hl_attr('ColorColumn', 'bg'),
     },
 
     left_half_circle = {
       text = '',
-      bg = get_hex('Normal', 'bg'),
-      fg = get_hex('ColorColumn', 'bg'),
+      bg = get_hl_attr('Normal', 'bg'),
+      fg = get_hl_attr('ColorColumn', 'bg'),
     },
 
     right_half_circle = {
       text = '',
-      bg = get_hex('Normal', 'bg'),
-      fg = get_hex('ColorColumn', 'bg'),
+      bg = get_hl_attr('Normal', 'bg'),
+      fg = get_hl_attr('ColorColumn', 'bg'),
     },
 
     buffer_icon = {
@@ -41,12 +42,12 @@ function M.config()
 
     buffer_is_modified = {
       text = function(buffer) return buffer.is_modified and '󰆓 ' or ' ' end,
-      fg = get_hex('ErrorMsg', 'fg'),
+      fg = get_hl_attr('ErrorMsg', 'fg'),
     },
 
     buffer_name = {
       text = function(buffer) return buffer.filename end,
-      fg = function(buffer) return buffer.is_focused and get_hex('Directory', 'fg') or nil end,
+      fg = function(buffer) return buffer.is_focused and get_hl_attr('Directory', 'fg') or nil end,
       style = function(buffer) return buffer.is_focused and 'underline' or nil end
     }
   }
@@ -57,8 +58,8 @@ function M.config()
       show_if_buffers_are_at_least = 1,
 
       default_hl = {
-        bg = get_hex('ColorColumn', 'bg'),
-        fg = function(buffer) return buffer.is_focused and get_hex('Normal', 'fg') or get_hex('Comment', 'fg') end
+        bg = get_hl_attr('ColorColumn', 'bg'),
+        fg = function(buffer) return buffer.is_focused and get_hl_attr('Normal', 'fg') or get_hl_attr('Comment', 'fg') end
       },
 
       components = {
@@ -77,8 +78,8 @@ function M.config()
         components = {
           {
             text = '   File Explorer',
-            bg = get_hex('WildMenu', 'bg'),
-            fg = get_hex('WildMenu', 'fg'),
+            bg = get_hl_attr('WildMenu', 'bg'),
+            fg = get_hl_attr('WildMenu', 'fg'),
             style = 'bold',
           },
         },
