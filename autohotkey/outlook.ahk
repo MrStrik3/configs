@@ -1,53 +1,36 @@
 ; Outlook window and messages handling
+#Requires AutoHotkey v2.0
 
 OutlookMessages := {}
 
-OutlookMessages.Messages := []
-
-OutlookMessages.CurrentMessageIndex := 0
-OutlookMessages.IsCurrentlyCycling := False
 OutlookMessages.StartedCyclingTimestamp := 0
 
 RefreshListMessages(this) {
-
-  OutlookIds := WinGetList("ahk_exe OUTLOOK.exe")
-
-  for WindowId in OutlookIds
-  {
-    WindowTitle := WinGetTitle(WindowId)
-    FoundPos := InStr(WindowTitle, "- Message")
-    if FoundPos > 0 {
-      OutlookMessages.Messages.Push(WindowId)
-    }
-  }
+  GroupAdd("OutlookMessages", "- Message ahk_exe OUTLOOK.exe")
 }
 OutlookMessages.RefreshListMessages := RefreshListMessages
 
 CycleOutlookMessages(this) {
-  ElapsedTime := A_TickCount - this.StartedCyclingTimestamp
-  if ElapsedTime > 30000 {
+  ; ElapsedTime := A_TickCount - this.StartedCyclingTimestamp
+  ; this.StartedCyclingTimestamp := A_TickCount
+  ; if ElapsedTime > 10000 {
     ; Build a new list of messages
     ; MsgBox "Building Message list"
     this.RefreshListMessages()
-    this.StartedCyclingTimestamp := A_TickCount
-  }
-
-  if (this.Messages.Length > 0)
-  {
-    ; Activate next message window
-    this.CurrentMessageIndex := this.CurrentMessageIndex + 1
-    if (this.CurrentMessageIndex > this.Messages.Length)
-    {
-      this.CurrentMessageIndex := 1
-    }
-    ; MsgBox this.CurrentMessageIndex
-    WinActivate(this.Messages[this.CurrentMessageIndex])
-  }
-
+  ; }
+  GroupActivate("OutlookMessages", "R")
 }
 OutlookMessages.CycleMessages := CycleOutlookMessages
 
 ActivateOutlookWindow(this) {
-  WinActivate("Inbox - Carl.Lefrancois@dfo-mpo.gc.ca - Outlook")
+  if WinExist(" - Carl.Lefrancois@dfo-mpo.gc.ca - Outlook ahk_exe OUTLOOK.EXE")
+  {
+    WinActivate
+  }
+  else
+  {
+    RunWait("C:/Program Files/Microsoft Office/root/Office16/OUTLOOK.EXE", Max)
+  }
+
 }
 OutlookMessages.ActivateOutlookWindow := ActivateOutlookWindow
