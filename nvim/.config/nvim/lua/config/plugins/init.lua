@@ -155,15 +155,15 @@ return {
   { "toppair/peek.nvim", build = "deno task --quiet build:fast", ft = { "markdown" } },
   { "mrk21/yaml-vim",    ft = { "yaml" } }, -- YAML files Shit - https://github.com/mrk21/yaml-vim
 
-  {
-    "folke/zen-mode.nvim",
-    cmd = "ZenMode",
-    opts = {
-      plugins = {
-        gitsigns = true,
-      },
-    },
-  },
+  -- {
+  --   "folke/zen-mode.nvim",
+  --   cmd = "ZenMode",
+  --   opts = {
+  --     plugins = {
+  --       gitsigns = true,
+  --     },
+  --   },
+  -- },
   {
     "ahmedkhalf/project.nvim",
     lazy = false,

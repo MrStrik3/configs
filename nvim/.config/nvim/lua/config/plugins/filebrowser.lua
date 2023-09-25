@@ -1,6 +1,6 @@
 local M = {
 	"nvim-neo-tree/neo-tree.nvim",
-	branch = "v2.x",
+	branch = "v3.x",
 	lazy = false,
 	-- keys = {
 	--   { "<leader>fe" }
@@ -166,11 +166,14 @@ function M.config()
 				hide_by_name = { ".git" },
 				always_show = { "node_modules" },
 			},
-			follow_current_file = false, -- This will find and focus the file in the active buffer every
+			follow_current_file = {
+        enabled = false, -- This will find and focus the file in the active buffer every
+      },
 			-- time the current file is changed while the tree is open.
 			group_empty_dirs = false, -- when true, empty folders will be grouped together
 			hijack_netrw_behavior = "open_default",
-			use_libuv_file_watcher = false,
+			-- hijack_netrw_behavior = "open_current",
+			use_libuv_file_watcher = true,
 			window = {
 				mappings = {
 					["<bs>"] = "navigate_up",
@@ -186,7 +189,9 @@ function M.config()
 			},
 		},
 		buffers = {
-			follow_current_file = true, -- This will find and focus the file in the active buffer every
+			follow_current_file = {
+        enabled = true
+      },-- This will find and focus the file in the active buffer every
 			-- time the current file is changed while the tree is open.
 			group_empty_dirs = true, -- when true, empty folders will be grouped together
 			show_unloaded = true,

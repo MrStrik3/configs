@@ -5,7 +5,6 @@ local M = {
   -- dev = true,
 	priority = 1000,
 	lazy = false,
-	-- name = "onedarkpro",
 }
 
 function M.config()

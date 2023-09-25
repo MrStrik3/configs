@@ -1,8 +1,8 @@
 local M = {
 	"rebelot/heirline.nvim",
 	lazy = false,
-	dependencies = { { "smiteshp/nvim-navic", commit="11e0839" } },
-	-- { 'hoob3rt/lualine.nvim', config = [[require('config.lualine')]], dependencies = { 'kyazdani42/nvim-web-devicons' } }
+	-- dependencies = { { "smiteshp/nvim-navic", commit="11e0839" } },
+	dependencies = { { "smiteshp/nvim-navic" } },
 }
 
 function M.config()
@@ -407,8 +407,8 @@ function M.config()
 		FileEncoding,
 		FileFormatBlock,
 		FileTypeBlock,
-		-- FileType,
-		RulerBlock,
+		FileType,
+		RulerBlock
 	}
 
 	-- WinBar
