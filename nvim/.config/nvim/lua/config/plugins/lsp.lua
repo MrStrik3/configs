@@ -30,7 +30,7 @@ local M = {
 		{
 			"L3MON4D3/LuaSnip",
 			-- follow latest release.
-			version = "1.*",
+			version = "2.*",
 			-- install jsregexp (optional!).
 			build = "make install_jsregexp",
 		},
@@ -127,7 +127,7 @@ function M.config()
 		if vim.b.lsp_attached then
 			return
 		end
-		vim.b.lsp_attached = true
+		-- vim.b.lsp_attached = true
 
 		if client.server_capabilities.documentSymbolProvider then
 			require("nvim-navic").attach(client, bufnr)

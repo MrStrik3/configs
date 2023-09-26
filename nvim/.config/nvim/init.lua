@@ -53,6 +53,7 @@ vim.loader.enable()
 -- filetype plugin on
 vim.cmd("filetype plugin indent on")
 vim.cmd("syntax on")
+vim.cmd("colorscheme tokyonight-storm")
 
 -- ######## End Custom mappings
 
