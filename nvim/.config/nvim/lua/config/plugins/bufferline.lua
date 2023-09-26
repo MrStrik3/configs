@@ -52,6 +52,10 @@ function M.config()
     }
   }
 
+  local colors = require('tokyonight.colors').setup()
+
+  vim.api.nvim_set_hl(0, 'CokelineTabFill', { fg = colors.bg, bg = colors.bg})
+
   require('cokeline').setup({
       -- Only show the bufferline when there are at least this many visible buffers.
       -- default: `1`.
@@ -72,6 +76,8 @@ function M.config()
         components.space,
         components.right_half_circle
       },
+
+      fill_hl = 'CokelineTabFill',
 
       sidebar = {
         filetype = 'neo-tree',

@@ -1,8 +1,8 @@
 local M = {
 	"rebelot/heirline.nvim",
 	lazy = false,
-	-- dependencies = { { "smiteshp/nvim-navic", commit="11e0839" } },
 	dependencies = { { "smiteshp/nvim-navic" } },
+	-- dependencies = { { "smiteshp/nvim-navic", commit="11e0839" } },
 }
 
 function M.config()
@@ -37,6 +37,9 @@ function M.config()
 			Operator = " ",
 			TypeParameter = " ",
 		},
+    safe_output = true,
+    preference = { 'lua_ls', 'null-ls' },
+    auto_attach = true,
 	})
 
 	local heirline = require("heirline")
@@ -44,7 +47,8 @@ function M.config()
 	local utils = require("heirline.utils")
 
 	-- Load the current theme colors
-	local colors = require("onedarkpro.helpers").get_colors()
+	-- local colors = require("onedarkpro.helpers").get_colors()
+  local colors = require("tokyonight.colors").setup()
 	heirline.load_colors(colors)
 
 	-- ICONS
@@ -189,9 +193,11 @@ function M.config()
 			end
 			return " " .. filename .. " "
 		end,
-		hl = { fg = "white", bg = "color_column" },
+		hl = { fg = "white", bg = "black" },
+		-- hl = { fg = "white", bg = "bg_highlight" },
 	}
-	local FileNameBlock = wrapInSlanterLean(FileName, true, "bg", "color_column")
+	-- local FileNameBlock = wrapInSlanterLean(FileName, true, "bg", "bg_highlight")
+	local FileNameBlock = wrapInSlanterLean(FileName, true, "bg", "black")
 
 	local FileType = {
 		init = function(self)
@@ -228,10 +234,11 @@ function M.config()
 			local fmt = vim.bo.fileformat -- dos unix mac
 			return self.file_format_icons[fmt] .. " " .. fmt
 		end,
-		hl = { bg = "color_column", fg = "gray" },
+		hl = { bg = "bg_highlight", fg = "gray" },
 	}
 
-	local FileFormatBlock = wrapInSlanterLean(FileFormat, false, "bg", "color_column")
+	local FileFormatBlock = wrapInSlanterLean(FileFormat, false, "bg", "black")
+	-- lojjjjcal FileFormatBlock = wrapInSlanterLean(FileFormat, false, "bg", "bg_highlight")
 
 	-- OTHERS COMPONENTS
 	local Ruler = {
@@ -255,16 +262,16 @@ function M.config()
 				or self.status_dict.changed ~= 0
 		end,
 
-		hl = { fg = "gray", bg = "color_column" },
+		hl = { fg = "gray", bg = "bg_highlight" },
 
-		{ provider = "", hl = { bg = "color_column", fg = "bg" } },
+		{ provider = "", hl = { bg = "bg_highlight", fg = "bg" } },
 		{ -- git branch name
 			provider = function(self)
 				return "  " .. self.status_dict.head .. " "
 			end,
 			hl = { bold = true },
 		},
-		{ provider = "", hl = { bg = "bg", fg = "color_column" } },
+		{ provider = "", hl = { bg = "bg", fg = "bg_highlight" } },
 	}
 
 	local Diagnostics = {
@@ -295,7 +302,8 @@ function M.config()
 					provider = "",
 					hl = { bg = "bg", fg = "red" },
 				},
-			},
+			}
+      ,
 		},
 		-- Warnings
 		{
@@ -385,9 +393,9 @@ function M.config()
 			end,
 			name = "update_plugins",
 		},
-		hl = { bg = "color_column", fg = "gray" },
+		hl = { bg = "bg_highlight", fg = "gray" },
 	}
-	local LazyBlock = wrapInSlanterLean(Lazy, false, "bg", "color_column")
+	local LazyBlock = wrapInSlanterLean(Lazy, false, "bg", "bg_highlight")
 	LazyBlock.condition = require("lazy.status").has_updates
 
 	local StatusLine = {
@@ -407,15 +415,18 @@ function M.config()
 		FileEncoding,
 		FileFormatBlock,
 		FileTypeBlock,
-		FileType,
+		-- FileType,
 		RulerBlock
 	}
 
 	-- WinBar
 	local WinBar = {
-		condition = require("nvim-navic").is_available,
-		provider = function()
-			return require("nvim-navic").get_location({ highlight = true })
+		condition = function()
+      return require("nvim-navic").is_available
+    end,
+
+    provider = function()
+			return require("nvim-navic").get_location({ highlight = false })
 		end,
 		update = "CursorMoved",
 	}
@@ -423,8 +434,9 @@ function M.config()
 	-- tabline
 	heirline.setup({
 		statusline = StatusLine,
+    -- winbar = nil,
     winbar = WinBar,
-		tabline = nil,
+		-- tabline = nil,
 		-- statuscolumn = nil,
 	})
 end
