@@ -1,6 +1,8 @@
+-- TODO Move away from keybinding extensions
 local M = {
 	"mrjones2014/legendary.nvim",
 	lazy = false,
+  priority = 10000,
 	-- sqlite is only needed if you want to use frecency sorting
 	-- requires = 'kkharji/sqlite.lua'
 	dependencies = { "stevearc/dressing.nvim", event = "VeryLazy" },
@@ -98,16 +100,16 @@ function M.config()
 					{
 						"<leader>cf",
 						"<cmd>lua vim.lsp.buf.format({ async = false })<cr>",
-						description = "Format code (Prettier)",
+						description = "[F]ormat [C]ode",
 					},
 					{
-						"<leader>cd",
+						"<leader>dl",
 						"<cmd>TroubleToggle document_diagnostics<cr>",
-						description = "Toggle document diagnostics list",
+						description = "Toggle document [D]iagnostics [L]ist",
 					},
 					{ "<leader>ct", "<cmd>TodoTrouble<cr>", description = "Show TODO list" },
-					{ "ge", function() vim.diagnostic.goto_next() end, description = "Goto next diagnostic" },
-					{ "gE", function() vim.diagnostic.goto_prev() end, description = "Goto previous diagnostic" },
+					{ "ge", function() vim.diagnostic.goto_next() end, description = "[G]oto next diagnostic [e]rror" },
+					{ "gE", function() vim.diagnostic.goto_prev() end, description = "[G]oto previous diagnostic [E]rror" },
 				},
 			},
 
@@ -116,17 +118,15 @@ function M.config()
 				description = "Files",
 				icon = "",
 				keymaps = {
-					{ "<leader>fc", "<cmd>Telescope colorscheme<cr>", description = "Find colorscheme" },
-					{ "<leader>fe", "<cmd>Neotree toggle<cr>", description = "File Explorer" },
-					{ "<leader>ff", "<cmd>Telescope find_files<cr>", description = "Find File" },
-					{ "<leader>fn", "<cmd>enew<cr>", description = "New File" },
-          { "<leader>fs", "<cmd>Neotree float reveal reveal_force_cwd<cr>", description = "Show the current file in the filesystem tree" },
+					{ "<leader>fe", "<cmd>Neotree toggle<cr>", description = "[F]ile [E]xplorer" },
+					{ "<leader>ff", "<cmd>Telescope find_files<cr>", description = "[F]ind [F]ile" },
+					{ "<leader>fn", "<cmd>enew<cr>", description = "[N]ew [F]ile" },
+          { "<leader>sf", "<cmd>Neotree float reveal reveal_force_cwd<cr>", description = "[S]how the current [F]ile in the filesystem tree" },
 					{
-						"<leader>fp",
-						"<cmd>:Telescope find_files find_command=rg,--ignore,--hidden,--files<cr>",
-						description = "Live grep using ripgrep",
+						"<leader>fg",
+            require('telescope.builtin').live_grep,
+						description = "[F]ind file using live_[G]rep",
 					},
-					{ "<leader>fr", "<cmd>Telescope oldfiles<cr>", description = "Open Recent File" },
 				},
 			},
 
@@ -146,11 +146,10 @@ function M.config()
 				icon = "漣",
 				keymaps = {
 					{
-						"<leader>on",
-						"<cmd>set number! <cr><cmd>set relativenumber!<cr>",
-						description = "Toggle numbers",
+						"<leader>to",
+						"<cmd>set number! <cr><cmd>set relativenumber!<cr><cmd>IBLToggle<cr>",
+						description = "[T]oggle [O]ptions",
 					},
-					{ "<leader>oi", "<cmd>IndentBlanklineToggle<cr>", description = "Toggle indent lines" },
 				},
 			},
 
@@ -215,21 +214,16 @@ function M.config()
 
 					-- Terminal management
 					{
-						"<F10>",
-						"<cmd>lua require('config.plugins.terminal').toggle_taskwarrior_term()<CR>",
-						mode = { "n", "v", "i", "t" },
-						description = "Show/Hide the waskwarrior terminal",
-					},
-					{
 						"<F11>",
-						"<cmd>lua require('config.plugins.terminal').toggle_lazygit_term()<CR>",
+						-- "<cmd>lua require('config.plugins.terminal').toggle_lazygit_term()<CR>",
+						require('config.plugins.terminal').toggle_lazygit_term,
 						mode = { "n", "v", "i", "t" },
-						description = "Show/Hide the main terminal",
+						description = "Show/Hide the lazygitl",
 					},
 					{
 						"<F12>",
 						{ n = ":ToggleTerm<CR>", t = "<C-\\><C-n>:ToggleTerm<CR>" },
-						description = "Show/Hide the Lazygit terminal",
+						description = "Toggle the main terminal",
 					},
 				},
 			},

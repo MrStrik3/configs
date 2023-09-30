@@ -14,9 +14,14 @@ local M = {
     -- buftype_exclude = { "terminal", "nofile" },
     -- char_highlight = "LineNr",
     -- show_trailing_blankline_indent = false,
-    indent = { highlight = { "CursorColumn", "Whitespace" }, char = "" },
+
+    -- indent = { highlight = { "CursorColumn", "Whitespace" }, char = "" },
+    indent = {
+      char = "┊",
+      smart_indent_cap = true,
+    },
     whitespace = {
-      highlight = { "CursorColumn", "Whitespace" },
+      -- highlight = { "CursorColumn", "Whitespace" },
       remove_blankline_trail = false,
     },
     scope = { enabled = false },

@@ -9,6 +9,9 @@ return {
   { "tweekmonster/startuptime.vim", cmd = { "StartupTime" } },
   { "j-hui/fidget.nvim",            lazy = false },
 
+  -- Requires nightly built neovim
+  -- { "lewis6991/satellite.nvim", event = 'BufReadPost', opts = {} },
+
   {
     "codota/tabnine-nvim",
     enabled = function()
@@ -41,7 +44,7 @@ return {
   -- File picker
   {
     "nvim-telescope/telescope.nvim",
-    version = "0.1.0",
+    version = "0.1.3",
     lazy = false,
     dependencies = { "nvim-lua/plenary.nvim" },
   },
@@ -58,8 +61,8 @@ return {
     "numToStr/Comment.nvim",
     event = "BufReadPost",
     config = function()
-      require("Comment").setup({})
-      require("Comment.ft").set("terraform", "#%s").set("ft", "#%s")
+      require("Comment").setup()
+      require("Comment.ft").set("terraform", "#%s").set("ft", "#%s").set("hcl", "#%s")
     end,
   },
 
@@ -68,7 +71,7 @@ return {
     "kylechui/nvim-surround",
     event = "BufReadPost",
     version = "*",
-    config = true,
+    opts = {},
   }, -- surround management ( parenthesis,  quote, etc.)
 
   -- Mark files
@@ -79,7 +82,7 @@ return {
     -- keys = { "<leader>ml", "<leader>ma", "<leader>mn", "<leader>mp" },
   },
 
-  { "ellisonleao/glow.nvim",  cmd = { "Glow" },      config = true },
+  { "ellisonleao/glow.nvim",  cmd = { "Glow" } },
 
   -- {
   -- 	"smoka7/hop.nvim",
