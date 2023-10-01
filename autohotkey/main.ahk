@@ -6,6 +6,7 @@ UserDir := EnvGet("USERPROFILE")
 #include "outlook.ahk"
 #include "harpoon.ahk"
 #include "testwindows.ahk"
+#include "autocorrect.ahk"
 
 ShowOrRunApp(AppExe, WindowCondition) {
   if WinExist(WindowCondition) {
