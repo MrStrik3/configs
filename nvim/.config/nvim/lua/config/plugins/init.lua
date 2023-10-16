@@ -14,12 +14,12 @@ return {
 
   {
     "codota/tabnine-nvim",
-    enabled = function()
-      if vim.fn.has("win32") == 1 then
-        return false
-      end
-      return true
-    end,
+    -- enabled = function()
+    --   if vim.fn.has("win32") == 1 then
+    --     return false
+    --   end
+    --   return true
+    -- end,
     lazy = false,
     build = function()
       if vim.fn.has("win32") == 1 then
@@ -35,7 +35,7 @@ return {
         dismiss_keymap = "<C-]>",
         debounce_ms = 800,
         suggestion_color = { gui = "#808080", cterm = 244 },
-        exclude_filetypes = { "TelescopePrompt" },
+        exclude_filetypes = { "TelescopePrompt", "alpha" },
         log_file_path = nil, -- absolute path to Tabnine log file
       })
     end,
@@ -98,14 +98,23 @@ return {
     event = "VeryLazy",
     opts = {},
     keys = {
-      { "s",     mode = { "n", "o", "x" }, function() require("flash").jump() end,              desc = "Flash" },
-      { "S",     mode = { "n", "o", "x" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
-      { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
-      { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end,
-                                                                                                  desc =
-        "Treesitter Search" },
-      { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc =
-      "Toggle Flash Search" },
+      { "s", mode = { "n", "o", "x" }, function() require("flash").jump() end,       desc = "Flash" },
+      { "S", mode = { "n", "o", "x" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+      { "r", mode = "o",               function() require("flash").remote() end,     desc = "Remote Flash" },
+      {
+        "R",
+        mode = { "o", "x" },
+        function() require("flash").treesitter_search() end,
+        desc =
+        "Treesitter Search"
+      },
+      {
+        "<c-s>",
+        mode = { "c" },
+        function() require("flash").toggle() end,
+        desc =
+        "Toggle Flash Search"
+      },
     },
   },
 
@@ -115,7 +124,7 @@ return {
     event = "BufReadPost",
     config = function()
       require("nvim-autopairs").setup({
-        disable_filetypes = { "TelescopePrompt", "NvimTree", "neo-tree" },
+        disable_filetypes = { "TelescopePrompt", "NvimTree", "neo-tree", "alpha" },
       })
     end,
   },
@@ -143,6 +152,8 @@ return {
     "lewis6991/gitsigns.nvim",
     event = "BufReadPre",
     dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+    },
   },
 
   {
@@ -155,18 +166,9 @@ return {
     ft = { "markdown" },
   },
 
-  { "toppair/peek.nvim", build = "deno task --quiet build:fast", ft = { "markdown" } },
-  { "mrk21/yaml-vim",    ft = { "yaml" } }, -- YAML files Shit - https://github.com/mrk21/yaml-vim
+  { "toppair/peek.nvim", lazy = true, build = "deno task --quiet build:fast", ft = { "markdown" } },
+  { "mrk21/yaml-vim", ft = { "yaml" } }, -- YAML files Shit - https://github.com/mrk21/yaml-vim
 
-  -- {
-  --   "folke/zen-mode.nvim",
-  --   cmd = "ZenMode",
-  --   opts = {
-  --     plugins = {
-  --       gitsigns = true,
-  --     },
-  --   },
-  -- },
   {
     "ahmedkhalf/project.nvim",
     lazy = false,
@@ -177,16 +179,25 @@ return {
       require("telescope").load_extension("projects")
     end,
   },
+
+  {
+    "gbprod/substitute.nvim",
+    lazy = false,
+    config = function()
+      require("substitute").setup({})
+    end,
+    keys = {
+      { "<localleader>s",  mode = { "n" }, function() require("substitute").operator() end, desc = "Substitute" },
+      { "<localleader>ss", mode = { "n" }, function() require("substitute").line() end,     desc = "Substitute the line" },
+      { "<localleader>S",  mode = { "n" }, function() require("substitute").eol() end, desc = "Substitute until end of line" },
+      { "<localleader>s",  mode = { "x" }, function() require("substitute").visual() end, desc = "Substitute in Visual mode" },
+    }
+  },
 }
 
 -- Plugins to look int
 -- danymat/neogen (Annotation documentaiton)
--- Pocco81/true-zen.nvim
--- j-hui/fidget.nvim
--- https://github.com/rebelot/heirline.nvim/blob/master/cookbook.md#win bar     ( heirline + winbar)
--- yanky
--- gbprod/substitute.nvim
--- https://github.com/toppair/peek.nvim
+
 
 -- statusline rice : https://repository-images.githubusercontent.com/345368765/648e8f00-cdae-11eb-87c9-cd2dbf074eda
 -- Reddit linux Rice : https://i.redd.it/8cbtmudmyzca1.png
@@ -194,9 +205,7 @@ return {
 
 -- Themes
 -- 'eddyekofo94/gruvbox-flat.nvim'  -- gruvbox theme
--- { 'arcticicestudio/nord-vim', branch = 'main' } -- Nord theme
 -- 'luisiacc/gruvbox-baby'
--- { "catppuccin/nvim", as = "catppuccin", run = ":CatppuccinCompile" }
 
 -- Editor config
 -- 'editorconfig/editorconfig-vim'

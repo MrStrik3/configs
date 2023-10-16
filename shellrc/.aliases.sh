@@ -49,7 +49,7 @@ alias docker="sudo docker"
 
 # alias git.log="git log --graph --abbrev-commit --pretty=oneline | bat --file-name='Git log' --theme=Nord"
 alias git.log="git log --graph --abbrev-commit --pretty=oneline | bat --file-name='Git log' --theme=OneHalfDark"
-alias git.switch.branch="git branch -a | sed 's#remotes/origin/##' | grep -v 'HEAD' | sort | uniq | gum filter | xargs git switch"
+alias git.br.sw="git branch -a | sed 's#remotes/origin/##' | grep -v 'HEAD' | sort | uniq | gum filter | xargs git switch"
 
 # AZ CLI stuffs
 alias az.sub.show="az account show --output table"
