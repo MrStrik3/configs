@@ -82,7 +82,7 @@ return {
     -- keys = { "<leader>ml", "<leader>ma", "<leader>mn", "<leader>mp" },
   },
 
-  { "ellisonleao/glow.nvim",  cmd = { "Glow" } },
+  { "ellisonleao/glow.nvim", opts = { width_ratio = 0.95, height_ratio = 0.8 }, fmt = { "markdown" }, cmd = { "Glow" } },
 
   -- {
   -- 	"smoka7/hop.nvim",
@@ -156,15 +156,17 @@ return {
     },
   },
 
-  {
-    "iamcco/markdown-preview.nvim",
-    build = "cd app && npm install",
-    config = function()
-      vim.g.mkdp_filetypes = { "markdown" }
-      vim.g.mkdp_theme = "light"
-    end,
-    ft = { "markdown" },
-  },
+  -- {
+  --   "iamcco/markdown-preview.nvim",
+  --   build = "cd app && npm install",
+  --   -- build = function() vim.fn["mkdp#util#install"]() end,
+  --   cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+  --   config = function()
+  --     vim.g.mkdp_filetypes = { "markdown" }
+  --     vim.g.mkdp_theme = "light"
+  --   end,
+  --   ft = { "markdown" },
+  -- },
 
   { "toppair/peek.nvim", lazy = true, build = "deno task --quiet build:fast", ft = { "markdown" } },
   { "mrk21/yaml-vim", ft = { "yaml" } }, -- YAML files Shit - https://github.com/mrk21/yaml-vim
