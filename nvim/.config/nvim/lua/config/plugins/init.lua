@@ -168,7 +168,7 @@ return {
   --   ft = { "markdown" },
   -- },
 
-  { "toppair/peek.nvim", lazy = true, build = "deno task --quiet build:fast", ft = { "markdown" } },
+  -- { "toppair/peek.nvim", lazy = true, build = "deno task --quiet build:fast", ft = { "markdown" } }, --Markdown Preview
   { "mrk21/yaml-vim", ft = { "yaml" } }, -- YAML files Shit - https://github.com/mrk21/yaml-vim
 
   {

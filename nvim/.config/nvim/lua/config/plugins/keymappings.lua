@@ -218,15 +218,20 @@ function M.config()
 
           -- Terminal management
           {
+            "<F10>",
+            { n = ":10ToggleTerm direction=horizontal size=17<CR>", t = "<C-\\><C-n>:10ToggleTerm<CR>" },
+            description = "Toggle the main terminal",
+          },
+          {
             "<F11>",
             -- "<cmd>lua require('config.plugins.terminal').toggle_lazygit_term()<CR>",
             require('config.plugins.terminal').toggle_lazygit_term,
             mode = { "n", "v", "i", "t" },
-            description = "Show/Hide the lazygitl",
+            description = "Show/Hide the lazygit",
           },
           {
             "<F12>",
-            { n = ":ToggleTerm<CR>", t = "<C-\\><C-n>:ToggleTerm<CR>" },
+            { n = ":4ToggleTerm<CR>", t = "<C-\\><C-n>:5ToggleTerm<CR>" },
             description = "Toggle the main terminal",
           },
         },
