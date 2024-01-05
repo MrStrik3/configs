@@ -23,14 +23,32 @@ CycleOutlookMessages(this) {
 OutlookMessages.CycleMessages := CycleOutlookMessages
 
 ActivateOutlookWindow(this) {
-  if WinExist(" - Carl.Lefrancois@dfo-mpo.gc.ca - Outlook ahk_exe OUTLOOK.EXE")
+  ; if WinExist(" - Carl.Lefrancois@dfo-mpo.gc.ca - Outlook ahk_exe OUTLOOK.EXE")
+  SetTitleMatchMode 2
+  if WinExist(" Carl.Lefrancois@dfo-mpo.gc.ca - Outlook ahk_exe OUTLOOK.EXE ahk_class rctrl_renwnd32")
+  ; if WinExist("i)^.* Carl.Lefrancois@dfo-mpo.gc.ca - Outlook ahk_exe OUTLOOK.EXE ahk_class rctrl_renwnd32")
   {
-    WinActivate
+    WinActivate(" Carl.Lefrancois@dfo-mpo.gc.ca - Outlook ahk_exe OUTLOOK.EXE ahk_class rctrl_renwnd32")
   }
   else
   {
     RunWait("C:/Program Files/Microsoft Office/root/Office16/OUTLOOK.EXE")
   }
-
+  SetTitleMatchMode 1
 }
 OutlookMessages.ActivateOutlookWindow := ActivateOutlookWindow
+
+; Show the meeting reminders!
+SetTimer(showReminderWindow, 25000)
+
+
+ShowReminderWindow()
+{
+  SetTitleMatchMode 2
+  if WinExist("Reminder(s) ahk_exe OUTLOOK.EXE ahk_class #32770")
+  {
+    WinActivate("Reminder(s) ahk_exe OUTLOOK.EXE ahk_class #32770")
+  }
+
+  SetTitleMatchMode 1
+}

@@ -10,7 +10,7 @@ UserDir := EnvGet("USERPROFILE")
 
 ShowOrRunApp(AppExe, WindowCondition) {
   if WinExist(WindowCondition) {
-    WinActivate
+    WinActivate(WindowCondition)
   }
   else {
     RunWait AppExe
@@ -19,11 +19,14 @@ ShowOrRunApp(AppExe, WindowCondition) {
   }
 }
 
+; HOT KEYS ( REF.: # WindowKey, ! Alt, ^ Ctrl, + Shift, < or > side of the keyboard)
+
+; Reload config
 ^!r::Reload
 
 #1::ShowOrRunApp("firefox.exe", "ahk_exe firefox.exe")
 <+#1::ShowOrRunApp("msedge.exe", "ahk_exe msedge.exe")
-#2::ShowOrRunApp("C:/Program Files/Microsoft Office/root/Office16/OUTLOOK.EXE", " - Carl.Lefrancois@dfo-mpo.gc.ca - Outlook ahk_exe OUTLOOK.EXE ")
+#2::ShowOrRunApp("C:/Program Files/Microsoft Office/root/Office16/OUTLOOK.EXE", "Inbox - Carl.Lefrancois@dfo-mpo.gc.ca - Outlook ahk_exe OUTLOOK.EXE ahk_class rctrl_renwnd32")
 #3::ShowOrRunApp(UserDir . "/scoop/apps/obsidian/current/Obsidian.exe", "ahk_exe Obsidian.exe")
 #4::OutlookMessages.ActivateOutlookWindow()
 #5::OutlookMessages.CycleMessages()
@@ -31,13 +34,13 @@ ShowOrRunApp(AppExe, WindowCondition) {
 #k::ShowOrRunApp(Format('explorer.exe "{1}\{2}"', UserDir, "Desktop\Temp"), "Temp ahk_exe explorer.exe ahk_class CabinetWClass")
 #h::ShowOrRunApp(Format('explorer.exe "{1}\{2}"', UserDir, "Desktop\OneDrive - DFO-MPO"), "OneDrive - DFO-MPO ahk_exe explorer.exe ahk_class CabinetWClass")
 
-; #Enter::ShowOrRunApp('WindowsTerminal.exe')
-; #Enter::ShowOrRunApp("wt.exe --maximized", "ahk_exe WindowsTerminal.exe")
-#Enter::ShowOrRunApp(Format("wezterm-gui.exe --config-file {1}\Desktop\Temp\Repositories\configs\wezterm\wezterm_arch.lua", UserDir), "wslhost.exe ahk_exe wezterm-gui.exe")
-; <+#Enter::ShowOrRunApp(Format("wezterm-gui.exe --config-file {1}\Desktop\Temp\Repositories\configs\wezterm\wezterm_win.lua", UserDir), "pwsh.exe ahk_exe wezterm-gui.exe")
-<+#Enter::ShowOrRunApp("alacritty.exe", "alacritty")
+#Enter::ShowOrRunApp("C:/Users/LefrancoisC/Desktop/Travail/apps/terminal-1.19.2682.0/wt.exe -w dev focus-tab -t 0", "ahk_exe WindowTerminal.exe")
+; , "ahk_exe wsl.exe ahk_class PseudoConsoleWindow")
+<+#Enter::ShowOrRunApp("C:/Users/LefrancoisC/Desktop/Travail/apps/terminal-1.19.2682.0/wt.exe -w dev focus-tab -t 1", "ahk_exe WindowTerminal.exe")
+; "ahk_exe pwsh.exe ahk_class PseudoConsoleWindow")
+<^#Enter::RunWait("C:/Users/LefrancoisC/Desktop/Travail/apps/terminal-1.19.2682.0/wt.exe -w dev")
+; <^#Enter::ShowOrRun("C:/Users/LefrancoisC/Desktop/Travail/apps/terminal-1.19.2682.0/wt.exe --window dev new-tab -p 'Arch' ; C:/Users/LefrancoisC/Desktop/Travail/apps/terminal-1.19.2682.0/wt.exe --window dev new-tab -p 'PowerShell' ; C:/Users/LefrancoisC/Desktop/Travail/apps/terminal-1.19.2682.0/wt.exe --window dev focus-tab --target 0", "ahk_exe WindowTerminal.exe")
 #F2::ListWindows()
-; #F4::Run Format('explorer.exe /n /e ,"{1}"', "C:\Users\LefrancoisC\Desktop\Travail")
 
 ; Harpoon windows
 ; Set Window #1 => AltGr + u
@@ -60,4 +63,15 @@ ShowOrRunApp(AppExe, WindowCondition) {
 #p::Harpoon.ActivateWindow(4)
 <^>!p::Harpoon.SetWindow(4)
 
-
+ToggleWinBar() {
+  if WinActive("ahk_class Shell_TrayWnd ahk_exe explorer.exe")
+  {
+    ; Send("!{Esc}")
+    WinHide("ahk_class Shell_TrayWnd ahk_exe explorer.exe")
+  }
+  else
+  {
+    WinShow("ahk_class Shell_TrayWnd ahk_exe explorer.exe")
+  }
+}
+#Space::ToggleWinBar

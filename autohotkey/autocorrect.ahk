@@ -3173,6 +3173,7 @@ Return
 ::misteryous::mysterious
 ::mysterous::mysterious
 ::mistery::mystery
+::mroning::morning
 ::naieve::naive
 ::napoleonian::Napoleonic
 ::ansalisation::nasalisation
@@ -4507,6 +4508,7 @@ Return
 ::tahn::than
 ::thna::than
 ::thansk::thanks
+::tahnks::thanks
 ::taht::that
 ::tath::that
 ::thgat::that
