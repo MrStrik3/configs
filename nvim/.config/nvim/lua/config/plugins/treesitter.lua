@@ -6,7 +6,7 @@ local M = {
     'windwp/nvim-ts-autotag',
     'JoosepAlviste/nvim-ts-context-commentstring',
     'nvim-treesitter/nvim-treesitter-angular',
-    { 'nvim-treesitter/playground', cmd = { "TSPlayground" } },
+    { 'nvim-treesitter/playground', cmd = { "TSPlayground", "TSUpdate" } },
   },
   event = "BufReadPre",
 }

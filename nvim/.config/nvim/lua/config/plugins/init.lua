@@ -25,7 +25,7 @@ return {
       if vim.fn.has("win32") == 1 then
         return "./install.ps1"
       else
-        return "./dl_binaries.sh"
+        return "pwsh.exe -file .\\dl_binaries.sh"
       end
     end,
     config = function()
