@@ -1,9 +1,10 @@
 local M = {
-	"folke/tokyonight.nvim",
-  style = "night",
-	priority = 1000,
-	lazy = false,
-  opts = {},
+  "folke/tokyonight.nvim",
+  priority = 1000,
+  lazy = false,
+  opts = {
+    style = "night"
+  },
 }
 
 return M

@@ -14,18 +14,12 @@ return {
 
   {
     "codota/tabnine-nvim",
-    -- enabled = function()
-    --   if vim.fn.has("win32") == 1 then
-    --     return false
-    --   end
-    --   return true
-    -- end,
     lazy = false,
     build = function()
       if vim.fn.has("win32") == 1 then
         return "./install.ps1"
       else
-        return "pwsh.exe -file .\\dl_binaries.sh"
+        return "pwsh.exe -file ./dl_binaries.sh"
       end
     end,
     config = function()
@@ -35,8 +29,8 @@ return {
         dismiss_keymap = "<C-]>",
         debounce_ms = 800,
         suggestion_color = { gui = "#808080", cterm = 244 },
-        exclude_filetypes = { "TelescopePrompt", "alpha" },
-        log_file_path = nil, -- absolute path to Tabnine log file
+        exclude_filetypes = { "TelescopePrompt", "alpha", "Neotree", "NeoTree" },
+        log_file_path = nil -- absolute path to Tabnine log file
       })
     end,
   },
@@ -82,7 +76,12 @@ return {
     -- keys = { "<leader>ml", "<leader>ma", "<leader>mn", "<leader>mp" },
   },
 
-  { "ellisonleao/glow.nvim", opts = { width_ratio = 0.95, height_ratio = 0.8 }, fmt = { "markdown" }, cmd = { "Glow" } },
+  {
+    "ellisonleao/glow.nvim",
+    opts = { width_ratio = 0.95, height_ratio = 0.8 },
+    ft = { "markdown" },
+    cmd = { "Glow" }
+  },
 
   -- {
   -- 	"smoka7/hop.nvim",
@@ -169,7 +168,7 @@ return {
   -- },
 
   -- { "toppair/peek.nvim", lazy = true, build = "deno task --quiet build:fast", ft = { "markdown" } }, --Markdown Preview
-  { "mrk21/yaml-vim", ft = { "yaml" } }, -- YAML files Shit - https://github.com/mrk21/yaml-vim
+  { "mrk21/yaml-vim",         ft = { "yaml" } }, -- YAML files Shit - https://github.com/mrk21/yaml-vim
 
   {
     "ahmedkhalf/project.nvim",
@@ -191,8 +190,12 @@ return {
     keys = {
       { "<localleader>s",  mode = { "n" }, function() require("substitute").operator() end, desc = "Substitute" },
       { "<localleader>ss", mode = { "n" }, function() require("substitute").line() end,     desc = "Substitute the line" },
-      { "<localleader>S",  mode = { "n" }, function() require("substitute").eol() end, desc = "Substitute until end of line" },
-      { "<localleader>s",  mode = { "x" }, function() require("substitute").visual() end, desc = "Substitute in Visual mode" },
+      { "<localleader>S",  mode = { "n" }, function() require("substitute").eol() end,      desc = "Substitute until end of line" },
+      { "<localleader>s",  mode = { "x" }, function() require("substitute").visual() end,   desc = "Substitute in Visual mode" },
+      { "<localleader>sx",  mode = { "n" }, function() require("substitute.exchange").operator() end, desc = "Exchange" },
+      { "<localleader>sxx", mode = { "n" }, function() require("substitute.exchange").line() end,     desc = "Exchange the line" },
+      { "<localleader>X",  mode = { "n" }, function() require("substitute.exchange").eol() end,      desc = "Exchange until end of line" },
+      { "<localleader>sxc",  mode = { "x" }, function() require("substitute.exchange").visual() end,   desc = "Exchange in Visual mode" },
     }
   },
 }
