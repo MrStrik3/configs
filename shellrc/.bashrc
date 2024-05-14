@@ -15,3 +15,4 @@ export CR_RENDER_FORCE_PRESENT_MAIN_THREAD="0 VirtualBox"
 export PATH=$PATH:~/bin
 
 source '~/lib/azure-cli/az.completion'
+. "$HOME/.cargo/env"

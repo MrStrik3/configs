@@ -12,33 +12,33 @@ return {
   -- Requires nightly built neovim
   -- { "lewis6991/satellite.nvim", event = 'BufReadPost', opts = {} },
 
-  {
-    "codota/tabnine-nvim",
-    lazy = false,
-    build = function()
-      if vim.fn.has("win32") == 1 then
-        return "./install.ps1"
-      else
-        return "pwsh.exe -file ./dl_binaries.sh"
-      end
-    end,
-    config = function()
-      require("tabnine").setup({
-        disable_auto_comment = true,
-        accept_keymap = "|",
-        dismiss_keymap = "<C-]>",
-        debounce_ms = 800,
-        suggestion_color = { gui = "#808080", cterm = 244 },
-        exclude_filetypes = { "TelescopePrompt", "alpha", "Neotree", "NeoTree" },
-        log_file_path = nil -- absolute path to Tabnine log file
-      })
-    end,
-  },
+  -- {
+  --   "codota/tabnine-nvim",
+  --   lazy = false,
+  --   build = function()
+  --     if vim.fn.has("win32") == 1 then
+  --       return "./install.ps1"
+  --     else
+  --       return "pwsh.exe -file ./dl_binaries.sh"
+  --     end
+  --   end,
+  --   config = function()
+  --     require("tabnine").setup({
+  --       disable_auto_comment = true,
+  --       accept_keymap = "|",
+  --       dismiss_keymap = "<C-]>",
+  --       debounce_ms = 800,
+  --       suggestion_color = { gui = "#808080", cterm = 244 },
+  --       exclude_filetypes = { "TelescopePrompt", "alpha", "Neotree", "NeoTree" },
+  --       log_file_path = nil -- absolute path to Tabnine log file
+  --     })
+  --   end,
+  -- },
 
   -- File picker
   {
     "nvim-telescope/telescope.nvim",
-    version = "0.1.3",
+    version = "0.1.6",
     lazy = false,
     dependencies = { "nvim-lua/plenary.nvim" },
   },
@@ -83,6 +83,22 @@ return {
     cmd = { "Glow" }
   },
 
+  --RUST
+  -- {
+  --   'mrcjkb/rustaceanvim',
+  --   version = '^3', -- Recommended
+  --   ft = { 'rust' },
+  --   dependencies = {
+  --     {
+  --       'saecki/crates.nvim',
+  --       event = { "BufRead Cargo.toml" },
+  --       config = function()
+  --         require('crates').setup()
+  --       end,
+  --     }
+  --   }
+  -- },
+
   -- {
   -- 	"smoka7/hop.nvim",
   -- 	keys = { "s", "S", "<leader><leader>w", "<leader><leader>p", "<leader><leader>l" },
@@ -95,7 +111,13 @@ return {
   {
     "folke/flash.nvim",
     event = "VeryLazy",
-    opts = {},
+    opts = {
+      modes = {
+        search = {
+          enabled = true
+        }
+      }
+    },
     keys = {
       { "s", mode = { "n", "o", "x" }, function() require("flash").jump() end,       desc = "Flash" },
       { "S", mode = { "n", "o", "x" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
@@ -188,14 +210,14 @@ return {
       require("substitute").setup({})
     end,
     keys = {
-      { "<localleader>s",  mode = { "n" }, function() require("substitute").operator() end, desc = "Substitute" },
-      { "<localleader>ss", mode = { "n" }, function() require("substitute").line() end,     desc = "Substitute the line" },
-      { "<localleader>S",  mode = { "n" }, function() require("substitute").eol() end,      desc = "Substitute until end of line" },
-      { "<localleader>s",  mode = { "x" }, function() require("substitute").visual() end,   desc = "Substitute in Visual mode" },
+      { "<localleader>s",   mode = { "n" }, function() require("substitute").operator() end,          desc = "Substitute" },
+      { "<localleader>ss",  mode = { "n" }, function() require("substitute").line() end,              desc = "Substitute the line" },
+      { "<localleader>S",   mode = { "n" }, function() require("substitute").eol() end,               desc = "Substitute until end of line" },
+      { "<localleader>s",   mode = { "x" }, function() require("substitute").visual() end,            desc = "Substitute in Visual mode" },
       { "<localleader>sx",  mode = { "n" }, function() require("substitute.exchange").operator() end, desc = "Exchange" },
       { "<localleader>sxx", mode = { "n" }, function() require("substitute.exchange").line() end,     desc = "Exchange the line" },
-      { "<localleader>X",  mode = { "n" }, function() require("substitute.exchange").eol() end,      desc = "Exchange until end of line" },
-      { "<localleader>sxc",  mode = { "x" }, function() require("substitute.exchange").visual() end,   desc = "Exchange in Visual mode" },
+      { "<localleader>X",   mode = { "n" }, function() require("substitute.exchange").eol() end,      desc = "Exchange until end of line" },
+      { "<localleader>sxc", mode = { "x" }, function() require("substitute.exchange").visual() end,   desc = "Exchange in Visual mode" },
     }
   },
 }

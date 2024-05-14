@@ -238,7 +238,7 @@ function M.config()
 	}
 
 	local FileFormatBlock = wrapInSlanterLean(FileFormat, false, "bg", "black")
-	-- lojjjjcal FileFormatBlock = wrapInSlanterLean(FileFormat, false, "bg", "bg_highlight")
+	-- local FileFormatBlock = wrapInSlanterLean(FileFormat, false, "bg", "bg_highlight")
 
 	-- OTHERS COMPONENTS
 	local Ruler = {

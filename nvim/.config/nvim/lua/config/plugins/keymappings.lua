@@ -231,7 +231,7 @@ function M.config()
           },
           {
             "<F12>",
-            { n = ":4ToggleTerm<CR>", t = "<C-\\><C-n>:5ToggleTerm<CR>" },
+            { n = ":4ToggleTerm<CR>", t = "<C-\\><C-n>:4ToggleTerm<CR>" },
             description = "Toggle the main terminal",
           },
         },
