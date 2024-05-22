@@ -37,8 +37,10 @@ return {
           lua_ls = function()
             require('lspconfig').lua_ls.setup({
               on_init = function(client)
-                -- local path = client.workspace_folders[1].name
-                -- if not vim.loop.fs_stat(path .. '/.luarc.json') and not vim.loop.fs_stat(path .. '/.luarc.jsonc') then
+                local path = client.workspace_folders[1].name
+                if not vim.loop.fs_stat(path .. '/.luarc.json') and not vim.loop.fs_stat(path .. '/.luarc.jsonc') then
+                  return
+                end
                 client.config.settings =
                     vim.tbl_deep_extend('force', client.config.settings,
                       {
@@ -54,8 +56,9 @@ return {
                             },
                           },
                           diagnostics = {
-                            globals = { 'vim', },
-                            unused = { 'unused-local' }
+                            enable = true,
+                            globals = { 'vim' },
+                            unused = { 'unused-local', 'lowercase-global' }
                           },
                           hint = {
                             enable = true,
