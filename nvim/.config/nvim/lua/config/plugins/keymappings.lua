@@ -13,7 +13,7 @@ function M.config()
 
   vim.api.nvim_set_keymap("n", "Y", "y$", { noremap = true })
 
-  -- " don't complain on some obvious fat-fingers
+  -- don't complain on some obvious fat-fingers
   map("n", ":W", ":w", {})
   map("n", ":W!", ":w!", {})
   map("n", ":Q!", ":q!", {})
