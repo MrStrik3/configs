@@ -62,6 +62,29 @@ function M.config()
       end,
     },
   })
+
+  -- Creating a custom terminal with lazygit
+  local Terminal = require('toggleterm.terminal').Terminal
+  local lazygit = Terminal:new({
+    cmd = "lazygit",
+    dir = "git_dir",
+    direction = "float",
+    float_opts = {
+      border = "double",
+    },
+    -- function to run on opening the terminal
+    on_open = function(term)
+      vim.cmd("startinsert!")
+      vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
+    end,
+    -- function to run on closing the terminal
+    on_close = function(term)
+      vim.cmd("startinsert!")
+    end,
+  })
+
+
+
   require("legendary").setup({
     keymaps = {
       {
@@ -118,9 +141,9 @@ function M.config()
         description = "Files",
         icon = "",
         keymaps = {
-          { "<leader>fe", "<cmd>Neotree toggle<cr>",       description = "[F]ile [E]xplorer" },
-          { "<leader>ff", "<cmd>Telescope find_files<cr>", description = "[F]ind [F]ile" },
-          { "<leader>fn", "<cmd>enew<cr>",                 description = "[N]ew [F]ile" },
+          { "<leader>fe", "<cmd>Neotree toggle<cr>",                                                 description = "[F]ile [E]xplorer" },
+          { "<leader>ff", "<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<cr>", description = "[F]ind [F]ile" },
+          { "<leader>fn", "<cmd>enew<cr>",                                                           description = "[N]ew [F]ile" },
           {
             "<leader>sf",
             "<cmd>Neotree float reveal reveal_force_cwd<cr>",
@@ -219,19 +242,33 @@ function M.config()
           -- Terminal management
           {
             "<F10>",
-            { n = ":10ToggleTerm direction=horizontal size=17<CR>", t = "<C-\\><C-n>:10ToggleTerm<CR>" },
-            description = "Toggle the main terminal",
+            {
+              n = function()
+                vim.cmd(":10ToggleTerm direction=horizontal size=17<CR>")
+                vim.cmd("startinsert!")
+              end,
+              t = "<C-\\><C-n>:10ToggleTerm<CR>"
+            },
+            description = "Toggle the main horizontal terminal",
           },
           {
             "<F11>",
             -- "<cmd>lua require('config.plugins.terminal').toggle_lazygit_term()<CR>",
-            require('config.plugins.terminal').toggle_lazygit_term,
+            -- require('config.plugins.terminal').toggle_lazygit_term,
+            -- "<cmd>lua vim.g.customTerminals.lazygit_term.toggle()",
+            function() lazygit:toggle() end,
             mode = { "n", "v", "i", "t" },
             description = "Show/Hide the lazygit",
           },
           {
             "<F12>",
-            { n = ":4ToggleTerm<CR>", t = "<C-\\><C-n>:4ToggleTerm<CR>" },
+            {
+              n = function()
+                vim.cmd(":4ToggleTerm")
+                vim.cmd("startinsert!")
+              end,
+              t = "<C-\\><C-n>:4ToggleTerm<CR>"
+            },
             description = "Toggle the main terminal",
           },
         },

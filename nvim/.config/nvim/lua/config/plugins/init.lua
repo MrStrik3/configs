@@ -38,8 +38,8 @@ return {
   -- File picker
   {
     "nvim-telescope/telescope.nvim",
-    version = "0.1.6",
-    lazy = false,
+    version = "0.1.7",
+    lazy = true,
     dependencies = { "nvim-lua/plenary.nvim" },
   },
 
