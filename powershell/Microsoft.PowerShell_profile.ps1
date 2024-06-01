@@ -7,13 +7,29 @@ $ENV:TEMPDIR="C:\Users\LefrancoisC\Desktop\Temp"
 $ENV:JAVA_HOME="C:\Program Files\Java\jdk-11.0.13"
 $ENV:KUBE_EDITOR = "nvim"
 
+# Yazi
+$ENV:YAZI_FILE_ONE = "$ENV:USERPROFILE/scoop/apps/git/current/usr/bin/file.exe"
 
+
+## eza mappings
+function ll {
+  eza --long --icons --group-directories-first --time-style=long-iso
+}
+function lla {
+  eza -a --long --icons --group-directories-first --time-style=long-iso
+}
+function ls {
+  eza --icons --time-style=long-iso --group-directories-first
+}
+function lt {
+  eza --tree --icons -a -I '.git|__pycache__|.mypy_cache|.ipynb_checkpoints' --time-style=long-iso
+}
 
 function cd.wk {
-  cd $ENV:WK
+  Set-Location $ENV:WK
 }
 function cd.temp {
-  cd $ENV:TEMPDIR
+  Set-Location $ENV:TEMPDIR
 }
 
 function ps.import.docker {
@@ -68,6 +84,10 @@ function term.cfg.edit {
    # %LOCALAPPDATA%\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
 }
 
+function wsl.update {
+  wsl.exe --update --web-download
+}
+
 
 # TERRAFORM cmds
 
@@ -86,10 +106,6 @@ function psql.co.dev.carl {
 }
 function psql.co.dev.geoserver_user {
   psql -h tdp-pg-dev-db1.postgres.database.azure.com -U geoserver_user@tdp-pg-dev-db1 -d geoserver -W
-}
-
-function ll {
-  dir $args
 }
 
 # AZ CLI commands
@@ -179,12 +195,43 @@ Set-Alias k -Value kubectl
 
 $ENV:MyPAT = "huo3tuanqhseq2fmosjdrxzidp6s3cf7snezr6q4rd54xohxorga"
 
+Register-ArgumentCompleter -Native -CommandName az -ScriptBlock {
+    param($commandName, $wordToComplete, $cursorPosition)
+    $completion_file = New-TemporaryFile
+
+
+
+function yy {
+    $tmp = [System.IO.Path]::GetTempFileName()
+    yazi $args --cwd-file="$tmp"
+    $cwd = Get-Content -Path $tmp
+    if (-not [String]::IsNullOrEmpty($cwd) -and $cwd -ne $PWD.Path) {
+        Set-Location -LiteralPath $cwd
+    }
+    Remove-Item -Path $tmp
+}
+
+$env:ARGCOMPLETE_USE_TEMPFILES = 1
+    $env:_ARGCOMPLETE_STDOUT_FILENAME = $completion_file
+    $env:COMP_LINE = $wordToComplete
+    $env:COMP_POINT = $cursorPosition
+    $env:_ARGCOMPLETE = 1
+    $env:_ARGCOMPLETE_SUPPRESS_SPACE = 0
+    $env:_ARGCOMPLETE_IFS = "`n"
+    $env:_ARGCOMPLETE_SHELL = 'powershell'
+    az 2>&1 | Out-Null
+    Get-Content $completion_file | Sort-Object | ForEach-Object {
+        [System.Management.Automation.CompletionResult]::new($_, $_, "ParameterValue", $_)
+    }
+    Remove-Item $completion_file, Env:\_ARGCOMPLETE_STDOUT_FILENAME, Env:\ARGCOMPLETE_USE_TEMPFILES, Env:\COMP_LINE, Env:\COMP_POINT, Env:\_ARGCOMPLETE, Env:\_ARGCOMPLETE_SUPPRESS_SPACE, Env:\_ARGCOMPLETE_IFS, Env:\_ARGCOMPLETE_SHELL
+}
+
 #
 # Clear-Host
 
 # Welcome message
 # "You are now entering PowerShell : " + $env:Username
-$ENV:STARSHIP_CONFIG = "$HOME\.starship\config.toml"
+$ENV:STARSHIP_CONFIG = "$HOME\Desktop\Temp\Repositories\configs\starship.toml"
 Invoke-Expression (&starship init powershell)
 
 Import-Module posh-git
