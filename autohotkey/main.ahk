@@ -38,11 +38,14 @@ ShowOrRunApp(AppExe, WindowCondition) {
 #t::ShowOrRunApp(Format('explorer.exe "{1}\{2}"', UserDir, "Desktop\Temp"), "Temp ahk_exe explorer.exe ahk_class CabinetWClass")
 #s::ShowOrRunApp(Format('explorer.exe "{1}\{2}"', UserDir, "Desktop\OneDrive - DFO-MPO"), "OneDrive - DFO-MPO ahk_exe explorer.exe ahk_class CabinetWClass")
 
-#Enter::ShowOrRunApp("C:/Users/LefrancoisC/Desktop/Travail/apps/terminal-1.19.2682.0/wt.exe -w dev focus-tab -t 0", "ahk_exe WindowTerminal.exe")
+; #Enter::ShowOrRunApp("C:/Users/LefrancoisC/Desktop/Travail/apps/terminal-1.19.2682.0/wt.exe -w dev focus-tab -t 0", "ahk_exe WindowTerminal.exe")
+#Enter::ShowOrRunApp("C:/Users/LefrancoisC/Desktop/Travail/apps/terminal-1.20.10572.0/wt.exe -w dev focus-tab -t 0", "ahk_exe WindowTerminal.exe")
 ; , "ahk_exe wsl.exe ahk_class PseudoConsoleWindow")
-<+#Enter::ShowOrRunApp("C:/Users/LefrancoisC/Desktop/Travail/apps/terminal-1.19.2682.0/wt.exe -w dev focus-tab -t 1", "ahk_exe WindowTerminal.exe")
+; <+#Enter::ShowOrRunApp("C:/Users/LefrancoisC/Desktop/Travail/apps/terminal-1.19.2682.0/wt.exe -w dev focus-tab -t 1", "ahk_exe WindowTerminal.exe")
+<+#Enter::ShowOrRunApp("C:/Users/LefrancoisC/Desktop/Travail/apps/terminal-1.20.10572.0/wt.exe -w dev focus-tab -t 1", "ahk_exe WindowTerminal.exe")
 ; "ahk_exe pwsh.exe ahk_class PseudoConsoleWindow")
-<^#Enter::RunWait("C:/Users/LefrancoisC/Desktop/Travail/apps/terminal-1.19.2682.0/wt.exe -w dev")
+; <^#Enter::RunWait("C:/Users/LefrancoisC/Desktop/Travail/apps/terminal-1.19.2682.0/wt.exe -w dev")
+<^#Enter::RunWait("C:/Users/LefrancoisC/Desktop/Travail/apps/terminal-1.20.10572.0/wt.exe -w dev")
 ; <^#Enter::ShowOrRun("C:/Users/LefrancoisC/Desktop/Travail/apps/terminal-1.19.2682.0/wt.exe --window dev new-tab -p 'Arch' ; C:/Users/LefrancoisC/Desktop/Travail/apps/terminal-1.19.2682.0/wt.exe --window dev new-tab -p 'PowerShell' ; C:/Users/LefrancoisC/Desktop/Travail/apps/terminal-1.19.2682.0/wt.exe --window dev focus-tab --target 0", "ahk_exe WindowTerminal.exe")
 #F2::ListWindows()
 
