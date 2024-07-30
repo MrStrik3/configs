@@ -97,6 +97,7 @@ function M.config()
           -- { "<Tab>", { n = "<plug>(cokeline-focus-next)" }, description = "Switch to next buffer" },
           -- { "<A-<>", { n = "<plug>(cokeline-switch-prev)" }, description = "Move before previous buffer" },
           -- { "<A->>", { n = "<plug>(cokeline-switch-next)" }, description = "Move after next buffer" },
+          { "<leader>fb", { n = "<cmd>Telescope buffers" }, description = "Find buffer" },
           { "<S-Tab>", { n = "<cmd>bprevious<cr>" }, description = "Switch to previous buffer" },
           { "<Tab>",   { n = "<cmd>bnext<cr>" },     description = "Switch to next buffer" },
         },

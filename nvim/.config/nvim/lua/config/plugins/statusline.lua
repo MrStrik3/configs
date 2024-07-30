@@ -197,7 +197,8 @@ function M.config()
       local fmt = vim.bo.fileformat -- dos unix mac
       return self.file_format_icons[fmt] .. " " .. fmt
     end,
-    hl = { bg = "bg_highlight", fg = "gray" },
+    -- hl = { bg = "bg_highlight", fg = "gray" },
+    hl = { bg = "black", fg = "gray" },
   }
 
   local FileFormatBlock = wrapInSlanterLean(FileFormat, false, "bg", "black")

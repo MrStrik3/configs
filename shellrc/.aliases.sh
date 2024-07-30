@@ -1,5 +1,9 @@
+
+
 alias ap='apropos -s 1 . | fzf --preview='\''man {1}'\'' --preview-window=up | awk '\''{print $1}'\'' | xargs man'
 alias ap.ex='apropos -s 1 . | fzf --preview='\''man {1}'\'' --preview-window=up | awk '\''{print $1}'\'' | xargs tldr'
+
+alias app.upd='yay -Suy'
 
 alias cfg.aliases="nvim ~/.aliases"
 alias cfg.zsh="$EDITOR ~/.zshrc"
@@ -32,7 +36,6 @@ alias dmesg='dmesg --color=always'
 
 alias aps.dev.log.range="curl https://intra-l01-dev.ent.dfo-mpo.ca/logs/tomcat/catalina.out -r "
 alias aps.dev.log.size="curl -L -I https://intra-l01-dev.ent.dfo-mpo.ca/logs/tomcat/catalina.out"
-
 
 alias kb.gp="kubectl -n iwls get pods"
 
@@ -68,3 +71,7 @@ az.git.clone() {
   git clone $currentRepoSsh
   cd "$currentRepoName"
 }
+
+alias t.plan="terragrunt init"
+alias t.plan="terragrunt plan"
+alias t.apply="terragrunt apply"

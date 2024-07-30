@@ -193,16 +193,16 @@ return {
   -- { "toppair/peek.nvim", lazy = true, build = "deno task --quiet build:fast", ft = { "markdown" } }, --Markdown Preview
   { "mrk21/yaml-vim",         ft = { "yaml" } }, -- YAML files Shit - https://github.com/mrk21/yaml-vim
 
-  {
-    "ahmedkhalf/project.nvim",
-    lazy = false,
-    config = function()
-      require("project_nvim").setup({
-        ignore_lsp = { "null-ls" },
-      })
-      require("telescope").load_extension("projects")
-    end,
-  },
+  -- {
+  --   "ahmedkhalf/project.nvim",
+  --   lazy = false,
+  --   config = function()
+  --     require("project_nvim").setup({
+  --       ignore_lsp = { "null-ls" },
+  --     })
+  --     require("telescope").load_extension("projects")
+  --   end,
+  -- },
 
   {
     "gbprod/substitute.nvim",
