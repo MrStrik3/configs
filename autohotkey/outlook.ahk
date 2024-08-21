@@ -38,6 +38,15 @@ ActivateOutlookWindow(this) {
 }
 OutlookMessages.ActivateOutlookWindow := ActivateOutlookWindow
 
+ActivateOutlookInboxWindow(this) {
+    RunWait("C:/Program Files/Microsoft Office/root/Office16/OUTLOOK.EXE /recycle /select outlook:inbox")
+}
+OutlookMessages.ActivateOutlookInboxWindow := ActivateOutlookInboxWindow
+ActivateOutlookCalendarWindow(this) {
+    RunWait("C:/Program Files/Microsoft Office/root/Office16/OUTLOOK.EXE /recycle /select outlook:calendar")
+}
+OutlookMessages.ActivateOutlookCalendarWindow := ActivateOutlookCalendarWindow
+
 ; Show the meeting reminders!
 SetTimer(showReminderWindow, 25000)
 

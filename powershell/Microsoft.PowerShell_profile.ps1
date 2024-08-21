@@ -10,6 +10,10 @@ $ENV:KUBE_EDITOR = "nvim"
 # Yazi
 $ENV:YAZI_FILE_ONE = "$ENV:USERPROFILE/scoop/apps/git/current/usr/bin/file.exe"
 
+## alias for updates
+function app.upd {
+  scoop update *
+}
 
 ## eza mappings
 function ll {
@@ -173,6 +177,11 @@ function wsl.vpnkit.cfg {
 
 function wsl.vpnkit.defaults {
   wsl -d wsl-vpnkit cat /app/defaults.conf
+}
+
+# httpd
+function docker.httpd.start {
+  docker run --rm -it -p 80:80 -v $ENV:USERPROFILE/Desktop/Temp/localhttpdcsddp:/usr/local/apache2/conf httpd:2.4.58-alpine3.19
 }
 
 # PGSQL
