@@ -28,25 +28,26 @@ ShowOrRunApp(AppExe, WindowCondition) {
 ^!r::Reload
 
 ##::ShowOrRunApp("Teams.exe", "Microsoft Teams classic ahk_exe Teams.exe")
+; Browsers
 #1::ShowOrRunApp("firefox.exe", "ahk_exe firefox.exe")
 <+#1::ShowOrRunApp("msedge.exe", "ahk_exe msedge.exe")
-; #2::ShowOrRunApp("C:/Program Files/Microsoft Office/root/Office16/OUTLOOK.EXE", "Inbox - Carl.Lefrancois@dfo-mpo.gc.ca - Outlook ahk_exe OUTLOOK.EXE ahk_class rctrl_renwnd32")
 #3::ShowOrRunApp(UserDir . "/scoop/apps/obsidian/current/Obsidian.exe", "ahk_exe Obsidian.exe")
+
+; Outlook key mappings
 ; #4::OutlookMessages.ActivateOutlookWindow()
 ; #5::OutlookMessages.CycleMessages()
 #4::OutlookMessages.ActivateOutlookInboxWindow()
 #5::OutlookMessages.ActivateOutlookCalendarWindow()
 #6::OutlookMessages.CycleMessages()
 
+; Work directories
 #w::ShowOrRunApp(Format('explorer.exe "{1}\{2}"', UserDir, "Desktop\Travail"), "Travail ahk_exe explorer.exe ahk_class CabinetWClass")
 #t::ShowOrRunApp(Format('explorer.exe "{1}\{2}"', UserDir, "Desktop\Temp"), "Temp ahk_exe explorer.exe ahk_class CabinetWClass")
 #s::ShowOrRunApp(Format('explorer.exe "{1}\{2}"', UserDir, "Desktop\OneDrive - DFO-MPO"), "OneDrive - DFO-MPO ahk_exe explorer.exe ahk_class CabinetWClass")
 
+; Terminal
 #Enter::ShowOrRunApp(UserDir . "/Desktop/Travail/apps/terminal-1.21.1772.0/wt.exe -w dev focus-tab -t 0", "ahk_exe WindowTerminal.exe")
-; , "ahk_exe wsl.exe ahk_class PseudoConsoleWindow")
 <+#Enter::ShowOrRunApp(UserDir . "/Desktop/Travail/apps/terminal-1.21.1772.0/wt.exe -w dev focus-tab -t 1", "ahk_exe WindowTerminal.exe")
-; "ahk_exe pwsh.exe ahk_class PseudoConsoleWindow")
-; <^#Enter::RunWait(UserDir . "C:/Users/LefrancoisC/Desktop/Travail/apps/terminal-1.21.1772.0/wt.exe -w dev")
 #F2::ListWindows()
 
 ; Harpoon windows
