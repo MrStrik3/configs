@@ -2521,7 +2521,6 @@ Return
 ::haviest::heaviest
 ::heidelburg::Heidelberg
 ::hieght::height
-::hier::heir
 ::heirarchy::heirarchy
 ::helment::helmet
 ::halp::help

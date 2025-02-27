@@ -46,8 +46,9 @@ ShowOrRunApp(AppExe, WindowCondition) {
 #s::ShowOrRunApp(Format('explorer.exe "{1}\{2}"', UserDir, "Desktop\OneDrive - DFO-MPO"), "OneDrive - DFO-MPO ahk_exe explorer.exe ahk_class CabinetWClass")
 
 ; Terminal
-#Enter::ShowOrRunApp(UserDir . "/Desktop/Travail/apps/terminal-1.21.1772.0/wt.exe -w dev focus-tab -t 0", "ahk_exe WindowTerminal.exe")
-<+#Enter::ShowOrRunApp(UserDir . "/Desktop/Travail/apps/terminal-1.21.1772.0/wt.exe -w dev focus-tab -t 1", "ahk_exe WindowTerminal.exe")
+#Enter::ShowOrRunApp(UserDir . "/Desktop/Travail/apps/terminal-1.22.3232.0/wt.exe -w dev focus-tab -t 0", "ahk_exe WindowTerminal.exe")
+<+#Enter::ShowOrRunApp(UserDir . "/Desktop/Travail/apps/terminal-1.22.3232.0/wt.exe -w dev focus-tab -t 1", "ahk_exe WindowTerminal.exe")
+#F3::ShowOrRunApp(UserDir . "/scoop/apps/wezterm/20240203-110809-5046fc22/wezterm-gui.exe", "ahk_exe wezterm-gui.exe")
 #F2::ListWindows()
 
 ; Harpoon windows
