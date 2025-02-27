@@ -44,6 +44,7 @@ plugins=(
   sudo
   ng
   fzf
+  # gradle-completion
 )
 
 source $ZSH/oh-my-zsh.sh
