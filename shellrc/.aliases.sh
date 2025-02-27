@@ -72,6 +72,6 @@ az.git.clone() {
   cd "$currentRepoName"
 }
 
-alias t.plan="terragrunt init"
+alias t.init="terragrunt init"
 alias t.plan="terragrunt plan"
 alias t.apply="terragrunt apply"

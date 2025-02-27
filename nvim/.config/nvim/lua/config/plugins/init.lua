@@ -35,12 +35,22 @@ return {
   --   end,
   -- },
 
+  {
+    "github/copilot.vim",
+    lazy = false
+  },
+
   -- File picker
   {
     "nvim-telescope/telescope.nvim",
-    version = "0.1.7",
+    -- version = "0.1.8",
+    branch = "0.1.x",
     lazy = true,
     dependencies = { "nvim-lua/plenary.nvim" },
+  },
+  {
+    "nvim-telescope/telescope-fzf-native.nvim",
+    build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release"
   },
 
   -- smoothen the scrolling
