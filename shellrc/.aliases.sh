@@ -8,7 +8,7 @@ alias app.upd='yay -Suy'
 alias cfg.aliases="nvim ~/.aliases"
 alias cfg.zsh="$EDITOR ~/.zshrc"
 alias cfg.ohmyzsh="$EDITOR ~/.oh-my-zsh"
-alias cfg.nvim="fd --search-path ~/.config/nvim --type f | fzf  --preview 'bat -n --color=always {}' --multi --print0 | xargs -0 nvim"
+alias cfg.nvim="fd --search-path ~/.config/nvim --type f | fzf  --preview 'bat -n --color=always {}' --multi --print0 | xargs -0 nvim -c 'cd ~/configs/nvim'"
 alias cfg.glazewm="nvim /mnt/c/Users/$USER/.glaze-wm/config.yaml"
 alias cfg.wezterm="nvim /mnt/c/Users/$USER/Desktop/Temp/Repositories/github/configs/wezterm/.wezterm.lua"
 
