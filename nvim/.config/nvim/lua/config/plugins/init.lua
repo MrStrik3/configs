@@ -153,7 +153,7 @@ return {
   -- Auto-pair, highlights the separators ((),{}, "", ''))
   {
     "windwp/nvim-autopairs",
-    event = "BufReadPost",
+    event = "InsertEnter",
     config = function()
       require("nvim-autopairs").setup({
         disable_filetypes = { "TelescopePrompt", "NvimTree", "neo-tree", "alpha" },
@@ -166,7 +166,7 @@ return {
     "NvChad/nvim-colorizer.lua",
     cmd = { "ColorizerToggle", "ColorizerAttachToBuffer" },
     config = function()
-      require("colorizer").setup({ filetypes = { "html", "css", "lua", "kdl" } })
+      require("colorizer").setup({ filetypes = { "html", "htm", "css", "lua", "kdl" } })
     end,
   },
 

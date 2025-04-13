@@ -132,8 +132,8 @@ function M.config()
             description = "Toggle document [D]iagnostics [L]ist",
           },
           { "<leader>ct", "<cmd>TodoTrouble<cr>",                    description = "Show TODO list" },
-          { "ge",         function() vim.diagnostic.goto_next() end, description = "[G]oto next diagnostic [e]rror" },
-          { "gE",         function() vim.diagnostic.goto_prev() end, description = "[G]oto previous diagnostic [E]rror" },
+          { "ge",         function() vim.diagnostic.jump({count = 1, float = true}) end, description = "[G]oto next diagnostic [e]rror" },
+          { "gE",         function() vim.diagnostic.jump({count = -1, float = true}) end, description = "[G]oto previous diagnostic [E]rror" },
         },
       },
 
