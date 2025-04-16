@@ -2,13 +2,11 @@
 # zmodload zsh/zprof
 
 # If you come from bash you might have to change your $PAT
-export PATH=$HOME/bin:/usr/local/bin:/home/$HOME/.pulumi/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 export KUBECONFIG=/mnt/c/Users/$WINDOWSUSER/.kube/config
 
 export JAVA_HOME=/usr/lib/jvm/java-17-temurin
-
-export STARSHIP_CONFIG=~/configs/starship.toml
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/lefrancoisc/.oh-my-zsh"
