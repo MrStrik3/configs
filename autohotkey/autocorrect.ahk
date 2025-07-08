@@ -475,7 +475,6 @@ Return
 ::malaguena::malagueña
 ::manana::mañana
 ::manege::manège
-::manque::manqué
 ::materiel::matériel
 ::matinee::matinée
 ::matinees::matinées
@@ -507,7 +506,6 @@ Return
 ::nez perce::Nez Percé
 ::noël::Noël
 ::noëls::Noëls
-::número uno::número uno
 ::objet trouve::objet trouvé
 ::objets trouve::objets trouvé
 ::ombre::ombré
@@ -519,7 +517,6 @@ Return
 ::operas comique::opéras comique
 ::outre::outré
 ::papier-mache::papier-mâché
-::passe::passé
 ::piece de resistance::pièce de résistance
 ::pied-a-terre::pied-à-terre
 ::plisse::plissé

@@ -11,16 +11,12 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
+-- config.default_prog = { 'pwsh.exe' }
+-- config.default_domain = 'WSL:archlinux'
 config.window_close_confirmation = "NeverPrompt"
-config.window_decorations = "TITLE"
-
-config.default_prog = { 'pwsh.exe' }
--- config.default_domain = 'WSL:Arch'
 
 -- Setting Theme & fonts
--- config.color_scheme = 'Tokyo Night Storm'
-config.color_scheme = 'tokyonight_storm'
-
+config.color_scheme = 'Tokyo Night Storm'
 config.bold_brightens_ansi_colors = 'BrightAndBold'
 config.font = wezterm.font {
   family = 'CaskaydiaCove Nerd Font Mono',
@@ -41,34 +37,21 @@ config.font = wezterm.font {
 
 config.font_size = 10.0
 
-
 wezterm.on("gui-startup", function()
   local tab, pane, window = mux.spawn_window {}
-  window:gui_window():maximize()
-  -- window:gui_window():set_title('patate')
+  window:gui_window():set_inner_size(1000, 500)
+  window:gui_window():set_position(800, 400)
 end)
 
--- wezterm.on('format-window-title', function(tab, pane, tabs, panes, config)
---   local zoomed = ''
---   if tab.active_pane.is_zoomed then
---     zoomed = '[Z] '
---   end
---
---   local index = ''
---   if #tabs > 1 then
---     index = string.format('[%d/%d] ', tab.tab_index + 1, #tabs)
---   end
---
---   return zoomed .. index .. tab.active_pane.title
--- end)
-
 wezterm.on('format-window-title', function()
-  return 'Powershell'
+  return 'New task'
 end)
 
 config.enable_tab_bar = false
 
 config.scrollback_lines = 6000
 config.enable_scroll_bar = true
+
+config.default_prog = { 'wsl.exe', '-d', 'ArchLinux', '/home/lefrancoisc/projects/task.cli/taskcli' }
 
 return config

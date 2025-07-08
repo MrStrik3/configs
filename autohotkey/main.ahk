@@ -46,9 +46,17 @@ ShowOrRunApp(AppExe, WindowCondition) {
 #s::ShowOrRunApp(Format('explorer.exe "{1}\{2}"', UserDir, "Desktop\OneDrive - DFO-MPO"), "OneDrive - DFO-MPO ahk_exe explorer.exe ahk_class CabinetWClass")
 
 ; Terminal
-#Enter::ShowOrRunApp(UserDir . "/Desktop/Travail/apps/terminal-1.22.3232.0/wt.exe -w dev focus-tab -t 0", "ahk_exe WindowTerminal.exe")
-<+#Enter::ShowOrRunApp(UserDir . "/Desktop/Travail/apps/terminal-1.22.3232.0/wt.exe -w dev focus-tab -t 1", "ahk_exe WindowTerminal.exe")
-#F3::ShowOrRunApp(UserDir . "/scoop/apps/wezterm/20240203-110809-5046fc22/wezterm-gui.exe", "ahk_exe wezterm-gui.exe")
+; #Enter::ShowOrRunApp(UserDir . "/Desktop/Travail/apps/terminal-1.23.10353.0/wt.exe -w dev focus-tab -t 0", "ahk_exe WindowTerminal.exe")
+; <+#Enter::ShowOrRunApp(UserDir . "/Desktop/Travail/apps/terminal-1.23.10353.0/wt.exe -w dev focus-tab -t 1", "ahk_exe WindowTerminal.exe")
+; #Enter::ShowOrRunApp(UserDir . "/Desktop/Travail/apps/terminal-1.22.3232.0/wt.exe -w dev focus-tab -t 0", "ahk_exe WindowTerminal.exe")
+; <+#Enter::ShowOrRunApp(UserDir . "/Desktop/Travail/apps/terminal-1.22.3232.0/wt.exe -w dev focus-tab -t 1", "ahk_exe WindowTerminal.exe")
+; <+#Enter::ShowOrRunApp(UserDir . "/scoop/apps/wezterm/current/wezterm-gui.exe --config-file=". UserDir ."/Desktop/Temp/Repositories/configs/wezterm/wezterm_win.lua", "ahk_exe wezterm-gui.exe")
+<+#Enter::ShowOrRunApp(UserDir . "/scoop/apps/wezterm/current/wezterm-gui.exe --config-file=C:/Users/LefrancoisC/Desktop/Temp/Repositories/configs/wezterm/wezterm_win.lua", "Powershell ahk_class org.wezfurlong.wezterm ahk_exe wezterm-gui.exe")
+#Enter::ShowOrRunApp(UserDir . "/scoop/apps/wezterm/current/wezterm-gui.exe --config-file=C:/Users/LefrancoisC/Desktop/Temp/Repositories/configs/wezterm/wezterm_archlinux.lua", "ArchLinux ahk_class org.wezfurlong.wezterm ahk_exe wezterm-gui.exe")
+#z::ShowOrRunApp(UserDir . "/scoop/apps/wezterm/current/wezterm-gui.exe --config-file=C:/Users/LefrancoisC/Desktop/Temp/Repositories/configs/wezterm/wezterm_taskwarriortui.lua", "Tasks ahk_class org.wezfurlong.wezterm ahk_exe wezterm-gui.exe")
+#^z::ShowOrRunApp(UserDir . "/scoop/apps/wezterm/current/wezterm-gui.exe --config-file=C:/Users/LefrancoisC/Desktop/Temp/Repositories/configs/wezterm/wezterm_taskcli.lua", "Tasks ahk_class org.wezfurlong.wezterm ahk_exe wezterm-gui.exe")
+; wezterm.exe --config-file=wezterm_win.lua C:\Users\LefrancoisC\scoop\apps\wezterm\20240203-110809-5046fc22
+; #F3::ShowOrRunApp(UserDir . "/scoop/apps/wezterm/20240203-110809-5046fc22/wezterm-gui.exe", "ahk_exe wezterm-gui.exe")
 #F2::ListWindows()
 
 ; Harpoon windows

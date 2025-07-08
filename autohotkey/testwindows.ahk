@@ -15,7 +15,7 @@ ListWindows() {
       ahk_id " this_id "
       ahk_class " this_class "
       ahk_exe " this_process "
-      " this_title "
+      Title " this_title "
 
        Continue?"
     ),, 4)
