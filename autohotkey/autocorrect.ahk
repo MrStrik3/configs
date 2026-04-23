@@ -3578,6 +3578,8 @@ Return
 ::portugese::Portuguese
 ::portuguease::portuguese
 ::possition::position
+::postgresql::PostgreSQL
+::Postgresql::PostgreSQL
 ::postion::position
 ::postition::position
 ::psoition::position

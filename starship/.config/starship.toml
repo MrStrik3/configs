@@ -12,6 +12,7 @@ $directory\
 $status\
 $character"""
 right_format = "$cmd_duration"
+scan_timeout = 100
 
 [directory]
 # format='[  $path ]($style)[](fg:green bg:#2e333c)'

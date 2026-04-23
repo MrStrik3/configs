@@ -4,7 +4,7 @@
 UserDir := EnvGet("USERPROFILE")
 
 #include "outlook.ahk"
-#include "harpoon.ahk"
+; #include "harpoon.ahk"
 #include "testwindows.ahk"
 #include "autocorrect.ahk"
 
@@ -62,23 +62,23 @@ ShowOrRunApp(AppExe, WindowCondition) {
 ; Harpoon windows
 ; Set Window #1 => AltGr + u
 ; Activate Window #1 => Win + u
-#u::Harpoon.ActivateWindow(1)
-<^>!u::Harpoon.SetWindow(1)
+; #u::Harpoon.ActivateWindow(1)
+; <^>!u::Harpoon.SetWindow(1)
 
 ; Set Window #2 => AltGr + i
 ; Activate Window #2 => Win + i
-#i::Harpoon.ActivateWindow(2)
-<^>!i::Harpoon.SetWindow(2)
+; #i::Harpoon.ActivateWindow(2)
+; <^>!i::Harpoon.SetWindow(2)
 
 ; Set Window #3 => AltGr + o
 ; Activate Window #3 => Win + o
-#o::Harpoon.ActivateWindow(3)
-<^>!o::Harpoon.SetWindow(3)
+; #o::Harpoon.ActivateWindow(3)
+; <^>!o::Harpoon.SetWindow(3)
 
 ; Set Window #4 => AltGr + p
 ; Activate Window #4 => Win + p
-#p::Harpoon.ActivateWindow(4)
-<^>!p::Harpoon.SetWindow(4)
+; #p::Harpoon.ActivateWindow(4)
+; <^>!p::Harpoon.SetWindow(4)
 
 ToggleWinBar() {
   if WinActive("ahk_class Shell_TrayWnd ahk_exe explorer.exe")
