@@ -240,7 +240,7 @@ $env:ARGCOMPLETE_USE_TEMPFILES = 1
 
 # Welcome message
 # "You are now entering PowerShell : " + $env:Username
-$ENV:STARSHIP_CONFIG = "$HOME\Desktop\Temp\Repositories\configs\starship.toml"
+$ENV:STARSHIP_CONFIG = "$HOME\Desktop\Temp\Repositories\configs\starship\.config\starship.toml"
 Invoke-Expression (&starship init powershell)
 
 Import-Module posh-git
