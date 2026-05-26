@@ -228,7 +228,6 @@ return {
             nvim_lsp = '[LSP]',
             luasnip = '[LuaSnip]',
             nvim_lua = '[Lua]',
-            cmp_tabnine = '[T9]',
           },
           --     maxwidth = 80,   -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
           --     ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
@@ -282,16 +281,6 @@ return {
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-nvim-lua',
-      {
-        'tzachar/cmp-tabnine',
-        build = function()
-          if vim.fn.has('win32') then
-            return './install.ps1'
-          else
-            return './install.sh'
-          end
-        end,
-      },
     },
   },
 

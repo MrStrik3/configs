@@ -12,29 +12,6 @@ return {
   -- Requires nightly built neovim
   -- { "lewis6991/satellite.nvim", event = 'BufReadPost', opts = {} },
 
-  -- {
-  --   "codota/tabnine-nvim",
-  --   lazy = false,
-  --   build = function()
-  --     if vim.fn.has("win32") == 1 then
-  --       return "./install.ps1"
-  --     else
-  --       return "pwsh.exe -file ./dl_binaries.sh"
-  --     end
-  --   end,
-  --   config = function()
-  --     require("tabnine").setup({
-  --       disable_auto_comment = true,
-  --       accept_keymap = "|",
-  --       dismiss_keymap = "<C-]>",
-  --       debounce_ms = 800,
-  --       suggestion_color = { gui = "#808080", cterm = 244 },
-  --       exclude_filetypes = { "TelescopePrompt", "alpha", "Neotree", "NeoTree" },
-  --       log_file_path = nil -- absolute path to Tabnine log file
-  --     })
-  --   end,
-  -- },
-
   {
     "github/copilot.vim",
     lazy = false
