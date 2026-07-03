@@ -51,9 +51,13 @@ return {
     lazy = true,
     dependencies = { "nvim-lua/plenary.nvim" },
   },
+  -- {
+  --   "nvim-telescope/telescope-fzf-native.nvim",
+  --   build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release"
+  -- },
   {
-    "nvim-telescope/telescope-fzf-native.nvim",
-    build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release"
+    'nvim-telescope/telescope-fzf-native.nvim',
+    build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release --target install'
   },
 
   -- smoothen the scrolling
@@ -164,7 +168,7 @@ return {
     end,
   },
 
-  { "mg979/vim-visual-multi", keys = { { "<C-n>" } } }, -- Multi cursor shit
+  { "mg979/vim-visual-multi",                   keys = { { "<C-n>" } } }, -- Multi cursor shit
   {
     "NvChad/nvim-colorizer.lua",
     cmd = { "ColorizerToggle", "ColorizerAttachToBuffer" },
@@ -204,7 +208,7 @@ return {
   -- },
 
   -- { "toppair/peek.nvim", lazy = true, build = "deno task --quiet build:fast", ft = { "markdown" } }, --Markdown Preview
-  { "mrk21/yaml-vim",         ft = { "yaml" } }, -- YAML files Shit - https://github.com/mrk21/yaml-vim
+  { "mrk21/yaml-vim", ft = { "yaml" } },         -- YAML files Shit - https://github.com/mrk21/yaml-vim
 
   -- {
   --   "ahmedkhalf/project.nvim",
