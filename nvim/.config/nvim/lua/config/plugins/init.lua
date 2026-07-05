@@ -13,31 +13,31 @@ return {
   -- { "lewis6991/satellite.nvim", event = 'BufReadPost', opts = {} },
 
   -- Bunch of useful features
-  {
-    "folke/snacks.nvim",
-    priority = 1000,
-    lazy = false,
-    ---@type snacks.Config
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-      bigfile = { enabled = true },
-      dashboard = { enabled = true },
-      explorer = { enabled = true },
-      indent = { enabled = true },
-      input = { enabled = true },
-      picker = { enabled = true },
-      notifier = { enabled = true },
-      quickfile = { enabled = true },
-      scope = { enabled = true },
-      scroll = { enabled = true },
-      statuscolumn = { enabled = true },
-      terminal = { enabled = true },
-      -- words = { enabled = true },
-    },
-  },
-
+  -- {
+  --   "folke/snacks.nvim",
+  --   priority = 1000,
+  --   lazy = false,
+  --   ---@type snacks.Config
+  --   opts = {
+  --     -- your configuration comes here
+  --     -- or leave it empty to use the default settings
+  --     -- refer to the configuration section below
+  --     bigfile = { enabled = true },
+  --     dashboard = { enabled = true },
+  --     explorer = { enabled = true },
+  --     indent = { enabled = true },
+  --     input = { enabled = true },
+  --     picker = { enabled = true },
+  --     notifier = { enabled = true },
+  --     quickfile = { enabled = true },
+  --     scope = { enabled = true },
+  --     scroll = { enabled = true },
+  --     statuscolumn = { enabled = true },
+  --     terminal = { enabled = false },
+  --     -- words = { enabled = true },
+  --   },
+  -- },
+  { "rebelot/kanagawa.nvim"},
   {
     "github/copilot.vim",
     lazy = false
@@ -45,19 +45,16 @@ return {
 
   -- File picker
   {
-    "nvim-telescope/telescope.nvim",
-    -- version = "0.1.8",
-    branch = "0.1.x",
-    lazy = true,
-    dependencies = { "nvim-lua/plenary.nvim" },
-  },
-  -- {
-  --   "nvim-telescope/telescope-fzf-native.nvim",
-  --   build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release"
-  -- },
-  {
-    'nvim-telescope/telescope-fzf-native.nvim',
-    build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release --target install'
+    'nvim-telescope/telescope.nvim', version = '*',
+    dependencies = {
+        'nvim-lua/plenary.nvim',
+        -- optional but recommended
+        {
+          'nvim-telescope/telescope-fzf-native.nvim',
+          -- build = 'make'
+          build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release --target install'
+        },
+    }
   },
 
   -- smoothen the scrolling
@@ -100,22 +97,6 @@ return {
     ft = { "markdown" },
     cmd = { "Glow" }
   },
-
-  --RUST
-  -- {
-  --   'mrcjkb/rustaceanvim',
-  --   version = '^3', -- Recommended
-  --   ft = { 'rust' },
-  --   dependencies = {
-  --     {
-  --       'saecki/crates.nvim',
-  --       event = { "BufRead Cargo.toml" },
-  --       config = function()
-  --         require('crates').setup()
-  --       end,
-  --     }
-  --   }
-  -- },
 
   -- {
   -- 	"smoka7/hop.nvim",
@@ -195,21 +176,17 @@ return {
     },
   },
 
-  -- {
-  --   "iamcco/markdown-preview.nvim",
-  --   build = "cd app && npm install",
-  --   -- build = function() vim.fn["mkdp#util#install"]() end,
-  --   cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-  --   config = function()
-  --     vim.g.mkdp_filetypes = { "markdown" }
-  --     vim.g.mkdp_theme = "light"
-  --   end,
-  --   ft = { "markdown" },
-  -- },
-
-  -- { "toppair/peek.nvim", lazy = true, build = "deno task --quiet build:fast", ft = { "markdown" } }, --Markdown Preview
   { "mrk21/yaml-vim", ft = { "yaml" } },         -- YAML files Shit - https://github.com/mrk21/yaml-vim
 
+  {
+    'MeanderingProgrammer/render-markdown.nvim',
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.nvim' },            -- if you use the mini.nvim suite
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.icons' },        -- if you use standalone mini plugins
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
+    opts = {},
+  },
   -- {
   --   "ahmedkhalf/project.nvim",
   --   lazy = false,

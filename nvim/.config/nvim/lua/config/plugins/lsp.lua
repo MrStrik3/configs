@@ -128,8 +128,8 @@ return {
       vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
 
       vim.keymap.set('n', 'gl', vim.diagnostic.open_float, opts)
-      vim.keymap.set('n', 'gE', vim.diagnostic.goto_prev, opts)
-      vim.keymap.set('n', 'ge', vim.diagnostic.goto_next, opts)
+      vim.keymap.set('n', 'gE', function() vim.diagnostic.jump({count=-1, float=true}) end, opts)
+      vim.keymap.set('n', 'ge', function() vim.diagnostic.jump({count=1, float=true}) end, opts)
     end,
     dependencies = {
       'williamboman/mason.nvim',

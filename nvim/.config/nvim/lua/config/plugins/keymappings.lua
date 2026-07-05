@@ -82,6 +82,23 @@ function M.config()
       vim.cmd("startinsert!")
     end,
   })
+  local opencode = Terminal:new({
+    cmd = "opencode",
+    dir = "git_dir",
+    direction = "float",
+    float_opts = {
+      border = "double",
+    },
+    -- function to run on opening the terminal
+    on_open = function(term)
+      vim.cmd("startinsert!")
+      vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
+    end,
+    -- function to run on closing the terminal
+    on_close = function(term)
+      vim.cmd("startinsert!")
+    end,
+  })
 
 
 
@@ -102,19 +119,6 @@ function M.config()
           { "<Tab>",   { n = "<cmd>bnext<cr>" },     description = "Switch to next buffer" },
         },
       },
-
-      -- {
-      -- 	itemgroup = "motions",
-      -- 	description = "Fast motions",
-      -- 	icon = "省",
-      -- 	keymaps = {
-      -- 		{ "s", ":HopChar2AC<cr>", description = "Search for 2 characters after the cursor" },
-      -- 		{ "S", ":HopChar2BC<cr>", description = "Search for 2 characters before the cursor" },
-      -- 		{ "<leader><leader>w", ":HopWord<cr>", description = "Move to word (Hop.nvim)" },
-      -- 		{ "<leader><leader>l", ":HopLineStart<cr>", description = "Move to line (Hop.nvim)" },
-      -- 		{ "<leader><leader>p", ":HopPattern<cr>", description = "Move to a search pattern (Hop.nvim)" },
-      -- 	},
-      -- },
 
       {
         itemgroup = "code",
@@ -241,6 +245,15 @@ function M.config()
         keymaps = {
 
           -- Terminal management
+          {
+            "<F9>",
+            -- "<cmd>lua require('config.plugins.terminal').toggle_lazygit_term()<CR>",
+            -- require('config.plugins.terminal').toggle_lazygit_term,
+            -- "<cmd>lua vim.g.customTerminals.lazygit_term.toggle()",
+            function() opencode:toggle() end,
+            mode = { "n", "v", "i", "t" },
+            description = "Show/Hide the OpenCode",
+          },
           {
             "<F10>",
             {
