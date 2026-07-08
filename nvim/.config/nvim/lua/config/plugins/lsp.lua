@@ -168,7 +168,7 @@ return {
             TypeParameter = " ",
           },
           safe_output = true,
-          preference = { 'lua_ls', 'null-ls' },
+          preference = { 'lua_ls' },
           auto_attach = true,
         }
       }
