@@ -58,6 +58,9 @@ alias git.br.sw="git branch -a | sed 's#remotes/origin/##' | grep -v 'HEAD' | so
 alias az.sub.show="az account show --output table"
 alias az.sub.list="az account list --output table"
 alias az.sub.switch="az account list | jq -r '.[].name' | fzf | xargs --replace=\"{}\" az account set --subscription  \"{}\" && az.sub.show"
+
+alias az.devops.s.us="nu -c \"http get http://localhost:3000/api/userstories | table --theme rounded --index true\""
+alias az.devops.s.pr="nu -c \"http get http://localhost:3000/api/pullrequests | table --theme rounded --index true\""
 # alias az.sub.switch="az account list | jq '.[].name' | fzf | xargs az account set --subscription"
 # alias az.sub.switch="az account list | jq -r '.[].name' | sort  | gum filter --limit 1 | xargs --replace=\"{}\" az account set --subscription  \"{}\" && az.sub.show"
 az.git.clone() {

@@ -9,6 +9,7 @@ return {
   { "tweekmonster/startuptime.vim", cmd = { "StartupTime" } },
   { "j-hui/fidget.nvim",            lazy = false },
 
+  { "sindrets/diffview.nvim",       cmd = { "DiffviewOpen", "DiffviewFileHistory" } },
   -- Requires nightly built neovim
   -- { "lewis6991/satellite.nvim", event = 'BufReadPost', opts = {} },
 
